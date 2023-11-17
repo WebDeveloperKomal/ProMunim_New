@@ -1,0 +1,178 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <i class="ace-icon fa fa-home home-icon " style="margin-right: 10px;"></i><a href="#">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">New Customer</li>
+          </ol>
+        </nav>
+        <div class="container ">
+          <div class="row">
+            <div class="col">
+              <div class="page-header">
+                <h1>
+                    New Customer
+                </h1>
+            </div>
+                <!-- <div>
+                    <h2>
+                        Add New Customer
+                    </h2>
+              <button type="button" routerLink="/allnewcustomer" class="btn btn-info p-3" style="float: right;">
+                All Customers</button>
+              </div> -->
+                     
+  <div class="row line">
+    <div class="col-md-6 col-6">
+      <h2>Add New Customer</h2>
+    </div>
+    <div class="col-md-6 col-6 text-md-end">
+      <button type="button" routerLink="/allcomplaintsmain" class="btn btn-info p-3">
+        All Customers
+      </button>
+    </div>
+  </div>
+                    <form  [formGroup]="addnewcustomer" class="col-md-12 col-sm-12 col-xs-12 mt-5">
+
+
+                        <div class="form-group row">
+                            <label for="companyname" class="col-lg-2 col-4   col-form-label mr-5">Company Name:</label>
+                            <div class="col-lg-4 col-8">
+                                <input type="text" formControlName="companyname" class="form-control" id="complianceName">
+                            </div>
+                            <label for="fullname" class="col-lg-2 col-4   col-form-label mr-5">Full Name:</label>
+                            <div class="col-lg-4 col-8">
+                                <input type="text" formControlName="fullname" class="form-control" id="complianceName">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="col-lg-2 col-4   col-form-label mr-5">Email Id:</label>
+                            <div class="col-lg-4 col-8">
+                                <input type="email" formControlName="email" class="form-control" id="complianceName">
+                            </div>
+                            <label for="contactno" class="col-lg-2 col-4   col-form-label mr-5">Contact Number:</label>
+                            <div class="col-lg-4 col-8">
+                                <input type="text" formControlName="contactno" class="form-control" id="complianceName">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="altcontactno" class="col-lg-2 col-4   col-form-label mr-5">Alternative Contact
+                                Number:</label>
+                            <div class="col-lg-4 col-8">
+                                <input type="text" formControlName="altcontactno" class="form-control" id="complianceName">
+                            </div>
+                            <label for="address" class="col-lg-2 col-4   col-form-label mr-5">Address:</label>
+                            <div class="col-lg-4 col-8">
+                                <!-- <div class="col-sm-8"> -->
+                                    <textarea class="form-control" id="address" rows="3" formControlName="address"
+                                        required> </textarea>
+                                <!-- </div> -->
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="city" class="col-lg-2 col-4   col-form-label mr-5">City:</label>
+                            <div class="col-lg-4 col-8">
+                                <input type="text" formControlName="city" class="form-control" id="complianceName">
+                            </div>
+                            <!-- <label for="taxLink" class="col-lg-2 col-4 col-form-label ml-2" >Tax Link  :</label> -->
+                            <label for="pincode" class="col-lg-2 col-4   col-form-label mr-5">Pincode:</label>
+                            <div class="col-lg-4 col-8">
+                                <input type="text" formControlName="pincode" class="form-control" id="complianceName">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="constofcompany" class="col-lg-2 col-4 col-form-label ml-2" >Constitution of Company:</label>
+                            <div class="col-lg-4 col-8">
+                                <select formControlName="constofcompany" class="form-select">
+                                    <option value="">-----------------------Select------------------------ </option>
+                                    <option value="PROPRITER">PROPRITER </option>
+                                <option value="PARTNERSHIP">PARTNERSHIP</option>
+                                <option value="PVT.LTD.">PVT. LTD.</option>
+                                </select>
+                            </div>
+                            <label for="segment" class="col-lg-2 col-4 col-form-label ml-2" >Segment:</label>
+                            <div class="col-lg-4 col-8">
+                                <select formControlName="segment" class="form-select">
+                                    <option value="">-----------------------Select------------------------ </option>
+                                    <option *ngFor="let data of dataarray" [value]="data.branchname">{{ data.branchname }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="natureofbus" class="col-lg-2 col-4 col-form-label ml-2" >Nature Of Business:</label>
+                            <div class="col-lg-4 col-8">
+                                <select formControlName="natureofbus" class="form-select">
+                                    <option value="">-----------------------Select------------------------ </option>
+                                    <option *ngFor="let data of dataarray" [value]="data.branchname">{{ data.branchname }}
+                                    </option>
+                                </select>
+                            </div>
+                            <label for="maintitr" class="col-lg-2 col-4 col-form-label ml-2" >Maintaining ITR:</label>
+                            <div class="col-lg-4 col-8">
+                                <select formControlName="maintitr" class="form-select">
+                                    <option value="">-----------------------Select------------------------ </option>
+                                    <option value="YES">YES</option>
+                                    <option value="NO">NO </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="leadtype" class="col-lg-2 col-4 col-form-label ml-2" >Lead Type:</label>
+                            <div class="col-lg-4 col-8">
+                                <select formControlName="leadtype" class="form-select">
+                                    <option value="">-----------------------Select------------------------ </option>
+                                    <option value="HOT">HOT </option>
+                                <option value="WARM">WARM </option>
+                                <option value="COLD">COLD </option>
+                                </select>
+                            </div>
+                            <label for="leadstatus" class="col-lg-2 col-4 col-form-label ml-2" >Lead Status:</label>
+                            <div class="col-lg-4 col-8">
+                                <select formControlName="leadstatus" class="form-select">
+                                    <option value="">-----------------------Select------------------------ </option>
+                                    <option value="INTERESTED">INTERESTED </option>
+                                    <option value="NOT INTERESTED">NOT INTERESTED </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="product" class="col-lg-2 col-4 col-form-label ml-2" >Product:</label>
+                            <div class="col-lg-4 col-8">
+                                <select formControlName="product" class="form-select">
+                                    <option value="">-----------------------Select------------------------ </option>
+                                    <option *ngFor="let data of dataarray" [value]="data.branchname">{{ data.branchname }}
+                                    </option>
+                                </select>
+                            </div>
+                          
+                        </div>
+                        
+                            <div class=" col-md-12 col-sm-12 col-xs-12 mt-5">
+                                <div class="col-md-offset-3 col-md-9" >
+                                    <button class="col-lg-2 col-4 btn btn-info p-3 m-4 " type="submit">
+                                        <i class="ace-icon fa fa-check bigger-110"></i>
+                                        Next
+                                    </button>
+                                
+                                    <button class="col-lg-2 col-4 btn btn-info p-3 m-4">
+                                        <i class="ace-icon fa fa-undo bigger-110"></i>
+                                        Reset
+                                    </button>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+              </div>
+            </div>
+              </div>
+            </div>
+          </div>
+        <!-- </div>
+      </div>
+    </div> -->

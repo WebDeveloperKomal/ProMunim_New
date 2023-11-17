@@ -1,0 +1,267 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <i class="ace-icon fa fa-home home-icon " style="margin-right: 10px;"></i><a href="#">Home</a>
+                    </li>
+
+                    <li class="breadcrumb-item active" aria-current="page">User Role & Permissions</li>
+                </ol>
+            </nav>
+            <div class="container ">
+                <div class="row">
+                    <div class="col">
+                        <div class="page-header">
+                            <h1>
+                                User Role & Permissions
+                            </h1>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="nav-tabs-custom" >
+                                <ul class="nav nav-tabs" >
+                                            <li [class.active]="activeTab === 'tab1'"><a (click)="changeTab('tab1')">Role</a></li>
+                                            <li [class.active]="activeTab === 'tab2'"><a (click)="changeTab('tab2')">User Roles &amp; Permissions</a></li>
+                                            <li [class.active]="activeTab === 'tab3'"><a (click)="changeTab('tab3')">Org Hierarchy</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" [class.active]="activeTab === 'tab1'" id="tab1">
+                                      <div id="branch_datatable_wrapper" class="dataTables_wrapper no-footer">
+                                              <h4 class="mb-5" >View Role</h4>
+                                                
+                                                <div class="row">
+                                                  <div class="col-lg-9 col-md-8">
+                                                    <div class="dataTables_length" id="branch_datatable_length">
+                                                      <p>Show
+                                                        <select name="branch_datatable_length" (ngModelChange)="refreshCountries()" [(ngModel)]="pageSize"
+                                                          aria-controls="branch_datatable">
+                                                        <option [ngValue]="10">10</option>
+                                                          <option [ngValue]="25">25</option>
+                                                          <option [ngValue]="50">50</option>
+                                                          <option [ngValue]="100">100</option>
+                                                        </select> entries
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-lg-3 col-md-3">
+                                                    <div class="dataTables_filter" id="branch_datatable_filter">
+                                                      <p>Search:
+                                                        <input type="text" [(ngModel)]="SearchText" (input)="applyFilter()" placeholder=""
+                                                          aria-controls="branch_datatable">
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                          
+                    </div>
+
+                            <table id="roles_dataTable" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Sr.No</th>
+                                        <th>Role Name</th>
+                                        <th>Parent Role Name</th>
+                                        <th>Department</th>
+                                        <!-- <th>Action</th> -->
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr
+                                    *ngFor="let data of dataarray  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
+                                    <td>{{index+1}}</td>
+                                    <td>{{data.branchid}}</td>
+                                    <td>{{data.branchname}}</td>
+                                    <td>{{data.branchcode}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="d-flex justify-content-between p-2">
+              <div class="dataTables_info mt-3" style="font-size: 14px;" id="branch_datatable_info" role="status"
+                aria-live="polite">
+                Showing {{(page - 1) * pageSize + 1}} to {{(page * pageSize < collectionSize) ? page * pageSize :
+                  collectionSize}} of {{dataarray.length}} entries </div>
+                  <ngb-pagination [pageSize]="25" [collectionSize]="collectionSize" [(page)]="page"
+                    aria-label="Default pagination"></ngb-pagination>
+
+              </div>
+                                    </div>
+
+                                    <div class="tab-pane" [class.active]="activeTab === 'tab2'" id="tab2"  >
+                                        <div id="branch_datatable_wrapper" class="dataTables_wrapper no-footer">
+                                           
+                                            <h4 class="mb-5" >View User Roles & Permissions</h4>
+                                            <div class="row">
+                                              <div class="col-lg-9 col-md-8">
+                                                <div class="dataTables_length" id="branch_datatable_length">
+                                                  <p>Show
+                                                    <select name="branch_datatable_length" (ngModelChange)="refreshCountries()" [(ngModel)]="pageSize"
+                                                      aria-controls="branch_datatable">
+                                                     <option [ngValue]="10">10</option>
+                                                      <option [ngValue]="25">25</option>
+                                                      <option [ngValue]="50">50</option>
+                                                      <option [ngValue]="100">100</option>
+                                                    </select> entries
+                                                  </p>
+                                                </div>
+                                              </div>
+                                              <div class="col-lg-3 col-md-3">
+                                                <div class="dataTables_filter" id="branch_datatable_filter">
+                                                  <p>Search:
+                                                    <input type="text" [(ngModel)]="SearchText" (input)="applyFilter()" placeholder=""
+                                                      aria-controls="branch_datatable">
+                                                  </p>
+                                                </div>
+                                              </div>
+                                            </div>
+                                        </div>
+
+
+                                        
+                            <table id="roles_dataTable" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Sr. No.</th>
+                                        <th>Employee Name</th>
+                                        <th>User Name</th>
+                                        <th>Role</th>
+                                        <th>Action</th>
+                                       </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr
+                                    *ngFor="let data of dataarray  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
+                                    <td>{{index+1}}</td>
+                                    <td>{{data.branchid}}</td>
+                                    <td>{{data.branchname}}</td>
+                                    <td>{{data.branchcode}}</td>
+                                    <td> 
+
+                                      <button class="btn btn-xs" style="font-size: 13px; background-color:#003974!important; color: white;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                    </button>&nbsp;&nbsp;
+
+
+                                    
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal Title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+
+
+        
+                
+                
+                      <table class="table table-bordered table-striped">
+                        <thead>
+                          <tr>
+                            <th>Entity</th>
+                            <th>Insert</th>
+                            <th>Delete</th>
+                            <th>Update</th>
+                            <th>View /</th>
+                            <th>View RM/</th>
+                              <th>View Branch /</th>
+                              <th>View All</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr
+                            *ngFor="let data of dataarray  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                     
+                      
+                <!-- </div>
+              </div>
+            </div> -->
+          <!-- Your modal content goes here -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+                                      <div class="modal-dialog" role="document">
+                                          <div class="modal-content">
+                                              <!-- Modal content goes here --><h5>Hi</h5>
+                                          </div>
+                                      </div>
+                                  </div>
+
+
+
+
+                                    
+                                    <button class="btn btn-xs" style=" font-size: 13px; background-color:#DC3545!important; color: white;" (click)="delete()" >
+                                    <!-- <i class="fa fa-trash"  aria-hidden="true"></i> -->
+                                    <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                      <!-- <a href="#" ng-click="OpenUserRoleModal(empRole)">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    &nbsp;&nbsp;&nbsp;&nbsp; <a href="deleteEmployee?id="
+                                    onclick="return confirm('Are you sure, you want to delete?')"><i
+                                        class="fa fa-trash-o"></i></a> -->
+                                      </td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                            <div class="d-flex justify-content-between p-2">
+              <div class="dataTables_info mt-3" style="font-size: 14px;" id="branch_datatable_info" role="status"
+                aria-live="polite">
+                Showing {{(page - 1) * pageSize + 1}} to {{(page * pageSize < collectionSize) ? page * pageSize :
+                  collectionSize}} of {{dataarray.length}} entries </div>
+                  <ngb-pagination [pageSize]="25" [collectionSize]="collectionSize" [(page)]="page"
+                    aria-label="Default pagination"></ngb-pagination>
+
+              </div>
+           </div>
+
+
+           <div class="tab-pane" [class.active]="activeTab === 'tab3'" id="tab3"  >
+            <div id="branch_datatable_wrapper" class="dataTables_wrapper no-footer">
+               
+                <h4 class="mb-5" >View User Roles & Permissions</h4>
+              
+            </div>
+
+
+
+
+
+          </div>
+        </div>
+                        </div>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,125 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <i class="ace-icon fa fa-home home-icon " style="margin-right: 10px;"></i><a href="#">Home</a>
+            </li>
+            <li class="breadcrumb-item"><a href="#">Settings</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Branch</li>
+          </ol>
+        </nav>
+        <div class="container ">
+          <div class="row">
+            <div class="col">
+              <div class="page-header">
+                <h1>
+                  Employee
+                </h1>
+              </div>
+
+              <div class="container pb-2" style="border: 1px solid #8b98a1;">
+              <!-- <div class="row"> -->
+
+                <form [formGroup]="employeeForm" class=" col-md-12 col-sm-12 col-xs-12 mt-5">
+                  <div class="row">
+                    <div class="col-lg-3 col-md-10 col-11 m-3 m-lg-0">
+                      <label for="location">Select Location :</label>
+                      <select formControlName="location" class="form-select">
+                          <option value="" selected>----------- Select Location ----------</option>
+                          <option *ngFor="let data of dataarray" [value]="data.branchname">{{ data.branchname }}
+                          </option>
+                      </select>
+                    </div>
+
+                  
+
+                    <div class="col-lg-3 col-md-10 col-11 m-3 m-lg-0 form-group">
+                      <label for="maindepartment">Select Main Department :</label>
+                      <select formControlName="maindepartment" class="form-select">
+                          <option value="" selected>-- Select Main Department --</option>
+                          <option *ngFor="let data of dataarray" [value]="data.branchname">{{ data.branchname }}
+                          </option>
+                      </select> </div>
+
+                    <div class="col-lg-3 col-md-10 col-11 m-3 m-lg-0 form-group">
+                      <!-- <div class="col-lg-3 col-12 m-3 m-lg-0 form-group"> -->
+                        <label for="department">Select Department :</label>
+                        <select formControlName="department" class="form-select">
+                            <option value="" selected>---- Select Department ----</option>
+                            <option *ngFor="let data of dataarray" [value]="data.branchname">{{ data.branchname }}
+                            </option>
+                        </select>
+                      <!-- </div> -->
+                     </div>
+
+                    <div class="text-end" >
+                      <button type="button" class="btn btn-info  m-lg-3 m-4"><i class="ace-icon fa fa-check bigger-110"></i>
+                        Submit</button>
+                  
+                      <button type="button" class="btn canc m-lg-3 m-4">
+                          <i class="ace-icon fa fa-undo bigger-110"></i>
+                          Reset
+                      </button>
+                  </div>
+                    
+<!--                   
+                    <div class="col text-end">
+                      <button type="button" class="btn btn-info m-lg-3 m-4"><i class="ace-icon fa fa-check bigger-110"></i> Submit</button>
+                      <button type="button" class="btn canc m-lg-3 m-4"><i class="ace-icon fa fa-undo bigger-110"></i> Reset</button>
+                  </div> -->
+                  </div>
+                  
+                   
+                
+                </form>
+                <!-- </div> -->
+
+              <!-- </div> -->
+
+            </div>
+
+              
+              <table class="table table-bordered table-striped mt-5">
+                <thead>
+                    <tr>
+                        <th>Sr. No.</th>
+                        <th>Emp Code</th>
+                        <th>Employee Name</th>
+                        <th>Contact No.</th>
+                        <th>Branch</th>
+                        <th>Department</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    *ngFor="let data of dataarray  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
+                    <td>{{index+1}}</td>
+                    <td>{{data.branchid}}</td>
+                    <td>{{data.branchname}}</td>
+                    <td>{{data.branchcode}}</td>
+                    <td>{{data.branchcity}}</td>
+                    <td>{{data.branchaddress}}</td>
+                    <td>{{data.role}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="d-flex justify-content-between p-2">
+                <div class="dataTables_info mt-3" style="font-size: 14px;" id="branch_datatable_info" role="status"
+                  aria-live="polite">
+                  Showing {{(page - 1) * pageSize + 1}} to {{(page * pageSize < collectionSize) ? page * pageSize :
+                    collectionSize}} of {{dataarray.length}} entries </div>
+                    <ngb-pagination [pageSize]="25" [collectionSize]="collectionSize" [(page)]="page"
+                      aria-label="Default pagination"></ngb-pagination>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
