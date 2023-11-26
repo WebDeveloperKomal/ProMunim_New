@@ -2,12 +2,11 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-view-compiance',
-  templateUrl: './view-compiance.component.html',
-  styleUrls: ['./view-compiance.component.css']
+  selector: 'app-view-product-fees',
+  templateUrl: './view-product-fees.component.html',
+  styleUrls: ['./view-product-fees.component.css']
 })
-export class ViewCompianceComponent {
-
+export class ViewProductFeesComponent {
   complianceForm !: FormGroup;
   dataarray: any[] = [];
   constructor(private formBuilder: FormBuilder) {

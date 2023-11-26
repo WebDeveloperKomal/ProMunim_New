@@ -61,4 +61,8 @@ refreshCountries() {
     .map((country, i) => ({id: i + 1, ...country}))
     .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
 }
+
+delete(){
+  confirm("Are you sure to delete this record")
+}
 }

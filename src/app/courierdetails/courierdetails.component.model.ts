@@ -1,7 +1,8 @@
 export class courierdetailsModel{
-    branchid : any;
-    branchname: any;
-    branchcode: any;
-    branchcity: any;
-    branchaddress: any;
+    courierId : any;
+    name: any;
+    address: any;
+    phoneNo: any;
+    fax: any;
+    emailId: any;
 }

@@ -1,0 +1,901 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Comfortaa";
+}
+
+body {
+    /* background-color: #f7fbfe; */
+    /* background-color:#00a65a ; */
+    background-color:#00a65a ; 
+}
+
+/* ****** Main Page ****** */
+
+.Main_taxt {
+    /* background-color: #b1b1b1; */
+    margin-top: 150px;
+    margin-left: 360px;
+    width: 800px;
+}
+
+.Main_taxt .p {
+    font-size: 90px;
+    color: #2aa551;
+}
+
+.Main_taxt .p span {
+    font-size: 42px;
+    position: absolute;
+    margin-top: -30px;
+    color: #409c5e;
+}
+
+.Main_taxt .p1 {
+    font-size: 38px;
+    margin-top: 25px;
+    color: #0069af;
+}
+
+.Main_taxt .p2 {
+    margin-top: -7px;
+    font-size: 21px;
+    color: #5c687e;
+}
+
+.Main_round {
+    background-color: #004c8f;
+    margin-left: 1490px;
+    margin-top: -500px;
+    height: 650px;
+    border-radius: 490px 0px 0px 490px;
+    box-shadow: 15px 15px 15px 0 rgba(0, 0, 0, 0.2), 0 15px 20px 15px rgba(0, 0, 0, 0.19);
+}
+
+.Main_round .Login {
+    background-color: #fff;
+    width: 350px;
+    height: 500px;
+    margin-left: -120px;
+    top: 80px;
+    border-radius: 40px;
+    box-shadow: 15px 15px 15px 0 rgba(0, 0, 0, 0.2), 0 15px 20px 15px rgba(0, 0, 0, 0.19);
+    position: relative;
+}
+
+.Login_img {
+    margin-top: 30px;
+    margin-left: 20px;
+    width: 160px;
+    height: 70px;
+}
+
+
+#Get-Login-ID {
+    margin-left: 230px;
+    text-decoration: none;
+    color: #0F75bb;
+    top: 5px;
+    font-size: 14px;
+    position: relative;
+}
+
+.form-control {
+    margin-top: 35px;
+    margin-left: 20px;
+    width: 300px;
+    height: 40px;
+    border-radius: 12px;
+    border: 1px solid black;
+}
+
+#Forgot-password {
+    margin-left: 200px;
+    text-decoration: none;
+    color: #0F75bb;
+    top: 5px;
+    font-size: 14px;
+    position: relative;
+}
+
+#Login-btn {
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+    margin-top: 40px;
+    margin-left: 20px;
+    color: #fff;
+    border: none;
+    background-color: #0F75bb;
+    transition: 0.25s;
+}
+
+
+#Login-btn:hover {
+    background-color: #3BB161;
+}
+
+.Login1 {
+    background-color: #fff;
+    width: 1100px;
+    height: 310px;
+    margin-left: 360px;
+    top: 80px;
+    border-radius: 50px;
+    /* border: 1px solid black; */
+    box-shadow: 15px 15px 15px 0 rgba(0, 0, 0, 0.2), 0 15px 20px 15px rgba(0, 0, 0, 0.19);
+    position: inherit;
+    line-height: 30px;
+}
+
+.Login1 h1 {
+    margin-left: 80px;
+    font-size: 20px;
+    color: #3BB161;
+    top: 40px;
+    position: relative;
+}
+
+
+.Login1 h1 span {
+    color: #0f75bc;
+    position: absolute;
+    margin-top: -13px;
+}
+
+.Login1-li {
+    /* background-color: #0069af; */
+    margin-top: 70px;
+    margin-left: 120px;
+    color: #5c687e;
+}
+
+
+.p2{
+    color: #fff;
+}
+.op {
+    width: 200px;
+    height: 300px;
+    margin-top: -1400px;
+    margin-left: 1620px;
+    opacity: 0.25;
+}
+
+
+/* ****** Main Page End ****** */
+
+.pt-5 {
+    padding-top: 13rem!important;
+}
+
+
+@media only screen and (max-width: 1440px) {
+    .nav {
+        margin-left: 0px;
+    }
+
+    .Main_taxt {
+        margin-left: 200px;
+    }
+
+    .Main_round {
+        margin-left: 1063px;
+    }
+
+    .op {
+        width: 100px;
+        margin-top: -1400px;
+        margin-left: 1300px;
+    }
+
+    .Login1 {
+        margin-left: 193px;
+    }
+
+    .Footer-logo,
+    .footer h5,
+    .footer .l1 {
+        margin-left: 50px;
+    }
+
+    .footer .li2 {
+        margin-left: 83px;
+    }
+
+    .footer .li3 {
+        margin-left: 117px;
+    }
+
+    .footer .li4 {
+        margin-left: 151px;
+    }
+
+    .footer .li5 {
+        margin-left: 185px;
+    }
+
+    .Menu-list {
+        margin-left: 418px;
+    }
+
+    .Menu-list1 {
+        margin-left: 665px;
+    }
+
+    .Menu-list2 {
+        margin-left: 948px;
+    }
+
+    .div_cc {
+        top: 770px;
+    }
+
+    .div_cc span {
+        margin-left: 106px;
+    }
+
+    .div_cc-p a {
+        margin-left: 452px;
+    }
+
+    .div_cc-p1 a {
+        margin-left: 616px;
+    }
+
+    .div_cc-btn {
+        margin-left: 809px;
+    }
+}
+
+@media (max-width: 1366px) {
+
+    .Main_taxt {
+        margin-left: 138px;
+    }
+
+    .Main_round {
+        margin-left: 1001px;
+    }
+
+    .op {
+        margin-left: 1239px;
+    }
+
+    .Login1 {
+        margin-left: 126px;
+    }
+}
+
+
+@media (max-width: 1199px) {
+
+    .dropdown__menu ul li {
+        margin-left: -203px;
+    }
+
+    .dropdown__menu1 ul li {
+        margin-left: -204px;
+    }
+
+    .dropdown__menu2 ul li {
+        margin-left: -203px;
+    }
+
+    .dropdown__menu3 ul li {
+        margin-left: -202px;
+    }
+
+    .Main_taxt {
+        margin-left: 104px;
+    }
+
+    .Main_round {
+        margin-left: 874px;
+    }
+
+    .op {
+        margin-left: 1074px;
+    }
+
+    .Login1 {
+        margin-left: 105px;
+        width: 958px;
+    }
+
+    .nav ul {
+        margin-left: 203px;
+    }
+
+    .nav p a {
+        margin-top: -7px;
+    }
+
+    .Menu-list1 {
+        margin-left: 576px;
+    }
+
+    .Menu-list2 {
+        margin-left: 785px;
+    }
+
+    .div_cc span {
+        margin-left: 32px;
+        font-size: 17px;
+    }
+
+    .div_cc-p a {
+        margin-left: 320px;
+        font-size: 17px;
+    }
+
+    .div_cc-p1 a {
+        margin-left: 461px;
+        font-size: 17px;
+    }
+
+
+    .div_cc-btn {
+        margin-left: 631px;
+    }
+}
+
+
+@media (max-width: 1024px) {
+
+    .nav ul li {
+        padding: 0px 5px;
+    }
+
+    .dropdown__menu ul li {
+        padding: 11px 18px;
+        margin-left: -204px;
+    }
+
+    .nav ul li:hover .dropdown__menu {
+        top: 33px;
+    }
+
+    .dropdown__menu1 ul li {
+        margin-top: -1px;
+        padding: 10px;
+    }
+
+    .nav ul li:hover .dropdown__menu1 {
+        top: 33px;
+    }
+
+    .dropdown__menu2 ul li {
+        padding: 10px;
+    }
+
+    .nav ul li:hover .dropdown__menu2 {
+        top: 33px;
+    }
+
+    .dropdown__menu3 ul li {
+        padding: 10px;
+    }
+
+    .nav ul li:hover .dropdown__menu3 {
+        top: 33px;
+    }
+
+    .Main_taxt {
+        margin-left: 35px;
+    }
+
+    .Main_taxt .p {
+        font-size: 80px;
+        color: #2aa551;
+    }
+
+    .Main_round {
+        margin-left: 722px;
+        margin-top: -471px;
+        padding: 77px 0px;
+    }
+
+    .Main_round .Login {
+        position: inherit;
+    }
+
+    .Main_taxt .p2 {
+        font-size: 19px;
+    }
+
+    .Login1 {
+        margin-left: 73px;
+        width: 875px;
+        margin-top: 77px;
+    }
+
+    .Login1 h1 {
+        margin-left: 55px;
+    }
+
+    .Login1-li {
+        margin-top: 63px;
+        margin-left: 75px;
+    }
+
+    .Menu-list {
+        margin-left: 338px;
+    }
+
+    .Menu-list1 li {
+        margin-left: -67px;
+    }
+
+
+    .Menu-list2 li {
+        margin-left: -61px;
+    }
+
+    .div_cc {
+        top: 714px;
+    }
+
+    .div_cc span {
+        margin-left: 25px;
+        font-size: 15px;
+    }
+
+    .div_cc-p a {
+        margin-left: 273px;
+        font-size: 15px;
+    }
+
+    .div_cc-p1 a {
+        margin-left: 396px;
+        font-size: 15px;
+    }
+
+    .div_cc-btn {
+        margin-left: 537px;
+    }
+
+    .div_cc-btn1 {
+        margin-left: 0px;
+    }
+
+    .div_cc-btn2 {
+        margin-left: -1px;
+    }
+
+    .op {
+        display: none;
+        /* margin-left: 907px; */
+    }
+}
+
+
+@media (max-width: 923px) {
+    #logo {
+        width: 145px;
+        height: 69px;
+        margin-left: 8px;
+        margin-top: 16px;
+    }
+
+
+    .nav ul {
+        margin-left: 170px;
+        margin-top: 40px;
+    }
+
+    .nav ul ul {
+        margin-left: 170px;
+        margin-top: 0px;
+    }
+
+    .nav ul li {
+        padding: 0px 3px;
+    }
+
+    .dropdown__menu ul li,
+    .dropdown__menu1 ul li,
+    .dropdown__menu2 ul li,
+    .dropdown__menu3 ul li {
+        padding: 10px 18px;
+        margin-left: -169px;
+    }
+
+    .nav p a {
+        margin-top: -10px;
+        font-size: 14px;
+        margin-left: 283px;
+    }
+
+    .Main_taxt {
+        margin-left: 200px;
+        margin-top: 81px;
+    }
+
+    .Main_round {
+        margin-left: 449px;
+        margin-top: 85px;
+    }
+
+    .Login1 {
+        margin-left: 18px;
+        width: 875px;
+        margin-top: 77px;
+    }
+
+    .op {
+        display: initial;
+        width: 142px;
+        margin-left: 708px;
+    }
+
+    .Menu-list {
+        margin-left: 302px;
+    }
+
+    .Menu-list1 {
+        margin-left: 531px;
+    }
+
+    .Menu-list2 {
+        margin-left: 737px;
+    }
+
+    .div_cc {
+        top: 726px;
+    }
+
+    .div_cc span {
+        margin-left: 6px;
+        font-size: 14px;
+    }
+
+    .div_cc-p a {
+        margin-left: 238px;
+        font-size: 14px;
+    }
+
+    .div_cc-p1 a {
+        margin-left: 353px;
+        font-size: 15px;
+    }
+
+    .div_cc-btn {
+        width: 120px;
+        margin-left: 498px;
+    }
+
+    .div_cc-btn1 {
+        width: 151px;
+    }
+
+    .div_cc-btn2 {
+        width: 120px;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    #logo {
+        margin-left: 44px;
+        margin-top: 20px;
+    }
+
+    .nav .ho {
+        /* display: none; */
+        height: 62px;
+        width: 752px;
+        background: #3BB161;
+        padding: 20px 15px;
+        margin-left: -3px;
+        margin-top: 199px;
+        
+    }
+
+    .nav a:hover{
+        color: #fff;
+    }
+
+    .nav .ho a{
+        color: #fff;
+    }
+
+    #Home a {
+        color: #fff;
+    }
+    .nav ul li {
+        padding: 0px 5px;
+    }
+    .nav p a {
+        margin-top: 68px;
+        font-size: 14px;
+        margin-left: 175px;
+        color: #fff;
+    }
+
+    .Main_taxt {
+        margin-left: 122px;
+        margin-top: 81px;
+    }
+
+    .Main_round {
+        margin-left: 354px;
+        margin-top: 85px;
+    }
+
+    .op {
+        display: initial;
+        width: 142px;
+        margin-left: 588px;
+        margin-top: -1747px;
+    }
+
+    .Login1 {
+        margin-left: 18px;
+        width: 714px;
+        height: 436px;
+        margin-top: 77px;
+    }
+
+    .Login1 h1 {
+        margin-left: 34px;
+    }
+
+    .Login1-li {
+        margin-left: 61px;
+    }
+
+    .footer {
+        background-color: #fff;
+        height: 889px;
+        margin-top: 50px;
+    }
+
+    .Footer-logo {
+        width: 229px;
+        height: 96px;
+        margin-top: -112px;
+        margin-left: 276px;
+    }
+
+    .Footer-munim {
+        width: 283px;
+        height: 168px;
+        margin-top: 156px;
+        margin-left: -252px;
+    }
+
+    .”socials” {
+        margin-left: 287px;
+        margin-top: 24px;
+    }
+
+    .footer .l1 {
+        margin-left: 26px;
+    }
+
+    .footer .li2 {
+        margin-left: 59px;
+    }
+
+    .footer .li3 {
+        margin-left: 92px;
+    }
+
+    .footer .li4 {
+        margin-left: 125px;
+    }
+
+    .footer .li5 {
+        margin-left: 158px;
+    }
+
+    .Menu-list {
+        margin-left: 141px;
+        margin-top: 56px;
+    }
+
+    .Menu-list1 {
+        margin-left: 401px;
+    }
+
+    .Menu-list2 {
+        margin-left: 596px;
+    }
+
+    .Menu-list2 ul li {
+        width: 187px;
+    }
+
+    .last-div {
+        height: 113px;
+    }
+
+    .div_cc {
+       
+        top: 750px;
+        height: 78px;
+    }
+
+    .div_cc span {
+        margin-left: 6px;
+        font-size: 13px;
+    }
+
+    .div_cc-p a {
+        margin-left: 218px;
+        font-size: 13px;
+    }
+
+    .div_cc-p1 a {
+        margin-left: 325px;
+        font-size: 13px;
+    }
+
+    .div_cc-btn {
+        width: 93px;
+        height: 40px;
+        margin-left: 451px;
+        font-size: 12PX;
+    }
+
+    .div_cc-btn1 {
+        margin-left: -3px;
+        height: 40px;
+        width: 110px;
+        font-size: 10PX;
+    }
+
+    .div_cc-btn2 {
+        margin-left: -2px;
+        height: 40px;
+        width: 93px;
+        font-size: 10PX;
+    }
+
+    .nav .ho {
+        display: none;
+    }
+
+}
+
+
+@media (max-width: 576px) {
+    .Main_taxt {
+        margin-left: 71px;
+        width: 474px;
+        margin-top: 62px;
+    }
+    .Main_taxt .p {
+        font-size: 65px;
+        width: 474px;
+        color: #2aa551;
+    }
+
+    .Main_taxt .p span {
+        font-size: 33px;
+        position: absolute;
+        margin-top: -25px;
+        color: #409c5e;
+    }
+    .Main_taxt .p1 {
+        font-size: 30px;
+        margin-top: 19px;
+        color: #0069af;
+    }
+
+    .Main_taxt .p2 {
+        margin-top: -13px;
+        width: 474px;
+        font-size: 16px;
+    }
+
+    .Main_round {
+        margin-left: 228px;
+        margin-top: 47px;
+    }
+    .op {
+        display: initial;
+        width: 99px;
+        margin-left: 450px;
+        margin-top: -1747px;
+    }
+
+    .Login1 {
+        width: 526px;
+        height: 481px;
+    }
+
+    .Login1-li {
+        margin-left: 46px;
+    }
+    .footer {
+        height: 1136px;
+    }
+
+    .Footer-logo {
+        margin-left: 161px;
+    }
+
+    .”socials” {
+        margin-left: 179px;
+        margin-top: 24px;
+    }
+
+    .Menu-list {
+        margin-left: 110px;
+        margin-top: 56px;
+    }
+
+    .Menu-list1 {
+        margin-left: 380px;
+    }
+
+    .Menu-list2 {
+        margin-left: 275px;
+        margin-top: 33px;
+    }
+
+    .Menu-list2 ul ul li {
+        margin-left: -152px;
+        width: 369px;
+    }
+
+    .div_cc {
+        top: 678px;
+        height: 134px;
+    }
+
+    .div_cc-btn {
+
+        margin-left: 127px;
+        font-size: 12PX;
+    }
+    .div_cc span {
+        margin-left: 11px;
+        font-size: 16px;
+    }
+
+    .div_cc-p1 a {
+        margin-left: 405px;
+        font-size: 16px;
+    }
+    
+    .div_cc-p a {
+        margin-left: 276px;
+        font-size: 16px;
+        text-align: center;
+    }
+    .div_cc-btn {
+        margin-top: 53px;
+        margin-left: 104px;
+        width: 110px;
+        font-size: 14PX;
+    }
+
+    .div_cc-btn2 {
+        width: 110px;
+        font-size: 13PX;
+    }
+
+    .div_cc-btn1 {
+        margin-left: -3px;
+        height: 40px;
+        width: 125px;
+        font-size: 12PX;
+    }
+
+    .last-div {
+        height: 172px;
+    }       
+}
+
+.page-content {
+    background-color: #e12222;
+    position: relative;
+    margin: 0;
+    padding: 8px 20px 24px;
+}

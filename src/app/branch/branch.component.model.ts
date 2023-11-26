@@ -1,7 +1,12 @@
 export class UserModel{
-    branchid : any;
-    branchname: any;
-    branchcode: any;
-    branchcity: any;
-    branchaddress: any;
+    branchId : any;
+    branchName: any;
+    branchCode: any;
+    branchCity: any;
+    branchclsId: any;
+    branchClassification: any;
+    branchArea: any;
+    branchAddress: any;
+    latitude: any;
+    longitude: any;
 }

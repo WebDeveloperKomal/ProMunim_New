@@ -1,0 +1,25 @@
+<div class="main col-lg-12 col-sm-12 col-xs-12  pt-5 mt-5" style="background-color:#00a65a; height: 100vh;"  >
+    <div class="Main_taxt" >
+        <p class="p" style="color: White; line-height: 105px; font-size: 76px;" > Welcome to  ProMunim of India </p>
+        <!-- <p class="p" style="color: white; line-height: 105px; font-size: 76px; text-decoration: underline white 3px;"> ProMunim of India</p> -->
+        <hr class="solid" style=" border-top: 3px solid white;">
+        <!-- </span> -->
+        <p class="p1"  style="color: #004c8f;">  Simplify Your Accounting</p>
+        <p class="p2"style="color: White;">Business Financial Planning Accounts | Accounting <br>
+            Tax Planning | Investment Advisory | Business Advisory <br> Capital Management |
+            Financial Planning</p>
+    </div>
+
+    <div class="Main_round ">
+        <div class="Login col-xs-12">
+            <img src="assets/promunimlogo.png" class="Login_img" alt="">
+            <input type="text" class="form-control" [(ngModel)]="credentials.email" placeholder="  Login ID" required="">
+            <a href="#" id="Get-Login-ID">Get Login ID</a>
+            <input id="password-field" type="password" [(ngModel)]="credentials.password" class="form-control" placeholder="  password" required="">
+            <a href="#" id="Forgot-password">Forgot password</a>
+
+            <a  routerLink="/set"><button id="Login-btn" style="font-size: medium;" (click)="onSubmit()">Submit</button></a>
+            <!-- href="Pro_Munim_OTP.html" -->
+        </div>
+    </div>
+</div>

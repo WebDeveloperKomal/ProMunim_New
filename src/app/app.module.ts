@@ -19,7 +19,7 @@ import { ProductfeesComponent } from './productfees/productfees.component';
 import { OtherservicesComponent } from './otherservices/otherservices.component';
 import { CourierdetailsComponent } from './courierdetails/courierdetails.component';
 import { DocumentcategoryComponent } from './documentcategory/documentcategory.component';
-import { ViewCompianceComponent } from './view-compiance/view-compiance.component';
+
 import { AddComplianceComponent } from './add-compliance/add-compliance.component';
 import { ViewComplianceComponent } from './view-compliance/view-compliance.component';
 import { EditDocumentCategoryComponent } from './edit-document-category/edit-document-category.component';
@@ -53,7 +53,29 @@ import {HttpClientModule} from'@angular/common/http';
 import { UserRolePermissionComponent } from './user-role-permission/user-role-permission.component';
 import { TaskAppointmentComponent } from './task-appointment/task-appointment.component';
 import { TaskAppointmentDemoComponent } from './task-appointment-demo/task-appointment-demo.component';
-import { DashboardComponent } from './dashboard/dashboard.component'
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AddNewUserroleComponent } from './add-new-userrole/add-new-userrole.component';
+import { ViewCustomerDetailsComponent } from './view-customer-details/view-customer-details.component';
+import { AddBranchComponent } from './add-branch/add-branch.component';
+import { AddDepartmentComponent } from './add-department/add-department.component';
+import { ViewDepartmentComponent } from './view-department/view-department.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { ViewProductComponent } from './view-product/view-product.component';
+import { ViewProductFeesComponent } from './view-product-fees/view-product-fees.component';
+import { AddProductFeesComponent } from './add-product-fees/add-product-fees.component';
+import { AddOtherServicesComponent } from './add-other-services/add-other-services.component';
+import { ViewOtherServicesComponent } from './view-other-services/view-other-services.component';
+import { ViewCourierComponent } from './view-courier/view-courier.component';
+import { AddCourierComponent } from './add-courier/add-courier.component';
+import { AddEmployeeComponent } from './add-employee/add-employee.component';
+import { AddNewsAlertComponent } from './add-news-alert/add-news-alert.component';
+import { ViewNewsAlertComponent } from './view-news-alert/view-news-alert.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AccountopeningFormComponent } from './accountopening-form/accountopening-form.component';
+import { SetComponent } from './set/set.component';
+import { LoginComponent } from './login/login.component';
+import { ViewBranchComponent } from './view-branch/view-branch.component'
+import { AuthInterceptorProviders } from './auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +91,7 @@ import { DashboardComponent } from './dashboard/dashboard.component'
     OtherservicesComponent,
     CourierdetailsComponent,
     DocumentcategoryComponent,
-    ViewCompianceComponent,
+    
     AddComplianceComponent,
     ViewComplianceComponent,
     EditDocumentCategoryComponent,
@@ -102,7 +124,28 @@ import { DashboardComponent } from './dashboard/dashboard.component'
     UserRolePermissionComponent,
     TaskAppointmentComponent,
     TaskAppointmentDemoComponent,
-    DashboardComponent
+    DashboardComponent,
+    AddNewUserroleComponent,
+    ViewCustomerDetailsComponent,
+    AddBranchComponent,
+    AddDepartmentComponent,
+    ViewDepartmentComponent,
+    AddProductComponent,
+    ViewProductComponent,
+    ViewProductFeesComponent,
+    AddProductFeesComponent,
+    AddOtherServicesComponent,
+    ViewOtherServicesComponent,
+    ViewCourierComponent,
+    AddCourierComponent,
+    AddEmployeeComponent,
+    AddNewsAlertComponent,
+    ViewNewsAlertComponent,
+    UserProfileComponent,
+    AccountopeningFormComponent,
+    SetComponent,
+    LoginComponent,
+    ViewBranchComponent
   ],
   imports: [
     BrowserModule,
@@ -112,7 +155,7 @@ import { DashboardComponent } from './dashboard/dashboard.component'
     NgbModule,HttpClientModule
     // NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [AuthInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

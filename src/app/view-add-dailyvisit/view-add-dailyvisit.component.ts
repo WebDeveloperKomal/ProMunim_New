@@ -8,6 +8,7 @@ import { ViewAddDailyvisitModel } from './view-add-dailyvisit.component.model';
   styleUrls: ['./view-add-dailyvisit.component.css']
 })
 export class ViewAddDailyvisitComponent {
+  viewAddDailyvisitForm  !: FormGroup;
   SearchText : any ;
   branchid : number | undefined;
   branchname : any;
@@ -20,13 +21,15 @@ export class ViewAddDailyvisitComponent {
   currentPage: number = 1;
   countries: ViewAddDailyvisitModel[] | undefined;
   collectionSize =100;
-  employeeForm !: FormGroup;
+ 
   activeTab: string = 'tab1';
+  shownextdate : boolean = false;
   constructor(private formBuilder: FormBuilder) {
-    this.employeeForm = this.formBuilder.group({
-      location: ['', Validators.required], // Add validation if needed
-      maindepartment: ['', Validators.required], // Add validation if needed
-      product: ['', Validators.required] // Add validation if needed
+    this.viewAddDailyvisitForm = this.formBuilder.group({
+      visitdate: ['', Validators.required], 
+      status: ['', Validators.required], // Add validation if needed
+      description: ['', Validators.required], // Add validation if needed
+      nextvisitdate: ['', Validators.required] // Add validation if needed
      
     });
   this.dataarray = [
@@ -92,5 +95,9 @@ switchTabBasedOnId(id: string) {
   } else if (id === 'tab2') {
     this.activeTab = 'tab2';
   }
+}
+
+checkednextdate(){
+  this.shownextdate = !this.shownextdate
 }
 }

@@ -1,18 +1,20 @@
-*{
+/* *{
     font-family: system-ui, sans-serif;
-}
+} */
 .page-header {
     margin: 0 0 12px;
     border-bottom: 1px dotted #E2E2E2;
     padding-bottom: 16px;
-    padding-top: 7px
+    padding-top: 7px;
+    font-family: system-ui, sans-serif;
 }
 
 .page-header h1 {
     margin: 0 8px;
     font-size: 24px;
     font-weight: lighter;
-    color: #2679B5
+    color: #2679B5;
+    font-family: system-ui, sans-serif;
 }
 
 .page-header h1 small {
@@ -36,6 +38,7 @@
     font-size: 14px;
     color: #333;
     border-radius: 0;
+    font-family: system-ui, sans-serif;
     
 }
 
@@ -49,6 +52,7 @@ label{
     color: #393939;
     font-weight: 400;
     font-size: 14px;
+    font-family: system-ui, sans-serif;
     /* font-weight: 00; */
     /* font: 14px 'Open Sans'; */
 }

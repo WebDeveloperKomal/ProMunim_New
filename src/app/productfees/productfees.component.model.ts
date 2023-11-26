@@ -1,7 +1,11 @@
 export class ProductFeesModel{
-    branchid : any;
-    branchname: any;
-    branchcode: any;
-    branchcity: any;
-    branchaddress: any;
+    productFeeId : any;
+    productId: any;
+    productName: any;
+    minValue: any;
+    maxValue: any;
+    areaTypeId: any;
+    areaType: any;
+    fees: any;
+
 }

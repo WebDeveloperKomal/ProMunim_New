@@ -8,6 +8,7 @@ import { ViewAddDailyLeadsModel } from './view-add-dailyleads.component.model';
   styleUrls: ['./view-add-dailyleads.component.css']
 })
 export class ViewAddDailyleadsComponent {
+  viewadddailyleads !: FormGroup;
   SearchText : any ;
   branchid : number | undefined;
   branchname : any;
@@ -20,7 +21,7 @@ export class ViewAddDailyleadsComponent {
   currentPage: number = 1;
   countries: ViewAddDailyLeadsModel[] | undefined;
   collectionSize =100;
-  employeeForm !: FormGroup;
+  
   activeTab: string = 'tab1';
 
 
@@ -29,10 +30,10 @@ export class ViewAddDailyleadsComponent {
   // }
 
   constructor(private formBuilder: FormBuilder) {
-    this.employeeForm = this.formBuilder.group({
-      location: ['', Validators.required], // Add validation if needed
-      maindepartment: ['', Validators.required], // Add validation if needed
-      product: ['', Validators.required] // Add validation if needed
+    this.viewadddailyleads = this.formBuilder.group({
+      visitdate: ['', Validators.required],
+      description: ['', Validators.required], 
+      nextvisitdate: ['', Validators.required] 
      
     });
   this.dataarray = [

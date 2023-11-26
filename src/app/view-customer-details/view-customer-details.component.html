@@ -1,0 +1,1548 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <i class="ace-icon fa fa-home home-icon " style="margin-right: 10px;"></i><a href="#">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="#">Customer Account</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">View Customer Details</li>
+                </ol>
+            </nav>
+            <div class="container ">
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <h5>
+                                Customer Profile
+                                <input type="text" class="col-3">
+                            </h5>
+                        </div>
+
+                        <!-- <div class="row line">
+                          <div class="col-md-6 col-6">
+                            <h6> User Role & Permissions</h6>
+                          </div>
+                          <div class="col-md-6 col-6 text-md-end">
+                            <button type="button" routerLink="/allcomplaintsmain" class="btn btn-info">
+                              All New User Role
+                            </button>
+                          </div>
+                        </div>  -->
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs">
+                                    <li [class.active]="activeTab === 'tab1'"><a (click)="changeTab('tab1')">Summery</a>
+                                    </li>
+                                    <li [class.active]="activeTab === 'tab2'"><a (click)="changeTab('tab2')">
+                                            Profile</a></li>
+                                    <li [class.active]="activeTab === 'tab3'"><a (click)="changeTab('tab3')">Documents
+                                        </a></li>
+                                    <li [class.active]="activeTab === 'tab4'"><a (click)="changeTab('tab4')"> Occupation
+                                            & Income</a></li>
+                                    <li [class.active]="activeTab === 'tab5'"><a (click)="changeTab('tab5')"> Authorised
+                                            Signatory </a></li>
+                                    <li [class.active]="activeTab === 'tab6'"><a (click)="changeTab('tab6')">Customer
+                                            Interaction </a></li>
+                                    <li [class.active]="activeTab === 'tab7'"><a (click)="changeTab('tab7')">Billing
+                                        </a></li>
+                                    <li [class.active]="activeTab === 'tab8'"><a
+                                            (click)="changeTab('tab8')">Transactions </a></li>
+                                    <li [class.active]="activeTab === 'tab9'"><a (click)="changeTab('tab9')">Vouchers
+                                        </a></li>
+                                    <li [class.active]="activeTab === 'tab10'"><a (click)="changeTab('tab10')">Product
+                                        </a></li>
+
+
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" [class.active]="activeTab === 'tab1'" id="tab1">
+                                        <div id="branch_datatable_wrapper" class="dataTables_wrapper no-footer">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-md-4 col-sm-6 col-xs-12">
+
+                                                        <div class="summarybox"
+                                                        style="background: none; border:none; text-align: center; height: 225px;">
+                                                        <!-- <img src="{{profile.photo}}" class="img-circle"  width="160" height="160" ng-if="profile.photo != ''">
+                                                <img src="resources/static/img/profile-icon.png" class="img-circle" width="160" height="160" ng-if="profile.photo == ''">
+                                                 <img class="user_img" src="{{profile.sign}}" id="userImage" width="160" height="50" ng-if="profile.sign != ''"/>  -->
+                                                    </div>
+
+                                                    <div class="sumrybox mb-3">
+                                                        <div class="tbl_title" >Customers Account</div>
+                                                         <table class="customerssummarystats" cellspacing="0" cellpadding="2">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>Customer ID</td>
+                                                                    <td></td>
+                                                                </tr>
+
+                                                                <tr class="altrow">
+                                                                    <td>Account No</td>
+                                                                    <!-- <td>{{acc.accountNo}}</td> -->
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>AOF No</td>
+                                                                    <!-- <td>{{cust.aof}}</td> -->
+                                                                </tr>
+                                                                <tr class="altrow">
+                                                                    <td>Branch Code</td>
+                                                                    <!-- <td>{{cust.branchCode}}</td> -->
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Mode of operation</td>
+                                                                    <!-- <td>{{acc.operationMode}}</td> -->
+                                                                </tr>
+                                                                <tr class="altrow">
+                                                                    <td>Account Statement</td>
+                                                                    <!-- <td>{{acc.accFreqStatement}}</td> -->
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Account Open Date</td>
+                                                                    <!-- <td>{{acc.acttivationDate}}</td> -->
+                                                                </tr>
+                                                                <tr class="altrow">
+                                                                    <td>Account Status</td>
+                                                                    <!-- <td ng-class="{'color-black': acc.status === 'CLOSED', 'color-red': acc.status === 'DORMANT', 'color-orange': acc.status === 'ACTIVE', 'color-green': acc.status === 'LIVE'}">{{acc.status}}</td> -->
+                                                                </tr>
+                                                                <tr ng-if="acc.status!='CLOSED'">
+                                                                    <td>Account Action</td>
+                                                                    <!-- <td><a style="color: red;" ng-if="acc.customerId!=undefined"
+                                                                            ng-click="openAccountCloseModal()">Close Account</a></td> -->
+                                                                </tr>
+                                                                </tbody>
+                                                         </table>
+
+                                                        </div>
+
+                                                        
+                                                    <div class=" sumrybox mb-3">
+                                                        <div class="tbl_title" >Authorised Signatory</div>
+                                                        <table class="table table-bordered table-striped">
+                                                            <thead>
+                                                                <!-- <tr> -->
+                                                                <th style="font-size: 14px;">
+                                                                    Name
+                                                                </th>
+                                                                <th style="font-size: 14px;">
+                                                                    PAN
+                                                                </th>
+
+                                                            <!-- </tr> -->
+                                                            </thead>
+                                                        </table>
+                                                     </div>
+
+
+                                                     <div class="mb-3">
+                                                        <div class="tbl_title" >Applicable Compliances</div>
+                                                       
+                                                     </div>
+                                                 </div>   
+                                               
+                                               
+                                               
+                                                 <div class="col-md-4 col-sm-6 col-xs-12">
+                                                    <div class=" sumrybox mb-3">
+                                                        <div class="tbl_title" >Customer Information</div>
+                                                       
+                                                        <table class="customerssummarystats" cellspacing="0" cellpadding="2">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td style="font-size: 14px;">Organization/Individual Name</td>
+                                                                    <!-- <td>{{cust.name}}</td> -->
+                                                                </tr>
+                                                                <tr class="altrow">
+                                                                    <td>Date of Incorporation/ Registration/DOB</td>
+                                                                    <!-- <td>{{cust.date}}</td> -->
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>PAN No.</td>
+                                                                    <!-- <td>{{cust.pan}}</td> -->
+                                                                </tr>
+                                                                <tr class="altrow">
+                                                                    <td>Aadhaar No.</td>
+                                                                    <!-- <td>{{cust.aadhaar}}</td> -->
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>TAN No.</td>
+                                                                    <!-- <td>{{cust.tan}}</td> -->
+                                                                </tr>
+                                                                <tr class="altrow">
+                                                                    <td>PT No.</td>
+                                                                    <!-- <td>{{cust.pt}}</td> -->
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>GST No.</td>
+                                                                    <!-- <td>{{cust.gst}}</td> -->
+                                                                </tr>
+                                                                <tr class="altrow">
+                                                                    <td>UIN No.</td>
+                                                                    <!-- <td>{{cust.uin}}</td> -->
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>TASC No.</td>
+                                                                    <!-- <td>{{cust.tasc}}</td> -->
+                                                                </tr>
+                                                                <tr class="altrow">
+                                                                    <td>Email Address</td>
+                                                                    <!-- <td>{{cust.email}}</td> -->
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Registered Address</td>
+                                                                    <!-- <td>{{cust.address}}</td> -->
+                                                                </tr>
+                                                                <tr class="altrow">
+                                                                    <td>City</td>
+                                                                    <!-- <td>{{cust.city}}</td> -->
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>PIN</td>
+                                                                    <!-- <td>{{cust.mpin}}</td> -->
+                                                                </tr>
+                                                                <tr class="altrow">
+                                                                    <td>Mobile No.</td>
+                                                                    <!-- <td>{{cust.mobileNumber}}</td> -->
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Whatsapp No.</td>
+                                                                    <!-- <td>{{cust.whatsAppNo}}</td> -->
+                                                                </tr>
+                                                                <tr class="altrow">
+                                                                    <td>Mailing Address</td>
+                                                                    <!-- <td>{{cust.maddress}}</td> -->
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>City</td>
+                                                                    <!-- <td>{{cust.mCity}}</td> -->
+                                                                </tr>
+                                                                <tr class="altrow">
+                                                                    <td>PIN</td>
+                                                                    <!-- <td>{{cust.mpin}}</td> -->
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Mobile No.</td>
+                                                                    <!-- <td>{{cust.mMobile}}</td> -->
+                                                                </tr>
+                                                                <tr class="altrow">
+                                                                    <td>Telephone No.</td>
+                                                                    <!-- <td>{{cust.mTelephone}}</td> -->
+                                                                </tr>
+                                                            </tbody>
+                                                         </table>
+
+                                                     </div>
+
+
+                                                     <div class="sumrybox mb-3">
+                                                        <div class="tbl_title" >Applicable Compliances</div>
+                                                        <table class="customerssummarystats" cellspacing="0" cellpadding="2">
+                                                            <!-- <thead> -->
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td style="font-size: 14px;">Product</td>
+                                                                        <!-- <td>{{cust.name}}</td> -->
+                                                                    </tr>
+                                                                    <tr class="altrow">
+                                                                        <td>Assign Date</td>
+                                                                        <!-- <td>{{cust.date}}</td> -->
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Expiry Date</td>
+                                                                        <!-- <td>{{cust.pan}}</td> -->
+                                                                    </tr>
+                                                                </tbody>
+                                                        </table>
+                                                     </div>
+
+
+                                                 </div> 
+                                                
+                                                 <div class="col-md-4 col-sm-6 col-xs-12">
+                                                    <div class="sumrybox mb-3">
+                                                        <div class="tbl_title" >Company</div>
+                                                       
+                                                        <table class="customerssummarystats" cellspacing="0" cellpadding="2">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>Account Sourcing Date</td>
+                                                                    <!-- <td>{{companyuse.acc_source_date}}</td> -->
+                                                                </tr>
+                                                                <tr class="altrow">
+                                                                    <td>Source Code</td>
+                                                                    <!-- <td>{{companyuse.sourceCode}}</td> -->
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>LG Code</td>
+                                                                    <!-- <td>{{companyuse.LGC}}</td> -->
+                                                                </tr>
+                                                                <tr class="altrow">
+                                                                    <td>LC Code</td>
+                                                                    <!-- <td>{{companyuse.sourceCode}}</td> -->
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>RM Emp code</td>
+                                                                    <!-- <td><a href="" title="{{companyuse.rmEmpName}}" ng-click="openRMSelection()">{{companyuse.RMEmpCode}} ({{companyuse.RMCode}})</a></td> -->
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Compliance Manager Code</td>
+                                                                    <!-- <td><a href="" title="{{companyuse.cmEmpName}}" ng-click="openCMSelection()">{{companyuse.complianceManagerCode}}</a></td> -->
+                                                                </tr>
+                                                                <tr class="altrow">
+                                                                    <td>Accounts Manager Code</td>
+                                                                    <!-- <td><a href="" title="{{companyuse.amEmpName}}" ng-click="openAMSelection()">{{companyuse.accountsManagerCode}}</a></td> -->
+                                                                </tr>
+                                                                <tr class="altrow">
+                                                                    <td>Service Manager Code</td>
+                                                                    <!-- <td><a href="" title="{{companyuse.collManEmpName}}" ng-click="openCollManSelection()">{{companyuse.collectionManagerCode}}</a></td> -->
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+
+                                                     </div>
+
+
+                                                     <div class="sumrybox mb-3">
+                                                        <div class="tbl_title" >Products/Services</div>
+                                                        <table class="customerssummarystats" cellspacing="0" cellpadding="2">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>Account Writing</td>
+                                                                    <td ng-if="acc.serAccWrite == true"><a href="#"
+                                                                            ng-click="openOccupIncome()">View</a></td>
+                                                                </tr>
+                                                                <tr class="altrow">
+                                                                    <td>Tax Planning</td>
+                                                                    <td><a href="#" ng-click="openTaxPlanning()">View</a></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Capital Management</td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Investment Planning</td>
+                                                                    <!-- <td>{{acc.serInvestPlan}}</td> -->
+                                                                </tr>
+                                                                <tr class="altrow">
+                                                                    <td>Business Advisory</td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Financial Planning</td>
+                                                                    <td ng-if="acc.serFinanPlan == true"><a href="#"
+                                                                            ng-click="openOccupIncome()">View</a></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                     </div>
+
+
+
+
+
+                                                     
+                                                     <div class="sumrybox mb-3">
+                                                        <div class="tbl_title" >Invoices/Billing</div>
+                                                        <table class="customerssummarystats" cellspacing="0" cellpadding="2">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        Invoice Total - Current Year</td>
+                                                                    
+                                                                </tr>
+                                                                <tr class="altrow">
+                                                                    <td>Paid - Current Year</td>
+                                                                  
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Unpaid till date</td>
+                                                                  
+                                                                </tr>
+                                                               
+                                                            </tbody>
+                                                        </table>
+                                                     </div>
+
+
+                                                     
+                                                     <div class="sumrybox mb-3">
+                                                        <div class="tbl_title" >Tax Amount</div>
+                                                        <table class="customerssummarystats" cellspacing="0" cellpadding="2">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>Total Amount</td>
+                                                                    
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                     </div>
+
+
+
+                                                
+                                                
+                                                </div>                                              </div>
+                                            </div>
+
+                                            
+
+                                        </div>
+                                    </div>
+
+                                        <div class="tab-pane" [class.active]="activeTab === 'tab2'" id="tab2">
+                                            <div id="branch_datatable_wrapper" class="dataTables_wrapper no-footer">
+
+                                                <form  [formGroup]="addform" class="col-md-12 col-sm-12 col-xs-12 mt-5">
+                                                    <div class="form-group row mb-3">
+                                                        <label for="companyname" class="col-lg-2 col-4   col-form-label mr-5">Organization/Individual Name: *</label>
+                                                        <div class="col-lg-4 col-8">
+                                                            <input type="text" formControlName="organizationname" class="form-control" id="complianceName">
+                                                        </div>
+                                                        <label for="fullname" class="col-lg-2 col-4   col-form-label mr-5">Date of Incorporation/ Registration/DOB: *
+                                                        </label>
+                                                        <div class="col-lg-4 col-8">
+                                                            <input type="date" formControlName="dateofincorp" class="form-control" id="complianceName">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-3">
+                                                        <label for="companyname" class="col-lg-2 col-4   col-form-label mr-5">PAN: *</label>
+                                                        <div class="col-lg-4 col-8">
+                                                            <input type="text" formControlName="pan" class="form-control" id="complianceName">
+                                                        </div>
+                                                        <label for="fullname" class="col-lg-2 col-4   col-form-label mr-5">Aadhaar: *
+                                                        </label>
+                                                        <div class="col-lg-4 col-8">
+                                                            <input type="text" formControlName="adhar" class="form-control" id="complianceName">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-3">
+                                                        <label for="companyname" class="col-lg-2 col-4   col-form-label mr-5">TAN: *</label>
+                                                        <div class="col-lg-4 col-8">
+                                                            <input type="text" formControlName="pan" class="form-control" id="complianceName">
+                                                        </div>
+                                                        <label for="fullname" class="col-lg-2 col-4   col-form-label mr-5">PT: *
+                                                        </label>
+                                                        <div class="col-lg-4 col-8">
+                                                            <input type="text" formControlName="adhar" class="form-control" id="complianceName">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-3">
+                                                        <label for="companyname" class="col-lg-2 col-4   col-form-label mr-5">GST: *</label>
+                                                        <div class="col-lg-4 col-8">
+                                                            <input type="text" formControlName="pan" class="form-control" id="complianceName">
+                                                        </div>
+                                                        <label for="fullname" class="col-lg-2 col-4   col-form-label mr-5">UIN: *
+                                                        </label>
+                                                        <div class="col-lg-4 col-8">
+                                                            <input type="text" formControlName="adhar" class="form-control" id="complianceName">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-3">
+                                                        <label for="companyname" class="col-lg-2 col-4   col-form-label mr-5">TASC: *</label>
+                                                        <div class="col-lg-4 col-8">
+                                                            <input type="text" formControlName="pan" class="form-control" id="complianceName">
+                                                        </div>
+                                                       
+                                                    </div>
+
+                                                    <div class="form-group row mb-3">
+                                                        <label for="companyname" class="col-lg-2 col-4   col-form-label mr-5">Email Address: *</label>
+                                                        <div class="col-lg-4 col-8">
+                                                            <input type="text" formControlName="pan" class="form-control" id="complianceName">
+                                                        </div>
+                                                      
+                                                    </div>
+
+                                                    <div class="form-group row mb-3">
+                                                        <label for="companyname" class="col-lg-2 col-4   col-form-label mr-5">Registered Address: *</label>
+                                                        <div class="col-lg-4 col-8">
+                                                            <textarea type="text" formControlName="pan" class="form-control" id="complianceName"> </textarea>
+                                                        </div>
+                                                        <label for="fullname" class="col-lg-2 col-4   col-form-label mr-5">Mailing Address: *
+                                                        </label>
+                                                        <div class="col-lg-4 col-8">
+                                                            <textarea type="text" formControlName="adhar" class="form-control" id="complianceName"></textarea>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-3">
+                                                        <label for="companyname" class="col-lg-2 col-4   col-form-label mr-5">City: *</label>
+                                                        <div class="col-lg-4 col-8">
+                                                            <input type="text" formControlName="pan" class="form-control" id="complianceName">
+                                                        </div>
+                                                        <label for="fullname" class="col-lg-2 col-4   col-form-label mr-5">City: *
+                                                        </label>
+                                                        <div class="col-lg-4 col-8">
+                                                            <input type="text" formControlName="adhar" class="form-control" id="complianceName">
+                                                        </div>
+                                                    </div>
+
+
+                                             <div class="form-group row mb-3">
+                                                        <label for="companyname" class="col-lg-2 col-4   col-form-label mr-5">PIN: *</label>
+                                                        <div class="col-lg-4 col-8">
+                                                            <input type="text" formControlName="pan" class="form-control" id="complianceName">
+                                                        </div>
+                                                        <label for="fullname" class="col-lg-2 col-4   col-form-label mr-5">PIN: *
+                                                        </label>
+                                                        <div class="col-lg-4 col-8">
+                                                            <input type="text" formControlName="adhar" class="form-control" id="complianceName">
+                                                        </div>
+                                                    </div>
+
+
+                                                  <div class="form-group row mb-3">
+                                                        <label for="companyname" class="col-lg-2 col-4   col-form-label mr-5">Telephone No.: *</label>
+                                                        <div class="col-lg-4 col-8">
+                                                            <input type="text" formControlName="pan" class="form-control" id="complianceName">
+                                                        </div>
+                                                        <label for="fullname" class="col-lg-2 col-4   col-form-label mr-5">Telephone No.: *
+                                                        </label>
+                                                        <div class="col-lg-4 col-8">
+                                                            <input type="text" formControlName="adhar" class="form-control" id="complianceName">
+                                                        </div>
+                                                    </div>           
+                                                    
+                                                    
+                                                    <div class="form-group row mb-3">
+                                                        <label for="companyname" class="col-lg-2 col-4   col-form-label mr-5">Mobile No.: *</label>
+                                                        <div class="col-lg-4 col-8">
+                                                            <input type="text" formControlName="pan" class="form-control" id="complianceName">
+                                                        </div>
+                                                        <label for="fullname" class="col-lg-2 col-4   col-form-label mr-5">Mobile No.: *
+                                                        </label>
+                                                        <div class="col-lg-4 col-8">
+                                                            <input type="text" formControlName="adhar" class="form-control" id="complianceName">
+                                                        </div>
+                                                    </div>     
+
+
+                                                    <div class="form-group row mb-3">
+                                                        <label for="companyname" class="col-lg-2 col-4   col-form-label mr-5">Whatsapp No.: *</label>
+                                                        <div class="col-lg-4 col-8">
+                                                            <input type="text" formControlName="pan" class="form-control" id="complianceName">
+                                                        </div>
+                                                        
+                                                    </div> 
+                                                    
+                                                    <div class=" col-md-12 col-sm-12 col-xs-12 mt-5 text-end">
+                                                        <div class=" col-md-9 " >
+                                                            <button class="col-lg-2 col-4 btn btn-info m-4 " type="submit">
+                                                                <i class="ace-icon fa fa-check bigger-110"></i>
+                                                                Save Changes
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+
+                                                    </form>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="tab-pane" [class.active]="activeTab === 'tab3'" id="tab3">
+                                                <div id="branch_datatable_wrapper" class="dataTables_wrapper no-footer">
+
+                                                    <!-- <h4 class="mb-5">View User Roles & Permissions</h4> -->
+
+                                                    <form class="form-horizontal col-md-12 col-sm-12 col-xs-12 d-flex text-center mb-5"  style="padding-top: 20px;justify-content: center;">
+                                                        <input class="form-control " id="accountNo" ng-model="doc.accountNo" style="display:none;" />
+                                                        <div class="col-md-12 col-sm-12 col-xs-12 d-flex text-center" id="docType">
+                                                                 <label for="bank" class="col-lg-3 col-md-6 col-sm-6  control-label" style="padding-left:70px; padding-top:7px">Select Document Type*:</label>
+                                                                 <div class="col-sm-4">
+                                                                   <select class="form-control"  id="" ng-model="doc.docTypeId" ng-change="openDocDiv()">
+                                                                            <option value="">-----------------------Select------------------------ </option>
+                                                                                <option value="0" ng-if="${insertdocumentsparta}">Customer KYC </option>
+                                                                                <option value="1" ng-if="${insertdocumentspartb}">Bank Statement </option>
+                                                                                <option value="2" ng-if="${insertdocumentspartb}">Sales Invoice</option>
+                                                                                <option value="3" ng-if="${insertdocumentspartb}">Purchase Invoice</option>
+                                                                                <option value="4" ng-if="${insertdocumentspartb}">Expenses Details</option>
+                                                                                <option value="10" ng-if="${insertdocumentspartb}">Outstanding Loans</option>
+                                                                                <option value="5" ng-if="${insertdocumentspartb}">Cheque Books Record</option>
+                                                                                <option value="6" ng-if="${insertdocumentspartb}">Pay-In-Slips</option>
+                                                                                <option value="7" ng-if="${insertdocumentspartb}">Investment Details</option>
+                                                                                <option value="8" ng-if="${insertdocumentspartb}">Taxes</option>
+                                                                                <option value="9" ng-if="${insertdocumentspartb}">Vehicle</option>
+                                                                   </select>
+                                                                 </div>
+                                                           </div>
+                                                      </form>
+                                                    
+                                                      <div class="container">
+                                                        <div class="row">
+                                                            <table class="table table-bordered table-striped" style="padding: 10px;" >
+                                                                <h4 class="panel-title" style="background-color: #F9F9F9;">
+                                                                    <a (click)="onclick()" >Customer KYC</a>
+                                                                </h4>
+                                              <tbody >
+
+                                                <table class="table table-bordered table-striped"  *ngIf="visible">
+                                                    <thead >
+                                                        <tr >
+                                                            <th style="background-color: #F9F9F9 !important;">Sr.No.</th>
+                                                            <th>Document Category</th>
+                                                            <th>Document Type</th>
+                                                            <th>Description</th>
+                                                            <th>Open</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                  
+                                                </table>
+                                              </tbody>
+                                                            </table>
+
+                                                           
+                                                            
+                                                        </div>
+                                                      </div>
+
+
+
+                                                         
+                                                      <div class="container">
+                                                        <div class="row">
+                                                            <table class="table table-bordered table-striped" style="padding: 10px;" >
+                                                                <h4 class="panel-title" style="background-color: #F9F9F9;">
+                                                                    <a (click)="onclick1()" >Bank Statements</a>
+                                                                </h4>
+                                              <tbody >
+
+                                                <table class="table table-bordered table-striped"  *ngIf="visible1">
+                                                    <thead >
+                                                        <tr >
+                                                            <th style="background-color: #F9F9F9 !important;">Sr.No.</th>
+                                                            <th>Document Category</th>
+                                                            <th>Document Type</th>
+                                                            <th>Description</th>
+                                                            <th>Open</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                   
+                                                </table>
+                                              </tbody>
+                                                            </table>
+
+                                                           
+                                                            
+                                                        </div>
+                                                      </div>
+
+                                                      <div class="container">
+                                                        <div class="row">
+                                                            <table class="table table-bordered table-striped" style="padding: 10px;" >
+                                                                <h4 class="panel-title" style="background-color: #F9F9F9;">
+                                                                    <a (click)="onclick2()" >Sales Invoices</a>
+                                                                </h4>
+                                              <tbody >
+
+                                                <table class="table table-bordered table-striped"  *ngIf="visible2">
+                                                    <thead >
+                                                        <tr >
+                                                            <th style="background-color: #F9F9F9 !important;">Sr.No.</th>
+                                                            <th>Document Category</th>
+                                                            <th>Document Type</th>
+                                                            <th>Description</th>
+                                                            <th>Open</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                   
+                                                </table>
+                                              </tbody>
+                                                            </table>
+
+                                                           
+                                                            
+                                                        </div>
+                                                      </div>
+
+                                                      <div class="container">
+                                                        <div class="row">
+                                                            <table class="table table-bordered table-striped" style="padding: 10px;" >
+                                                                <h4 class="panel-title" style="background-color: #F9F9F9;">
+                                                                    <a (click)="onclick3()" >Purchase Invoices</a>
+                                                                </h4>
+                                              <tbody >
+
+                                                <table class="table table-bordered table-striped"  *ngIf="visible3">
+                                                    <thead >
+                                                        <tr >
+                                                            <th style="background-color: #F9F9F9 !important;">Sr.No.</th>
+                                                            <th>Document Category</th>
+                                                            <th>Document Type</th>
+                                                            <th>Description</th>
+                                                            <th>Open</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                   
+                                                </table>
+                                              </tbody>
+                                                            </table>
+
+                                                           
+                                                            
+                                                        </div>
+                                                      </div>
+
+                                                      <div class="container">
+                                                        <div class="row">
+                                                            <table class="table table-bordered table-striped" style="padding: 10px;" >
+                                                                <h4 class="panel-title" style="background-color: #F9F9F9;">
+                                                                    <a (click)="onclick4()" >Expenses Details</a>
+                                                                </h4>
+                                              <tbody >
+
+                                                <table class="table table-bordered table-striped"  *ngIf="visible4">
+                                                    <thead >
+                                                        <tr >
+                                                            <th style="background-color: #F9F9F9 !important;">Sr.No.</th>
+                                                            <th>Document Category</th>
+                                                            <th>Document Type</th>
+                                                            <th>Description</th>
+                                                            <th>Open</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                   
+                                                </table>
+                                              </tbody>
+                                                            </table>
+
+                                                           
+                                                            
+                                                        </div>
+                                                      </div>
+
+                                                      <div class="container">
+                                                        <div class="row">
+                                                            <table class="table table-bordered table-striped" style="padding: 10px;" >
+                                                                <h4 class="panel-title" style="background-color: #F9F9F9;">
+                                                                    <a (click)="onclick5()" >Outstanding Loans</a>
+                                                                </h4>
+                                              <tbody >
+
+                                                <table class="table table-bordered table-striped"  *ngIf="visible5">
+                                                    <thead >
+                                                        <tr >
+                                                            <th style="background-color: #F9F9F9 !important;">Sr.No.</th>
+                                                            <th>Document Category</th>
+                                                            <th>Document Type</th>
+                                                            <th>Description</th>
+                                                            <th>Open</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                   
+                                                </table>
+                                              </tbody>
+                                                            </table>
+
+                                                           
+                                                            
+                                                        </div>
+                                                      </div>
+
+                                                      <div class="container">
+                                                        <div class="row">
+                                                            <table class="table table-bordered table-striped" style="padding: 10px;" >
+                                                                <h4 class="panel-title" style="background-color: #F9F9F9;">
+                                                                    <a (click)="onclick6()" >CheckBook Records</a>
+                                                                </h4>
+                                              <tbody >
+
+                                                <table class="table table-bordered table-striped"  *ngIf="visible6">
+                                                    <thead >
+                                                        <tr >
+                                                            <th style="background-color: #F9F9F9 !important;">Sr.No.</th>
+                                                            <th>Document Category</th>
+                                                            <th>Document Type</th>
+                                                            <th>Description</th>
+                                                            <th>Open</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                   
+                                                </table>
+                                              </tbody>
+                                                            </table>
+
+                                                           
+                                                            
+                                                        </div>
+                                                      </div>
+
+                                                      <div class="container">
+                                                        <div class="row">
+                                                            <table class="table table-bordered table-striped" style="padding: 10px;" >
+                                                                <h4 class="panel-title" style="background-color: #F9F9F9;">
+                                                                    <a (click)="onclick7()" >Pay-In-Slips</a>
+                                                                </h4>
+                                              <tbody >
+
+                                                <table class="table table-bordered table-striped"  *ngIf="visible7">
+                                                    <thead >
+                                                        <tr >
+                                                            <th style="background-color: #F9F9F9 !important;">Sr.No.</th>
+                                                            <th>Document Category</th>
+                                                            <th>Document Type</th>
+                                                            <th>Description</th>
+                                                            <th>Open</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                   
+                                                </table>
+                                              </tbody>
+                                                            </table>
+
+                                                           
+                                                            
+                                                        </div>
+                                                      </div>
+
+                                                      <div class="container">
+                                                        <div class="row">
+                                                            <table class="table table-bordered table-striped" style="padding: 10px;" >
+                                                                <h4 class="panel-title" style="background-color: #F9F9F9;">
+                                                                    <a (click)="onclick8()" >Investment Details</a>
+                                                                </h4>
+                                              <tbody >
+
+                                                <table class="table table-bordered table-striped"  *ngIf="visible8">
+                                                    <thead >
+                                                        <tr >
+                                                            <th style="background-color: #F9F9F9 !important;">Sr.No.</th>
+                                                            <th>Document Category</th>
+                                                            <th>Document Type</th>
+                                                            <th>Description</th>
+                                                            <th>Open</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                   
+                                                </table>
+                                              </tbody>
+                                                            </table>
+
+                                                           
+                                                            
+                                                        </div>
+                                                      </div>
+
+                                                      <div class="container">
+                                                        <div class="row">
+                                                            <table class="table table-bordered table-striped" style="padding: 10px;" >
+                                                                <h4 class="panel-title" style="background-color: #F9F9F9;">
+                                                                    <a (click)="onclick9()" >Taxes</a>
+                                                                </h4>
+                                              <tbody >
+
+                                                <table class="table table-bordered table-striped"  *ngIf="visible9">
+                                                    <thead >
+                                                        <tr >
+                                                            <th style="background-color: #F9F9F9 !important;">Sr.No.</th>
+                                                            <th>Document Category</th>
+                                                            <th>Document Type</th>
+                                                            <th>Description</th>
+                                                            <th>Open</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                   
+                                                </table>
+                                              </tbody>
+                                                            </table>
+
+                                                           
+                                                            
+                                                        </div>
+                                                      </div>
+
+                                                      <div class="container">
+                                                        <div class="row">
+                                                            <table class="table table-bordered table-striped" style="padding: 10px;" >
+                                                                <h4 class="panel-title" style="background-color: #F9F9F9;">
+                                                                    <a (click)="onclick10()" >Vehicle</a>
+                                                                </h4>
+                                              <tbody >
+
+                                                <table class="table table-bordered table-striped"  *ngIf="visible10">
+                                                    <thead >
+                                                        <tr >
+                                                            <th style="background-color: #F9F9F9 !important;">Sr.No.</th>
+                                                            <th>Document Category</th>
+                                                            <th>Document Type</th>
+                                                            <th>Description</th>
+                                                            <th>Open</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                   
+                                                </table>
+                                              </tbody>
+                                                            </table>
+
+                                                           
+                                                            
+                                                        </div>
+                                                      </div>
+
+                                                      <div class="container">
+                                                        <div class="row">
+                                                            <table class="table table-bordered table-striped" style="padding: 10px;" >
+                                                                <h4 class="panel-title" style="background-color: #F9F9F9;">
+                                                                    <a (click)="onclick11()" >Bulk Upload</a>
+                                                                </h4>
+                                              <tbody >
+
+                                                <table class="table table-bordered table-striped"  *ngIf="visible11">
+                                                    <thead >
+                                                        <tr >
+                                                            <th style="background-color: #F9F9F9 !important;">Sr.No.</th>
+                                                            <th>Document Category</th>
+                                                            <th>Document Type</th>
+                                                            <th>Description</th>
+                                                            <th>Open</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                   
+                                                </table>
+                                              </tbody>
+                                                            </table>
+
+                                                           
+                                                            
+                                                        </div>
+                                                      </div>
+
+
+
+
+
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="tab-pane active" [class.active]="activeTab === 'tab4'" id="tab4">
+                                                <div class="page-header" >
+                                                    <h6>Occupation & Income Details</h6>
+                                                </div>
+                                                <div class="page-header" >
+                                                <table id="roles_dataTable" class="table table-bordered table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Sr.No.</th>
+                                                            <th>Interaction Type</th>
+                                                            <th> Date</th>
+                                                            <th>Status</th>
+                                                            <th>Next Date</th>
+                                                            <th>Description</th>
+                                                            <th>From</th>
+                                                            <th>Insert By</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                    
+                                                    <tbody>
+                                                       
+                                                       <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>   
+                                                        <td></td>         
+                                                        <td></td>
+                                                        <td>
+                                                            <td>
+                                                                <button class="btn btn-xs" style="font-size: 13px; background-color:#003974!important; color: white;" routerLink="/view-compliance" >
+                                                                    <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                                                </button>
+                                                        </td>                                            
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+
+                                            <div class="page-header" >
+                                                <!-- <h6>Account Writing</h6> -->
+                                                       
+  <div class="row line">
+    <div class="col-md-6 col-6">
+      <h6> Account Writing</h6>
+    </div>
+    <div class="col-md-6 col-6 text-md-end">
+      <button type="button" (click)="AddAccountWritting()"  class="btn btn-info">
+        Add Account Writting
+      </button>
+    </div>
+  </div>
+                                            </div>
+                                            <div class="page-header" >
+                                            <table id="roles_dataTable" class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Id.</th>
+                                                        <th>From Date</th>
+                                                        <th> To Date</th>
+                                                        <th>Description</th>
+                                                        <th>Document</th>
+                                                        <th>Insert By</th>
+                                                      
+                                                    </tr>
+                                                </thead>
+                
+                                                <tbody>
+                                                   
+                                                   <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>                           
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+
+                                        <!-- <div class="" >
+                                            <h6>Tax Planning</h6>
+                                        </div> -->
+                                        
+                                                                                     
+  <div class="row page-header line">
+    <div class="col-md-6 col-6">
+      <h6> Tax Planning</h6>
+    </div>
+    <div class="col-md-6 col-6 text-md-end">
+      <button type="button" (click)="AddAccountWritting()"  class="btn btn-info">
+      Add Tax Planning
+      </button>
+    </div>
+  </div>
+          
+                                        
+
+
+
+                                        <h6 style="font-size: 12px;">INCOME TAX</h6>
+                                        <div class="page-header" >
+                                        <table id="roles_dataTable" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Tax Name</th>
+                                                    <th> From Date</th>
+                                                    <th>To Date</th>
+                                                    <th>Paid Date</th>
+                                                    <th>Paid Amount</th>
+                                                    <th>Description</th>
+                                                    <th>Receipt</th>
+                                                    <th>Acknowledgement</th>
+                                                    <th>Insert By</th>
+                                                </tr>
+                                            </thead>
+            
+                                            <tbody>
+                                               
+                                               <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>   
+                                                <td></td>         
+                                                <td></td>    
+                                                <td></td>         
+                                                <td></td>                                         
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
+
+                                    <h6 style="font-size: 12px;">GST</h6>
+                                        <div class="page-header" >
+                                        <table id="roles_dataTable" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Tax Name</th>
+                                                    <th> From Date</th>
+                                                    <th>To Date</th>
+                                                    <th>Paid Date</th>
+                                                    <th>Paid Amount</th>
+                                                    <th>Description</th>
+                                                    <th>Receipt</th>
+                                                    <th>Acknowledgement</th>
+                                                    <th>Insert By</th>
+                                                </tr>
+                                            </thead>
+            
+                                            <tbody>
+                                               
+                                               <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>   
+                                                <td></td>         
+                                                <td></td>    
+                                                <td></td>         
+                                                <td></td>                                         
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
+                                    <h6 style="font-size: 12px;">PROFESSIONAL TAX</h6>
+                                    <div class="page-header" >
+                                    <table id="roles_dataTable" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Tax Name</th>
+                                                <th> From Date</th>
+                                                <th>To Date</th>
+                                                <th>Paid Date</th>
+                                                <th>Paid Amount</th>
+                                                <th>Description</th>
+                                                <th>Receipt</th>
+                                                <th>Acknowledgement</th>
+                                                <th>Insert By</th>
+                                            </tr>
+                                        </thead>
+        
+                                        <tbody>
+                                           
+                                           <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>   
+                                            <td></td>         
+                                            <td></td>    
+                                            <td></td>         
+                                            <td></td>                                         
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <h6 style="font-size: 12px;">PROFESSIONAL TAX</h6>
+                                    <div class="page-header" >
+                                    <table id="roles_dataTable" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Tax Name</th>
+                                                <th> From Date</th>
+                                                <th>To Date</th>
+                                                <th>Paid Date</th>
+                                                <th>Paid Amount</th>
+                                                <th>Description</th>
+                                                <th>Receipt</th>
+                                                <th>Acknowledgement</th>
+                                                <th>Insert By</th>
+                                            </tr>
+                                        </thead>
+        
+                                        <tbody>
+                                           
+                                           <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>   
+                                            <td></td>         
+                                            <td></td>    
+                                            <td></td>         
+                                            <td></td>                                         
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                                <h6 style="font-size: 12px;">VAT</h6>
+                                    <div class="page-header" >
+                                    <table id="roles_dataTable" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Tax Name</th>
+                                                <th> From Date</th>
+                                                <th>To Date</th>
+                                                <th>Paid Date</th>
+                                                <th>Paid Amount</th>
+                                                <th>Description</th>
+                                                <th>Receipt</th>
+                                                <th>Acknowledgement</th>
+                                                <th>Insert By</th>
+                                            </tr>
+                                        </thead>
+        
+                                        <tbody>
+                                           
+                                           <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>   
+                                            <td></td>         
+                                            <td></td>    
+                                            <td></td>         
+                                            <td></td>                                         
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                                <h6 style="font-size: 12px;">SERVICE TAX
+                                </h6>
+                                    <div class="page-header" >
+                                    <table id="roles_dataTable" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Tax Name</th>
+                                                <th> From Date</th>
+                                                <th>To Date</th>
+                                                <th>Paid Date</th>
+                                                <th>Paid Amount</th>
+                                                <th>Description</th>
+                                                <th>Receipt</th>
+                                                <th>Acknowledgement</th>
+                                                <th>Insert By</th>
+                                            </tr>
+                                        </thead>
+        
+                                        <tbody>
+                                           
+                                           <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>   
+                                            <td></td>         
+                                            <td></td>    
+                                            <td></td>         
+                                            <td></td>                                         
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                                <h6 style="font-size: 12px;">EXCISE
+                                </h6>
+                                    <div class="page-header" >
+                                    <table id="roles_dataTable" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Tax Name</th>
+                                                <th> From Date</th>
+                                                <th>To Date</th>
+                                                <th>Paid Date</th>
+                                                <th>Paid Amount</th>
+                                                <th>Description</th>
+                                                <th>Receipt</th>
+                                                <th>Acknowledgement</th>
+                                                <th>Insert By</th>
+                                            </tr>
+                                        </thead>
+        
+                                        <tbody>
+                                           
+                                           <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>   
+                                            <td></td>         
+                                            <td></td>    
+                                            <td></td>         
+                                            <td></td>                                         
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <h6 style="font-size: 12px;">PROPERTY TAX
+                                </h6>
+                                    <div class="page-header" >
+                                    <table id="roles_dataTable" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Tax Name</th>
+                                                <th> From Date</th>
+                                                <th>To Date</th>
+                                                <th>Paid Date</th>
+                                                <th>Paid Amount</th>
+                                                <th>Description</th>
+                                                <th>Receipt</th>
+                                                <th>Acknowledgement</th>
+                                                <th>Insert By</th>
+                                            </tr>
+                                        </thead>
+        
+                                        <tbody>
+                                           
+                                           <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>   
+                                            <td></td>         
+                                            <td></td>    
+                                            <td></td>         
+                                            <td></td>                                         
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+
+                                                        </div>
+
+
+                                                        <div class="tab-pane" [class.active]="activeTab === 'tab5'" id="tab5" style="margin-bottom: 35px;">
+                                                            <!-- <div id="branch_datatable_wrapper" class="dataTables_wrapper no-footer"> -->
+                                                                <div >
+                                                                    <button type="button" class="btn btn-info mb-3 " (click)="AddInvoice()" style="float: right;">Add
+                                                                      Authorised Signatory</button>
+                                                                    </div>
+                                                                <!-- <h4 class="mb-5">View User Roles & Permissions</h4> -->
+            
+                                                            <!-- </div> -->
+                                                        </div>
+            
+                                             
+                                            <div class="tab-pane active" [class.active]="activeTab === 'tab6'" id="tab6">
+                                                
+                                                <div>
+                                                    <button type="button" class="btn btn-info mb-3" (click)="AddInvoice()" style="float: right;">Add
+                                                      Customer Interaction</button>
+                                                    </div>
+                                                <table id="roles_dataTable" class="table table-bordered table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Sr.No.</th>
+                                                            <th>Interaction Type</th>
+                                                            <th> Date</th>
+                                                            <th>Status</th>
+                                                            <th>Next Date</th>
+                                                            <th>Description</th>
+                                                            <th>From</th>
+                                                            <th>Insert By</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                    
+                                                    <tbody>
+                                                       
+                                                       <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>   
+                                                        <td></td>         
+                                                        <td></td>                                            
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                        </div>
+
+
+                                            
+                                            <div class="tab-pane active" [class.active]="activeTab === 'tab7'" id="tab7">
+                                                
+                                                <div>
+                                                    <button type="button" class="btn btn-info mb-3" (click)="AddInvoice()" style="float: right;">Add
+                                                      Invoice</button>
+                                                    </div>
+                                                <table id="roles_dataTable" class="table table-bordered table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Invoice Id</th>
+                                                            <th>Invoice Date</th>
+                                                            <th>Due Date</th>
+                                                            <th>Paid Date</th>
+                                                            <th>Total</th>
+                                                            <th>Balance</th>
+                                                            <th>Status</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                    
+                                                    <tbody>
+                                                       
+                                                       <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>   
+                                                        <td></td>         
+                                                        <td></td>                                            
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                        </div>
+
+                                            <div class="tab-pane active" [class.active]="activeTab === 'tab8'" id="tab8">
+                                                
+          
+                                                <table id="roles_dataTable" class="table table-bordered table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Tx</th>
+                                                            <th>Invoice Id</th>
+                                                            <th>Date</th>
+                                                            <th>Amount</th>
+                                                            <th>Payment Mode</th>
+                                                            <th>Payment Type</th>
+                                                            <th>Description</th>
+                                                            <th>Insert By</th>
+                                                        </tr>
+                                                    </thead>
+                    
+                                                    <tbody>
+                                                       
+                                                       <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>   
+                                                        <td></td>         
+                                                        <td></td>                                            
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                        </div>
+                                            
+                                            <div class="tab-pane active" [class.active]="activeTab === 'tab9'" id="tab9">
+                                                
+                                                <div>
+                                                    <button type="button" class="btn btn-info mb-3" (click)="AddInvoice()" style="float: right;">Add
+                                                      Voucher</button>
+                                                    </div>
+                                                <table id="roles_dataTable" class="table table-bordered table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Id</th>
+                                                            <th>Voucher Date</th>
+                                                            <th>Paid Date</th>
+                                                            <th>Amount</th>
+                                                            <th>Payment Mode</th>
+                                                            <th>Description</th>
+                                                            <th>Receipt</th>
+                                                        </tr>
+                                                    </thead>
+                    
+                                                    <tbody>
+                                                       
+                                                       <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>   
+                                                        <td></td>                                                     
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                        </div>
+
+
+                                            
+                              <div class="tab-pane active" [class.active]="activeTab === 'tab10'" id="tab10">
+                                                
+          
+                                      <table id="roles_dataTable" class="table table-bordered table-striped">
+                                          <thead>
+                                              <tr>
+                                                  <th>Product</th>
+                                                  <th>Assign Date</th>
+                                                  <th>Expiry Date</th>
+                                                  <th>Due Date</th>
+                                                  <th>Action</th>
+                                              </tr>
+                                          </thead>
+          
+                                          <tbody>
+                                              <!-- <tr
+                                              *ngFor="let data of dataarray  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index "> -->
+                                             
+                                             <tr>
+                                              <td></td>
+                                              <td></td>
+                                              <td></td>
+                                              <td></td>
+                                              <td>
+                                                <button class="btn btn-xs" style="font-size: 13px; background-color:#003974!important; color: white;" routerLink="/view-compliance" >
+                                                    <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                                </button>
+                                              </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                              </div>
+
+
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>

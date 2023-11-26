@@ -1,0 +1,178 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <i class="ace-icon fa fa-home home-icon " style="margin-right: 10px;"></i><a href="#">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Employee</li>
+                </ol>
+            </nav>
+            <div class="container ">
+                <div class="row">
+                    <div class="col">
+                        <div class="page-header">
+                            <h1>
+                                Employee
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" routerLink="/set/employee" class="btn btn-info" style="float: right;">View
+                    Employee</button>
+
+                <form [formGroup]="addnewcustomer" class="col-md-12 col-sm-12 col-xs-12 mt-5">
+
+
+                    <div class="form-group row mb-2">
+                        <label for="companyname" class="col-lg-2 col-4   col-form-label mr-5">First Name:*</label>
+                        <div class="col-lg-4 col-8">
+                            <input type="text" formControlName="companyname" class="form-control" id="complianceName">
+                        </div>
+                        <label for="fullname" class="col-lg-2 col-4   col-form-label mr-5">Middle Name: *</label>
+                        <div class="col-lg-4 col-8">
+                            <input type="text" formControlName="fullname" class="form-control" id="complianceName">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label for="email" class="col-lg-2 col-4   col-form-label mr-5">Last Name: *</label>
+                        <div class="col-lg-4 col-8">
+                            <input type="email" formControlName="email" class="form-control" id="complianceName">
+                        </div>
+                        <label for="contactno" class="col-lg-2 col-4   col-form-label mr-5">Date Of Birth: *</label>
+                        <div class="col-lg-4 col-8">
+                            <input type="date" formControlName="contactno" class="form-control" id="complianceName">
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                        <label for="altcontactno" class="col-lg-2 col-4   col-form-label mr-5">Date Of Joining:
+                            *</label>
+                        <div class="col-lg-4 col-8">
+                            <input type="date" formControlName="altcontactno" class="form-control" id="complianceName">
+                        </div>
+                        <label for="segment" class="col-lg-2 col-4 col-form-label ml-2">Select Location*</label>
+                        <div class="col-lg-4 col-8">
+                            <select formControlName="segment" class="form-select">
+                                <option value="">-----------------------Select------------------------ </option>
+                                <option *ngFor="let data of dataarray" [value]="data.branchname">{{
+                                    data.branchname }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row mb-2">
+                        <label for="constofcompany" class="col-lg-2 col-4 col-form-label ml-2">Select Main
+                            Department*</label>
+                        <div class="col-lg-4 col-8">
+                            <select formControlName="constofcompany" class="form-select">
+                                <option value="">-----------------------Select------------------------ </option>
+                                <option value="PROPRITER">Distribution </option>
+                                <option value="PARTNERSHIP">Support</option>
+                                <option value="PVT.LTD.">Central Processing Unit</option>
+                            </select>
+                        </div>
+                        <label for="segment" class="col-lg-2 col-4 col-form-label ml-2">Select Department*</label>
+                        <div class="col-lg-4 col-8">
+                            <select formControlName="constofcompany" class="form-select">
+                                <option value="">-----------------------Select------------------------ </option>
+                                <!-- <option value="PROPRITER">Distribution </option>
+                                <option value="PARTNERSHIP">Support</option>
+                                <option value="PVT.LTD.">Central Processing Unit</option> -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        
+                        <label for="maintitr" class="col-lg-2 col-4 col-form-label ml-2">Select Role Name*</label>
+                        <div class="col-lg-4 col-8">
+                            <select formControlName="segment" class="form-select">
+                                <option value="">-----------------------Select------------------------ </option>
+                                <option *ngFor="let data of dataarray" [value]="data.branchname">{{
+                                    data.branchname }}
+                                </option>
+                            </select>
+                        </div>
+                        <label for="leadtype" class="col-lg-2 col-4 col-form-label ml-2">Select RM Code*</label>
+                        <div class="col-lg-4 col-8">
+                            <select formControlName="leadtype" class="form-select">
+                                <option value="">-----------------------Select------------------------ </option>
+                                <option value="HOT">R1 </option>
+                                <option value="WARM">R2 </option>
+                                <option value="COLD">R3 </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                     
+                        <label for="leadstatus" class="col-lg-2 col-4 col-form-label ml-2">Assigned Branches*</label>
+                        <div class="col-lg-4 col-8">
+                            <select formControlName="segment" class="form-select">
+                                <option value="">-----------------------Select------------------------ </option>
+                                <option *ngFor="let data of dataarray" [value]="data.branchname">{{
+                                    data.branchname }}
+                                </option>
+                            </select>
+                        </div>
+                        <label for="city" class="col-lg-2 col-4   col-form-label mr-5">Contact Number: *</label>
+                        <div class="col-lg-4 col-8">
+                            <input type="text" formControlName="city" class="form-control" id="complianceName">
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row mb-2">
+                        
+                        <!-- <label for="taxLink" class="col-lg-2 col-4 col-form-label ml-2" >Tax Link  :</label> -->
+                        <label for="pincode" class="col-lg-2 col-4   col-form-label mr-5">User Name: *</label>
+                        <div class="col-lg-4 col-8">
+                            <input type="text" formControlName="pincode" class="form-control" id="complianceName">
+                        </div>
+                        <label for="city" class="col-lg-2 col-4   col-form-label mr-5">Password: *</label>
+                        <div class="col-lg-4 col-8">
+                            <input type="text" formControlName="city" class="form-control" id="complianceName">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        
+                        <!-- <label for="taxLink" class="col-lg-2 col-4 col-form-label ml-2" >Tax Link  :</label> -->
+                        <label for="pincode" class="col-lg-2 col-4   col-form-label mr-5">Profile UserId: *</label>
+                        <div class="col-lg-4 col-8">
+                            <input type="text" formControlName="pincode" class="form-control" id="complianceName">
+                        </div>
+                        <label for="pincode" class="col-lg-2 col-4   col-form-label mr-5">Select Photo: *</label>
+                        <div class="col-4 mt-1">
+                           
+                            <input type="file" id="lname" name="lname">
+                        </div>
+                    </div>
+
+                    <!-- <div class="form-group row">
+                   
+                    </div> -->
+
+
+                    <div class=" col-md-12 col-sm-12 col-xs-12 mt-5">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button class="col-lg-2 col-4 btn btn-info m-4 " type="submit">
+                                <i class="ace-icon fa fa-check bigger-110"></i>
+                                Submit
+                            </button>
+
+                            <button class="col-lg-2 col-4 btn btn-info m-4">
+                                <i class="ace-icon fa fa-undo bigger-110"></i>
+                                Reset
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- </div>
+      </div>
+    </div> -->

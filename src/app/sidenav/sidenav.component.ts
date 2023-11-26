@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { SidenavtoggleService } from '../Shared/sidenavtoggle.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -6,13 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent {
-
+ @Input() sideNavStatus: boolean = false;
   isFeesDropdownVisible: boolean = false;
   iscustomerServiceVisible: boolean = false;
   isReportDropdownVisible : boolean = false;
   isacknowDropdownVisible : boolean = false ;
   isinsureinvestDropdownVisible : boolean = false;
   ismyaccountDropdown : boolean= false ;
+  showSideNav = true;
+  constructor(private sharedService: SidenavtoggleService) {
+    this.sharedService.currentSideNavState.subscribe(
+      (state) => (this.showSideNav = state)
+    );
+  }
   toggleFeesDropdown() {
     this.isFeesDropdownVisible = !this.isFeesDropdownVisible;
     

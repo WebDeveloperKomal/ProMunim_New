@@ -1,7 +1,6 @@
 export class ProductsModel{
-    branchid : any;
-    branchname: any;
-    branchcode: any;
-    branchcity: any;
-    branchaddress: any;
+    productId : any;
+    productName: any;
+    minValue: any;
+    maxValue: any;
 }

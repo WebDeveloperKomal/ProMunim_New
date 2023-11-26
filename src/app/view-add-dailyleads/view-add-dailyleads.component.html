@@ -19,7 +19,7 @@
                             </h1>
                         </div>
                         <div>
-                            <button type="button" routerLink="/alldailyleads" class="btn btn-info"
+                            <button type="button" routerLink="/set/alldailyleads" class="btn btn-info"
                                 style="float: right;">
                                 View All Daily Lead</button>
                         </div>
@@ -62,45 +62,52 @@
                                     </div>
 
                                     <div class="tab-pane mt-5" [class.active]="activeTab === 'tab2'" id="tab2"  >
-                                        <form class="form-horizontal"[formGroup]="employeeForm">
+                                        <form class="form-horizontal"[formGroup]="viewadddailyleads">
                                           
 
                                             <div class="form-group row mb-3">
                                                 <label for="complianceDueDate" class="col-lg-2 col-4 col-form-label">Visit Date:</label>
                                                 <div class="col-lg-4 col-8">
-                                                    <input type="date" formControlName="complianceDueDate" class="form-control"
+                                                    <input type="date" formControlName="visitedate" class="form-control"
                                                         id="complianceDueDate">
                                                 </div>
 
 
                                                 <label for="address" class="col-lg-1 col-4   col-form-label mr-5">Description</label>
                                                 <div class="col-lg-4 col-8">
-                                                    <!-- <div class="col-sm-8"> -->
-                                                        <textarea class="form-control" id="address" rows="3" formControlName="address"
+                                                   
+                                                        <textarea class="form-control" id="address" rows="3" formControlName="description"
                                                             required> </textarea>
-                                                    <!-- </div> -->
+                                            
                                                 </div>
-                                                <!-- <label for="taxLink" class="col-lg-1 col-4 col-form-label ml-2" >Status :</label>
-                                                <div class="col-lg-4 col-8">
-                                                    <select formControlName="product" class="form-select">
-                                                        <option value="" selected>----------- Select Location ----------</option>
-                                                        <option value="INTERESTED">INTERESTED </option>
-                                                        <option value="NOT INTERESTED">NOT INTERESTED </option>
-                                                    </select>
-                                                </div> -->
+                        
                                             </div>
 
-                                                <div class="form-group row">
-                                                    <label for="address" class="col-lg-2 col-4 col-form-label">Is Next Date:</label>
-                                                    <div class="col-lg-4 col-8" >
-                                                        <input type="checkbox" id="isVisited1"
-                                                            ng-model="dailyVisit.isVisited" />
+                                               
+
+
+                                            <div class="form-check mb-3 was-validated">
+
+                                                <label class="form-check-label" for="myCheck">Is Next
+                                                    Date:</label>
+                                                <input class="form-check-input" type="checkbox" id="myCheck"
+                                                    name="remember" required >
+                                                    
+                                                <div class="valid-feedback" >
+                                                   
+                                                    <div class="form-group row mb-3">
+
+                                                        <label for="complianceDueDate"
+                                                            class="col-lg-2 col-4 col-form-label ml-2">Next
+                                                            Visit Date:</label>
+                                                        <div class="col-lg-4 col-8">
+                                                            <input type="date"
+                                                                formControlName="nextvisitdate"
+                                                                class="form-control" id="complianceDueDate">
+                                                        </div>
                                                     </div>
-                                                <label for="complianceDueDate" class="col-lg-1 col-4 col-form-label ml-2">Visit Date:</label>
-                                                <div class="col-lg-4 col-8">
-                                                    <input type="date" formControlName="complianceDueDate" class="form-control"
-                                                        id="complianceDueDate">
                                                 </div>
+                                                <!-- <div class="invalid-feedback"></div> -->
                                             </div>
 
                                           

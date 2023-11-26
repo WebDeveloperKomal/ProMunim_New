@@ -27,10 +27,10 @@
                      
   <div class="row line">
     <div class="col-md-6 col-6">
-      <h2>Add New Customer</h2>
+      <h6>Add New Customer</h6>
     </div>
     <div class="col-md-6 col-6 text-md-end">
-      <button type="button" routerLink="/allcomplaintsmain" class="btn btn-info p-3">
+      <button type="button" routerLink="/set/allnewcustomer" class="btn btn-info">
         All Customers
       </button>
     </div>
@@ -38,7 +38,7 @@
                     <form  [formGroup]="addnewcustomer" class="col-md-12 col-sm-12 col-xs-12 mt-5">
 
 
-                        <div class="form-group row">
+                        <div class="form-group row mb-3">
                             <label for="companyname" class="col-lg-2 col-4   col-form-label mr-5">Company Name:</label>
                             <div class="col-lg-4 col-8">
                                 <input type="text" formControlName="companyname" class="form-control" id="complianceName">
@@ -48,7 +48,7 @@
                                 <input type="text" formControlName="fullname" class="form-control" id="complianceName">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row mb-3">
                             <label for="email" class="col-lg-2 col-4   col-form-label mr-5">Email Id:</label>
                             <div class="col-lg-4 col-8">
                                 <input type="email" formControlName="email" class="form-control" id="complianceName">
@@ -59,7 +59,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row mb-3">
                             <label for="altcontactno" class="col-lg-2 col-4   col-form-label mr-5">Alternative Contact
                                 Number:</label>
                             <div class="col-lg-4 col-8">
@@ -74,7 +74,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row mb-3">
                             <label for="city" class="col-lg-2 col-4   col-form-label mr-5">City:</label>
                             <div class="col-lg-4 col-8">
                                 <input type="text" formControlName="city" class="form-control" id="complianceName">
@@ -85,7 +85,7 @@
                                 <input type="text" formControlName="pincode" class="form-control" id="complianceName">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row mb-3">
                             <label for="constofcompany" class="col-lg-2 col-4 col-form-label ml-2" >Constitution of Company:</label>
                             <div class="col-lg-4 col-8">
                                 <select formControlName="constofcompany" class="form-select">
@@ -104,7 +104,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row mb-3">
                             <label for="natureofbus" class="col-lg-2 col-4 col-form-label ml-2" >Nature Of Business:</label>
                             <div class="col-lg-4 col-8">
                                 <select formControlName="natureofbus" class="form-select">
@@ -122,7 +122,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row mb-3">
                             <label for="leadtype" class="col-lg-2 col-4 col-form-label ml-2" >Lead Type:</label>
                             <div class="col-lg-4 col-8">
                                 <select formControlName="leadtype" class="form-select">
@@ -140,8 +140,8 @@
                                     <option value="NOT INTERESTED">NOT INTERESTED </option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="form-group row">
+                        </div> 
+                        <div class="form-group row mb-3">
                             <label for="product" class="col-lg-2 col-4 col-form-label ml-2" >Product:</label>
                             <div class="col-lg-4 col-8">
                                 <select formControlName="product" class="form-select">
@@ -155,12 +155,12 @@
                         
                             <div class=" col-md-12 col-sm-12 col-xs-12 mt-5">
                                 <div class="col-md-offset-3 col-md-9" >
-                                    <button class="col-lg-2 col-4 btn btn-info p-3 m-4 " type="submit">
+                                    <button class="col-lg-2 col-4 btn btn-info m-4 " type="submit">
                                         <i class="ace-icon fa fa-check bigger-110"></i>
                                         Next
                                     </button>
                                 
-                                    <button class="col-lg-2 col-4 btn btn-info p-3 m-4">
+                                    <button class="col-lg-2 col-4 btn btn-info m-4">
                                         <i class="ace-icon fa fa-undo bigger-110"></i>
                                         Reset
                                     </button>

@@ -1,7 +1,6 @@
 export class DepartmentModel{
-    branchid : any;
-    branchname: any;
-    branchcode: any;
-    branchcity: any;
-    branchaddress: any;
+    departmentID : any;
+    departmentName: any;
+    mainDepName: any;
+    mainDepId: any;
 }

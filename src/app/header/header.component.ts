@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { SidenavtoggleService } from '../Shared/sidenavtoggle.service';
+import { SecurityService } from '../security.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,10 +9,30 @@ import { SidenavtoggleService } from '../Shared/sidenavtoggle.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  @Output() toggleSidenavEvent = new EventEmitter<void>()
-constructor(private sharedService: SidenavtoggleService){
+  @Output() sideNavToggled = new EventEmitter<boolean>();
+  menuStatus : boolean = false;
+  isLoggedin:boolean | undefined;
+  UserFullName!:string;
 
-}
+  constructor(private sharedService: SidenavtoggleService, private securityService: SecurityService, private router:Router){}
+
+  ngOnInit(){
+    this.isLoggedin= this.securityService.IsLoggedIn();
+    this.securityService.getUserData().subscribe(
+      (responce:any)=>{
+        // this.UserFullName=`${responce.fistnsame}`;
+        console.log(responce.data);
+      },
+      (error:any)=>{
+        console.error(error);        
+      }
+    )
+  }
+
+  logout(){
+    localStorage.removeItem('token');
+    this.router.navigate(['']);
+  }
   isFeesDropdownVisible: boolean = false;
   toggleFeesDropdown() {
     this.isFeesDropdownVisible = !this.isFeesDropdownVisible;
@@ -22,16 +44,27 @@ constructor(private sharedService: SidenavtoggleService){
   toggleSidebar() {
     this.sidebarVisible = !this.sidebarVisible;
   }
-  showhidesidenav() {
-    this.sharedService.toggleSidebar();
-    // this.isOpen = !this.isOpen;
+
+
+
+  // showhidesidenav() {
+  //   this.sharedService.toggleSidebar();
+   
+  // }
+  sideNavToggle(){
+this.menuStatus = !this.menuStatus;
+this.sideNavToggled.emit(this.menuStatus)
   }
   
-  toggleSidenav() {
-    this.toggleSidenavEvent.emit();
-  }
+  // toggleSidenav() {
+  //   this.toggleSidenavEvent.emit();
+  // }
 
   // closeSidebar() {
   //   this.isOpen = false;
   // }
+
+  toggleSideNav() {
+    this.sharedService.toggleSideNav();
+  }
 }

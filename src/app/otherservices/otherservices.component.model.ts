@@ -1,7 +1,8 @@
 export class OtherServicesModel{
-    branchid : any;
-    branchname: any;
-    branchcode: any;
-    branchcity: any;
-    branchaddress: any;
+    serviceId : any;
+    serviceName: any;
+    description: any;
+    fees: any;
+    insertByUser: any;
+    insertTime: any;
 }

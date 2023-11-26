@@ -19,17 +19,19 @@
                             </h1>
                         </div>
                         <div>
-                            <button type="button" routerLink="/alldailyvisits" class="btn btn-info"
+                            <button type="button" routerLink="/set/alldailyvisits" class="btn btn-info"
                                 style="float: right;">
                                 View All Daily Visit</button>
                         </div>
 
 
                         <div class="col-md-12 col-sm-12 col-xs-12 box">
-                            <div class="nav-tabs-custom" >
-                                <ul class="nav nav-tabs" >
-                                            <li [class.active]="activeTab === 'tab1'"><a (click)="changeTab('tab1')" >All Visits</a></li>
-                                            <li [class.active]="activeTab === 'tab2'"><a (click)="changeTab('tab2')">Add Visit Details</a></li>
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs">
+                                    <li [class.active]="activeTab === 'tab1'"><a (click)="changeTab('tab1')">All
+                                            Visits</a></li>
+                                    <li [class.active]="activeTab === 'tab2'"><a (click)="changeTab('tab2')">Add Visit
+                                            Details</a></li>
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane active" [class.active]="activeTab === 'tab1'" id="tab1">
@@ -44,58 +46,80 @@
                                             </thead>
                                             <tbody>
                                                 <tr *ngFor="let data of dataarray ,let index = index ">
-                                                <td>{{index+1}}</td>
-                                               
-                                                <td>{{data.branchname}}</td>
-                                                <td>{{data.branchcode}}</td>
-                                                
-                                                <td>{{data.branchcity}}</td>
-                                              </tr>
+                                                    <td>{{index+1}}</td>
+
+                                                    <td>{{data.branchname}}</td>
+                                                    <td>{{data.branchcode}}</td>
+
+                                                    <td>{{data.branchcity}}</td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
 
-                                    <div class="tab-pane mt-5" [class.active]="activeTab === 'tab2'" id="tab2"  >
-                                        <form class="form-horizontal"[formGroup]="employeeForm">
-                                          
+                                    <div class="tab-pane mt-5" [class.active]="activeTab === 'tab2'" id="tab2">
+                                        <form class="form-horizontal"  [formGroup]="viewAddDailyvisitForm">
+
 
                                             <div class="form-group row mb-3">
-                                                <label for="complianceDueDate" class="col-lg-2 col-4 col-form-label">Visit Date:</label>
+                                                <label for="complianceDueDate"
+                                                    class="col-lg-2 col-4 col-form-label">Visit Date:</label>
                                                 <div class="col-lg-4 col-8">
-                                                    <input type="date" formControlName="complianceDueDate" class="form-control"
-                                                        id="complianceDueDate">
+                                                    <input type="date" formControlName="visitdate"
+                                                        class="form-control" id="complianceDueDate">
                                                 </div>
 
-                                                <label for="taxLink" class="col-lg-1 col-4 col-form-label ml-2" >Status :</label>
+                                                <label for="taxLink" class="col-lg-1 col-4 col-form-label ml-2">Status
+                                                    :</label>
                                                 <div class="col-lg-4 col-8">
-                                                    <select formControlName="product" class="form-select">
-                                                        <option value="" selected>----------- Select Location ----------</option>
-                                                        <option value="INTERESTED">INTERESTED </option>
-                                                        <option value="NOT INTERESTED">NOT INTERESTED </option>
-                                                    </select>
+                                                    <select formControlName="status" class="form-select">
+                                                        <option value="" selected>----------- Select Location ----------
+                                                        </option>
+                                                         </select>
                                                 </div>
                                             </div>
-                                         <div class="form-group row mb-3">
-                                                <label for="address" class="col-lg-2 col-4   col-form-label mr-5">Description</label>
+                                            <div class="form-group row mb-3">
+                                                <label for="address"
+                                                    class="col-lg-2 col-4   col-form-label mr-5">Description</label>
                                                 <div class="col-lg-4 col-8">
-                                                    <textarea class="form-control" id="address" rows="3" formControlName="address"
-                                                            required> </textarea>
+                                                    <textarea class="form-control" id="address" rows="3"
+                                                        formControlName="description" required> </textarea>
                                                 </div>
-                                                <label for="address" class="col-lg-2 col-4 col-form-label">Is Next Date:</label>
-                                                    <div class="col-lg-4 col-8" >
-                                                        <input type="checkbox" id="isVisited1"
-                                                            ng-model="dailyVisit.isVisited" />
-                                                    </div>
-                                            </div>
+                                                </div>
+                                                <!-- *******************bot***************** -->
+                                                <!-- <div class="container mt-3"> -->
 
-                                                <div class="form-group row mb-3">
-                                                    
-                                                <label for="complianceDueDate" class="col-lg-2 col-4 col-form-label ml-2">Visit Date:</label>
-                                                <div class="col-lg-4 col-8">
-                                                    <input type="date" formControlName="complianceDueDate" class="form-control"
-                                                        id="complianceDueDate">
-                                                </div>
-                                            </div>
+                                                    <!-- <form action="/action_page.php" class="was-validated"> -->
+
+
+                                                        <div class="form-check mb-3 was-validated">
+
+                                                            <label class="form-check-label" for="myCheck">Is Next
+                                                                Date:</label>
+                                                            <input class="form-check-input" type="checkbox" id="myCheck"
+                                                                name="remember" required (click)="checkednextdate()">
+                                                            <div class="valid-feedback" *ngIf="shownextdate">
+                                                                <div class="form-group row mb-3">
+
+                                                                    <label for="complianceDueDate"
+                                                                        class="col-lg-2 col-4 col-form-label ml-2">Next
+                                                                        Visit Date:</label>
+                                                                    <div class="col-lg-4 col-8">
+                                                                        <input type="date"
+                                                                            formControlName="nextvisitdate"
+                                                                            class="form-control" id="complianceDueDate">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- <div class="invalid-feedback"></div> -->
+                                                        </div>
+
+                                                    <!-- </form> -->
+                                                <!-- </div> -->
+
+                                            <!-- </div> -->
+
+
 
 
                                             <div class="col-md-12 col-sm-12 col-xs-12">
@@ -114,11 +138,6 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-
-
                     </div>
                 </div>
             </div>

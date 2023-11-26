@@ -44,7 +44,7 @@
                             </h1>
                           </div>
                           <div>
-                            <button type="button" routerLink="/add-new-customer" class="btn btn-info" style="float: right;">
+                            <button type="button" routerLink="/set/add-new-customer" class="btn btn-info" style="float: right;">
                               Add New Customer</button>
                             </div>
               
@@ -302,39 +302,415 @@
                 </thead>
                 <tbody>
                   <tr
-                    *ngFor="let data of dataarray  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
-                    <td>{{index+1}}</td>
-                    <td>{{data.branchid}}</td>
-                    <td>{{data.branchname}}</td>
-                    <td>{{data.branchcode}}</td>
-                    <td>{{data.branchcity}}</td>
-                    <td>{{data.branchcity}}</td>
-                    <td>{{data.branchcity}}</td>
+                  *ngFor="let data of temCustomerList  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
+                  <td>{{index+1}}</td>
+                  <td>{{data.tempCustCompanyName}}</td>
+                  <td>{{data.tempCustFullName}}</td>
+                  <td>{{data.tempCustContactNo}}</td>
+                  <td>{{data.attendedByFN}} {{data.attendedByLN}}</td>
+                  <td>{{data.tempCustCreationDate}}</td>
+                  <td>{{data.tempCustBranchName}}</td>
                     <td>
-                        <button class="btn btn-xs" style="font-size: 13px; background-color:#003974!important; color: white;" routerLink="/" >
+                        <button class="btn btn-xs" style="font-size: 13px; background-color:#003974!important; color: white;" data-bs-toggle="modal" data-bs-target="#exampleModal1">
                             <i class="ace-icon fa fa-info bigger-120"></i>
                         </button>&nbsp;&nbsp;
-                        <button class="btn btn-xs" style="font-size: 13px; background-color:#003974!important; color: white;" routerLink="/" >
+                        <!-- <button class="btn btn-xs" style="font-size: 13px; background-color:#003974!important; color: white;" routerLink="/" >
                             <i class="ace-icon fa fa-pencil bigger-120"></i>
+                        </button> -->
+
+                        <button class="btn btn-xs" style="font-size: 13px; background-color:#003974!important; color: white;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                          <i class="ace-icon fa fa-pencil bigger-120"></i>
+                      </button>&nbsp;&nbsp;
+
+                      <button class="btn btn-xs" style=" font-size: 13px; background-color:#DC3545!important; color: white;" (click)="delete()" >
+                        <!-- <i class="fa fa-trash"  aria-hidden="true"></i> -->
+                        <i class="fa-solid fa-trash-can"></i>
                         </button>
+
+                                    
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New Customer Info</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+
+
+        
+                
+                
+                      <table class="table table-bordered">
+                        <tr
+                            *ngFor="let data of dataarray  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
+                           
+                        <tr>
+                          <th style="width:30%">Customer Full Name</th>
+                          <td>{{data.tempCustCompanyName}}</td>
+                      </tr>
+                      <tr>
+                          <th style="width:30%">Branch</th>
+                          <td>{{data.tempCustCompanyName}}</td>
+                      </tr>
+                      <tr>
+                          <th style="width:30%">Email</th>
+                          <td>{{data.tempCustCompanyName}}</td>
+                      </tr>
+                      <tr>
+                          <th style="width:30%">Contact No.</th>
+                          <td>{{data.tempCustCompanyName}}</td>
+                      </tr>
+                      <tr>
+                          <th style="width:30%">Alternative Contact No.</th>
+                          <td>{{data.tempCustCompanyName}}</td>
+                      </tr>
+                      <tr>
+                          <th style="width:30%">Address</th>
+                          <td>{{data.tempCustCompanyName}}</td>
+                      </tr>
+                      <tr>
+                          <th style="width:30%">City</th>
+                          <td>{{data.tempCustCompanyName}}</td>
+                      </tr>
+                      <tr>
+                          <th style="width:30%">Pin</th>
+                          <td>{{data.tempCustCompanyName}}</td>
+                      </tr>
+                      <tr>
+                          <th style="width:30%">Product</th>
+                          <td>{{data.tempCustCompanyName}}</td>
+                      </tr>
+                      <tr>
+                          <th style="width:30%">Constitution</th>
+                          <td>{{data.tempCustCompanyName}}</td>
+                      </tr>
+                      <tr>
+                          <th style="width:30%">Segment</th>
+                          <td>{{data.tempCustCompanyName}}</td>
+                      </tr>
+                      <tr>
+                          <th style="width:30%">Nature Of Business</th>
+                          <td>{{data.tempCustCompanyName}}</td>
+                      </tr>
+                      <tr>
+                          <th style="width:30%">Maintaining ITR</th>
+                          <td>{{data.tempCustCompanyName}}</td>
+                      </tr>
+                      <tr>
+                          <th style="width:30%">Lead Type</th>
+                          <td>{{data.tempCustCompanyName}}</td>
+                      </tr>
+                      <tr>
+                          <th style="width:30%">Lead Status</th>
+                          <td>{{data.tempCustCompanyName}}</td>
+                      </tr>
+                      <tr>
+                          <th style="width:30%">Attended By </th>
+                          <td>{{data.tempCustCompanyName}}</td>
+                      </tr>
+                      <tr>
+                          <th style="width:30%">Creation Date</th>
+                          <td>{{data.tempCustCompanyName}}</td>
+                      </tr>
+                      
+                     <!-- </tr> -->
+                        <!-- <thead>
+                          <tr>
+                            <th>Entity</th>
+                            <th>Insert</th>
+                            <th>Delete</th>
+                            <th>Update</th>
+                            <th>View /</th>
+                            <th>View RM/</th>
+                              <th>View Branch /</th>
+                              <th>View All</th>
+                          </tr>
+                        </thead> -->
+                         <!-- <tbody>
+                          <tr
+                            *ngFor="let data of dataarray  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
+                            <th>Entity</th>
+                            <td>{{data.branchname}}</td>
+                          
+                           
+                          </tr>
+                        </tbody>  -->
+                      </table>
+                     
+                      
+                <!-- </div>
+              </div>
+            </div> -->
+          <!-- Your modal content goes here -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+                      
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="exampleModalLabel">Update New Customer</h5>
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+  <!-- <div class="container box pb-2" > -->
+    <!-- <div class="row"> -->
+
+      <form [formGroup]="employeeForm1" class=" col-md-12 col-sm-12 col-xs-12 mt-5">
+       <div class="container">
+
+        <div class="form-group row mb-3">
+      
+          <label for="complianceDueDate" class="col-lg-4 col-4 control-label">Company Name:</label>
+              <div class="col-lg-8 col-md-8 col-8 ">
+                <input type="text" formControlName="companyname" class="form-control">
+              </div>
+      </div>
+      <div class="form-group row mb-3">
+      
+        <label for="complianceDueDate" class="col-lg-4 col-4 control-label">Full Name:</label>
+            <div class="col-lg-8 col-md-8 col-8 ">
+              <input type="text" formControlName="fullname" class="form-control">
+            </div>
+    </div>
+    <div class="form-group row mb-3">
+      
+      <label for="complianceDueDate" class="col-lg-4 col-4 control-label">Email Id:</label>
+          <div class="col-lg-8 col-md-8 col-8 ">
+            <input type="text" formControlName="email" class="form-control">
+          </div>
+  </div>
+  <div class="form-group row mb-3">
+      
+    <label for="complianceDueDate" class="col-lg-4 col-4 control-label">Contact Number:</label>
+        <div class="col-lg-8 col-md-8 col-8 ">
+          <input type="text" formControlName="constno" class="form-control">
+        </div>
+</div>
+<div class="form-group row mb-3">
+      
+  <label for="complianceDueDate" class="col-lg-4 col-4 control-label">Alternative Contact Number:</label>
+      <div class="col-lg-8 col-md-8 col-8 ">
+        <input type="text" formControlName="altconstno" class="form-control">
+      </div>
+</div>
+<div class="form-group row mb-3">
+      
+  <label for="complianceDueDate" class="col-lg-4 col-4 control-label">Address:</label>
+      <div class="col-lg-8 col-md-8 col-8 ">
+        <!-- <input type="text" formControlName="companyname" class="form-control"> -->
+        <textarea class="form-control" id="address" rows="3" formControlName="address"
+        required> </textarea>
+      </div>
+</div>
+<div class="form-group row mb-3">
+      
+  <label for="complianceDueDate" class="col-lg-4 col-4 control-label">City:</label>
+      <div class="col-lg-8 col-md-8 col-8 ">
+        <input type="text" formControlName="city" class="form-control">
+      </div>
+</div>
+
+<div class="form-group row mb-3">
+      
+  <label for="complianceDueDate" class="col-lg-4 col-4 control-label">Pincode:</label>
+      <div class="col-lg-8 col-md-8 col-8 ">
+        <input type="text" formControlName="pincode" class="form-control">
+      </div>
+</div>
+       <div class="form-group row mb-3">
+      
+        <label for="complianceDueDate" class="col-lg-4 col-4 control-label">Constitution of Company:</label>
+            <div class="col-lg-8 col-md-8 col-8 ">
+               <select class="form-select" formControlName="constofcompany" id="status">
+                        <option value="">----------- Select Customer----------- </option>
+                        <option value="PROPRITER">PROPRITER </option>
+                        <option value="PARTNERSHIP">PARTNERSHIP</option>
+                        <option value="PVT.LTD.">PVT. LTD.</option>
+
+                      </select>
+            </div>
+    </div> 
+    <!-- <div class="col-md-6 col-sm-6 col-xs-12" >
+      <div class="form-group">
+        <label for="const" class="col-sm-4 control-label">Constitution of Company:</label>
+        <div class="col-sm-8">
+          <select class="form-control"  id="constitution" ng-model="tempCustomer.tempCustCmpConstitution" required>
+              <option value="">-----------------------Select------------------------ </option>
+              <option value="PROPRITER">PROPRITER </option>
+              <option value="PARTNERSHIP">PARTNERSHIP</option>
+              <option value="PVT.LTD.">PVT. LTD.</option>
+              
+           </select>
+        </div>
+      </div>
+     </div> -->
+    <div class="form-group row mb-3">
+      
+      <label for="complianceDueDate" class="col-lg-4 col-4 control-label">Segment:</label>
+          <div class="col-lg-8 col-md-8 col-8 ">
+             <select class="form-select" formControlName="segment" id="status">
+                      <option value="">----------- Select Customer----------- </option>
+                      <option *ngFor="let data of dataarray" [value]="data.tempCustCompanyName">{{ data.tempCustCompanyName }}
+                      </option>
+                      <!-- <option value="Tech Support">Tech Support</option> -->
+                    </select>
+          </div>
+  </div>
+  <div class="form-group row mb-3">
+      
+    <label for="complianceDueDate" class="col-lg-4 col-4 control-label">Nature Of Business:</label>
+        <div class="col-lg-8 col-md-8 col-8 ">
+           <select class="form-select" formControlName="natofbuss" id="status">
+                    <option value="">----------- Select Customer----------- </option>
+                    <option *ngFor="let data of dataarray" [value]="data.tempCustCompanyName">{{ data.tempCustCompanyName }}
+                    </option>
+                    <!-- <option value="Tech Support">Tech Support</option> -->
+                  </select>
+        </div>
+</div>
+<div class="form-group row mb-3">
+      
+  <label for="complianceDueDate" class="col-lg-4 col-4 control-label">Maintaining ITR:</label>
+      <div class="col-lg-8 col-md-8 col-8 ">
+         <select class="form-select" formControlName="mainitr" id="status">
+                  <option value="">----------- Select Customer----------- </option>
+                  <option value="YES">YES</option>
+                  <option value="NO">NO </option>
+                  <!-- <option *ngFor="let data of dataarray" [value]="data.branchname">{{ data.branchname }}
+                  </option> -->
+                  <!-- <option value="Tech Support">Tech Support</option> -->
+                </select>
+      </div>
+</div>
+<div class="form-group row mb-3">
+      
+  <label for="complianceDueDate" class="col-lg-4 col-4 control-label">Lead Type:</label>
+      <div class="col-lg-8 col-md-8 col-8 ">
+         <select class="form-select" formControlName="leadtype" id="status">
+                  <option value="">----------- Select Customer----------- </option>
+                  <option value="HOT">HOT </option>
+                  <option value="WARM">WARM </option>
+                  <option value="COLD">COLD </option>
+                  <!-- <option value="Tech Support">Tech Support</option> -->
+                </select>
+      </div>
+</div>
+<div class="form-group row mb-3">
+      
+  <label for="complianceDueDate" class="col-lg-4 col-4 control-label">Lead Status:</label>
+      <div class="col-lg-8 col-md-8 col-8 ">
+         <select class="form-select" formControlName="leadstatus" id="status">
+                  <option value="">----------- Select Customer----------- </option>
+                  <option value="INTERESTED">INTERESTED </option>
+                                    <option value="NOT INTERESTED">NOT INTERESTED </option>
+                  <!-- <option value="Tech Support">Tech Support</option> -->
+                </select>
+      </div>
+</div>
+
+
+
+        <div class="form-group row mb-3">
+      
+          <label for="complianceDueDate" class="col-lg-4 col-4 control-label">Product:</label>
+              <div class="col-lg-8 col-md-8 col-8 ">
+                 <select class="form-select" formControlName="product" id="status">
+                          <option value="">----------- Select Customer----------- </option>
+                          <option *ngFor="let data of dataarray" [value]="data.tempCustCompanyName">{{ data.tempCustCompanyName }}
+                          </option>
+                          <!-- <option value="Tech Support">Tech Support</option> -->
+                        </select>
+              </div>
+      </div>
+        <!-- <div class="row"> -->
+          <!-- <div class="row col-lg-12 col-md-10 col-11 m-3 m-lg-0">
+            <label for="location">Select Branch :</label>
+            <select formControlName="location" class="form-select ">
+
+              <option value="">---Select Status---</option>
+              <option value="1001">Hadapsar</option>
+
+              <option value="1010">Solapur</option>
+
+              <option value="1020">Daund</option>
+
+             
+
+            </select>
+          </div> -->
+
+        
+
+          <!-- <div class="col-lg-3 col-md-10 col-11 m-3 m-lg-0 form-group">
+            <label for="department">From Date</label>
+            <input type="date" formControlName="department" class="form-control">
+          </div>
+
+          <div class="col-lg-3 col-md-10 col-11 m-3 m-lg-0 form-group">
+            <label for="department">To Date</label>
+            <input type="date" formControlName="department" class="form-control">
+          </div> -->
+<!-- 
+          <div class="text-end" >
+            <button type="button" class="btn btn-info  m-lg-3 m-4"><i class="ace-icon fa fa-check bigger-110"></i>
+              Submit</button>
+        
+            <button type="button" class="btn canc m-lg-3 m-4">
+                <i class="ace-icon fa fa-undo bigger-110"></i>
+                Reset
+            </button>
+        </div> -->
+          
+<!--                   
+          <div class="col text-end">
+            <button type="button" class="btn btn-info m-lg-3 m-4"><i class="ace-icon fa fa-check bigger-110"></i> Submit</button>
+            <button type="button" class="btn canc m-lg-3 m-4"><i class="ace-icon fa fa-undo bigger-110"></i> Reset</button>
+        </div> -->
+        <!-- </div> -->
+        
+      </div>
+      
+      </form>
+      <!-- </div> -->
+
+    <!-- </div> -->
+
+  <!-- </div> -->
+
+
+
+  
+       
+        
+  <!-- </div>
+</div>
+</div> -->
+<!-- Your modal content goes here -->
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+<button type="button" class="btn btn-primary">Update</button>
+</div>
+</div>
+</div>
+</div>
                         
                     </td>
                   </tr>
                 </tbody>
               </table>
-              <div class="d-flex justify-content-between p-2">
-                <div class="dataTables_info mt-3" style="font-size: 14px;" id="branch_datatable_info" role="status"
-                  aria-live="polite">
-                  Showing {{(page - 1) * pageSize + 1}} to {{(page * pageSize < collectionSize) ? page * pageSize :
-                    collectionSize}} of {{dataarray.length}} entries </div>
-                    <ngb-pagination [pageSize]="25" [collectionSize]="collectionSize" [(page)]="page"
-                      aria-label="Default pagination"></ngb-pagination>
-  
-                </div>
-              <!-- </div> -->
-
-            <!-- </div> -->
-          <!-- </div> -->
+             
+             
         </div>
       </div>
     </div>
