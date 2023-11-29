@@ -25,6 +25,22 @@ export class ApiService {
     {
       return this.http.get(`${this.baseUrl}/branch`);
     }
+    addBranch(branch:any):any
+    {
+      return this.http.post(`${this.baseUrl}/add-branch`,branch);
+    }
+    BranchById(id:number):any
+    {
+      return this.http.get(`${this.baseUrl}/get-branch-by-id/`+id);
+    }
+    updateBranch(branch:any):any
+    {
+      return this.http.put(`${this.baseUrl}/branch`,branch);
+    }
+    deleteBranch(id:number):any
+    {
+      return this.http.delete(`${this.baseUrl}/branch/`+id);
+    }
 
 
     /************************************** COMPLIANCES ***************************************/
@@ -50,7 +66,7 @@ export class ApiService {
 
     deleteCompliance(id:number):any
     {
-      return this.http.delete(`${this.baseUrl}/compliance/${id}`);
+      return this.http.delete(`${this.baseUrl}/compliance/`+id);
     }
 
 
@@ -60,11 +76,51 @@ export class ApiService {
       return this.http.get(`${this.baseUrl}/department`);
     }
 
+    addDepartment(department:any):any
+    {
+      return this.http.post(`${this.baseUrl}/department`,department);
+    }
+
+    DepartmentById(id:number):any
+    {
+      return this.http.get(`${this.baseUrl}/getdep/`+id);
+    }
+
+    updateDepartment(department:any):any
+    {
+      return this.http.put(`${this.baseUrl}/department`,department);
+    }
+
+    deleteDepartment(id:number):any
+    {
+      return this.http.delete(`${this.baseUrl}/department/`+id);
+    }
+
 
     /************************************** PRODUCTS ***************************************/
     allProducts():any
     {
       return this.http.get(`${this.baseUrl}/all-product`);
+    }
+
+    addProduct(product:any):any
+    {
+      return this.http.post(`${this.baseUrl}/save-product`,product);
+    }
+
+    ProductById(id:number):any
+    {
+      return this.http.get(`${this.baseUrl}/get-product/`+id);
+    }
+
+    updateProduct(product:any):any
+    {
+      return this.http.post(`${this.baseUrl}/update-product`,product);
+    }
+
+    deleteProduct(id:number):any
+    {
+      return this.http.delete(`${this.baseUrl}/delete/`+id);
     }
 
   
@@ -81,6 +137,11 @@ export class ApiService {
       return this.http.get(`${this.baseUrl}/all-services`);
     }
 
+    addOtherServices(services:any):any
+    {
+      return this.http.post(`${this.baseUrl}/add-services`,services);
+    }
+
 
     /************************************** COURIOR DETAILS ***************************************/
     allCouriors():any
@@ -88,8 +149,28 @@ export class ApiService {
       return this.http.get(`${this.baseUrl}/courier`);
     }
 
+    addCourior(courior:any):any
+    {
+      return this.http.post(`${this.baseUrl}/add-courier`,courior);
+    }
+
+    couriorById(id:any):any
+    {
+      return this.http.get(`${this.baseUrl}/courier-by-id/`+id);
+    }
+
+    updateCourior(courior:any):any
+    {
+      return this.http.put(`${this.baseUrl}/update-courier`,courior);
+    }
+
     /************************************** DOCUMENT CATEGORY ***************************************/
     allDocumentCategories():any
+    {
+      return this.http.get(`${this.baseUrl}/get-doc-category`);
+    }
+
+    DocumentCategoryById():any
     {
       return this.http.get(`${this.baseUrl}/get-doc-category`);
     }
@@ -106,10 +187,9 @@ export class ApiService {
     /************************************** FOR EMPLOYEE COMPONENT ***************************************/
 
 
-    /************************************** DOCUMENT CATEGORY ***************************************/
     allEmployees():any
     {
-      return this.http.get(`${this.baseUrl}/employee`);
+      return this.http.get(`http://localhost:8181/employee`);
     }
 
 
@@ -123,19 +203,16 @@ export class ApiService {
 
     /************************************** FOR ALL NEW CUSTOMERS COMPONENT ***************************************/
 
-
-    /************************************** DOCUMENT CATEGORY ***************************************/
     allTempCustomers():any
     {
       return this.http.get(`${this.baseUrl}/allTempCustomer`);
     }
 
-
-
-
-
-
     
+
+
+
+
 
 
 

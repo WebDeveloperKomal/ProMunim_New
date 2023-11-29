@@ -36,8 +36,11 @@
                     </div> -->
                     <label for="segment" class="col-lg-3 col-4 col-form-label ml-2 text-end">Select Main Department:</label>
                     <div class="col-lg-5 col-8">
-                        <select formControlName="selmaindepart" class="form-select">
+                        <select formControlName="selmaindepart" [(ngModel)]="dept.mainDepId" class="form-select">
                             <option value="">-----------------------Select------------------------ </option>
+                            <option value="1">Distribution</option>
+                            <option value="2">Support</option>
+                            <option value="3">CPU</option>
                             <option *ngFor="let data of dataarray" [value]="data.branchname">{{
                                 data.branchname }}
                             </option>
@@ -53,7 +56,7 @@
                 <div class="form-group row mb-3">
                     <label for="complianceName" class="col-lg-3 col-4   col-form-label mr-5 text-end">Department:</label>
                     <div class="col-lg-5 col-8">
-                        <input type="text" formControlName="department" class="form-control" id="complianceName">
+                        <input type="text" formControlName="department" [(ngModel)]="dept.departmentName" class="form-control" id="complianceName">
                     </div>
                     <!-- <label for="contactno" class="col-lg-2 col-4   col-form-label mr-5">Contact
                         Number:</label>
@@ -66,7 +69,7 @@
                
                 <div class="text-center mt-3">
                     <!-- <div class="col-sm-offset-3 col-md-9"> -->
-                        <button type="button" class="btn btn-info  m-lg-4 m-4"><i class="ace-icon fa fa-check bigger-110"></i>
+                        <button type="button" class="btn btn-info  m-lg-4 m-4" (click)="onSubmit()"><i class="ace-icon fa fa-check bigger-110"></i>
                             Submit</button>
                          <button type="button" class="btn canc m-lg-4 m-4">
                               <i class="ace-icon fa fa-undo bigger-110"></i>

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { SidenavtoggleService } from '../Shared/sidenavtoggle.service';
 import { SecurityService } from '../security.service';
 import { Router } from '@angular/router';
+import { EmployeeModel } from '../employee/employee.component.model';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,7 @@ export class HeaderComponent {
   @Output() sideNavToggled = new EventEmitter<boolean>();
   menuStatus : boolean = false;
   isLoggedin:boolean | undefined;
-  UserFullName!:string;
+  user:EmployeeModel = new EmployeeModel();
 
   constructor(private sharedService: SidenavtoggleService, private securityService: SecurityService, private router:Router){}
 
@@ -20,8 +21,7 @@ export class HeaderComponent {
     this.isLoggedin= this.securityService.IsLoggedIn();
     this.securityService.getUserData().subscribe(
       (responce:any)=>{
-        // this.UserFullName=`${responce.fistnsame}`;
-        console.log(responce.data);
+        this.user= responce.data
       },
       (error:any)=>{
         console.error(error);        

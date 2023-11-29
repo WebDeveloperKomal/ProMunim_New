@@ -30,12 +30,12 @@
                 <div class="form-group row mb-3">
                     <label for="complianceName" class="col-lg-2 col-4   col-form-label mr-5 mb-2">Compliance Name:</label>
                     <div class="col-lg-4 col-8">
-                        <input type="text" formControlName="complianceName" class="form-control" id="complianceName">
+                        <input type="text" formControlName="complianceName" [(ngModel)]="compliance.complianceName" class="form-control" id="complianceName">
                     </div>
                     <label for="taxLink" class="col-lg-1 col-4 col-form-label ml-2" >Tax Link  :</label>
                     <div class="col-lg-4 col-8">
-                        <select formControlName="taxLink" class="form-control select">
-                            <option value="" selected>None</option>
+                        <select formControlName="taxLink" [(ngModel)]="compliance.taxLink" class="form-control select">
+                            <option value="None" selected>None</option>
                             <option *ngFor="let data of dataarray" [value]="data.branchname">{{ data.branchname }}
                             </option>
                         </select>
@@ -44,14 +44,14 @@
                 <div class="form-group row">
                     <label for="complianceDueDate" class="col-lg-2 col-4 col-form-label">Compliance Due Date:</label>
                     <div class="col-lg-4 col-8">
-                        <input type="date" formControlName="complianceDueDate" class="form-control"
+                        <input type="date" formControlName="complianceDueDate" [(ngModel)]="compliance.complianceDueDate" class="form-control"
                             id="complianceDueDate">
                     </div>
                 </div>
 
                 <div class="text-center mt-3">
                     <!-- <div class="col-sm-offset-3 col-md-9"> -->
-                        <button type="button" class="btn btn-info  m-lg-4 m-4"><i class="ace-icon fa fa-check bigger-110"></i>
+                        <button type="button" class="btn btn-info  m-lg-4 m-4" (click)="onSubmit()"><i class="ace-icon fa fa-check bigger-110"></i>
                             Submit</button>
                          <button type="button" class="btn canc m-lg-4 m-4">
                               <i class="ace-icon fa fa-undo bigger-110"></i>

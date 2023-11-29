@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductsModel } from './products.component.model';
 import { ApiService } from '../api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -19,7 +20,7 @@ export class ProductsComponent {
   
   productList:ProductsModel[]=[];
 
-  constructor(private apiservice:ApiService) {}
+  constructor(private apiservice:ApiService,private router:Router) {}
 
   ngOnInit(){
     this.apiservice.allProducts().subscribe(
@@ -30,6 +31,19 @@ export class ProductsComponent {
         console.error(error);
         
       }
+    )
+  }
+
+  edit(id:number){
+    this.router.navigate(['/set/view-product/'+id]);
+  }
+
+
+  delete(id:number){
+    confirm("Are you sure to delete this record");
+    this.apiservice.deleteProduct(id).subscribe(
+      (res:any)=>{console.log(res.data); window.location.reload();},
+      (err:any)=>{console.error(err);}
     )
   }
 
@@ -49,7 +63,5 @@ refreshCountries() {
     .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
 }
 
-delete(){
-  confirm("Are you sure to delete this record")
-}
+
 }

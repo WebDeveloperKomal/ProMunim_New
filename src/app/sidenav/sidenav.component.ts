@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SecurityContext } from '@angular/core';
 import { SidenavtoggleService } from '../Shared/sidenavtoggle.service';
+import { SecurityService } from '../security.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
@@ -15,11 +17,21 @@ export class SidenavComponent {
   isinsureinvestDropdownVisible : boolean = false;
   ismyaccountDropdown : boolean= false ;
   showSideNav = true;
-  constructor(private sharedService: SidenavtoggleService) {
+  constructor(private sharedService: SidenavtoggleService,private router:Router) {
     this.sharedService.currentSideNavState.subscribe(
       (state) => (this.showSideNav = state)
     );
   }
+
+
+  signout(){
+    localStorage.removeItem('token');
+    this.router.navigate(['']);
+    alert("You had Been Logged Out!");
+  }
+
+
+
   toggleFeesDropdown() {
     this.isFeesDropdownVisible = !this.isFeesDropdownVisible;
     

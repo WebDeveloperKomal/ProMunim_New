@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
-import { UserModel } from './branch.component.model';
+import { BranchModel } from './branch.component.model';
 import { ApiService } from '../api.service';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
-interface BranchData {
-  branchid: number;
-  branchname: string;
-  branchcode: string;
-  branchcity: string;
-  branchaddress: string;
-}
+
 @Component({
   selector: 'app-branch',
   templateUrl: './branch.component.html',
@@ -19,19 +15,19 @@ export class BranchComponent {
 
   page = 1;
   pageSize = 10 ;
-  dataarray: UserModel[] = [];
+  dataarray: BranchModel[] = [];
   currentPage: number = 1;
-  countries: UserModel[] | undefined;
+  countries: BranchModel[] | undefined;
   collectionSize =100;
 
-  branchList:UserModel[] = [];
+  branchList:BranchModel[] = [];
+  branch: BranchModel = new BranchModel();
 
-  constructor(private service:ApiService) {}
+  constructor(private service:ApiService, private router:Router) {}
 
   ngOnInit(){
     this.service.allBranches().subscribe(
       ( data: any) => {
-
         this.branchList=data.data;
         console.log('Response successful!');
       },
@@ -41,6 +37,23 @@ export class BranchComponent {
     );
   }
 
+  delete(id:any){
+    confirm("Are you sure to delete this record");
+    this.service.deleteBranch(id).subscribe(
+      (response:any)=>{
+        console.log(response.data);
+        window.location.reload();
+        Swal.fire('Deleted Successfully!');
+      },
+      (error:any)=>{
+        console.error(error);
+      }
+    );
+  }
+
+  edit(id:any){
+    this.router.navigate([`/set/view-branch/`+id])
+  }
 
 
 applyFilter(): void {
@@ -59,9 +72,7 @@ refreshCountries() {
 //     .map((country, i) => ({id: i + 1, ...country}))
 //     .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
 }
-delete(){
-  confirm("Are you sure to delete this record")
-}
+
 
 }
 

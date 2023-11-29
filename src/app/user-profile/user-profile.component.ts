@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmployeeModel } from '../employee/employee.component.model';
+import { SecurityService } from '../security.service';
+import { UserModel } from './userModel';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -8,15 +11,9 @@ import { EmployeeModel } from '../employee/employee.component.model';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent {
-  ngOnInit(){
-    this.dataarray
-  }
+
   SearchText : any ;
-  branchid : number | undefined;
-  branchname : any;
-  branchcode: any;
-  branchcity: any;
-  branchaddress : any;
+
   page = 1;
   pageSize = 10 ;
   dataarray: EmployeeModel[] = [];
@@ -25,15 +22,15 @@ export class UserProfileComponent {
   collectionSize =100;
   employeeForm !: FormGroup;
   updateuserprofile !: FormGroup;
-  constructor(private formBuilder: FormBuilder) {
+  user:UserModel = new UserModel();
+
+  constructor(private formBuilder: FormBuilder, private service:SecurityService, private router:Router) {
     // this.employeeForm = this.formBuilder.group({
     //   location: ['', Validators.required], // Add validation if needed
     //   maindepartment: ['', Validators.required], // Add validation if needed
     //   department: ['', Validators.required] // Add validation if needed
      
     // });
-
-
     this.updateuserprofile = this.formBuilder.group({
       firstname: ['', Validators.required], // Add validation if needed
       middlename: ['', Validators.required],
@@ -42,10 +39,36 @@ export class UserProfileComponent {
       dateofbirth: ['', Validators.required]
      
     });
+  }
 
 
- 
-}
+  ngOnInit(){
+    this.service.getUserData().subscribe(
+      (response:any)=>{
+        this.user = response.data;
+      },
+      (error:any)=>{
+        console.error(error);
+      }
+    )
+  }
+
+  updateUserProfile(){    
+    this.service.updateUserProfile(this.user).subscribe(
+      (response:any)=>{
+        console.log(response);
+        window.location.reload();
+        alert("Profile updated!");
+      },
+      (error:any)=>{
+        console.error(error);
+      }
+    )
+  }
+
+
+
+
 
 applyFilter(): void {
   const searchString = this.SearchText.toLowerCase();

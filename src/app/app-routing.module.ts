@@ -39,7 +39,6 @@ import { AllCustomerListComponent } from './all-customer-list/all-customer-list.
 import { AllComplaintsMainComponent } from './all-complaints-main/all-complaints-main.component';
 import { AddCustomerComplaintsMainComponent } from './add-customer-complaints-main/add-customer-complaints-main.component';
 import { ViewCustomerComplaintsMainComponent } from './view-customer-complaints-main/view-customer-complaints-main.component';
-import { UserModel } from './branch/branch.component.model';
 import { UserRolePermissionComponent } from './user-role-permission/user-role-permission.component';
 import { TaskAppointmentComponent } from './task-appointment/task-appointment.component';
 import { TaskAppointmentDemoComponent } from './task-appointment-demo/task-appointment-demo.component';
@@ -103,14 +102,14 @@ const routes: Routes = [
         path : 'add-branch' , component : AddBranchComponent , canActivate:[AuthGuard]
       },
       {
-        path : 'view-branch' , component : ViewBranchComponent , canActivate:[AuthGuard]
+        path : 'view-branch/:id' , component : ViewBranchComponent , canActivate:[AuthGuard]
       },
       
       {
         path : 'compliance' , component : ComplianceComponent , canActivate:[AuthGuard]
       },
       { path: "add-compliance", component: AddComplianceComponent , canActivate:[AuthGuard]},
-      { path: "view-compliance", component: ViewComplianceComponent , canActivate:[AuthGuard]},
+      { path: "view-compliance/:id", component: ViewComplianceComponent , canActivate:[AuthGuard]},
       {
         path : 'department' , component : DepartmentComponent , canActivate:[AuthGuard]
       },
@@ -118,7 +117,7 @@ const routes: Routes = [
         path : 'add-department' , component : AddDepartmentComponent , canActivate:[AuthGuard]
       },
       {
-        path : 'view-department' , component : ViewDepartmentComponent , canActivate:[AuthGuard]
+        path : 'view-department/:id' , component : ViewDepartmentComponent , canActivate:[AuthGuard]
       },
       {
         path : 'product' , component : ProductsComponent , canActivate:[AuthGuard]
@@ -127,7 +126,7 @@ const routes: Routes = [
         path : 'add-product' , component : AddProductComponent , canActivate:[AuthGuard]
       },
       {
-        path : 'view-product' , component : ViewProductComponent , canActivate:[AuthGuard]
+        path : 'view-product/:id' , component : ViewProductComponent , canActivate:[AuthGuard]
       },
       {
         path : 'productFees' , component : ProductfeesComponent , canActivate:[AuthGuard]
@@ -159,67 +158,67 @@ const routes: Routes = [
     }
     ,
     {
-      path : 'view-courier' , component : ViewCourierComponent , canActivate:[AuthGuard]
+      path : 'view-courier/:id' , component : ViewCourierComponent , canActivate:[AuthGuard]
     }
     ,
     {
       path : 'documentcategory' , component : DocumentcategoryComponent , canActivate:[AuthGuard]
     },
-    { path: "edit-document-category", component: EditDocumentCategoryComponent , canActivate:[AuthGuard]},
+    { path: "edit-document-category/:id", component: EditDocumentCategoryComponent , canActivate:[AuthGuard]},
     { path: "employee", component: EmployeeComponent  , canActivate:[AuthGuard]},
     { path: "add-employee", component: AddEmployeeComponent  , canActivate:[AuthGuard]},
     
-    { path: "user-role-permission", component: UserRolePermissionComponent },
-    { path: "add-new-userrole", component: AddNewUserroleComponent },
-    { path: "tasksappointments", component: TaskAppointmentComponent },
-    { path: "tasksappointments-demo", component: TaskAppointmentDemoComponent },
+    { path: "user-role-permission", component: UserRolePermissionComponent , canActivate:[AuthGuard] },
+    { path: "add-new-userrole", component: AddNewUserroleComponent , canActivate:[AuthGuard] },
+    { path: "tasksappointments", component: TaskAppointmentComponent , canActivate:[AuthGuard] },
+    { path: "tasksappointments-demo", component: TaskAppointmentDemoComponent , canActivate:[AuthGuard] },
     
     
-    { path: "allnewcustomer", component: NewCustomersComponent},
-    { path: "add-new-customer", component: AddNewCustomerComponent},
-    { path: "new-customer-info", component: NewCustomerInfoComponent},
-    { path: "update-new-customer", component: UpdateNewCustomerComponent},
+    { path: "allnewcustomer", component: NewCustomersComponent , canActivate:[AuthGuard]},
+    { path: "add-new-customer", component: AddNewCustomerComponent , canActivate:[AuthGuard]},
+    { path: "new-customer-info", component: NewCustomerInfoComponent , canActivate:[AuthGuard]},
+    { path: "update-new-customer", component: UpdateNewCustomerComponent , canActivate:[AuthGuard]},
     
     
-    { path: "alldailyvisits", component: AllDailyVisitComponent },
-    { path: "view-add-dailyvisits", component: ViewAddDailyvisitComponent },
+    { path: "alldailyvisits", component: AllDailyVisitComponent , canActivate:[AuthGuard] },
+    { path: "view-add-dailyvisits", component: ViewAddDailyvisitComponent , canActivate:[AuthGuard] },
     // { path: "view-all-visits", component: ViewAllVisitsComponent},
     // { path: "add-visit-details", component: AddVisitDetailsComponent},
     
     
-    { path: "alldailyleads", component: AlldailyleadsComponent },
-    { path: "view-add-dailyLeads", component: ViewAddDailyleadsComponent },
+    { path: "alldailyleads", component: AlldailyleadsComponent , canActivate:[AuthGuard] },
+    { path: "view-add-dailyLeads", component: ViewAddDailyleadsComponent , canActivate:[AuthGuard] },
     // { path: "view-all-leads", component: ViewAllLeadsComponent},
     // { path: "add-leads-details", component: AllLeadsDetailsComponent},
     
-    { path: "alltid", component: AllTIDComponent}, 
-    { path: "add-tids", component: AddTIDComponent},
-    { path: "tidgeneration", component: TidgenerationComponent},
+    { path: "alltid", component: AllTIDComponent , canActivate:[AuthGuard]}, 
+    { path: "add-tids", component: AddTIDComponent , canActivate:[AuthGuard]},
+    { path: "tidgeneration", component: TidgenerationComponent , canActivate:[AuthGuard]},
     // { path: "tid-update-status", component: TidUpdateStatusComponent},
     // { path: "tid-update-courier-details", component: TidUpdateCourierDetailsComponent},
-    { path: "account-opening-form", component: AccountopeningFormComponent },
-    { path: "customerslist", component: AllCustomerListComponent },
-    { path: "view-customer-details", component: ViewCustomerDetailsComponent },
-    { path: "allcomplaintsmain", component: AllComplaintsMainComponent },
-    { path: "add-customer-complaints", component: AddCustomerComplaintsMainComponent},
-    { path: "view-customer-complaints-main", component: ViewCustomerComplaintsMainComponent },
+    { path: "account-opening-form", component: AccountopeningFormComponent , canActivate:[AuthGuard] },
+    { path: "customerslist", component: AllCustomerListComponent , canActivate:[AuthGuard] },
+    { path: "view-customer-details", component: ViewCustomerDetailsComponent , canActivate:[AuthGuard] },
+    { path: "allcomplaintsmain", component: AllComplaintsMainComponent , canActivate:[AuthGuard] },
+    { path: "add-customer-complaints", component: AddCustomerComplaintsMainComponent , canActivate:[AuthGuard]},
+    { path: "view-customer-complaints-main", component: ViewCustomerComplaintsMainComponent , canActivate:[AuthGuard] },
     // { path: "view-complain-details", component: ViewComplaintDetailsComponent },
       //reports 
-      { path: "allinvoices", component: AllInvoicesComponent },
-      { path: "alltransactions", component: AllTransactionsComponent },
-      { path: "allinteraction", component: AllInteractionsComponent },
-      { path: "allcomplaints-Sub", component: AllComplaintsComponent },
-      { path: "RmWisereport", component: RMWiseReportComponent },
+      { path: "allinvoices", component: AllInvoicesComponent , canActivate:[AuthGuard] },
+      { path: "alltransactions", component: AllTransactionsComponent , canActivate:[AuthGuard] },
+      { path: "allinteraction", component: AllInteractionsComponent , canActivate:[AuthGuard] },
+      { path: "allcomplaints-Sub", component: AllComplaintsComponent , canActivate:[AuthGuard] },
+      { path: "RmWisereport", component: RMWiseReportComponent , canActivate:[AuthGuard] },
     
     
     
-    { path: "alltechsupport", component: TechSupportComponent },
-    { path: "add-ticket", component: AddTicketComponent },
-    { path: "view-techsupport", component: ViewTechsupportComponent },
-    { path: "newsalert", component: NewsAlertComponent },
-    { path: "add-news-alert", component: AddNewsAlertComponent },
-    { path: "view-news-alert", component: ViewNewsAlertComponent },
-    { path: "change-password", component: ChangePasswordComponent },
+    { path: "alltechsupport", component: TechSupportComponent , canActivate:[AuthGuard] },
+    { path: "add-ticket", component: AddTicketComponent  , canActivate:[AuthGuard]},
+    { path: "view-techsupport", component: ViewTechsupportComponent , canActivate:[AuthGuard] },
+    { path: "newsalert", component: NewsAlertComponent  , canActivate:[AuthGuard]},
+    { path: "add-news-alert", component: AddNewsAlertComponent , canActivate:[AuthGuard] },
+    { path: "view-news-alert", component: ViewNewsAlertComponent , canActivate:[AuthGuard] },
+    { path: "change-password", component: ChangePasswordComponent , canActivate:[AuthGuard] },
 
 
          

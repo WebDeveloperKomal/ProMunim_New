@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { UserModel } from '../branch/branch.component.model';
 import { UserRolePermissionModel } from './user-role-permission.component.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 

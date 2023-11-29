@@ -76,6 +76,7 @@ import { SetComponent } from './set/set.component';
 import { LoginComponent } from './login/login.component';
 import { ViewBranchComponent } from './view-branch/view-branch.component'
 import { AuthInterceptorProviders } from './auth.interceptor';
+import{CarouselModule} from 'ngx-bootstrap/carousel'
 @NgModule({
   declarations: [
     AppComponent,
@@ -152,7 +153,8 @@ import { AuthInterceptorProviders } from './auth.interceptor';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule,HttpClientModule
+    NgbModule,HttpClientModule,
+    CarouselModule.forRoot()
     // NgbModule.forRoot()
   ],
   providers: [AuthInterceptorProviders],

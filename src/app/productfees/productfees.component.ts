@@ -24,6 +24,8 @@ export class ProductfeesComponent {
 ngOnInit(){
   this.apiService.allProductfees().subscribe(
   (response:any)=>{
+    console.log(response);
+    
     this.ProductFeeList = response.data;
   },
   (error:any)=>{

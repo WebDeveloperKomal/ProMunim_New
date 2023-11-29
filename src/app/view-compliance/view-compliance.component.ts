@@ -28,7 +28,6 @@ export class ViewComplianceComponent {
     this.id = this.route.snapshot.params['id'];
     this.apiService.complianceById(this.id).subscribe(
       (response:any)=>{
-        console.log(response.data);
         this.compliance=response.data;},
       (error:any)=>{console.error(error);}
     )
@@ -39,10 +38,12 @@ export class ViewComplianceComponent {
                 complianceName: this.compliance.complianceName,
                 taxLink: this.compliance.taxLink,
                 complianceDueDate: this.compliance.complianceDueDate};
-    console.log("DATA READY TO SEND ::: ",comp);
-
     this.apiService.updateCompliance(comp).subscribe(
-      (response:any)=>{console.log(response.data);},
+      (response:any)=>{
+        console.log(response.data);
+        alert("Record Updated!");
+        window.location.reload();
+      },
       (error:any)=>{console.error(error);}
     );
   }

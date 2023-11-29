@@ -33,7 +33,18 @@ export class SecurityService {
     }
   }
 
+
   getUserData():any{
     return this.http.get(`${this.baseUrl}/user-profile`);
   }
+
+
+  updateUserProfile(user:any){
+    return this.http.put(`${this.baseUrl}/update-user-profile`,user);
+  }
+
+  updateUserPassword(password:any){
+    return this.http.put(`${this.baseUrl}/update-employee-password`,password);
+  }
+
 }

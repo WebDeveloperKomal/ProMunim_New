@@ -23,9 +23,9 @@ export class EmployeeComponent {
 
   constructor(private formBuilder: FormBuilder , private apiService:ApiService) {
     this.employeeForm = this.formBuilder.group({
-      location: ['', Validators.required], // Add validation if needed
-      maindepartment: ['', Validators.required], // Add validation if needed
-      department: ['', Validators.required] // Add validation if needed
+      location: ['', Validators.required], 
+      maindepartment: ['', Validators.required], 
+      department: ['', Validators.required] 
      
     });
   }
@@ -33,6 +33,7 @@ export class EmployeeComponent {
   ngOnInit(){
     this.apiService.allEmployees().subscribe(
       (response:any)=>{
+        console.log(response.data);        
         this.EmployeesList=response.data;
       },
       (error:any)=>{

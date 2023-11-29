@@ -1,4 +1,4 @@
-export class UserModel{
+export class BranchModel{
     branchId : any;
     branchName: any;
     branchCode: any;

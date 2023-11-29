@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ComplianceModel } from '../compliance/compliance.component.model';
 import { ApiService } from '../api.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-compliance',
@@ -29,7 +31,10 @@ export class AddComplianceComponent {
   onSubmit(){
     this.apiService.addCompliance(this.compliance).subscribe(
       (response:any)=>{
-        console.log(response.data);
+        console.log(response.data);        
+        confirm('Record Created!');
+        window.location.reload();
+        
       },
       (error:any)=>{
         console.error(error);        

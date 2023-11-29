@@ -73,3 +73,7 @@ header {
     /* padding: 5px; */
 
 }
+
+.dropdown-item{
+    cursor: pointer;
+}

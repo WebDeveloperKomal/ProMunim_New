@@ -1,16 +1,10 @@
 import { Component } from '@angular/core';
 import { ComplianceModel } from './compliance.component.model';
-import { UserModel } from '../branch/branch.component.model';
+
 import { ApiService } from '../api.service';
 import { Router } from '@angular/router';
 
-interface BranchData {
-  branchid: number;
-  branchname: string;
-  branchcode: string;
-  branchcity: string;
-  branchaddress: string;
-}
+
 @Component({
   selector: 'app-compliance',
   templateUrl: './compliance.component.html',
@@ -21,7 +15,7 @@ export class ComplianceComponent {
 
   page = 1;
   pageSize = 10 ;
-  dataarray: UserModel[] = [];
+
   currentPage: number = 1;
   countries: ComplianceModel[] | undefined;
   collectionSize =100;
@@ -39,7 +33,7 @@ export class ComplianceComponent {
 
 
   edit(id:number){
-    this.router.navigate([`view-compliance/`+id]);
+    this.router.navigate([`/set/view-compliance/`+id]);
   }
 
   delete(id:number){
@@ -47,7 +41,9 @@ export class ComplianceComponent {
     this.apiService.deleteCompliance(id).subscribe(
       (response:any)=>{
         console.log(response.data);
-        this.router.navigate(['compliance']);
+        window.location.reload();
+        alert("Record Deleted!");
+
       },
       (error:any)=>{
         console.error(error);

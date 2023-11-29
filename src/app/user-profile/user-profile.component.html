@@ -36,36 +36,36 @@
                                                     <tbody>
                                                         <tr class="altrow">
                                                             <td class="width50">Employee Id </td>
-                                                            <td class="width80">:- A1000</td>
+                                                            <td class="width80">:- {{user.employeeId}}</td>
                                                         </tr>
                                                         <tr>
                                                             <td class="width50">Full Name</td>
-                                                            <td class="width80">:- SYSTEM M ADMIN</td>
+                                                            <td class="width80">:- {{user.firstName}} {{user.middleName}} {{user.lastName}}</td>
                                                         </tr>
                                                         <tr class="altrow">
                                                             <td>Contact No</td>
-                                                            <td class="width50">:- 8888888888</td>
+                                                            <td class="width50">:- {{user.contactNo}}</td>
                                                         </tr>
                                                         <tr>
                                                             <td class="width50">Joining Date</td>
-                                                            <td class="width50">:- 2016-05-03</td>
+                                                            <td class="width50">:- {{user.joiningDate}}</td>
                                                         </tr>
                                                         <tr class="altrow">
                                                             <td>Date Of Birth</td>
-                                                            <td class="width50">:- 2016-12-01</td>
+                                                            <td class="width50">:- {{user.dob}}</td>
                                                         </tr>
                                                         <tr>
                                                             <td class="width50">Username</td>
-                                                            <td class="width50">:- admin</td>
+                                                            <td class="width50">:- {{user.userName}}</td>
                                                         </tr>
                                                         <tr class="altrow">
                                                             <td>Branch</td>
-                                                            <td class="width50">:- Hadapsar
+                                                            <td class="width50">:- {{user.branchName}}
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="width50">Department</td>
-                                                            <td class="width50">:- Support - ADMINISTRATIVE
+                                                            <td class="width50">:- {{user.mainDepName}} {{user.depName}}
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -104,6 +104,7 @@
                                                                             <div class="col-lg-8 col-md-8 col-8 ">
                                                                                 <input type="text"
                                                                                     formControlName="firstname"
+                                                                                    [(ngModel)]="user.firstName"
                                                                                     class="form-control">
                                                                             </div>
                                                                         </div>
@@ -114,6 +115,7 @@
                                                                             <div class="col-lg-8 col-md-8 col-8 ">
                                                                                 <input type="text"
                                                                                     formControlName="middlename"
+                                                                                    [(ngModel)]="user.middleName"
                                                                                     class="form-control">
                                                                             </div>
                                                                         </div>
@@ -125,6 +127,7 @@
                                                                             <div class="col-lg-8 col-md-8 col-8 ">
                                                                                 <input type="text"
                                                                                     formControlName="lastname"
+                                                                                    [(ngModel)]="user.lastName"
                                                                                     class="form-control">
                                                                             </div>
                                                                         </div>
@@ -135,6 +138,7 @@
                                                                             <div class="col-lg-8 col-md-8 col-8 ">
                                                                                 <input type="text"
                                                                                     formControlName="constno"
+                                                                                    [(ngModel)]="user.contactNo"
                                                                                     class="form-control">
                                                                             </div>
                                                                         </div>
@@ -145,6 +149,7 @@
                                                                             <div class="col-lg-8 col-md-8 col-8 ">
                                                                                 <input type="date"
                                                                                     formControlName="dateofbirth"
+                                                                                    [(ngModel)]="user.dob"
                                                                                     class="form-control">
                                                                             </div>
                                                                         </div>
@@ -156,7 +161,7 @@
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                <button type="button" class="btn btn-primary">Update</button>
+                                                                <button type="button" class="btn btn-primary" (click)="updateUserProfile()">Update</button>
                                                               </div>
                                                         </div>
                                                     </div>

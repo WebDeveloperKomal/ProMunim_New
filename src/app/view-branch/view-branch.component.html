@@ -27,66 +27,66 @@
             <form [formGroup]="viewbranchForm" class="col-md-12 col-sm-12 col-xs-12 mt-5">
 
                 <div class="form-group row">
-                    <label for="companyname" class="col-lg-2 col-4   col-form-label mr-5">Branch Name:</label>
+                    <label for="branchName" class="col-lg-2 col-4   col-form-label mr-5">Branch Name:</label>
                     <div class="col-lg-4 col-8">
-                        <input type="text" formControlName="companyname" class="form-control"
+                        <input type="text" formControlName="branchName" [(ngModel)]="branch.branchName" class="form-control"
                             id="complianceName">
                     </div>
-                    <label for="constofcompany" class="col-lg-2 col-4 col-form-label ml-2">Branch Classification:</label>
+                    <label for="branchClassification" class="col-lg-2 col-4 col-form-label ml-2">Branch Classification:</label>
                     <div class="col-lg-4 col-8">
-                        <select formControlName="constofcompany" class="form-select">
+                        <select formControlName="branchClassification" [(ngModel)]="branch.branchClassification" class="form-select">
                             <option value="">-----------------------Select------------------------ </option>
-                            <option value="PROPRITER">Rubal </option>
-                            <option value="PARTNERSHIP">Urban</option>
-                            <option value="PVT.LTD.">Semi-Urban</option>
-                            <option value="PVT.LTD.">Metro</option>
+                            <option value="1">Rubal </option>
+                            <option value="2">Urban</option>
+                            <option value="3">Semi-Urban</option>
+                            <option value="4">Metro</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="email" class="col-lg-2 col-4   col-form-label mr-5">Branch Code:</label>
+                    <label for="branchCode" class="col-lg-2 col-4   col-form-label mr-5">Branch Code:</label>
                     <div class="col-lg-4 col-8">
-                        <input type="email" formControlName="email" class="form-control"
+                        <input type="branchCode" formControlName="branchCode" [(ngModel)]="branch.branchCode" class="form-control"
                             id="complianceName">
                     </div>
-                    <label for="contactno" class="col-lg-2 col-4   col-form-label mr-5">Branch City:</label>
+                    <label for="branchCity" class="col-lg-2 col-4   col-form-label mr-5">Branch City:</label>
                     <div class="col-lg-4 col-8">
-                        <input type="text" formControlName="contactno" class="form-control"
+                        <input type="text" formControlName="branchCity" [(ngModel)]="branch.branchCity" class="form-control"
                             id="complianceName">
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label for="altcontactno" class="col-lg-2 col-4   col-form-label mr-5">Branch Area:</label>
+                    <label for="branchArea" class="col-lg-2 col-4   col-form-label mr-5">Branch Area:</label>
                     <div class="col-lg-4 col-8">
-                        <input type="text" formControlName="altcontactno" class="form-control"
+                        <input type="text" formControlName="branchArea" [(ngModel)]="branch.branchArea" class="form-control"
                             id="complianceName">
                     </div>
-                    <label for="address" class="col-lg-2 col-4   col-form-label mr-5">Branch Address:</label>
+                    <label for="branchAddress" class="col-lg-2 col-4   col-form-label mr-5">Branch Address:</label>
                     <div class="col-lg-4 col-8">
                         <!-- <div class="col-sm-8"> -->
-                        <textarea class="form-control" id="address" rows="3" formControlName="address"
+                        <textarea class="form-control" id="branchAddress" [(ngModel)]="branch.branchAddress" rows="3" formControlName="branchAddress"
                             required> </textarea>
                         <!-- </div> -->
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label for="city" class="col-lg-2 col-4   col-form-label mr-5">Latitude:</label>
+                    <label for="latitude" class="col-lg-2 col-4   col-form-label mr-5">Latitude:</label>
                     <div class="col-lg-4 col-8">
-                        <input type="text" formControlName="city" class="form-control" id="complianceName">
+                        <input type="text" formControlName="latitude" [(ngModel)]="branch.latitude" class="form-control" id="complianceName">
                     </div>
                     <!-- <label for="taxLink" class="col-lg-2 col-4 col-form-label ml-2" >Tax Link  :</label> -->
-                    <label for="pincode" class="col-lg-2 col-4   col-form-label mr-5">Longitude:</label>
+                    <label for="longitude" class="col-lg-2 col-4   col-form-label mr-5">Longitude:</label>
                     <div class="col-lg-4 col-8">
-                        <input type="text" formControlName="pincode" class="form-control"
+                        <input type="text" formControlName="longitude" [(ngModel)]="branch.longitude" class="form-control"
                             id="complianceName">
                     </div>
                 
                 </div>
                 <div class="text-center mt-3">
                     <!-- <div class="col-sm-offset-3 col-md-9"> -->
-                        <button type="button" class="btn btn-info  m-lg-4 m-4"><i class="ace-icon fa fa-check bigger-110"></i>
+                        <button type="button" class="btn btn-info  m-lg-4 m-4" (click)="onSubmit()"><i class="ace-icon fa fa-check bigger-110"></i>
                             Submit</button>
                          <button type="button" class="btn canc m-lg-4 m-4">
                               <i class="ace-icon fa fa-undo bigger-110"></i>

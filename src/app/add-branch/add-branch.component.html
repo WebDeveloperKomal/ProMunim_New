@@ -29,29 +29,29 @@
                 <div class="form-group row mb-3">
                     <label for="companyname" class="col-lg-2 col-4   col-form-label mr-5 mb-2">Branch Name:</label>
                     <div class="col-lg-4 col-8">
-                        <input type="text" formControlName="branchname" class="form-control"
+                        <input type="text" formControlName="branchname" [(ngModel)]="branch.branchName" class="form-control"
                             id="complianceName">
                     </div>
                     <label for="constofcompany" class="col-lg-2 col-4 col-form-label ml-2">Branch Classification:</label>
                     <div class="col-lg-4 col-8">
-                        <select formControlName="branchclass" class="form-select">
+                        <select formControlName="branchclass" [(ngModel)]="branch.branchClassification" class="form-select">
                             <option value="">-----------------------Select------------------------ </option>
-                            <option value="PROPRITER">Rubal </option>
-                            <option value="PARTNERSHIP">Urban</option>
-                            <option value="PVT.LTD.">Semi-Urban</option>
-                            <option value="PVT.LTD.">Metro</option>
+                            <option value="1">Rubal </option>
+                            <option value="2">Urban</option>
+                            <option value="3">Semi-Urban</option>
+                            <option value="4">Metro</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group row mb-3">
                     <label for="email" class="col-lg-2 col-4   col-form-label mr-5 mb-2">Branch Code:</label>
                     <div class="col-lg-4 col-8">
-                        <input type="text" formControlName="branchcode" class="form-control"
+                        <input type="text" formControlName="branchcode" [(ngModel)]="branch.branchCode" class="form-control"
                             id="complianceName">
                     </div>
                     <label for="contactno" class="col-lg-2 col-4   col-form-label mr-5">Branch City:</label>
                     <div class="col-lg-4 col-8">
-                        <input type="text" formControlName="branchcity" class="form-control"
+                        <input type="text" formControlName="branchcity" [(ngModel)]="branch.branchCity" class="form-control"
                             id="complianceName">
                     </div>
                 </div>
@@ -59,13 +59,13 @@
                 <div class="form-group row mb-3">
                     <label for="altcontactno" class="col-lg-2 col-4   col-form-label mr-5 mb-2">Branch Area:</label>
                     <div class="col-lg-4 col-8">
-                        <input type="text" formControlName="brancharea" class="form-control"
+                        <input type="text" formControlName="brancharea" [(ngModel)]="branch.branchArea" class="form-control"
                             id="complianceName">
                     </div>
                     <label for="address" class="col-lg-2 col-4   col-form-label mr-5 ">Branch Address:</label>
                     <div class="col-lg-4 col-8">
                         <!-- <div class="col-sm-8"> -->
-                        <textarea class="form-control" id="address" rows="3" formControlName="address"
+                        <textarea class="form-control" [(ngModel)]="branch.branchAddress" id="address" rows="3" formControlName="address"
                             required> </textarea>
                         <!-- </div> -->
                     </div>
@@ -74,19 +74,19 @@
                 <div class="form-group row mb-3">
                     <label for="city" class="col-lg-2 col-4   col-form-label mr-5 mb-2">Latitude:</label>
                     <div class="col-lg-4 col-8">
-                        <input type="text" formControlName="latitude" class="form-control" id="complianceName">
+                        <input type="text" formControlName="latitude" [(ngModel)]="branch.latitude" class="form-control" id="complianceName">
                     </div>
                     <!-- <label for="taxLink" class="col-lg-2 col-4 col-form-label ml-2" >Tax Link  :</label> -->
-                    <label for="pincode" class="col-lg-2 col-4   col-form-label mr-5">Longitude:</label>
+                    <label for="pincode" class="col-lg-2 col-4    col-form-label mr-5">Longitude:</label>
                     <div class="col-lg-4 col-8">
-                        <input type="text" formControlName="longitude" class="form-control"
+                        <input type="text" formControlName="longitude" [(ngModel)]="branch.longitude" class="form-control"
                             id="complianceName">
                     </div>
                 
                 </div>
                 <div class="text-center mt-3">
                     <!-- <div class="col-sm-offset-3 col-md-9"> -->
-                        <button type="button" class="btn btn-info  m-lg-4 m-4"><i class="ace-icon fa fa-check bigger-110"></i>
+                        <button type="button" class="btn btn-info  m-lg-4 m-4" (click)="onSubmit()"><i class="ace-icon fa fa-check bigger-110"></i>
                             Submit</button>
                          <button type="button" class="btn canc m-lg-4 m-4">
                               <i class="ace-icon fa fa-undo bigger-110"></i>

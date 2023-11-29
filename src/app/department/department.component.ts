@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DepartmentModel } from './department.component.model';
 import { ApiService } from '../api.service';
+import { Router } from '@angular/router';
 interface BranchData {
   branchid: number;
   branchname: string;
@@ -25,7 +26,7 @@ export class DepartmentComponent {
   
   departmentList:DepartmentModel[]=[];
 
-  constructor(private apiService:ApiService) {}
+  constructor(private apiService:ApiService, private router:Router) {}
 
   ngOnInit(){
     this.apiService.allDepartments().subscribe(
@@ -37,6 +38,27 @@ export class DepartmentComponent {
       }
     )
   }
+
+  edit(id:number){
+    this.router.navigate([`/set/view-department/`+id]);
+  }
+
+  delete(id:number){
+    confirm("Are you sure to delete this record");
+    this.apiService.deleteDepartment(id).subscribe(
+      (res:any)=>{
+        console.log(res.data);
+        window.location.reload();
+        alert('Record Deleted!');
+      },
+      (err:any)=>{console.error(err);}
+    )
+  }
+
+
+
+
+
 
 applyFilter(): void {
   // const searchString = this.SearchText.toLowerCase();
@@ -53,8 +75,6 @@ refreshCountries() {
     .map((country, i) => ({id: i + 1, ...country}))
     .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
 }
-delete(){
-  confirm("Are you sure to delete this record")
-}
+
 
 }

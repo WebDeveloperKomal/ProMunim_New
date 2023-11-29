@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { courierdetailsModel } from './courierdetails.component.model';
 import { ApiService } from '../api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-courierdetails',
@@ -19,7 +20,7 @@ export class CourierdetailsComponent {
 
   couriorList:courierdetailsModel[]=[];
 
-  constructor(private apiService:ApiService) {}
+  constructor(private apiService:ApiService, private router:Router) {}
 
   ngOnInit(){
     this.apiService.allCouriors().subscribe(
@@ -30,6 +31,10 @@ export class CourierdetailsComponent {
         console.error(error);        
       }
     )
+  }
+
+  edit(id:any){
+    this.router.navigate(['/set/view-courier/'+id]);
   }
 
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DocumentCategoryModel } from './documentcategory.component.model';
 import { ApiService } from '../api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-documentcategory',
@@ -19,18 +20,21 @@ export class DocumentcategoryComponent {
 
   DocumentCategoriesList:DocumentCategoryModel[]=[];
   
-  constructor(private apiService:ApiService) {}
+  constructor(private apiService:ApiService, private router:Router) {}
 
   ngOnInit(){
     this.apiService.allDocumentCategories().subscribe(
       (response:any)=>{
-        console.log(response);
         this.DocumentCategoriesList=response.docCategory;
       },
       (error:any)=>{
         console.error(error);        
       }
     )
+  }
+
+  edit(id:any){
+    this.router.navigate(['/set/edit-document-category/'+id]);
   }
 
 
