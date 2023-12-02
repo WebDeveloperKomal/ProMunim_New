@@ -33,13 +33,13 @@
 
 
                 <div class="form-group row">
-                    <label for="complianceName" class="col-lg-1 col-4   col-form-label mr-5">ID :</label>
+                    <label for="id" class="col-lg-1 col-4   col-form-label mr-5">ID :</label>
                     <div class="col-lg-4 col-8">
-                        <input type="text" formControlName="complianceName" class="form-control" id="complianceName">
+                        <input type="text" formControlName="id" class="form-control" [(ngModel)]="id" id="complianceName">
                     </div>
-                    <label for="complianceName" class="col-lg-1 col-4   col-form-label mr-5 mt-sm-4 mt-lg-0 ">Name :</label>
+                    <label for="name" class="col-lg-1 col-4   col-form-label mr-5 mt-sm-4 mt-lg-0 ">Name :</label>
                     <div class="col-lg-4 col-8">
-                        <input type="text" formControlName="complianceName" class="form-control mt-sm-4 mt-lg-0" id="complianceName">
+                        <input type="text" formControlName="name" class="form-control mt-sm-4 mt-lg-0" [(ngModel)]="cname" id="complianceName">
                     </div>
                 </div>
               <h4 class="mt-3">Types :</h4>
@@ -57,26 +57,22 @@
                     </thead> -->
                    
                     <tbody>
-                      <tr
-                        *ngFor="let data of dataarray  ">
-      
-                        <td style="width: 50px">{{data.cid}}</td>
-                        <td>{{data.name}}</td>
-                       
+                      <tr *ngFor="let typ of types">      
+                        <td style="width: 50px">{{typ.name}}</td>                       
                       </tr>
                     </tbody>
                   </table>
 
 
                   <div class="container1">
-                    <button class="add_form_field" ng-click="addTypeField()">Add New Type &nbsp;
+                    <button class="add_form_field" ng-click="addTypeField()" >Add New Type &nbsp;
                         <span style="font-size:16px; font-weight:bold;">+ </span>
                     </button>
-                    <div><input type="text" name="typeArr"></div>
+                    <div><input type="text" formControlName="tname" name="typeArr" [(ngModel)]="tnames"></div>
                 </div>
                 <div class="clearfix form-actions col-md-12 col-sm-12 col-xs-12 mt-5">
                     <div class="col-md-offset-3 col-md-9">
-                        <button class="col-lg-2 col-5 btn btn-info m-lg-4" type="submit">
+                        <button class="col-lg-2 col-5 btn btn-info m-lg-4" type="submit" (click)="addType()">
                             <!-- <i class="ace-icon fa fa-check bigger-110"></i> -->
                             Update
                         </button>

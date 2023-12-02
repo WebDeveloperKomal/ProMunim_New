@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ProductsModel } from './products.component.model';
 import { ApiService } from '../api.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-products',
@@ -40,11 +41,36 @@ export class ProductsComponent {
 
 
   delete(id:number){
-    confirm("Are you sure to delete this record");
-    this.apiservice.deleteProduct(id).subscribe(
-      (res:any)=>{console.log(res.data); window.location.reload();},
-      (err:any)=>{console.error(err);}
-    )
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+      if (result.isConfirmed) 
+      {
+        this.apiservice.deleteProduct(id).subscribe(
+          (res:any)=>{
+            console.log(res.data);
+            Swal.fire({
+              title: "Record Deleted!",
+              icon: "success"
+            });
+          },
+          (err:any)=>{
+            console.error(err);
+            Swal.fire({
+              title: "Error!",
+              icon: "error"
+            });
+          }
+        );
+        setInterval(()=>{window.location.reload()},1000);
+      }
+    });
   }
 
 applyFilter(): void {

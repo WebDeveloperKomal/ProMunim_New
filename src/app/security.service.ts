@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -46,5 +46,38 @@ export class SecurityService {
   updateUserPassword(password:any){
     return this.http.put(`${this.baseUrl}/update-employee-password`,password);
   }
+
+
+
+
+
+    
+  /************************************** FOR EMPLOYEE COMPONENT ***************************************/
+
+
+  allEmployees():any
+  {
+    return this.http.get(`${this.baseUrl}/employee`);
+  }
+
+  addEmployee(emp:any):any
+  {
+    return this.http.post(`${this.baseUrl}/register-new-employee`,emp);
+  }
+
+  updateEmployee(data: string, empPhoto: File | null):any {
+    const formData: FormData = new FormData();
+    formData.append('data', data);
+
+    if (empPhoto) {
+      formData.append('empPhoto', empPhoto, empPhoto.name);
+    }
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data');
+
+    return this.http.post(`${this.baseUrl}/update-employee`, formData, { headers });
+  }
+
 
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DepartmentModel } from './department.component.model';
 import { ApiService } from '../api.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 interface BranchData {
   branchid: number;
   branchname: string;
@@ -44,15 +45,36 @@ export class DepartmentComponent {
   }
 
   delete(id:number){
-    confirm("Are you sure to delete this record");
-    this.apiService.deleteDepartment(id).subscribe(
-      (res:any)=>{
-        console.log(res.data);
-        window.location.reload();
-        alert('Record Deleted!');
-      },
-      (err:any)=>{console.error(err);}
-    )
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+      if (result.isConfirmed) 
+      {
+        this.apiService.deleteDepartment(id).subscribe(
+        (res:any)=>{
+          console.log(res.data);
+          Swal.fire({
+            title: "Record Deleted!",
+            icon: "success"
+          });
+        },
+        (err:any)=>{
+          console.error(err);
+          Swal.fire({
+            title: "Error!",
+            icon: "error"
+          });
+        }
+        );
+        setInterval(()=>{window.location.reload()},1000);
+      }
+      });
   }
 
 

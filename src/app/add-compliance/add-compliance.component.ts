@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './add-compliance.component.html',
   styleUrls: ['./add-compliance.component.css']
 })
+
 export class AddComplianceComponent {
   complianceForm !: FormGroup;
   dataarray: any;
@@ -28,17 +29,29 @@ export class AddComplianceComponent {
 
 
 
-  onSubmit(){
+  onSubmit()
+  {
     this.apiService.addCompliance(this.compliance).subscribe(
       (response:any)=>{
-        console.log(response.data);        
-        confirm('Record Created!');
-        window.location.reload();
-        
+        console.log(response.data);    
+        Swal.fire({
+          title: "Record Saved!",
+          icon: "success"
+        });   
       },
       (error:any)=>{
-        console.error(error);        
+        console.error(error); 
+        Swal.fire({
+          title: "Error!",
+          icon: "error"
+        });       
       }
     )
-}
+    setInterval(()=>{window.location.reload()},1000);        
+  }
+
+
+
+
+
 }

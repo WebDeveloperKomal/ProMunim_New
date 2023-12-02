@@ -69,10 +69,10 @@
                 <td>{{data.description}}</td>
                 <td>{{data.fees}}</td>
                   <td>
-                    <button class="btn btn-xs" style="font-size: 13px; background-color:#003974!important; color: white;" routerLink="/set/view-other-services" >
+                    <button class="btn btn-xs" style="font-size: 13px; background-color:#003974!important; color: white;" (click)="edit(data.serviceId)" >
                         <i class="ace-icon fa fa-pencil bigger-120"></i>
                     </button>&nbsp;&nbsp;
-                    <button class="btn btn-xs" style=" font-size: 13px; background-color:#DC3545!important; color: white;" (click)="delete()" >
+                    <button class="btn btn-xs" style=" font-size: 13px; background-color:#DC3545!important; color: white;" (click)="delete(data.serviceId)" >
                     <!-- <i class="fa fa-trash"  aria-hidden="true"></i> -->
                     <i class="fa-solid fa-trash-can"></i>
                     </button>

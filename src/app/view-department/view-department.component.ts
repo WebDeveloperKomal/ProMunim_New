@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DepartmentModel } from '../department/department.component.model';
 import { ApiService } from '../api.service';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-view-department',
@@ -40,11 +41,20 @@ ngOnInit(){
     this.apiService.updateDepartment(dep).subscribe(
       (response:any)=>{
         console.log(response.data);
-        alert('Department Updated!');
-        window.location.reload();
+        Swal.fire({
+          title: "Record Updated!",
+          icon: "success"
+        });
       },
-      (error:any)=>{console.error(error);}
+      (error:any)=>{
+        console.error(error);
+        Swal.fire({
+          title: "Error!",
+          icon: "error"
+        });
+      }
     );
+    setInterval(()=>{window.location.reload()},1000);
   }
 
 

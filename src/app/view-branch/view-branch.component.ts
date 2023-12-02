@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../api.service';
 import { ActivatedRoute } from '@angular/router';
 import { BranchModel } from '../branch/branch.component.model';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -62,9 +63,20 @@ export class ViewBranchComponent {
       this.apiService.updateBranch(br).subscribe(
       (response:any)=>{
         console.log(response.data);
-        alert('Record Updated!');
+        Swal.fire({
+          title: "Record Updated!",
+          icon: "success"
+        });
+        setInterval(()=>{window.location.reload()},1000);
       },
-      (error:any)=>{console.error(error);}
+      (error:any)=>{
+        console.error(error);
+        Swal.fire({
+          title: "Error!",
+          icon: "error"
+        });
+        setInterval(()=>{window.location.reload()},1000);
+      }
     );
   }
 

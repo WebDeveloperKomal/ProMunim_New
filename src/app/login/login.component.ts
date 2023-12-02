@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SecurityService } from '../security.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,22 +12,43 @@ export class LoginComponent {
   showPassword : boolean = false;
   credentials={email:'',password:''};
 
-  constructor(private service:SecurityService){}
+  constructor(private service:SecurityService, private router:Router){}
 
   ngOnInit(){
   }
+
   togglePasswordVisibility(){
     this.showPassword = !this.showPassword
   }
+  
   onSubmit(){
     this.service.Login(this.credentials).subscribe(
       (response :any) => 
       {
         localStorage.setItem('token',response.jwtToken);
-        window.location.href="set/"; 
+        this.router.navigate(["set/"]); 
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          }
+        });
+        Toast.fire({
+          icon: "success",
+          title: "Signed in successfully"
+        }); 
       },
       error => {console.error(error);
-        Swal.fire('Please Enter Valid Details!');
+        Swal.fire({
+          title: "Invalid Credentials!",
+          text: "Please Enter Valid username and password.",
+          icon: "error"
+        });
       }
     )
   }

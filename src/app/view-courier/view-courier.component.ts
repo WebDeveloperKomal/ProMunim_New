@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CouriorModel } from '../add-courier/couriorModel';
 import { ApiService } from '../api.service';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-view-courier',
@@ -42,11 +43,20 @@ export class ViewCourierComponent {
     this.apiService.updateCourior(this.courior).subscribe(
       (res:any)=>{
         console.log(res.data);
-        alert('Record Updated!');
+        Swal.fire({
+          title: "Record Updated!",
+          icon: "success"
+        });
       },
-      (err:any)=>{console.error(err);
+      (err:any)=>{
+        console.error(err);
+        Swal.fire({
+          title: "Error!",
+          icon: "error"
+        });
       }
-    )
+    );
+    setInterval(()=>{window.location.reload()},1000);
   }
 
 

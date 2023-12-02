@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CouriorModel } from './couriorModel';
 import { ApiService } from '../api.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-courier',
@@ -28,11 +29,21 @@ export class AddCourierComponent {
     console.log(this.courior);      
     this.apiService.addCourior(this.courior).subscribe(
     (res:any)=>{
-      console.log(res.data);        
+      console.log(res.data); 
+      Swal.fire({
+        title: "Record Saved!",
+        icon: "success"
+      });       
     },
-    (err:any)=>{console.error(err);
+    (err:any)=>{
+      console.error(err);
+      Swal.fire({
+        title: "Error!",
+        icon: "error"
+      });
     }
-  )
+  );
+  setInterval(()=>{window.location.reload()},1000);        
 }
 
 

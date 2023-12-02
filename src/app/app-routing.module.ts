@@ -135,7 +135,7 @@ const routes: Routes = [
         path : 'add-productFees' , component : AddProductFeesComponent , canActivate:[AuthGuard]
       },
       {
-        path : 'view-product-fees' , component : ViewProductFeesComponent , canActivate:[AuthGuard]
+        path : 'view-product-fees/:id' , component : ViewProductFeesComponent , canActivate:[AuthGuard]
       },
       
       {
@@ -147,7 +147,7 @@ const routes: Routes = [
       },
       
       {
-        path : 'view-other-services' , component : ViewOtherServicesComponent , canActivate:[AuthGuard]
+        path : 'view-other-services/:id' , component : ViewOtherServicesComponent , canActivate:[AuthGuard]
       },
       {
         path : 'courier' , component : CourierdetailsComponent , canActivate:[AuthGuard]

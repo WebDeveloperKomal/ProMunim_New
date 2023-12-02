@@ -41,21 +41,21 @@
                         <div class="form-group row mb-3">
                             <label for="companyname" class="col-lg-2 col-4   col-form-label mr-5">Company Name:</label>
                             <div class="col-lg-4 col-8">
-                                <input type="text" formControlName="companyname" class="form-control" id="complianceName">
+                                <input type="text" formControlName="companyname" [(ngModel)]="newCust.companyName" class="form-control" id="complianceName">
                             </div>
                             <label for="fullname" class="col-lg-2 col-4   col-form-label mr-5">Full Name:</label>
                             <div class="col-lg-4 col-8">
-                                <input type="text" formControlName="fullname" class="form-control" id="complianceName">
+                                <input type="text" formControlName="fullname" [(ngModel)]="newCust.customerFullName" class="form-control" id="complianceName">
                             </div>
                         </div>
                         <div class="form-group row mb-3">
                             <label for="email" class="col-lg-2 col-4   col-form-label mr-5">Email Id:</label>
                             <div class="col-lg-4 col-8">
-                                <input type="email" formControlName="email" class="form-control" id="complianceName">
+                                <input type="email" formControlName="email" [(ngModel)]="newCust.emailId" class="form-control" id="complianceName">
                             </div>
                             <label for="contactno" class="col-lg-2 col-4   col-form-label mr-5">Contact Number:</label>
                             <div class="col-lg-4 col-8">
-                                <input type="text" formControlName="contactno" class="form-control" id="complianceName">
+                                <input type="text" formControlName="contactno" [(ngModel)]="newCust.contactNo" class="form-control" id="complianceName">
                             </div>
                         </div>
 
@@ -63,12 +63,12 @@
                             <label for="altcontactno" class="col-lg-2 col-4   col-form-label mr-5">Alternative Contact
                                 Number:</label>
                             <div class="col-lg-4 col-8">
-                                <input type="text" formControlName="altcontactno" class="form-control" id="complianceName">
+                                <input type="text" formControlName="altcontactno" [(ngModel)]="newCust.altContactNo" class="form-control" id="complianceName">
                             </div>
                             <label for="address" class="col-lg-2 col-4   col-form-label mr-5">Address:</label>
                             <div class="col-lg-4 col-8">
                                 <!-- <div class="col-sm-8"> -->
-                                    <textarea class="form-control" id="address" rows="3" formControlName="address"
+                                    <textarea class="form-control" [(ngModel)]="newCust.address" id="address" rows="3" formControlName="address"
                                         required> </textarea>
                                 <!-- </div> -->
                             </div>
@@ -77,45 +77,51 @@
                         <div class="form-group row mb-3">
                             <label for="city" class="col-lg-2 col-4   col-form-label mr-5">City:</label>
                             <div class="col-lg-4 col-8">
-                                <input type="text" formControlName="city" class="form-control" id="complianceName">
+                                <input type="text" formControlName="city" [(ngModel)]="newCust.city" class="form-control" id="complianceName">
                             </div>
                             <!-- <label for="taxLink" class="col-lg-2 col-4 col-form-label ml-2" >Tax Link  :</label> -->
                             <label for="pincode" class="col-lg-2 col-4   col-form-label mr-5">Pincode:</label>
                             <div class="col-lg-4 col-8">
-                                <input type="text" formControlName="pincode" class="form-control" id="complianceName">
+                                <input type="text" formControlName="pincode" [(ngModel)]="newCust.pinCode" class="form-control" id="complianceName">
                             </div>
                         </div>
                         <div class="form-group row mb-3">
                             <label for="constofcompany" class="col-lg-2 col-4 col-form-label ml-2" >Constitution of Company:</label>
                             <div class="col-lg-4 col-8">
-                                <select formControlName="constofcompany" class="form-select">
+                                <select formControlName="constofcompany" [(ngModel)]="newCust.constitutionOfCompany" class="form-select">
                                     <option value="">-----------------------Select------------------------ </option>
                                     <option value="PROPRITER">PROPRITER </option>
-                                <option value="PARTNERSHIP">PARTNERSHIP</option>
-                                <option value="PVT.LTD.">PVT. LTD.</option>
+                                    <option value="PARTNERSHIP">PARTNERSHIP</option>
+                                    <option value="PVT.LTD.">PVT. LTD.</option>
                                 </select>
                             </div>
                             <label for="segment" class="col-lg-2 col-4 col-form-label ml-2" >Segment:</label>
                             <div class="col-lg-4 col-8">
-                                <select formControlName="segment" class="form-select">
+                                <select formControlName="segment" [(ngModel)]="newCust.segment" class="form-select">
                                     <option value="">-----------------------Select------------------------ </option>
-                                    <option *ngFor="let data of dataarray" [value]="data.branchname">{{ data.branchname }}
-                                    </option>
+                                    <option value="Service Provider">Service Provider</option>
+                                    <option value="Agriculture Services">Agriculture Services</option>
+                                    <option value="Professional Services">Professional Services</option>
+                                    <!-- <option *ngFor="let data of dataarray" [value]="data.branchname">{{ data.branchname }}
+                                    </option> -->
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row mb-3">
                             <label for="natureofbus" class="col-lg-2 col-4 col-form-label ml-2" >Nature Of Business:</label>
                             <div class="col-lg-4 col-8">
-                                <select formControlName="natureofbus" class="form-select">
+                                <select formControlName="natureofbus" [(ngModel)]="newCust.natureOfBussiness" class="form-select">
                                     <option value="">-----------------------Select------------------------ </option>
-                                    <option *ngFor="let data of dataarray" [value]="data.branchname">{{ data.branchname }}
-                                    </option>
+                                    <option value="Repair & Mainatenance">Repair & Mainatenance</option>
+                                    <option value="Packaging & Printing">Packaging & Printing</option>
+                                    <option value="Fabrication">Fabrication</option>
+                                    <!-- <option *ngFor="let data of dataarray" [value]="data.branchname">{{ data.branchname }}
+                                    </option> -->
                                 </select>
                             </div>
                             <label for="maintitr" class="col-lg-2 col-4 col-form-label ml-2" >Maintaining ITR:</label>
                             <div class="col-lg-4 col-8">
-                                <select formControlName="maintitr" class="form-select">
+                                <select formControlName="maintitr" [(ngModel)]="newCust.maintainingITR" class="form-select">
                                     <option value="">-----------------------Select------------------------ </option>
                                     <option value="YES">YES</option>
                                     <option value="NO">NO </option>
@@ -125,7 +131,7 @@
                         <div class="form-group row mb-3">
                             <label for="leadtype" class="col-lg-2 col-4 col-form-label ml-2" >Lead Type:</label>
                             <div class="col-lg-4 col-8">
-                                <select formControlName="leadtype" class="form-select">
+                                <select formControlName="leadtype" [(ngModel)]="newCust.leadType" class="form-select">
                                     <option value="">-----------------------Select------------------------ </option>
                                     <option value="HOT">HOT </option>
                                 <option value="WARM">WARM </option>
@@ -134,7 +140,7 @@
                             </div>
                             <label for="leadstatus" class="col-lg-2 col-4 col-form-label ml-2" >Lead Status:</label>
                             <div class="col-lg-4 col-8">
-                                <select formControlName="leadstatus" class="form-select">
+                                <select formControlName="leadstatus" [(ngModel)]="newCust.leadStatus" class="form-select">
                                     <option value="">-----------------------Select------------------------ </option>
                                     <option value="INTERESTED">INTERESTED </option>
                                     <option value="NOT INTERESTED">NOT INTERESTED </option>
@@ -144,10 +150,11 @@
                         <div class="form-group row mb-3">
                             <label for="product" class="col-lg-2 col-4 col-form-label ml-2" >Product:</label>
                             <div class="col-lg-4 col-8">
-                                <select formControlName="product" class="form-select">
+                                <select formControlName="product" [(ngModel)]="newCust.productId" class="form-select">
                                     <option value="">-----------------------Select------------------------ </option>
-                                    <option *ngFor="let data of dataarray" [value]="data.branchname">{{ data.branchname }}
-                                    </option>
+                                    <option *ngFor="let product of products" value={{product.productId}}>{{product.productId}} - {{product.productName}} ({{product.minValue}} - {{product.maxValue}})</option>
+                                    <!-- <option *ngFor="let data of dataarray" [value]="data.branchname">{{ data.branchname }}
+                                    </option> -->
                                 </select>
                             </div>
                           

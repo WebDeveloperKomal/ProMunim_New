@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductsModel } from '../products/products.component.model';
 import { ApiService } from '../api.service';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-view-product',
@@ -13,6 +14,7 @@ export class ViewProductComponent {
 
   viewproductForm !: FormGroup;
   dataarray: any[] = [];
+  data:ProductsModel = new ProductsModel();
   product:ProductsModel = new ProductsModel();
   id!:number;
 
@@ -29,18 +31,37 @@ export class ViewProductComponent {
   ngOnInit(){
     this.id = this.route.snapshot.params['id'];
     this.apiService.ProductById(this.id).subscribe(
-      (res:any)=>{console.log(res);},
+      (res:any)=>{
+        this.data = res.data;
+        this.product.productId = this.data.productId;
+        this.product.productName = this.data.productName;
+        this.product.minValue = this.data.minValue;
+        this.product.maxValue = this.data.maxValue;
+      },
       (err:any)=>{console.error(err);}
     )
   }
 
 
   onSubmit(){
-    console.log("DATA READY TO SEND ::: ",this.product);
+    console.log(this.product);    
     this.apiService.updateProduct(this.product).subscribe(
-      (res:any)=>{console.log(res);},
-      (err:any)=>{console.error(err);}
-    )
+      (res:any)=>{
+        console.log(res.data);
+        Swal.fire({
+          title: "Record Updated!",
+          icon: "success"
+        });
+      },
+      (err:any)=>{
+        console.error(err);
+        Swal.fire({
+          title: "Error!",
+          icon: "error"
+        });
+      }
+    );
+    setInterval(()=>{window.location.reload()},1000);
   }
 
 

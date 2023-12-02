@@ -14,9 +14,11 @@ export class UserModel {
     mainDepName : any;
     depId : any;
     depName : any;
+    dapName:any;
     roleId : any;
     roleName : any;
     assignedBranches : any;
+    assigned_branch : any;
     rmCode : any;
     proUserId : any;
     empPhoto : any;

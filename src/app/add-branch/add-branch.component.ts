@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BranchModel } from '../branch/branch.component.model';
 import { ApiService } from '../api.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-branch',
@@ -30,12 +31,20 @@ export class AddBranchComponent {
     this.apiService.addBranch(this.branch).subscribe(
       (response:any)=>{
         console.log(response.data);
+        Swal.fire({
+          title: "Record Saved!",
+          icon: "success"
+        });
       },
       (error:any)=>{
         console.error(error);
-        
+        Swal.fire({
+          title: "Error!",
+          icon: "error"
+        });
       }
-    )
+    );
+    setInterval(()=>{window.location.reload()},1000);
   }
 
 }

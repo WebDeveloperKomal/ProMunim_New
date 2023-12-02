@@ -1,7 +1,17 @@
 export class AddNewCustModel {
-    branchid : any;
-    branchname: any;
-    branchcode: any;
-    branchcity: any;
-    branchaddress: any;
+      companyName: any; 
+      customerFullName: any; 
+      emailId: any ;
+      contactNo: any;
+      altContactNo: any;
+      address: any;
+      city: any;
+      pinCode: any;
+      constitutionOfCompany: any;
+      segment: any;
+      natureOfBussiness: any;
+      maintainingITR: any;
+      leadType: any;
+      leadStatus: any;
+      productId: any
 }

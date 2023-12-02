@@ -4,6 +4,7 @@ import { EmployeeModel } from '../employee/employee.component.model';
 import { SecurityService } from '../security.service';
 import { UserModel } from './userModel';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-profile',
@@ -25,18 +26,12 @@ export class UserProfileComponent {
   user:UserModel = new UserModel();
 
   constructor(private formBuilder: FormBuilder, private service:SecurityService, private router:Router) {
-    // this.employeeForm = this.formBuilder.group({
-    //   location: ['', Validators.required], // Add validation if needed
-    //   maindepartment: ['', Validators.required], // Add validation if needed
-    //   department: ['', Validators.required] // Add validation if needed
-     
-    // });
     this.updateuserprofile = this.formBuilder.group({
       firstname: ['', Validators.required], // Add validation if needed
       middlename: ['', Validators.required],
       lastname: ['', Validators.required],
       constno: ['', Validators.required],
-      dateofbirth: ['', Validators.required]
+      dob: ['', Validators.required]
      
     });
   }
@@ -53,18 +48,30 @@ export class UserProfileComponent {
     )
   }
 
-  updateUserProfile(){    
-    this.service.updateUserProfile(this.user).subscribe(
-      (response:any)=>{
-        console.log(response);
-        window.location.reload();
-        alert("Profile updated!");
-      },
-      (error:any)=>{
-        console.error(error);
-      }
-    )
-  }
+  updateUserProfile(){
+        console.log(this.user);
+        this.service.updateUserProfile(this.user).subscribe(
+        (response:any)=>{
+          console.log(response);
+          Swal.fire({
+            title: "Profile Updated!",
+            icon: "success"
+          });
+          setInterval(()=>{window.location.reload()},1000);
+        },
+        (error:any)=>{
+          alert("error!");
+          console.error(error);
+          Swal.fire({
+            title: "Error!",
+            text : "Profile not updated.",
+            icon: "error"
+          });
+          setInterval(()=>{window.location.reload()},1000);
+        });        
+      } 
+      
+      
 
 
 

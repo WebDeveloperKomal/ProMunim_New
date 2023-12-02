@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DepartmentModel } from '../department/department.component.model';
 import { ApiService } from '../api.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-department',
@@ -22,16 +23,25 @@ export class AddDepartmentComponent {
     });  
   }
 
-  onSubmit(){
+  onSubmit()
+  {
     this.apiService.addDepartment(this.department).subscribe(
       (res:any)=>{
         console.log(res.data);
-        alert('Record Saved!');
-        window.location.reload();
+        Swal.fire({
+          title: "Record Saved!",
+          icon: "success"
+        }); 
       },
-      (err:any)=>{console.error(err);
+      (err:any)=>{
+        console.error(err);
+        Swal.fire({
+          title: "Error!",
+          icon: "error"
+        });
       }
-    )
+    );
+    setInterval(()=>{window.location.reload()},1000);        
   }
 
 

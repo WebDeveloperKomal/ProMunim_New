@@ -21,13 +21,36 @@ export class NewCustomersComponent {
   employeeForm1 !: FormGroup;
 
   temCustomerList:NewCustomerModel[]=[];
-
+selecteddata : any ;
   constructor(private formBuilder: FormBuilder, private apiService:ApiService) {
     this.employeeForm = this.formBuilder.group({
-      location: ['', Validators.required], // Add validation if needed
-      maindepartment: ['', Validators.required], // Add validation if needed
-      department: ['', Validators.required] // Add validation if needed
+      branch: ['', Validators.required], // Add validation if needed
+      fromdate: ['', Validators.required], // Add validation if needed
+      todate: ['', Validators.required] // Add validation if needed
      
+    });
+
+    this.employeeForm1 = this.formBuilder.group({
+      companyname: ['', Validators.required], // Add validation if needed
+      fullname: ['', Validators.required], // Add validation if needed
+      email: ['', Validators.required], // Add validation if needed
+      constno: ['', Validators.required],
+      altconstno: ['', Validators.required],
+      address: ['', Validators.required],
+      city: ['', Validators.required],
+      pincode: ['', Validators.required],
+      
+      constofcompany: ['', Validators.required],
+      segment: ['', Validators.required],
+      natofbuss: ['', Validators.required],
+      mainitr: ['', Validators.required],
+      leadtype: ['', Validators.required],
+      leadstatus: ['', Validators.required],
+      product: ['', Validators.required],
+      // natofbuss: ['', Validators.required],
+      // natofbuss: ['', Validators.required],
+      
+
     });
   }
 
@@ -42,6 +65,9 @@ export class NewCustomersComponent {
     )
   }
 
+ShowDetails(data : any){
+  this.selecteddata = data
+}
 applyFilter(): void {
   const searchString = this.SearchText.toLowerCase();
   const filteredData = [...this.dataarray];

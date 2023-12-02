@@ -38,17 +38,37 @@ export class BranchComponent {
   }
 
   delete(id:any){
-    confirm("Are you sure to delete this record");
-    this.service.deleteBranch(id).subscribe(
-      (response:any)=>{
-        console.log(response.data);
-        window.location.reload();
-        Swal.fire('Deleted Successfully!');
-      },
-      (error:any)=>{
-        console.error(error);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+      if (result.isConfirmed) 
+      {
+        this.service.deleteBranch(id).subscribe(
+        (response:any)=>{
+          console.log(response.data);
+          Swal.fire({
+            title: "Record Deleted!",
+            icon: "success"
+          });
+        },
+        (error:any)=>{
+          console.error(error);
+          Swal.fire({
+            title: "Error!",
+            icon: "error"
+          });
+        }
+        );
+        setInterval(()=>{window.location.reload()},1000);
       }
-    );
+    });
+    
   }
 
   edit(id:any){

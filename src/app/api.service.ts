@@ -4,6 +4,9 @@ import{HttpClient} from '@angular/common/http'
   providedIn: 'root'
 })
 export class ApiService {
+  allEmployees() {
+    throw new Error('Method not implemented.');
+  }
 
 
 
@@ -110,12 +113,12 @@ export class ApiService {
 
     ProductById(id:number):any
     {
-      return this.http.get(`${this.baseUrl}/get-product/`+id);
+      return this.http.get(`${this.baseUrl}/get-product-by-id/`+id);
     }
 
     updateProduct(product:any):any
     {
-      return this.http.post(`${this.baseUrl}/update-product`,product);
+      return this.http.put(`${this.baseUrl}/update-product`,product);
     }
 
     deleteProduct(id:number):any
@@ -130,6 +133,26 @@ export class ApiService {
       return this.http.get(`${this.baseUrl}/product-fees`);
     }
 
+    addProductfees(fees:any):any
+    {
+      return this.http.post(`${this.baseUrl}/product-fees`,fees);
+    }
+
+    ProductfeesById(id:number):any
+    {
+      return this.http.get(`${this.baseUrl}/get-product-fees/`+id);
+    }
+
+    updateProductfees(fees:any):any
+    {
+      return this.http.put(`${this.baseUrl}/product-fees-update`,fees);
+    }
+
+    deleteProductfees(id:any):any
+    {
+      return this.http.delete(`${this.baseUrl}/product-fees/`+id);
+    }
+
 
     /************************************** OTHER SERVICES ***************************************/
     allOtherServices():any
@@ -140,6 +163,21 @@ export class ApiService {
     addOtherServices(services:any):any
     {
       return this.http.post(`${this.baseUrl}/add-services`,services);
+    }
+
+    OtherServiceById(id:number):any
+    {
+      return this.http.get(`${this.baseUrl}/service-info/`+id);
+    }
+
+    updateService(services:any):any
+    {
+      return this.http.put(`${this.baseUrl}/update-service`,services );
+    }
+    
+    deleteService(id:number):any
+    {
+      return this.http.delete(`${this.baseUrl}/service/`+id );
     }
 
 
@@ -164,36 +202,31 @@ export class ApiService {
       return this.http.put(`${this.baseUrl}/update-courier`,courior);
     }
 
+    deleteCourior(id:number):any
+    {
+      return this.http.delete(`${this.baseUrl}/courier/`+id);
+    }
+
     /************************************** DOCUMENT CATEGORY ***************************************/
     allDocumentCategories():any
     {
       return this.http.get(`${this.baseUrl}/get-doc-category`);
     }
 
-    DocumentCategoryById():any
+    DocumentCategoryById(id:number):any
     {
       return this.http.get(`${this.baseUrl}/get-doc-category`);
     }
 
-
-
-
-
-
-
-
-
-    
-    /************************************** FOR EMPLOYEE COMPONENT ***************************************/
-
-
-    allEmployees():any
+    DocCategoryTypesById(id:number):any
     {
-      return this.http.get(`http://localhost:8181/employee`);
+      return this.http.get(`${this.baseUrl}/get-doc-type/`+id);
     }
 
-
-
+    addType(type:any):any
+    {
+      return this.http.post(`${this.baseUrl}/add-document-category-types`,type);
+    }
 
 
 
@@ -208,8 +241,10 @@ export class ApiService {
       return this.http.get(`${this.baseUrl}/allTempCustomer`);
     }
 
-    
-
+    addNewCustomer(cust:any):any
+    {
+      return this.http.post(`${this.baseUrl}/saveTempCustomer`,cust);
+    }
 
 
 

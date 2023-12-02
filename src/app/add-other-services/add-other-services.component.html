@@ -26,21 +26,21 @@
             <form [formGroup]="complianceForm" class="col-md-12 col-sm-12 col-xs-12 mt-5">
 
                 <div class="form-group row mb-2 text-end">
-                    <label for="companyname" class="col-lg-2 col-4   col-form-label mr-5 mb-2">Service Name:</label>
+                    <label for="serviceName" class="col-lg-2 col-4   col-form-label mr-5 mb-2">Service Name:</label>
                     <div class="col-lg-4 col-8">
-                        <input type="text" formControlName="companyname" class="form-control"
+                        <input type="text" formControlName="serviceName" [(ngModel)]="service.serviceName" class="form-control"
                             id="complianceName">
                     </div>
-                    <label for="fullname" class="col-lg-2 col-4   col-form-label mr-5">Description:</label>
+                    <label for="description" class="col-lg-2 col-4   col-form-label mr-5">Description:</label>
                     <div class="col-lg-4 col-8">
-                        <input type="text" formControlName="fullname" class="form-control"
+                        <input type="text" formControlName="description" [(ngModel)]="service.description" class="form-control"
                             id="complianceName">
                     </div>
                 </div>
                 <div class="form-group row mb-3 text-end">
-                    <label for="complianceName" class="col-lg-2 col-4   col-form-label mr-5">Fees:</label>
+                    <label for="fees" class="col-lg-2 col-4   col-form-label mr-5">Fees:</label>
                     <div class="col-lg-4 col-8">
-                        <input type="text" formControlName="complianceName" class="form-control" id="complianceName">
+                        <input type="text" formControlName="fees" [(ngModel)]="service.fees" class="form-control" id="complianceName">
                     </div>
                     <!-- <label for="taxLink" class="col-lg-1 col-4 col-form-label ml-2" >Fees:</label>
                     <div class="col-lg-4 col-8">
@@ -51,7 +51,7 @@
                
                 <div class="text-center mt-3">
                     <!-- <div class="col-sm-offset-3 col-md-9"> -->
-                        <button type="button" class="btn btn-info  m-lg-4 m-4"><i class="ace-icon fa fa-check bigger-110"></i>
+                        <button type="button" class="btn btn-info  m-lg-4 m-4" (click)="onSubmit()"><i class="ace-icon fa fa-check bigger-110"></i>
                             Save</button>
                          <button type="button" class="btn canc m-lg-4 m-4">
                               <i class="ace-icon fa fa-undo bigger-110"></i>

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ComplianceModel } from './view-compliance.component.model';
 import { ApiService } from '../api.service';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-view-compliance',
@@ -33,19 +34,33 @@ export class ViewComplianceComponent {
     )
   }
 
-  onSubmit(){
-    let comp = {complianceId : this.id,
+  onSubmit()
+  {
+      let comp = {complianceId : this.id,
                 complianceName: this.compliance.complianceName,
                 taxLink: this.compliance.taxLink,
                 complianceDueDate: this.compliance.complianceDueDate};
-    this.apiService.updateCompliance(comp).subscribe(
+
+      this.apiService.updateCompliance(comp).subscribe(
       (response:any)=>{
         console.log(response.data);
-        alert("Record Updated!");
-        window.location.reload();
+        Swal.fire({
+          title: "Record Updated!",
+          icon: "success"
+        });
       },
-      (error:any)=>{console.error(error);}
+      (error:any)=>{
+        console.error(error);
+        Swal.fire({
+          title: "Error!",
+          icon: "error"
+        });
+      }
     );
+    setInterval(()=>{window.location.reload()},1000);
   }
+
+
+
 }
 

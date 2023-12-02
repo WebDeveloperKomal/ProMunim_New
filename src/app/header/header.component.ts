@@ -3,6 +3,7 @@ import { SidenavtoggleService } from '../Shared/sidenavtoggle.service';
 import { SecurityService } from '../security.service';
 import { Router } from '@angular/router';
 import { EmployeeModel } from '../employee/employee.component.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-header',
@@ -32,6 +33,21 @@ export class HeaderComponent {
   logout(){
     localStorage.removeItem('token');
     this.router.navigate(['']);
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: "You Are LoggedOut!"
+    }); 
   }
   isFeesDropdownVisible: boolean = false;
   toggleFeesDropdown() {

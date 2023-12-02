@@ -56,7 +56,7 @@
                   <div class="row">
                     <div class="col-lg-2 col-md-10 col-11 m-3 m-lg-0">
                       <label for="location">Select Branch :</label>
-                      <select formControlName="location" class="form-select ">
+                      <select formControlName="branch" class="form-select ">
 
                         <option value="">---Select Status---</option>
                         <option value="1001">Hadapsar</option>
@@ -178,12 +178,12 @@
 
                     <div class="col-lg-3 col-md-10 col-11 m-3 m-lg-0 form-group">
                       <label for="department">From Date</label>
-                      <input type="date" formControlName="department" class="form-control">
+                      <input type="date" formControlName="fromdate" class="form-control">
                     </div>
 
                     <div class="col-lg-3 col-md-10 col-11 m-3 m-lg-0 form-group">
                       <label for="department">To Date</label>
-                      <input type="date" formControlName="department" class="form-control">
+                      <input type="date" formControlName="todate" class="form-control">
                     </div>
 
                     <div class="text-end" >
@@ -311,7 +311,7 @@
                   <td>{{data.tempCustCreationDate}}</td>
                   <td>{{data.tempCustBranchName}}</td>
                     <td>
-                        <button class="btn btn-xs" style="font-size: 13px; background-color:#003974!important; color: white;" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                        <button class="btn btn-xs" style="font-size: 13px; background-color:#003974!important; color: white;" (click)="ShowDetails(data)" data-bs-toggle="modal" data-bs-target="#exampleModal1">
                             <i class="ace-icon fa fa-info bigger-120"></i>
                         </button>&nbsp;&nbsp;
                         <!-- <button class="btn btn-xs" style="font-size: 13px; background-color:#003974!important; color: white;" routerLink="/" >
@@ -344,75 +344,75 @@
                 
                       <table class="table table-bordered">
                         <tr
-                            *ngFor="let data of dataarray  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
+                            *ngFor="let data of temCustomerList  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
                            
                         <tr>
                           <th style="width:30%">Customer Full Name</th>
-                          <td>{{data.tempCustCompanyName}}</td>
+                          <td>{{selecteddata?.tempCustFullName}}</td>
                       </tr>
                       <tr>
                           <th style="width:30%">Branch</th>
-                          <td>{{data.tempCustCompanyName}}</td>
+                          <td>{{selecteddata?.tempCustBranchName}}</td>
                       </tr>
                       <tr>
                           <th style="width:30%">Email</th>
-                          <td>{{data.tempCustCompanyName}}</td>
+                          <td>{{selecteddata?.tempCustEmailId}}</td>
                       </tr>
                       <tr>
                           <th style="width:30%">Contact No.</th>
-                          <td>{{data.tempCustCompanyName}}</td>
+                          <td>{{selecteddata?.tempCustContactNo}}</td>
                       </tr>
                       <tr>
-                          <th style="width:30%">Alternative Contact No.</th>
-                          <td>{{data.tempCustCompanyName}}</td>
+                          <th style="width:30%">Alt Contact No.</th>
+                          <td>{{selecteddata?.tempCustAltContactNo}}</td>
                       </tr>
                       <tr>
                           <th style="width:30%">Address</th>
-                          <td>{{data.tempCustCompanyName}}</td>
+                          <td>{{selecteddata?.tempCustAddesss}}</td>
                       </tr>
                       <tr>
                           <th style="width:30%">City</th>
-                          <td>{{data.tempCustCompanyName}}</td>
+                          <td>{{selecteddata?.tempCustcity}}</td>
                       </tr>
                       <tr>
                           <th style="width:30%">Pin</th>
-                          <td>{{data.tempCustCompanyName}}</td>
+                          <td>{{selecteddata?.tempCustPinCode}}</td>
                       </tr>
                       <tr>
                           <th style="width:30%">Product</th>
-                          <td>{{data.tempCustCompanyName}}</td>
+                          <td>{{selecteddata?.tempCustProduct}}</td>
                       </tr>
                       <tr>
                           <th style="width:30%">Constitution</th>
-                          <td>{{data.tempCustCompanyName}}</td>
+                          <td>{{selecteddata?.tempCustConstitution}}</td>
                       </tr>
                       <tr>
                           <th style="width:30%">Segment</th>
-                          <td>{{data.tempCustCompanyName}}</td>
+                          <td>{{selecteddata?.tempCustSegment}}</td>
                       </tr>
                       <tr>
                           <th style="width:30%">Nature Of Business</th>
-                          <td>{{data.tempCustCompanyName}}</td>
+                          <td>{{selecteddata?.tempCustBussiNature}}</td>
                       </tr>
                       <tr>
                           <th style="width:30%">Maintaining ITR</th>
-                          <td>{{data.tempCustCompanyName}}</td>
+                          <td>{{selecteddata?.tempCustMaintITR}}</td>
                       </tr>
                       <tr>
                           <th style="width:30%">Lead Type</th>
-                          <td>{{data.tempCustCompanyName}}</td>
+                          <td>{{selecteddata?.tempCustLeadType}}</td>
                       </tr>
                       <tr>
                           <th style="width:30%">Lead Status</th>
-                          <td>{{data.tempCustCompanyName}}</td>
+                          <td>{{selecteddata?.tempCustLeadStatus}}</td>
                       </tr>
                       <tr>
                           <th style="width:30%">Attended By </th>
-                          <td>{{data.tempCustCompanyName}}</td>
+                          <td>{{selecteddata?.attendedByFN}} {{data.attendedByLN}}</td>
                       </tr>
                       <tr>
                           <th style="width:30%">Creation Date</th>
-                          <td>{{data.tempCustCompanyName}}</td>
+                          <td>{{selecteddata?.tempCustCreationDate}}</td>
                       </tr>
                       
                      <!-- </tr> -->
