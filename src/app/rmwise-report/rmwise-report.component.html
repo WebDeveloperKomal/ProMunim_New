@@ -71,12 +71,12 @@
                 </thead>
                 <tbody>
                   <tr
-                    *ngFor="let data of dataarray  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
+                    *ngFor="let data of rmlist  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
                     <td>{{index+1}}</td>
-                    <td>{{data.branchid}}</td>
-                    <td>{{data.branchname}}</td>
-                    <td>{{data.branchcode}}</td>
-                    <td>{{data.branchcity}}</td>
+                    <td>{{data.rmName}}</td>
+                    <td>{{data.customerCount}}</td>
+                    <td>{{data.portfolioValue}}</td>
+                    <!-- <td>{{data.portfolioValue}}</td> -->
                     <!-- <td>{{data.branchaddress}}</td> -->
                   </tr>
                 </tbody>

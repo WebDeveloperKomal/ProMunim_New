@@ -46,7 +46,7 @@
                          <div class="container" style="border: 1px solid #8b98a1;">
                 <div class="row">
               
-                    <form  [formGroup]="employeeForm" class="form-inline  col-md-12 col-sm-12 col-xs-12 mt-5">
+                    <form   class="form-inline  col-md-12 col-sm-12 col-xs-12 mt-5">
                  <div class="col-12">
                         <div class="col-lg-3 col-md-10 col-12 m-3 m-lg-0">
                             <label for="location">Select Branch :</label>
@@ -247,20 +247,16 @@
                 </thead>
                 <tbody>
                   <tr
-                    *ngFor="let data of dataarray  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
+                    *ngFor="let data of visitList  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
                     <td>{{index+1}}</td>
-                    <td>{{data.branchaddress}}</td>
-                    <td>{{data.branchid}}</td>
-                    
-                   
-                   
-                    <td>{{data.branchcode}}</td>
-                    
-                    <td>{{data.branchname}}</td>
-                    <td>{{data.branchcity}}</td>
+                    <td>{{data.company_name}}</td>
+                    <td>{{data.cust_name}}</td>
+                    <td>{{data.contact_no}}</td>                    
+                    <td>{{data.branch}}</td>
+                    <td>{{data.attendedByFN + data.attendedByLN}}</td>
                     <!-- <td>{{data.branchcity}}</td> -->
                     <td>
-                        <button class="btn" style="background-color:#003974!important; color: white;" routerLink="/set/view-add-dailyvisits" >
+                        <button class="btn" style="background-color:#003974!important; color: white;" (click)="edit(data.customer_id)" routerLink="/set/view-add-dailyvisits" >
                             View/Add Visit
                             <!-- <i class="ace-icon fa fa-info bigger-120"></i> -->
                         </button>&nbsp;&nbsp;

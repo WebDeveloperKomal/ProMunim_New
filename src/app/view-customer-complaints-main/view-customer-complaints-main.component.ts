@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { ViewCustCOmplMainModel } from './view-customer-complaints-main.component.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AllCOmplaintsMainModel } from '../all-complaints-main/all-complaints-main.component.model';
+import { ApiService } from '../api.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-view-customer-complaints-main',
@@ -9,58 +12,93 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ViewCustomerComplaintsMainComponent {
   complianceForm !: FormGroup;
-  branchid : number | undefined;
-  branchname : any;
-  branchcode: any;
-  branchcity: any;
-  branchaddress : any;
+
+
   page = 1;
-  pageSize = 10 ;
+  pageSize = 10;
   dataarray: ViewCustCOmplMainModel[] = [];
   currentPage: number = 1;
   countries: ViewCustCOmplMainModel[] | undefined;
-  collectionSize =100;
-  constructor(private formBuilder: FormBuilder) {
+  collectionSize = 100;
 
+  data1 = {
+    date: "",
+    complaintId: 0,
+    subject: "",
+    accountNo: 0,
+    companyName: "",
+    insertDate: "",
+    ticketId: "",
+    insertByName: "",
+    status: 0
+  };
+  data2 = [{
+    date: "",
+    complaintId: 0,
+    replyId: 0,
+    replyBy_mname:"" ,
+    replyBy_lname:"" ,
+    reply: "",
+    replyBy: "",
+    replyBy_fname: ""
+  }];
+
+  id!: number;
+  replay: ViewCustCOmplMainModel = new ViewCustCOmplMainModel();
+
+  constructor(private formBuilder: FormBuilder, private apiService: ApiService, private route: ActivatedRoute) {
     this.complianceForm = this.formBuilder.group({
-      tempcustname: ['', Validators.required], // Add validation if needed
-      taxLink: ['', Validators.required], // Add validation if needed
-      complianceDueDate: ['', Validators.required] // Add validation if needed
+      reply: ['', Validators.required], // Add validation if needed
+      complaintId: ['', Validators.required], // Add validation if needed
+      status:['' , Validators.required],
     });
-    
-    this.dataarray = [
-      {branchid : 1, branchname :'hadapsar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 2, branchname :'Hadapsar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 3, branchname :'vluj' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 4, branchname :'hemda' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 5, branchname :'aimndh' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 6, branchname :'sinhgad' ,branchcode :'SDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 7, branchname :'kothrud' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 8, branchname :'karvenagar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 9, branchname :'Goa' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 10, branchname :'banglore' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 11, branchname :'Hadapsar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 12, branchname :'Hadapsar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 13, branchname :'Hadapsar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 14, branchname :'Hadapsar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 15, branchname :'Hadapsar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 16, branchname :'Hadapsar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 17, branchname :'Hadapsar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 18, branchname :'Hadapsar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  }, {branchid : 1, branchname :'Hadapsar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 19, branchname :'Hadapsar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 20, branchname :'Hadapsar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 21, branchname :'Hadapsar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 22, branchname :'Hadapsar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 23, branchname :'Hadapsar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 24, branchname :'Hadapsar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 25, branchname :'Hadapsar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 26, branchname :'Hadapsar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 27, branchname :'Hadapsar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 28, branchname :'Hadapsar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 29, branchname :'Hadapsar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 30, branchname :'Hadapsar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 31, branchname :'Hadapsar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-      {branchid : 32, branchname :'Hadapsar' ,branchcode :'HDR' , branchcity :'PUNE' , branchaddress:'SN. 295, Plot No.13, Opp A M College, Mahadev Nagar , Hadapsar, Pune:411028'  },
-     ]
+  }
+
+
+  ngOnInit() {
+    this.id = this.route.snapshot.params['id']   //Get Id logic
+    console.log(this.id);
+
+    this.apiService.replayByID(this.id).subscribe(
+      (data: any) => {
+        this.data1 = data.data1;
+        this.data2 = data.data2;
+        console.log('Response successful!');
+        console.log(this.data1);
+        console.log(this.data2);
+      },
+      (error: any) => {
+        console.error('API Error:', error);
+      }
+    );
+  }
+
+  onSubmit1(){
+    // this.id = this.route.snapshot.params['id'];
+    this.replay.complaintId = this.id;
+    this.apiService.changestatus(this.replay).subscribe(
+      (response:any)=>{
+        console.log(response);
+        window.location.reload();
+      },
+      (error:any)=>{
+        console.error(error);        
+      }
+    )
+  }
+
+  onSubmit() {
+    this.replay.complaintId = this.id;
+    console.log('replay send::::: ', this.replay);
+    this.apiService.replay(this.replay).subscribe(
+      (response: any) => {
+        console.log(response.data);
+        window.location.reload();
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    )
   }
 }
+

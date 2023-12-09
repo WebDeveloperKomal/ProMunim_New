@@ -38,16 +38,16 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active mt-5" [class.active]="activeTab === 'tab1'" id="tab1">
-                            <form class="form-horizontal"[formGroup]="complianceForm">
+                            <form class="form-horizontal"[formGroup]="complianceForm" ((ngSubmit))="onSubmit()">
                                 <div class="col-lg-offset-1">
 
                                 <div class="form-group row">
                                     <label for="taxLink" class="col-lg-1 col-4 col-form-label ml-2" >Status :</label>
                                     <div class="col-lg-4 col-8">
-                                        <select formControlName="product" class="form-select">
+                                        <select formControlName="status" [(ngModel)]="tidstatus.status" class="form-select">
                                             <option value="" selected>----------- Select----------</option>
-                                            <option value="INTERESTED">Pending </option>
-                                            <option value="NOT INTERESTED">Complete</option>
+                                            <option value="Pending">Pending </option>
+                                            <option value="Complete">Complete</option>
                                         </select>
                                     </div>
                                 </div>
@@ -56,7 +56,7 @@
 
                                 <div class="form-group">
                                     <div class="col-md-11 col-sm-11 col-xs-11">
-                                        <input type="submit" class="btn btn-info m-lg-4 m-4" ng-click="saveVisit()"
+                                        <input type="submit" class="btn btn-info m-lg-4 m-4" (click)="onSubmit()"  ng-click="saveVisit()"
                                             style="margin-right: 10px;">
                                     
                                     <button type="button" class="btn canc m-lg-4 m-4">
@@ -69,16 +69,16 @@
                         </div>
 
                         <div class="tab-pane mt-5" [class.active]="activeTab === 'tab2'" id="tab2"  >
-                            <form class="form-horizontal"[formGroup]="complianceForm">
-                                          
+                            <form class="form-horizontal"[formGroup]="complianceForm"  ((ngSubmit))="onSubmit1()">
+                              <!-- courierId -->
                                 <div class="col-lg-offset-1">
                                 <div class="form-group row">
                                     <label for="taxLink" class="col-lg-2 col-4 col-form-label ml-2" >Courier Address :</label>
                                     <div class="col-lg-4 col-8">
-                                        <select formControlName="product" class="form-select">
+                                        <select formControlName="courierId" [(ngModel)]="tidstatus.courierId" class="form-select">
                                             <option value="" selected>----------- Select Location ----------</option>
-                                            <option value="INTERESTED">INTERESTED </option>
-                                            <option value="NOT INTERESTED">NOT INTERESTED </option>
+                                            <option value="1">INTERESTED </option>
+                                            <option value="0">NOT INTERESTED </option>
                                         </select>
                                     </div>
                                 </div>
@@ -87,7 +87,7 @@
 
                                 <div class="form-group">
                                     <div class="col-md-11 col-sm-11 col-xs-11">
-                                        <input type="submit" class="btn btn-info m-lg-4 m-4" ng-click="saveVisit()"
+                                        <input type="submit" class="btn btn-info m-lg-4 m-4" (click)="onSubmit1()" ng-click="saveVisit()"
                                             style="margin-right: 10px;">
                                     
                                     <button type="button" class="btn canc m-lg-4 m-4">

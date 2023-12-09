@@ -1,6 +1,8 @@
 export class ViewCustCOmplMainModel{
-    branchid : any;
-    branchname: any;
+    complaintId : any;
+    reply: any;
+    status: any;
+    
     branchcode: any;
     branchcity: any;
     branchaddress: any;

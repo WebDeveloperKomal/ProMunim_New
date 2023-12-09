@@ -77,15 +77,16 @@
                 </thead>
                 <tbody>
                   <tr
-                    *ngFor="let data of dataarray  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
-                    <td>{{index+1}}</td>
-                    <td>{{data.branchaddress}}</td>
-                    <td>{{data.branchname}}</td>
-                    <td>{{data.branchcode}}</td>
+                    *ngFor="let data of techSupportList  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
+                    
+                    <td>{{data.ticketId}}</td>
+                    <td>{{data.subject}}</td>
+                    <td>{{data.date}}</td>
+                    <td>{{data.insertBy}}</td>
                     <td>
                          <!-- <button type="button" routerLink="/add-new-customer" class="btn btn-info p-3" style="float: right;">
                         View</button> -->
-                        <button class="btn" style=" background-color:#003974!important; color: white;padding-left: 12px; padding-right: 12px;" routerLink="/set/view-techsupport" >
+                        <button class="btn" style=" background-color:#003974!important; color: white;padding-left: 12px; padding-right: 12px;" (click)="edit(data.ticketId)" routerLink="/set/view-techsupport" >
                             View
                         </button>
                       

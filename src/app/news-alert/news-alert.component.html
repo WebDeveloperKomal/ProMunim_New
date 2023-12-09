@@ -69,16 +69,16 @@
           </thead>
           <tbody>
             <tr
-              *ngFor="let data of dataarray  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
+              *ngFor="let data of NewsAlertList  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
               <td>{{index+1}}</td>
               <!-- <td>{{data.branchid}}</td> -->
               <!-- <td>{{data.branchname}}</td> -->
-              <td>{{data.branchcode}}</td>
-              <td>{{data.branchcity}}</td>
-              <td>{{data.branchaddress}}</td>
+              <td>{{data.date}}</td>
+              <td>{{data.subject}}</td>
+              <td>{{data.description}}</td>
              <td> <button class="btn btn-xs"
                style="font-size: 13px; background-color:#003974!important;  color: white;"
-                              data-bs-toggle="modal" routerLink="/set/view-news-alert" data-bs-target="#exampleModal1">
+                              data-bs-toggle="modal" (click)="edit(data.newsAlertId)" routerLink="/set/view-news-alert" data-bs-target="#exampleModal1">
                               <i class="ace-icon fa fa-pencil bigger-120"></i>
                             </button>&nbsp;&nbsp;
                             <!-- <button class="btn btn-xs" style="font-size: 13px; background-color:#003974!important; color: white;" routerLink="/" >
@@ -87,7 +87,7 @@
 
                             <button class="btn btn-xs"
                               style=" font-size: 13px; background-color:#DC3545!important; color: white;"
-                              (click)="delete()">
+                              (click)="delete(data.newsAlertId)">
                               <!-- <i class="fa fa-trash"  aria-hidden="true"></i> -->
                               <i class="fa-solid fa-trash-can"></i>
                             </button>

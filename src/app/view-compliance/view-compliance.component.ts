@@ -12,38 +12,40 @@ import { ActivatedRoute } from '@angular/router';
 export class ViewComplianceComponent {
 
   complianceForm !: FormGroup;
-  compliance:ComplianceModel = new ComplianceModel();
-  id!:number;
+  compliance: ComplianceModel = new ComplianceModel();
+  id!: number;
 
-  constructor(private formBuilder: FormBuilder, private apiService:ApiService, private route:ActivatedRoute) {
-      this.complianceForm = this.formBuilder.group({
+  constructor(private formBuilder: FormBuilder, private apiService: ApiService, private route: ActivatedRoute) {
+    this.complianceForm = this.formBuilder.group({
       complianceName: ['', Validators.required], // Add validation if needed 
       taxLink: ['', Validators.required], // Add validation if needed
       complianceDueDate: ['', Validators.required] // Add validation if needed
     });
   }
 
-
-  ngOnInit(){
+  ngOnInit() {
     this.id = this.route.snapshot.params['id'];
     this.apiService.complianceById(this.id).subscribe(
-      (response:any)=>{
-        console.log(response.data);
-        this.compliance=response.data;},
-      (error:any)=>{console.error(error);}
+      (response: any) => {
+        this.compliance = response.data;
+        console.log(this.compliance);
+      },
+      (error: any) => { console.error(error); }
     )
   }
 
-  onSubmit(){
-    let comp = {complianceId : this.id,
-                complianceName: this.compliance.complianceName,
-                taxLink: this.compliance.taxLink,
-                complianceDueDate: this.compliance.complianceDueDate};
-    console.log("DATA READY TO SEND ::: ",comp);
+  onSubmit() {
+    let comp = {
+      complianceId: this.id,
+      complianceName: this.compliance.complianceName,
+      taxLink: this.compliance.taxLink,
+      complianceDueDate: this.compliance.complianceDueDate
+    };
+    console.log("DATA READY TO SEND ::: ", comp);
 
     this.apiService.updateCompliance(comp).subscribe(
-      (response:any)=>{console.log(response.data);},
-      (error:any)=>{console.error(error);}
+      (response: any) => { console.log(response.data); },
+      (error: any) => { console.error(error); }
     );
   }
 }

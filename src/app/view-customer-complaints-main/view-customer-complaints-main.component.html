@@ -1,406 +1,141 @@
-
 <div class="container-fluid">
-    <div class="row">
-      <div class="col">
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <i class="ace-icon fa fa-home home-icon " style="margin-right: 10px;"></i><a href="#">Home</a>
-      </li>
-      <!-- <li class="breadcrumb-item"><a href="#">Settings</a></li> -->
-      <li class="breadcrumb-item active" aria-current="page"> Customer Complaints</li>
-    </ol>
-  </nav>
-<div class="page-content">
-    <div class="page-header">
-        <h1>
+  <div class="row">
+    <div class="col">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <i class="ace-icon fa fa-home home-icon " style="margin-right: 10px;"></i><a href="#">Home</a>
+          </li>
+          <!-- <li class="breadcrumb-item"><a href="#">Settings</a></li> -->
+          <li class="breadcrumb-item active" aria-current="page"> Customer Complaints</li>
+        </ol>
+      </nav>
+      <div class="page-content">
+        <div class="page-header">
+          <h1>
             Customer Complaints
-        </h1>
-    </div>
-   
-             
-  <div class="row line">
-    <div class="col-md-6 col-6">
-      <h6> Complaint Details</h6>
-    </div>
-    <div class="col-md-6 col-6 text-md-end">
-      <button type="button" routerLink="/set/allcomplaintsmain" class="btn btn-info">
-        View All Complaints
-      </button>
-    </div>
-  </div>
-
-    </div>
-
-
-    <div class="container box">
-
-    
-          <!-- <div class="col-xs-12"> -->
-              <div id="complaint_Info" class="col-md-10 col-sm-10 col-xs-10 p-4" style="border: 1px solid darkolivegreen ;font-size: 14px;border-radius: 8px;color: #333;">
-            <div class="row">    
-                <div class="row col-lg-5 col-md-12 ">
-                    <div class="col-md-3 ">
-                      <p>Ticket Id </p>
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                      <p class="ng-binding">:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#CDE-699-63750 </p>
-                    </div>
-                  </div>
-    
-                  <div class="row col-lg-7 col-md-12">
-                    <div class="col-lg-4 col-md-12">
-                      <p>Company Name </p>
-                    </div>
-                    <div class="col-lg-8 col-md-12">
-                      <p class="ng-binding">:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OM SAINATH CONSTRUCTION </p>
-                    </div>
-                  </div>
-    </div>
-    <div class="row">
-                  <div class="row col-lg-9 col-md-12">
-                    <div class="col-lg-3 col-md-12">
-                      <p>Change Status : </p>
-                    </div>
-                    <div class="col-lg-4 col-md-12">
-                       <select class="form-select">
-                        <option value="Open">Open</option>
-                        <option value="Close">Close</option>
-                      </select>
-                    </div>
-                    <div class="col-md-3 mt-lg-0 mt-md-2 mt-3">
-                      <button type="button" ng-click="changeComplaintStatus()" class="btn btn-info ">Submit</button>
-                    </div>
-                  </div>
-    
-                  <div class="row col-lg-3 col-md-12">
-                    <div class="col-lg-2 col-md-6">
-                      <p>Date </p>
-                    </div>
-                    <div class="col-lg-8 col-md-6">
-                      <p class="ng-binding">:&nbsp;&nbsp;2018-08-02</p>
-                    </div>
-                  </div>
-                </div>
-    
-                <div class="row col-md-12" style="margin-top: 10px;">
-                  <div class="col-lg-3 col-md-6">
-                    <p><b>Subject</b> </p>
-                  </div>
-                  <div class="col-lg-8 col-md-10">
-                    <p class="ng-binding">&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tentative statement delayed
-                    </p>
-                  </div>
-                </div>
-
-  <div class="row col-lg-11 col-md-12 col-12 mt-5" id="reply_user">
-    <div id="replay" class="col-md-12 col-sm-12 col-xs-12">
-      <p class="">customer need tentative statement on urgent basis, he had given document few days back</p>
-    </div>
-       <div class="col-lg-9 col-md-12 col-sm-9 col-xs-9 p-2">
-        <p><i class="ng-binding">SAMEER SHANTARAM KULKARNI (S12440)</i></p>
- 
-       </div>
-     
-
-       <div class="col-lg-3 col-md-4 col-sm-3 col-xs-3" id="techDate">
-            <p>Date :&nbsp;&nbsp;2017-05-13 </p>
-       </div>
-      
-   </div>
-  
-  <div class="row col-lg-11 col-md-12 col-12" id="reply_user">
-    <div id="replay" class="col-md-12 col-sm-12 col-xs-12">
-      <p class="ng-binding">Dear Sumeet,
-
-        Provide more details about the above complaint.
-        Financial Year
-        Date of document provided
-        Way of data Sent to Accounts
-        Name of the Concern Account manager
-
-        Regards.</p>
-    </div>
-       <div class="col-lg-10 col-md-12 col-sm-9 col-xs-9 p-2">
-        <p><i class="ng-binding">VIKRAMRAJ ACHARYA (V9001)</i></p>
- 
-       </div>
-     
-
-       <div class="col-lg-2 col-md-4 col-sm-3 col-xs-3" id="techDate">
-            <p>Date :&nbsp;&nbsp;2017-05-13 </p>
-       </div>
-      
-   </div>
-
-
-  <div class="row col-lg-11 col-md-12 col-12 d-flex" id="reply_user">
-    <div class="col-lg-10 col-md-12 col-sm-9 col-xs-9 p-2">
-        <p><i class="ng-binding">VIKRAMRAJ ACHARYA (V9001)</i></p>
-    </div>
-    <div class="col-lg-2 col-md-4 col-sm-3 col-xs-3" id="techDate">
-        <p>Date :&nbsp;&nbsp;2017-05-13 </p>
-    </div>
-</div>
-
-
-   <div class="row col-lg-11 col-md-12 col-12" id="reply_user">
-    <div id="replay" class="col-md-12 col-sm-12 col-xs-12">
-      <p class="ng-binding">File finalized and handed over to compliance team on 10th August 2018.</p>
-    </div>
-       <div class="col-lg-10 col-md-12 col-sm-9 col-xs-9 p-2">
-        <p><i class="ng-binding">SAMEER SHANTARAM KULKARNI (S12440)</i></p>
- 
-       </div>
-     
-
-       <div class="col-lg-2 col-md-4 col-sm-3 col-xs-3" id="techDate">
-            <p>Date :&nbsp;&nbsp;2017-05-13 </p>
-       </div>
-      
-   </div>
-
-   <div class="row col-lg-11 col-md-12 col-12 d-flex" id="reply_user">
-    <div class="col-lg-10 col-md-12 col-sm-9 col-xs-9 p-2">
-        <p><i class="ng-binding">BHAGYASHRI B (B12660)</i></p>
-    </div>
-    <div class="col-lg-2 col-md-4 col-sm-3 col-xs-3" id="techDate">
-        <p>Date :&nbsp;&nbsp;2017-05-13 </p>
-    </div>
-</div>
-
-
-</div>
-
-<!-- <div id="add_replay" class="col-lg-11 col-md-12 col-12"> -->
-  
-<!--
-   <h4 class="col-md-8 col-sm-8 col-xs-8" style="margin-top:40px;">Add Replay :</h4>
-<div id="add_replay" class="col-lg-11 col-md-12 col-12">
-    <form class="form-horizontal ng-pristine ng-valid" method="post">
-        <input class="form-control ng-pristine ng-untouched ng-valid"
-            ng-model="techSupportReplay.ticketId" style="display:none">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="form-group">
-                <textarea class="form-control ng-pristine ng-untouched ng-valid" path="replay"
-                    ng-model="techSupportReplay.replay" rows="5"></textarea>
-            </div>
-        </div>
-        <div class="mb-5 p-4 " style="float: right;">
-            <button type="button"  class="btn btn-info "
-                style="margin-right: 10px;">Submit</button>
-            <button type="button" ng-click="clear1()" class="btn bg-navy canc">Cancel</button>
+          </h1>
         </div>
 
-    </form> -->
-<!-- </div> -->
+
+        <div class="row line">
+          <div class="col-md-6 col-6">
+            <h6> Complaint Details</h6>
+          </div>
+          <div class="col-md-6 col-6 text-md-end">
+            <button type="button" routerLink="/set/allcomplaintsmain" class="btn btn-info">
+              View All Complaints
+            </button>
+          </div>
+        </div>
+
+      </div>
 
 
-<!-- </div> -->
+      <div class="container box">
 
 
-
-<!-- </div> -->
-
-
-      <!-- <div class="container box">
-
-        <div class="row">
-            <div class="col-xs-12">
-                <div id="complaint_Info" class="col-md-10 col-sm-10 col-xs-10 p-4" style="border: 1px solid darkolivegreen ;font-size: 14px;border-radius: 8px;color: #333;">
-                    <div class="col-lg-5 col-md-12 ">
-                      <div class="col-md-3 ">
-                        <p>Ticket Id </p>
-                      </div>
-                      <div class="col-lg-6 col-md-12">
-                        <p class="ng-binding">:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#CDE-699-63750 </p>
-                      </div>
-                    </div>
-      
-                    <div class="col-lg-7 col-md-12">
-                      <div class="col-lg-4 col-md-12">
-                        <p>Company Name </p>
-                      </div>
-                      <div class="col-lg-8 col-md-12">
-                        <p class="ng-binding">:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OM SAINATH CONSTRUCTION </p>
-                      </div>
-                    </div>
-      
-                    <div class="col-lg-9 col-md-12">
-                      <div class="col-lg-3 col-md-12">
-                        <p>Change Status : </p>
-                      </div>
-                      <div class="col-lg-4 col-md-12">
-                         <select class="form-select">
-                          <option value="Open">Open</option>
-                          <option value="Close">Close</option>
-                        </select>
-                      </div>
-                      <div class="col-md-3 mt-lg-0 mt-md-2 mt-3">
-                        <button type="button" ng-click="changeComplaintStatus()" class="btn btn-info ">Submit</button>
-                      </div>
-                    </div>
-      
-                    <div class="col-lg-3 col-md-12">
-                      <div class="col-lg-2 col-md-6">
-                        <p>Date </p>
-                      </div>
-                      <div class="col-lg-8 col-md-6">
-                        <p class="ng-binding">:&nbsp;&nbsp;2018-08-02</p>
-                      </div>
-                    </div>
-      
-                    <div class="col-md-12" style="margin-top: 10px;">
-                      <div class="col-lg-3 col-md-6">
-                        <p><b>Subject</b> </p>
-                      </div>
-                      <div class="col-lg-8 col-md-10">
-                        <p class="ng-binding">&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tentative statement delayed
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                <div id="view_replay" class="col-md-12 col-sm-12 col-xs-12 ng-scope" ng-repeat="rply in complaintsDetails">
-                  <div id="reply_user" class="col-md-10 col-sm-10 col-xs-10">
-    
-                    <div id="replay" class="col-md-12 col-sm-12 col-xs-12">
-                      <p class="ng-binding">customer need tentative statement on urgent basis, he had given document few
-                        days back</p>
-                    </div>
-                    <div id="replay_info">
-                      <div class="col-md-8 col-sm-8 col-xs-8">
-                        <p><i class="ng-binding">SUMEET UMAIDLAL MATHUR (M12860)</i></p>
-                      </div>
-                      <div class="col-md-4 col-sm-4 col-xs-4">
-                        <p class="ng-binding"> Date &nbsp;&nbsp;:&nbsp;&nbsp;2018-08-02</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id="view_replay" class="col-md-12 col-sm-12 col-xs-12 ng-scope" ng-repeat="rply in complaintsDetails">
-                  <div id="reply_user" class="col-md-10 col-sm-10 col-xs-10">
-    
-                    <div id="replay" class="col-md-12 col-sm-12 col-xs-12">
-                      <p class="ng-binding">Dear Sumeet,
-    
-                        Provide more details about the above complaint.
-                        Financial Year
-                        Date of document provided
-                        Way of data Sent to Accounts
-                        Name of the Concern Account manager
-    
-                        Regards.</p>
-                    </div>
-                    <div id="replay_info">
-                      <div class="col-md-8 col-sm-8 col-xs-8">
-                        <p><i class="ng-binding">VIKRAMRAJ ACHARYA (V9001)</i></p>
-                      </div>
-                      <div class="col-md-4 col-sm-4 col-xs-4">
-                        <p class="ng-binding"> Date &nbsp;&nbsp;:&nbsp;&nbsp;2018-08-14</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id="view_replay" class="col-md-12 col-sm-12 col-xs-12 ng-scope" ng-repeat="rply in complaintsDetails">
-                  <div id="reply_user" class="col-md-10 col-sm-10 col-xs-10">
-    
-                    <div id="replay" class="col-md-12 col-sm-12 col-xs-12">
-                      <p class="ng-binding"></p>
-                    </div>
-                    <div id="replay_info">
-                      <div class="col-md-8 col-sm-8 col-xs-8">
-                        <p><i class="ng-binding">VIKRAMRAJ ACHARYA (V9001)</i></p>
-                      </div>
-                      <div class="col-md-4 col-sm-4 col-xs-4">
-                        <p class="ng-binding"> Date &nbsp;&nbsp;:&nbsp;&nbsp;2018-08-14</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id="view_replay" class="col-md-12 col-sm-12 col-xs-12 ng-scope" ng-repeat="rply in complaintsDetails">
-                  <div id="reply_user" class="col-md-10 col-sm-10 col-xs-10">
-    
-                    <div id="replay" class="col-md-12 col-sm-12 col-xs-12">
-                      <p class="ng-binding">File finalized and handed over to compliance team on 10th August 2018.</p>
-                    </div>
-                    <div id="replay_info">
-                      <div class="col-md-8 col-sm-8 col-xs-8">
-                        <p><i class="ng-binding">SAMEER SHANTARAM KULKARNI (S12440)</i></p>
-                      </div>
-                      <div class="col-md-4 col-sm-4 col-xs-4">
-                        <p class="ng-binding"> Date &nbsp;&nbsp;:&nbsp;&nbsp;2018-08-14</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id="view_replay" class="col-md-12 col-sm-12 col-xs-12 ng-scope" ng-repeat="rply in complaintsDetails">
-                  <div id="reply_user" class="col-md-10 col-sm-10 col-xs-10">
-    
-                    <div id="replay" class="col-md-12 col-sm-12 col-xs-12">
-                      <p class="ng-binding"></p>
-                    </div>
-                    <div id="replay_info">
-                      <div class="col-md-8 col-sm-8 col-xs-8">
-                        <p><i class="ng-binding">BHAGYASHRI B (B12660)</i></p>
-                      </div>
-                      <div class="col-md-4 col-sm-4 col-xs-4">
-                        <p class="ng-binding"> Date &nbsp;&nbsp;:&nbsp;&nbsp;2020-11-06</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-    
-                <h4 class="col-md-8 col-sm-8 col-xs-8" style="margin-top:40px;">Add Reply :</h4>
-                <div id="add_replay" class="col-md-12 col-sm-12 col-xs-12" style="margin-left:-5px;">
-                  <form class="form-horizontal ng-pristine ng-valid" method="post">
-                    <input class="form-control ng-pristine ng-untouched ng-valid" ng-model="complaintReply.complaintId"
-                      style="display: none;">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                      <div class="form-group">
-                        <textarea class="form-control ng-pristine ng-untouched ng-valid" path="replay"
-                          ng-model="complaintReply.reply" rows="5"></textarea>
-                      </div>
-                    </div>
-                    <div class=" pull-right">
-                      <button type="button"  class="btn btn-info"
-                        style="margin-right: 10px;">Submit</button>
-                      <button type="button" class="btn bg-navy canc">Cancel</button>
-                    </div>
-                  </form>
-                </div>
+        <!-- <div class="col-xs-12"> -->
+        <div id="complaint_Info" class="col-md-10 col-sm-10 col-xs-10 p-4"
+          style="border: 1px solid darkolivegreen ;font-size: 14px;border-radius: 8px;color: #333;">
+          <div class="row">
+            <div class="row col-lg-5 col-md-12 ">
+              <div class="col-md-3 ">
+                <p>Ticket Id </p>
               </div>
-    
+              <div class="col-lg-6 col-md-12">
+                <p class="ng-binding" >:{{data1.ticketId}}</p>
+              </div>
             </div>
-          </div> -->
+
+            <div class="row col-lg-7 col-md-12">
+              <div class="col-lg-4 col-md-12">
+                <p>Company Name </p>
+              </div>
+              <div class="col-lg-8 col-md-12">
+                <p class="ng-binding" >:{{data1.companyName}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="row col-lg-9 col-md-12">
+              <div class="col-lg-3 col-md-12">
+                <p>Change Status : </p>
+              </div>
+              <div class="col-lg-4 col-md-12 "[formGroup]="complianceForm">
+                <select class="form-select" formControlName="status" [(ngModel)]="replay.status">
+                  <option value="Open">Open</option>
+                  <option value="Close">Close</option>
+                </select>
+              </div>
+              <div class="col-md-3 mt-lg-0 mt-md-2 mt-3">
+                <button type="button" (click)="onSubmit1()" class="btn btn-info ">Submit</button>
+              </div>
+            </div>
+
+            <div class="row col-lg-3 col-md-12">
+              <div class="col-lg-2 col-md-6">
+                <p>Date </p>
+              </div>
+              <div class="col-lg-8 col-md-6">
+                <p class="ng-binding" >:{{data1.date}}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row col-md-12" style="margin-top: 10px;">
+            <div class="col-lg-3 col-md-6">
+              <p><b>Subject</b> </p>
+            </div>
+            <div class="col-lg-8 col-md-10">
+              <p class="ng-binding" >:{{data1.subject}}
+              </p>
+            </div>
+          </div>
+
+          <div class="row col-lg-11 col-md-12 col-12 mt-5" id="reply_user"  
+          *ngFor=" let data of data2">
+            <div id="replay" class="col-md-12 col-sm-12 col-xs-12">
+              <p class="" >{{data.reply}}</p>
+            </div>
+            <div class="col-lg-9 col-md-12 col-sm-9 col-xs-9 p-2">
+              <p><i class="ng-binding" > {{data.replyBy_fname}} {{data.replyBy_mname}} {{data.replyBy_lname}}</i></p>
+
+            </div>
 
 
+            <div class="col-lg-3 col-md-4 col-sm-3 col-xs-3" id="techDate">
+              <p>Date :&nbsp;&nbsp;{{data.date}} </p>
+            </div>
 
+          </div>
         </div>
-      
-</div>
+      </div>
 
-<div>
-<h4 class="col-md-8 col-sm-8 col-xs-8" style="margin-top:40px;">Add Replay :</h4>
-<div id="add_replay" class="col-lg-11 col-md-12 col-12">
-    <form class="form-horizontal ng-pristine ng-valid" method="post">
-        <input class="form-control ng-pristine ng-untouched ng-valid"
-            ng-model="techSupportReplay.ticketId" style="display:none">
-        <div class="col-md-12 col-sm-12 col-xs-12">
+    </div>
+
+    <div>
+      <h4 class="col-md-8 col-sm-8 col-xs-8" style="margin-top:40px;">Add Replay :</h4>
+      <div id="add_replay" class="col-lg-11 col-md-12 col-12">
+        <form [formGroup]="complianceForm" class="form-horizontal ng-pristine ng-valid"  method="post">
+          <!-- <p>ID : {{replay.complaintId}} name : {{replay.reply}}</p> -->
+          <input class="form-control ng-pristine ng-untouched ng-valid" 
+            style="display:none">
+          <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="form-group">
-                <textarea class="form-control ng-pristine ng-untouched ng-valid" path="replay"
-                    ng-model="techSupportReplay.replay" rows="5"></textarea>
+              <textarea class="form-control ng-pristine ng-untouched ng-valid" formControlName="reply" [(ngModel)]="replay.reply" path="replay"
+                 rows="5"></textarea>
             </div>
-        </div>
-        <div class="mb-5 p-4 " style="float: right;">
-            <button type="button"  class="btn btn-info "
-                style="margin-right: 10px;">Submit</button>
+          </div>
+          <div class="mb-5 p-4 " style="float: right;">
+            <button type="button" class="btn btn-info " style="margin-right: 10px;" (click)="onSubmit()">Submit</button>
             <button type="button" class="btn bg-navy canc">Cancel</button>
-        </div>
+          </div>
 
-    </form>
-</div>
-</div>
-<!-- <div>
+        </form>
+      </div>
+    </div>
+    <!-- <div>
   <h6>Add Reply</h6>
   <textarea class="form-control ng-pristine ng-untouched ng-valid" path="replay"
   ng-model="complaintReply.reply" rows="5"></textarea>
@@ -408,10 +143,4 @@
 
 
 
-</div>
-
-
-
-
-
-
+  </div>

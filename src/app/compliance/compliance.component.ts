@@ -17,57 +17,59 @@ interface BranchData {
   styleUrls: ['./compliance.component.css']
 })
 export class ComplianceComponent {
-  SearchText : any ;
+  SearchText: any;
 
   page = 1;
-  pageSize = 10 ;
+  pageSize = 10;
   dataarray: UserModel[] = [];
   currentPage: number = 1;
   countries: ComplianceModel[] | undefined;
-  collectionSize =100;
-  
-  complianceList:ComplianceModel[]=[];
-  constructor(private apiService:ApiService, private router:Router) {}
- 
-  ngOnInit(){
+  collectionSize = 100;
+
+  complianceList: ComplianceModel[] = [];
+
+  constructor(private apiService: ApiService, private router: Router) { }
+
+  ngOnInit() {
     this.apiService.allCompliances().subscribe(
-      (res:any)=>{this.complianceList=res.data},
-      (error:any)=>{console.error(error);
+      (res: any) => { this.complianceList = res.data; },
+      (error: any) => {
+        console.error(error);
+        // window.location.reload(); 
       }
     )
   }
 
-
-  edit(id:number){
-    this.router.navigate([`view-compliance/`+id]);
+  edit(id: number) {
+    this.router.navigate(['/set/view-compliance/' + id]);
   }
 
-  delete(id:number){
-    console.log('ID :::::',id );
+  delete(id: number) {
+    console.log('ID :::::', id);
     this.apiService.deleteCompliance(id).subscribe(
-      (response:any)=>{
+      (response: any) => {
         console.log(response.data);
-        this.router.navigate(['compliance']);
+        window.location.reload();
       },
-      (error:any)=>{
+      (error: any) => {
         console.error(error);
       }
     )
   }
 
-applyFilter(): void {
-  // const searchString = this.SearchText.toLowerCase();
-  // const filteredData = [...this.dataarray];
-  // this.dataarray = filteredData.filter((data) =>
-  //   data.branchname.toLowerCase().includes(searchString) ||
-  //   data.branchcode.toLowerCase().includes(searchString) ||
-  //   data.branchcity.toLowerCase().includes(searchString) ||
-  //   data.branchaddress.toLowerCase().includes(searchString)
-  // );
-}
-refreshCountries() {
-  // this.countries = this.dataarray
-  //   .map((country, i) => ({id: i + 1, ...country}))
-  //   .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
-}
+  applyFilter(): void {
+    // const searchString = this.SearchText.toLowerCase();
+    // const filteredData = [...this.dataarray];
+    // this.dataarray = filteredData.filter((data) =>
+    //   data.branchname.toLowerCase().includes(searchString) ||
+    //   data.branchcode.toLowerCase().includes(searchString) ||
+    //   data.branchcity.toLowerCase().includes(searchString) ||
+    //   data.branchaddress.toLowerCase().includes(searchString)
+    // );
+  }
+  refreshCountries() {
+    // this.countries = this.dataarray
+    //   .map((country, i) => ({id: i + 1, ...country}))
+    //   .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+  }
 }

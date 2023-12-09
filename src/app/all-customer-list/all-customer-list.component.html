@@ -204,6 +204,7 @@
                         <button type="button" class="btn btn-info m-lg-3 m-4"><i class="ace-icon fa fa-check bigger-110"></i> Submit</button>
                         <button type="button" class="btn canc m-lg-3 m-4"><i class="ace-icon fa fa-undo bigger-110"></i> Reset</button>
                     </div> -->
+                    
                     </div>
                     
                      
@@ -290,13 +291,12 @@
                 </thead>
                 <tbody>
                   <tr
-                    *ngFor="let data of dataarray  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
-                    <td>{{index+1}}</td>
-                    <td>{{data.branchid}}</td>
-                    <td>{{data.branchcustname}}</td>
-                    <td>{{data.branchcode}}</td>
-                    
-                    <td>{{data.branchname}}</td>
+                    *ngFor="let data of allCust  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
+                    <td>{{data.customerId}}</td>
+                    <td>{{data.accountNo}}</td>
+                    <td>{{data.companyName}}</td>
+                    <td>{{data.customerFullName}}</td> 
+                    <td>{{data.branch}}</td>
                    
                     <td>
                         <!-- <button class="btn btn-xs" style="font-size: 13px; background-color:#003974!important; color: white;" routerLink="/" >

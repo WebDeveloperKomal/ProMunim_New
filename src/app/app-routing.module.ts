@@ -78,7 +78,6 @@ const routes: Routes = [
   },
 
 
-
   {
     path: 'set',
     component: SetComponent, 
@@ -110,7 +109,7 @@ const routes: Routes = [
         path : 'compliance' , component : ComplianceComponent , canActivate:[AuthGuard]
       },
       { path: "add-compliance", component: AddComplianceComponent , canActivate:[AuthGuard]},
-      { path: "view-compliance", component: ViewComplianceComponent , canActivate:[AuthGuard]},
+      { path: "view-compliance/:id", component: ViewComplianceComponent , canActivate:[AuthGuard]},
       {
         path : 'department' , component : DepartmentComponent , canActivate:[AuthGuard]
       },
@@ -182,27 +181,33 @@ const routes: Routes = [
     
     
     { path: "alldailyvisits", component: AllDailyVisitComponent },
-    { path: "view-add-dailyvisits", component: ViewAddDailyvisitComponent },
+    { path: "view-add-dailyvisits/:id", component: ViewAddDailyvisitComponent },
     // { path: "view-all-visits", component: ViewAllVisitsComponent},
     // { path: "add-visit-details", component: AddVisitDetailsComponent},
     
-    
+  
     { path: "alldailyleads", component: AlldailyleadsComponent },
-    { path: "view-add-dailyLeads", component: ViewAddDailyleadsComponent },
+    { path: "view-add-dailyLeads/:id", component: ViewAddDailyleadsComponent },
     // { path: "view-all-leads", component: ViewAllLeadsComponent},
     // { path: "add-leads-details", component: AllLeadsDetailsComponent},
     
     { path: "alltid", component: AllTIDComponent}, 
     { path: "add-tids", component: AddTIDComponent},
-    { path: "tidgeneration", component: TidgenerationComponent},
+    { path: "tidgeneration/:id", component: TidgenerationComponent},
     // { path: "tid-update-status", component: TidUpdateStatusComponent},
     // { path: "tid-update-courier-details", component: TidUpdateCourierDetailsComponent},
+
+
     { path: "account-opening-form", component: AccountopeningFormComponent },
+
     { path: "customerslist", component: AllCustomerListComponent },
+    
     { path: "view-customer-details", component: ViewCustomerDetailsComponent },
+
+
     { path: "allcomplaintsmain", component: AllComplaintsMainComponent },
     { path: "add-customer-complaints", component: AddCustomerComplaintsMainComponent},
-    { path: "view-customer-complaints-main", component: ViewCustomerComplaintsMainComponent },
+    { path: "view-customer-complaints-main/:id", component: ViewCustomerComplaintsMainComponent },
     // { path: "view-complain-details", component: ViewComplaintDetailsComponent },
       //reports 
       { path: "allinvoices", component: AllInvoicesComponent },
@@ -211,24 +216,16 @@ const routes: Routes = [
       { path: "allcomplaints-Sub", component: AllComplaintsComponent },
       { path: "RmWisereport", component: RMWiseReportComponent },
     
-    
-    
+
     { path: "alltechsupport", component: TechSupportComponent },
     { path: "add-ticket", component: AddTicketComponent },
-    { path: "view-techsupport", component: ViewTechsupportComponent },
+    { path: "view-techsupport/:id", component: ViewTechsupportComponent },
     { path: "newsalert", component: NewsAlertComponent },
     { path: "add-news-alert", component: AddNewsAlertComponent },
-    { path: "view-news-alert", component: ViewNewsAlertComponent },
+    { path: "view-news-alert/:id", component: ViewNewsAlertComponent },
     { path: "change-password", component: ChangePasswordComponent },
-
-
-         
     ],
   },
-
-
-
-
 
 ];
 
@@ -236,4 +233,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+  
+ }

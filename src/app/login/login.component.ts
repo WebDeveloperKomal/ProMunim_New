@@ -19,7 +19,7 @@ export class LoginComponent {
       (response :any) => 
       {
         localStorage.setItem('token',response.jwtToken);
-        window.location.href="/dashboard";
+        window.location.href="/set";
       },
       error => {console.error(error);}
     )
