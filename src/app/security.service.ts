@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -10,9 +10,9 @@ export class SecurityService {
   
   credentials!:{email:string,password:string};
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient) {}
 
-  baseUrl="http://localhost:8181";
+  baseUrl="https://clientportal.promunim.com/";
 
   Login(credentials:{email:string,password:string})
   {
@@ -60,24 +60,42 @@ export class SecurityService {
     return this.http.get(`${this.baseUrl}/employee`);
   }
 
-  addEmployee(emp:any):any
-  {
-    return this.http.post(`${this.baseUrl}/register-new-employee`,emp);
+
+  addEmployee(data: any, empPhoto: File): any {
+    const formData = new FormData();
+    formData.append('data', JSON.stringify(data));
+    formData.append('empPhoto', empPhoto);
+
+    return this.http.post(`${this.baseUrl}/register-new-employee`, formData, {
+      // params,
+      reportProgress: true, // If you want to track upload progress
+    });
   }
 
-  updateEmployee(data: string, empPhoto: File | null):any {
+  updateEmployee(data: any, empPhoto: File):any {
     const formData: FormData = new FormData();
-    formData.append('data', data);
+    formData.append('data', JSON.stringify(data));
+    formData.append('empPhoto', empPhoto);
 
-    if (empPhoto) {
-      formData.append('empPhoto', empPhoto, empPhoto.name);
-    }
-
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'multipart/form-data');
-
-    return this.http.post(`${this.baseUrl}/update-employee`, formData, { headers });
+    return this.http.post(`${this.baseUrl}/update-employee`, formData, { reportProgress: true });
   }
+
+  deleteEmployee(id:any){
+    return this.http.delete(`${this.baseUrl}/auth/employee/`+id);
+  }
+
+
+    /************************************** FOR EMPLOYEE COMPONENT ***************************************/
+
+
+
+    
+
+
+
+
+
+
 
 
 }

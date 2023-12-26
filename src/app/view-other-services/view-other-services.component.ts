@@ -31,11 +31,21 @@ export class ViewOtherServicesComponent {
     this.apiService.OtherServiceById(this.id).subscribe(
       (response:any)=>{
         console.log(response.data);        
-        this.data=response.data;},
+        this.data=response.data;
+        this.complianceForm.patchValue({
+          serviceName : response.data.serviceName,
+          description: response.data.description,
+          fees : response.data.fees
+
+         
+
+        })},
       (error:any)=>{console.error(error);}
     )
   }
-
+reset(){
+  window.location.reload();
+}
 
   onSubmit()
   {

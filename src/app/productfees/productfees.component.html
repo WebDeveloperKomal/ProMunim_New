@@ -19,7 +19,7 @@
               </h1>
             </div>
             <div>
-              <button type="button" routerLink="/set/add-productFees" class="btn btn-info" style="float: right;">Add
+              <button *ngIf="insertproductfees" type="button" routerLink="/set/add-productFees" class="btn btn-info" style="float: right;">Add
                 Product Fees</button>
               </div>
             <div id="branch_datatable_wrapper" class="dataTables_wrapper no-footer">
@@ -57,7 +57,7 @@
                           <th>Product Range</th>
                           <th>Branch Type</th>
                           <th>Fees</th>
-                          <th>Action</th>
+                          <th *ngIf="view || updateproductfees || deleteproductfees">Action</th>
                           
                 </tr>
               </thead>
@@ -70,11 +70,11 @@
                 <td>{{data.minValue}} - {{data.maxValue}}</td>
                 <td>{{data.areaType}}</td>
                 <td>{{data.fees}}</td>
-                  <td>
-                    <button class="btn btn-xs" style="font-size: 13px; background-color:#003974!important; color: white;" (click)="edit(data.productFeeId)" >
+                  <td *ngIf="view || updateproductfees || deleteproductfees">
+                    <button *ngIf="updateproductfees" class="btn btn-xs" style="font-size: 13px; background-color:#003974!important; color: white;" (click)="edit(data.productFeeId)" >
                         <i class="ace-icon fa fa-pencil bigger-120"></i>
                     </button>&nbsp;&nbsp;
-                    <button class="btn btn-xs" style=" font-size: 13px; background-color:#DC3545!important; color: white;" (click)="delete(data.productFeeId)" >
+                    <button *ngIf="deleteproductfees" class="btn btn-xs" style=" font-size: 13px; background-color:#DC3545!important; color: white;" (click)="delete(data.productFeeId)" >
                     <!-- <i class="fa fa-trash"  aria-hidden="true"></i> -->
                     <i class="fa-solid fa-trash-can"></i>
                     </button>
@@ -88,7 +88,7 @@
               <div class="dataTables_info mt-3" style="font-size: 14px;" id="branch_datatable_info" role="status"
                 aria-live="polite">
                 Showing {{(page - 1) * pageSize + 1}} to {{(page * pageSize < collectionSize) ? page * pageSize :
-                  collectionSize}} of {{dataarray.length}} entries </div>
+                  pageSize}} of {{ProductFeeList.length}} entries </div>
                   <ngb-pagination [pageSize]="25" [collectionSize]="collectionSize" [(page)]="page"
                     aria-label="Default pagination"></ngb-pagination>
 

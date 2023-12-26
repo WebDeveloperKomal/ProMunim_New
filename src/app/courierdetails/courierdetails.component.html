@@ -19,7 +19,7 @@
               </h1>
             </div>
             <div>
-              <button type="button" routerLink="/set/add-courier" class="btn btn-info" style="float: right;">Add
+              <button *ngIf="insertcourior" type="button" routerLink="/set/add-courier" class="btn btn-info" style="float: right;">Add
                 Courier</button>
               </div>
             <div id="branch_datatable_wrapper" class="dataTables_wrapper no-footer">
@@ -58,7 +58,7 @@
                     <th>Contact Number</th>
                     <th>FAX</th>
                     <th>EmailID</th>
-                    <th>Action</th>
+                    <th *ngIf="view || updatecourior || deletecourior">Action</th>
 
                   </tr>
               </thead>
@@ -72,11 +72,11 @@
                 <td>{{data.phoneNo}}</td>
                 <td>{{data.fax}}</td>
                 <td>{{data.emailId}}</td>
-                  <td>
-                    <button class="btn btn-xs" style="font-size: 13px; background-color:#003974!important; color: white;" (click)="edit(data.courierId)" >
+                  <td *ngIf="view || updatecourior || deletecourior">
+                    <button *ngIf="updatecourior" class="btn btn-xs" style="font-size: 13px; background-color:#003974!important; color: white;" (click)="edit(data.courierId)" >
                         <i class="ace-icon fa fa-pencil bigger-120"></i>
                     </button>&nbsp;&nbsp;
-                    <button class="btn btn-xs" style=" font-size: 13px; background-color:#DC3545!important; color: white;" (click)="delete(data.courierId)" >
+                    <button *ngIf="deletecourior" class="btn btn-xs" style=" font-size: 13px; background-color:#DC3545!important; color: white;" (click)="delete(data.courierId)" >
                     <!-- <i class="fa fa-trash"  aria-hidden="true"></i> -->
                     <i class="fa-solid fa-trash-can"></i>
                     </button>
@@ -89,7 +89,7 @@
               <div class="dataTables_info mt-3" style="font-size: 14px;" id="branch_datatable_info" role="status"
                 aria-live="polite">
                 Showing {{(page - 1) * pageSize + 1}} to {{(page * pageSize < collectionSize) ? page * pageSize :
-                  collectionSize}} of {{dataarray.length}} entries </div>
+                  pageSize}} of {{couriorList.length}} entries </div>
                   <ngb-pagination [pageSize]="25" [collectionSize]="collectionSize" [(page)]="page"
                     aria-label="Default pagination"></ngb-pagination>
 

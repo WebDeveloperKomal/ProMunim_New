@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SecurityService } from '../security.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { UserModel } from '../user-profile/userModel';
 
 @Component({
   selector: 'app-login',
@@ -50,7 +51,8 @@ export class LoginComponent {
           icon: "error"
         });
       }
-    )
+    );
+    
   }
 }
 

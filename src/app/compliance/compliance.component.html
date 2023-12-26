@@ -19,7 +19,7 @@
                 </h1>
               </div>
               <div>
-              <button type="button" routerLink="/set/add-compliance" class="btn btn-info" style="float: right;">Add
+              <button  *ngIf="insertcompliance" type="button" routerLink="/set/add-compliance" class="btn btn-info" style="float: right;">Add
                 Compliance</button>
               </div>
               <div id="branch_datatable_wrapper" class="dataTables_wrapper no-footer">
@@ -70,7 +70,7 @@
                             aria-controls="compliance_datatable" rowspan="1" colspan="1"
                             aria-label="Due Date: activate to sort column ascending"
                             style="width: 254px;">Due Date</th>
-                        <th width="10%" class="sorting" tabindex="0"
+                        <th *ngIf="updatecompliance || deletecompliance" width="10%" class="sorting" tabindex="0"
                             aria-controls="compliance_datatable" rowspan="1" colspan="1"
                             aria-label="Action: activate to sort column ascending"
                             style="width: 168px;">Action</th>
@@ -83,11 +83,11 @@
                     <td>{{data.complianceName}}</td>
                     <td>{{data.taxLink}}</td>
                     <td>{{data.complianceDueDate}}</td>
-                    <td>
-                        <button class="btn btn-xs" style="font-size: 13px; background-color:#003974!important; color: white;" (click)="edit(data.complianceId)" >
+                    <td  *ngIf="updatecompliance || deletecompliance">
+                        <button *ngIf="updatecompliance" class="btn btn-xs" style="font-size: 13px; background-color:#003974!important; color: white;" (click)="edit(data.complianceId)" >
                             <i class="ace-icon fa fa-pencil bigger-120"></i>
                         </button>&nbsp;&nbsp;
-                        <button class="btn btn-xs" style=" font-size: 13px; background-color:#DC3545!important; color: white;" (click)="delete(data.complianceId)" >
+                        <button *ngIf="deletecompliance" class="btn btn-xs" style=" font-size: 13px; background-color:#DC3545!important; color: white;" (click)="delete(data.complianceId)" >
                         <!-- <i class="fa fa-trash"  aria-hidden="true"></i> -->
                         <i class="fa-solid fa-trash-can"></i>
                         </button>
@@ -100,7 +100,7 @@
                 <div class="dataTables_info mt-3" style="font-size: 14px;" id="branch_datatable_info" role="status"
                   aria-live="polite">
                   Showing {{(page - 1) * pageSize + 1}} to {{(page * pageSize < collectionSize) ? page * pageSize :
-                    collectionSize}} of {{complianceList.length}} entries </div>
+                    pageSize}} of {{complianceList.length}} entries </div>
                     <ngb-pagination [pageSize]="25" [collectionSize]="collectionSize" [(page)]="page"
                       aria-label="Default pagination"></ngb-pagination>
   

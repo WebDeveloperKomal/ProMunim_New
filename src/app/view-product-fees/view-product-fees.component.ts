@@ -25,7 +25,17 @@ export class ViewProductFeesComponent {
   ngOnInit(){
     this.id = this.route.snapshot.params['id'];
     this.apiService.ProductfeesById(this.id).subscribe(
-      (res:any)=>{console.log(res.data)},
+      (res:any)=>{console.log("dataaaaa",res.data);
+        this.feeForm.patchValue({
+          fees: res.data[0].fees
+          // ,
+          // productId:  res.data[0].productId , 
+          // minValue: res.data[0].minValue ,
+          // maxValue:  res.data[0].maxValue , 
+
+           
+        })
+      },
       (err:any)=>{console.error(err);}
     )
   }

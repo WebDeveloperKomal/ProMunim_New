@@ -24,15 +24,41 @@ export class DepartmentComponent {
   currentPage: number = 1;
   countries:DepartmentModel [] | undefined;
   collectionSize =100;
-  
   departmentList:DepartmentModel[]=[];
+
+  permissions: any;
+  Perstring:any;
+  insertdepartment!:boolean;
+  deletedepartment!:boolean;
+  updatedepartment!:boolean;
+  view!:boolean;
+  viewRM!:boolean;
+  viewbranch!:boolean;
+  viewall!:boolean;
 
   constructor(private apiService:ApiService, private router:Router) {}
 
   ngOnInit(){
+    this.Perstring = localStorage.getItem('permissions');
+    if (this.Perstring) {
+      this.permissions = JSON.parse(this.Perstring);
+      this.permissions.forEach((permission: number) => {
+        if (permission === 1119){this.insertdepartment = true};
+        if (permission === 1120){this.deletedepartment = true};
+        if (permission === 1121){this.updatedepartment = true};
+        if (permission === 1122){this.view = true};
+        if (permission === 1123){this.viewRM = true};
+        if (permission === 1124){this.viewbranch = true};
+        if (permission === 1125){this.viewall = true};
+      });
+    } else {
+      console.log('No permissions data found in local storage.');
+    };
+
     this.apiService.allDepartments().subscribe(
       (response:any)=>{
         this.departmentList=response.data;
+        this.collectionSize = response.data.length
       },
       (error:any)=>{
         console.error(error);
@@ -82,21 +108,27 @@ export class DepartmentComponent {
 
 
 
-applyFilter(): void {
-  // const searchString = this.SearchText.toLowerCase();
-  // const filteredData = [...this.dataarray];
-  // this.dataarray = filteredData.filter((data) =>
-  //   data.branchname.toLowerCase().includes(searchString) ||
-  //   data.branchcode.toLowerCase().includes(searchString) ||
-  //   data.branchcity.toLowerCase().includes(searchString) ||
-  //   data.branchaddress.toLowerCase().includes(searchString)
-  // );
-}
-refreshCountries() {
-  this.countries = this.dataarray
-    .map((country, i) => ({id: i + 1, ...country}))
-    .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
-}
+
+  applyFilter(): void {
+    if(!this.SearchText){
+     this.departmentList = [...this.departmentList]
+     return ;
+    }
+   
+   const searchstring = this.SearchText.toLowerCase();
+   this.departmentList = this.departmentList.filter((data) =>
+      data.departmentName.toLowerCase().includes(searchstring)||
+      data.mainDepName.toLowerCase().includes(searchstring)
+   
+   )
+  
+   }
+   refreshCountries() {
+     this.countries = this.dataarray
+       .map((country, i) => ({id: i + 1, ...country}))
+       .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+   }
+   
 
 
 }

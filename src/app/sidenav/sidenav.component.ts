@@ -2,6 +2,7 @@ import { Component, Input, SecurityContext } from '@angular/core';
 import { SidenavtoggleService } from '../Shared/sidenavtoggle.service';
 import { SecurityService } from '../security.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sidenav',
@@ -27,7 +28,21 @@ export class SidenavComponent {
   signout(){
     localStorage.removeItem('token');
     this.router.navigate(['']);
-    alert("You had Been Logged Out!");
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: "You Are LoggedOut!"
+    }); 
   }
 
 

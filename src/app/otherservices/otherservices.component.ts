@@ -18,15 +18,42 @@ export class OtherservicesComponent {
   currentPage: number = 1;
   countries: OtherServicesModel [] | undefined;
   collectionSize =100;
-
   servicesList:OtherServicesModel[]=[];
+
+    
+  permissions: any;
+  Perstring:any;
+  insertotherservice!:boolean;
+  deleteotherservice!:boolean;
+  updateotherservice!:boolean;
+  view!:boolean;
+  viewRM!:boolean;
+  viewbranch!:boolean;
+  viewall!:boolean;
 
   constructor(private apiService:ApiService, private router:Router) {}
 
   ngOnInit(){
+    this.Perstring = localStorage.getItem('permissions');
+    if (this.Perstring) {
+      this.permissions = JSON.parse(this.Perstring);
+      this.permissions.forEach((permission: number) => {
+        if (permission === 1161){this.insertotherservice = true};
+        if (permission === 1162){this.deleteotherservice = true};
+        if (permission === 1163){this.updateotherservice = true};
+        if (permission === 1164){this.view = true};
+        if (permission === 1165){this.viewRM = true};
+        if (permission === 1166){this.viewbranch = true};
+        if (permission === 1167){this.viewall = true};
+      });
+    } else {
+      console.log('No permissions data found in local storage.');
+    };
+
     this.apiService.allOtherServices().subscribe(
       (response:any)=>{
         this.servicesList = response.data;
+        this.collectionSize = response.data.length ;
       },
       (error:any)=>{
         console.error(error);
@@ -75,21 +102,23 @@ export class OtherservicesComponent {
 
 
 
-applyFilter(): void {
-  const searchString = this.SearchText.toLowerCase();
-  const filteredData = [...this.dataarray];
-  // this.dataarray = filteredData.filter((data) =>
-  //   data.branchname.toLowerCase().includes(searchString) ||
-  //   data.branchcode.toLowerCase().includes(searchString) ||
-  //   data.branchcity.toLowerCase().includes(searchString) ||
-  //   data.branchaddress.toLowerCase().includes(searchString)
-  // );
-}
-refreshCountries() {
-  this.countries = this.dataarray
-    .map((country, i) => ({id: i + 1, ...country}))
-    .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
-}
+
+  applyFilter(): void {
+    const searchString = this.SearchText.toLowerCase();
+    const filteredData = [...this.servicesList];
+    this.servicesList = filteredData.filter((data) =>
+      data.serviceName.toLowerCase().includes(searchString) ||
+      data.description.toLowerCase().includes(searchString) ||
+      (data.fees !== null && !isNaN(data.fees) && data.fees.toString().includes(searchString)) ||
+      (data.serviceId !== null && !isNaN(data.serviceId) && data.serviceId.toString().includes(searchString)) 
+    
+    );
+  }
+  refreshCountries() {
+    this.countries = this.servicesList
+      .map((country, i) => ({id: i + 1, ...country}))
+      .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+  }
 
 
 

@@ -14,14 +14,25 @@ export class AddDepartmentComponent {
   adddepartmentForm !: FormGroup;
   addmaindeptForm1 !: FormGroup;
   dataarray: any[] = [];
+  allMaindeps=[{mainDepName:'',id:0}]
   department:DepartmentModel = new DepartmentModel();
+  Mdep={mainDepName:''};
 
   constructor(private formBuilder: FormBuilder, private apiService:ApiService) {
     this.adddepartmentForm = this.formBuilder.group({
       mainDepId: ['', Validators.required], // Add validation if needed
       departmentName: ['', Validators.required], // Add validation if needed
+
     });  
   }
+
+  ngOnInit(){
+    this.apiService.allMainDepartments().subscribe(
+      (res:any)=>{ this.allMaindeps = res.data;},
+      (err:any)=>{ console.error(err)}
+    )
+  }
+
 
   onSubmit()
   {
@@ -45,6 +56,26 @@ export class AddDepartmentComponent {
   }
 
 
+addMainDep(){
+  console.log('Maindep ::::::: ',this.Mdep);  
+  this.apiService.addMainDepartment(this.Mdep).subscribe(
+  (res:any)=>{
+    console.log(res.data);
+    Swal.fire({
+      title: "Record Saved!",
+      icon: "success"
+    });
+  },
+  (err:any)=>{
+    console.error(err);
+    Swal.fire({
+      title: "Error!",
+      icon: "error"
+    });
+  }
+  );
+  setInterval(()=>{window.location.reload()},1000);        
+}
 
 
 

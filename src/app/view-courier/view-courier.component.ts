@@ -38,7 +38,9 @@ export class ViewCourierComponent {
     )
   }
 
-
+  reset(){
+    window.location.reload();
+  }
   onSubmit(){
     this.apiService.updateCourior(this.courior).subscribe(
       (res:any)=>{

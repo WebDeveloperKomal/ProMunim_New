@@ -77,6 +77,8 @@ import { LoginComponent } from './login/login.component';
 import { ViewBranchComponent } from './view-branch/view-branch.component'
 import { AuthInterceptorProviders } from './auth.interceptor';
 import{CarouselModule} from 'ngx-bootstrap/carousel'
+import { DatePipe } from '@angular/common';
+import { ViewCustomerDetailsNewComponent } from './view-customer-details-new/view-customer-details-new.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -146,7 +148,8 @@ import{CarouselModule} from 'ngx-bootstrap/carousel'
     AccountopeningFormComponent,
     SetComponent,
     LoginComponent,
-    ViewBranchComponent
+    ViewBranchComponent,
+    ViewCustomerDetailsNewComponent
   ],
   imports: [
     BrowserModule,
@@ -157,7 +160,7 @@ import{CarouselModule} from 'ngx-bootstrap/carousel'
     CarouselModule.forRoot()
     // NgbModule.forRoot()
   ],
-  providers: [AuthInterceptorProviders],
+  providers: [AuthInterceptorProviders,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -26,36 +26,37 @@
 
 
                     <div class="form-group row mb-2">
-                        <label for="companyname" class="col-lg-2 col-4   col-form-label mr-5">First Name:*</label>
+                        <label for="firstName" class="col-lg-2 col-4 col-form-label mr-5" >First Name:*</label>
                         <div class="col-lg-4 col-8">
-                            <input type="text" formControlName="companyname" class="form-control" id="complianceName">
+                            <input type="text" formControlName="firstName" [(ngModel)]="newEmployee.firstName" class="form-control" id="complianceName">
                         </div>
-                        <label for="fullname" class="col-lg-2 col-4   col-form-label mr-5">Middle Name: *</label>
+                        <label for="middleName" class="col-lg-2 col-4   col-form-label mr-5" >Middle Name: *</label>
                         <div class="col-lg-4 col-8">
-                            <input type="text" formControlName="fullname" class="form-control" id="complianceName">
+                            <input type="text" formControlName="middleName" [(ngModel)]="newEmployee.middleName" class="form-control" id="complianceName">
                         </div>
                     </div>
                     <div class="form-group row mb-2">
-                        <label for="email" class="col-lg-2 col-4   col-form-label mr-5">Last Name: *</label>
+                        <label for="lastName" class="col-lg-2 col-4   col-form-label mr-5" >Last Name: *</label>
                         <div class="col-lg-4 col-8">
-                            <input type="email" formControlName="email" class="form-control" id="complianceName">
+                            <input type="email" formControlName="lastName" [(ngModel)]="newEmployee.lastName" class="form-control" id="complianceName">
                         </div>
-                        <label for="contactno" class="col-lg-2 col-4   col-form-label mr-5">Date Of Birth: *</label>
+                        <label for="dob" class="col-lg-2 col-4   col-form-label mr-5" >Date Of Birth: *</label>
                         <div class="col-lg-4 col-8">
-                            <input type="date" formControlName="contactno" class="form-control" id="complianceName">
+                            <input type="date" formControlName="dob" [(ngModel)]="newEmployee.dob" class="form-control" id="complianceName">
                         </div>
                     </div>
 
                     <div class="form-group row mb-2">
-                        <label for="altcontactno" class="col-lg-2 col-4   col-form-label mr-5">Date Of Joining:
+                        <label for="joiningDate" class="col-lg-2 col-4   col-form-label mr-5">Date Of Joining:
                             *</label>
                         <div class="col-lg-4 col-8">
-                            <input type="date" formControlName="altcontactno" class="form-control" id="complianceName">
+                            <input type="date" formControlName="joiningDate" [(ngModel)]="newEmployee.joiningDate" class="form-control" id="complianceName">
                         </div>
-                        <label for="segment" class="col-lg-2 col-4 col-form-label ml-2">Select Location*</label>
+                        <label for="branchId" class="col-lg-2 col-4 col-form-label ml-2">Select Location*</label>
                         <div class="col-lg-4 col-8">
-                            <select formControlName="segment" class="form-select">
+                            <select  class="form-select" formControlName="branchId" [(ngModel)]="newEmployee.branchId">
                                 <option value="">-----------------------Select------------------------ </option>
+                                <option *ngFor="let branch of branches" value={{branch.branchId}}>{{branch.branchName}}</option>
                                 <!-- <option *ngFor="let data of dataarray" [value]="data.branchname">{{
                                     data.branchname }}
                                 </option> -->
@@ -65,61 +66,54 @@
 
 
                     <div class="form-group row mb-2">
-                        <label for="constofcompany" class="col-lg-2 col-4 col-form-label ml-2">Select Main
+                        <label for="mainDepId" class="col-lg-2 col-4 col-form-label ml-2">Select Main
                             Department*</label>
                         <div class="col-lg-4 col-8">
-                            <select formControlName="constofcompany" class="form-select">
+                            <select formControlName="mainDepId" [(ngModel)]="newEmployee.mainDepId" class="form-select">
                                 <option value="">-----------------------Select------------------------ </option>
-                                <option value="PROPRITER">Distribution </option>
-                                <option value="PARTNERSHIP">Support</option>
-                                <option value="PVT.LTD.">Central Processing Unit</option>
+                                <option *ngFor="let mainDep of mainDeps" value={{mainDep.id}}>{{mainDep.mainDepName}}</option>                               
                             </select>
                         </div>
-                        <label for="segment" class="col-lg-2 col-4 col-form-label ml-2">Select Department*</label>
+                        <label for="depId" class="col-lg-2 col-4 col-form-label ml-2">Select Department*</label>
                         <div class="col-lg-4 col-8">
-                            <select formControlName="constofcompany" class="form-select">
+                            <select formControlName="depId" [(ngModel)]="newEmployee.depId" class="form-select">
                                 <option value="">-----------------------Select------------------------ </option>
-                                <!-- <option value="PROPRITER">Distribution </option>
-                                <option value="PARTNERSHIP">Support</option>
-                                <option value="PVT.LTD.">Central Processing Unit</option> -->
+                                <option *ngFor="let dep of deps" value={{dep.departmentID}}>{{dep.departmentName}} </option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group row mb-2">
                         
-                        <label for="maintitr" class="col-lg-2 col-4 col-form-label ml-2">Select Role Name*</label>
+                        <label for="roleId" class="col-lg-2 col-4 col-form-label ml-2">Select Role Name*</label>
                         <div class="col-lg-4 col-8">
-                            <select formControlName="segment" class="form-select">
-                                <option value="">-----------------------Select------------------------ </option>
-                                <!-- <option *ngFor="let data of dataarray" [value]="data.branchname">{{
-                                    data.branchname }}
-                                </option> -->
+                            <select formControlName="roleId" [(ngModel)]="newEmployee.roleId" class="form-select">
+                                <option value="1">-----------------------Select------------------------ </option>
+                                <option *ngFor="let role of roles" value={{role.roleId}}>{{role.roleName}}</option>
                             </select>
                         </div>
-                        <label for="leadtype" class="col-lg-2 col-4 col-form-label ml-2">Select RM Code*</label>
+                        <label for="rmCode" class="col-lg-2 col-4 col-form-label ml-2">Select RM Code*</label>
                         <div class="col-lg-4 col-8">
-                            <select formControlName="leadtype" class="form-select">
+                            <select formControlName="rmCode" [(ngModel)]="newEmployee.rmCode" class="form-select">
                                 <option value="">-----------------------Select------------------------ </option>
-                                <option value="HOT">R1 </option>
-                                <option value="WARM">R2 </option>
-                                <option value="COLD">R3 </option>
+                                <option value="HOT">HOT </option>
+                                <option value="WARM">WARM </option>
+                                <option value="COLD">COLD </option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group row mb-2">
                      
-                        <label for="leadstatus" class="col-lg-2 col-4 col-form-label ml-2">Assigned Branches*</label>
+                        <label for="assignedBranches" class="col-lg-2 col-4 col-form-label ml-2">Assigned Branches*</label>
                         <div class="col-lg-4 col-8">
-                            <select formControlName="segment" class="form-select">
+                            <select formControlName="assignedBranches" [(ngModel)]="newEmployee.assignedBranches" class="form-select">
                                 <option value="">-----------------------Select------------------------ </option>
-                                <!-- <option *ngFor="let data of dataarray" [value]="data.branchname">{{
-                                    data.branchname }}
-                                </option> -->
+                                <option *ngFor="let branch of branches" value={{branch.branchName}}>{{branch.branchName}}</option>
+                                
                             </select>
                         </div>
-                        <label for="city" class="col-lg-2 col-4   col-form-label mr-5">Contact Number: *</label>
+                        <label for="contactNo" class="col-lg-2 col-4   col-form-label mr-5">Contact Number: *</label>
                         <div class="col-lg-4 col-8">
-                            <input type="text" formControlName="city" class="form-control" id="complianceName">
+                            <input type="text" formControlName="contactNo" [(ngModel)]="newEmployee.contactNo" class="form-control" id="complianceName">
                         </div>
 
                     </div>
@@ -127,26 +121,26 @@
                     <div class="form-group row mb-2">
                         
                         <!-- <label for="taxLink" class="col-lg-2 col-4 col-form-label ml-2" >Tax Link  :</label> -->
-                        <label for="pincode" class="col-lg-2 col-4   col-form-label mr-5">User Name: *</label>
+                        <label for="email" class="col-lg-2 col-4   col-form-label mr-5">UserName / Email: *</label>
                         <div class="col-lg-4 col-8">
-                            <input type="text" formControlName="pincode" class="form-control" id="complianceName">
+                            <input type="text" formControlName="email" [(ngModel)]="newEmployee.email" class="form-control" id="complianceName">
                         </div>
-                        <label for="city" class="col-lg-2 col-4   col-form-label mr-5">Password: *</label>
+                        <label for="password" class="col-lg-2 col-4   col-form-label mr-5">Password: *</label>
                         <div class="col-lg-4 col-8">
-                            <input type="text" formControlName="city" class="form-control" id="complianceName">
+                            <input type="text" formControlName="password" [(ngModel)]="newEmployee.password" class="form-control" id="complianceName">
                         </div>
                     </div>
                     <div class="form-group row mb-2">
                         
                         <!-- <label for="taxLink" class="col-lg-2 col-4 col-form-label ml-2" >Tax Link  :</label> -->
-                        <label for="pincode" class="col-lg-2 col-4   col-form-label mr-5">Profile UserId: *</label>
+                        <label for="proUserId" class="col-lg-2 col-4   col-form-label mr-5">Profile UserId: *</label>
                         <div class="col-lg-4 col-8">
-                            <input type="text" formControlName="pincode" class="form-control" id="complianceName">
+                            <input type="text" formControlName="proUserId" [(ngModel)]="newEmployee.proUserId" class="form-control" id="complianceName">
                         </div>
                         <label for="pincode" class="col-lg-2 col-4   col-form-label mr-5">Select Photo: *</label>
                         <div class="col-4 mt-1">
-                           
-                            <input type="file" id="lname" name="lname">
+                           <img [src]="url" alt="">
+                            <input type="file" id="lname" (change)="onFileSelected($event)" name="lname">
                         </div>
                     </div>
 
@@ -157,12 +151,12 @@
 
                     <div class=" col-md-12 col-sm-12 col-xs-12 mt-5">
                         <div class="col-md-offset-3 col-md-9">
-                            <button class="col-lg-2 col-4 btn btn-info m-4 " type="submit">
+                            <button class="col-lg-2 col-4 btn btn-info m-4 " type="submit" (click)="onSubmit()">
                                 <i class="ace-icon fa fa-check bigger-110"></i>
                                 Submit
                             </button>
 
-                            <button class="col-lg-2 col-4 btn btn-info m-4">
+                            <button class="col-lg-2 col-4 btn btn-info m-4" (click)="reset()">
                                 <i class="ace-icon fa fa-undo bigger-110"></i>
                                 Reset
                             </button>

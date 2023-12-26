@@ -1,7 +1,8 @@
 export class UserRolePermissionModel{
-    branchid : any;
-    branchname: any;
-    branchcode: any;
-    branchcity: any;
-    branchaddress: any;
+    departmentName: any;
+    parentRoleName: any;
+    roleId: any;
+    departmentId: any;
+    roleName: any;
+    parentId: any;
 }

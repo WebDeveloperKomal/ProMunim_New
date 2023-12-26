@@ -38,11 +38,8 @@
                     <div class="col-lg-5 col-8">
                         <select formControlName="selmaindepart" [(ngModel)]="dept.mainDepId" class="form-select">
                             <option value="">-----------------------Select------------------------ </option>
-                            <option value="1">Distribution</option>
-                            <option value="2">Support</option>
-                            <option value="3">CPU</option>
-                            <option *ngFor="let data of dataarray" [value]="data.branchname">{{
-                                data.branchname }}
+                            <option *ngFor="let data of allMaindeps" [value]="data.id">{{
+                                data.mainDepName }}
                             </option>
                         </select>
                     </div>
@@ -71,7 +68,7 @@
                     <!-- <div class="col-sm-offset-3 col-md-9"> -->
                         <button type="button" class="btn btn-info  m-lg-4 m-4" (click)="onSubmit()"><i class="ace-icon fa fa-check bigger-110"></i>
                             Submit</button>
-                         <button type="button" class="btn canc m-lg-4 m-4">
+                         <button type="button" class="btn canc m-lg-4 m-4" (click)="reset()">
                               <i class="ace-icon fa fa-undo bigger-110"></i>
                               Cancel    
                           </button>

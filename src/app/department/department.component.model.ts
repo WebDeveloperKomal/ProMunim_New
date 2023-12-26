@@ -3,4 +3,5 @@ export class DepartmentModel{
     departmentName: any;
     mainDepName: any;
     mainDepId: any;
+    // depName: any
 }

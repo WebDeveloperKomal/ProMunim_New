@@ -2620,3 +2620,9 @@ h1 {
                 color: #999;
                 border-color: #999
             }
+
+
+
+a{
+    cursor: pointer;
+}

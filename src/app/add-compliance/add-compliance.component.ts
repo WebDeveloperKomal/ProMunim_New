@@ -16,7 +16,9 @@ export class AddComplianceComponent {
   dataarray: any;
 
   compliance: ComplianceModel = new ComplianceModel;
-    
+  taxData=[{
+    taxTypeName:''
+  }]
 
   constructor(private formBuilder: FormBuilder,private apiService: ApiService) {
 
@@ -27,10 +29,18 @@ export class AddComplianceComponent {
     });
   }
 
-
+  ngOnInit(){
+    this.apiService.getTaxLink().subscribe(
+      (res:any)=>{
+        this.taxData=res.data;
+      },
+      (error:any)=>{
+        console.error(error); }
+    );
+  }
 
   onSubmit()
-  {
+  {    
     this.apiService.addCompliance(this.compliance).subscribe(
       (response:any)=>{
         console.log(response.data);    

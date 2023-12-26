@@ -66,6 +66,7 @@ import { SetComponent } from './set/set.component';
 import { ViewBranchComponent } from './view-branch/view-branch.component';
 import { AuthGuard } from './auth.guard';
 import { ViewComplianceComponent } from './view-compliance/view-compliance.component';
+import { ViewCustomerDetailsNewComponent } from './view-customer-details-new/view-customer-details-new.component';
 
 const routes: Routes = [
 
@@ -78,6 +79,8 @@ const routes: Routes = [
 
 
 
+
+  
   {
     path: 'set',
     component: SetComponent, 
@@ -181,27 +184,31 @@ const routes: Routes = [
     
     
     { path: "alldailyvisits", component: AllDailyVisitComponent , canActivate:[AuthGuard] },
-    { path: "view-add-dailyvisits", component: ViewAddDailyvisitComponent , canActivate:[AuthGuard] },
+    { path: "view-add-dailyvisits/:id", component: ViewAddDailyvisitComponent , canActivate:[AuthGuard] },
     // { path: "view-all-visits", component: ViewAllVisitsComponent},
     // { path: "add-visit-details", component: AddVisitDetailsComponent},
     
     
     { path: "alldailyleads", component: AlldailyleadsComponent , canActivate:[AuthGuard] },
-    { path: "view-add-dailyLeads", component: ViewAddDailyleadsComponent , canActivate:[AuthGuard] },
+    { path: "view-add-dailyLeads/:id", component: ViewAddDailyleadsComponent , canActivate:[AuthGuard] },
     // { path: "view-all-leads", component: ViewAllLeadsComponent},
     // { path: "add-leads-details", component: AllLeadsDetailsComponent},
     
     { path: "alltid", component: AllTIDComponent , canActivate:[AuthGuard]}, 
     { path: "add-tids", component: AddTIDComponent , canActivate:[AuthGuard]},
-    { path: "tidgeneration", component: TidgenerationComponent , canActivate:[AuthGuard]},
+    { path: "tidgeneration/:id", component: TidgenerationComponent , canActivate:[AuthGuard]},
     // { path: "tid-update-status", component: TidUpdateStatusComponent},
     // { path: "tid-update-courier-details", component: TidUpdateCourierDetailsComponent},
     { path: "account-opening-form", component: AccountopeningFormComponent , canActivate:[AuthGuard] },
     { path: "customerslist", component: AllCustomerListComponent , canActivate:[AuthGuard] },
-    { path: "view-customer-details", component: ViewCustomerDetailsComponent , canActivate:[AuthGuard] },
+    { path: "view-customer-details/:id", component: ViewCustomerDetailsComponent , canActivate:[AuthGuard] },
+    { path: "view-customer-details-new/:id", component: ViewCustomerDetailsNewComponent , canActivate:[AuthGuard] },
+    
     { path: "allcomplaintsmain", component: AllComplaintsMainComponent , canActivate:[AuthGuard] },
     { path: "add-customer-complaints", component: AddCustomerComplaintsMainComponent , canActivate:[AuthGuard]},
     { path: "view-customer-complaints-main", component: ViewCustomerComplaintsMainComponent , canActivate:[AuthGuard] },
+    
+    //remaining copy
     // { path: "view-complain-details", component: ViewComplaintDetailsComponent },
       //reports 
       { path: "allinvoices", component: AllInvoicesComponent , canActivate:[AuthGuard] },
@@ -214,10 +221,12 @@ const routes: Routes = [
     
     { path: "alltechsupport", component: TechSupportComponent , canActivate:[AuthGuard] },
     { path: "add-ticket", component: AddTicketComponent  , canActivate:[AuthGuard]},
-    { path: "view-techsupport", component: ViewTechsupportComponent , canActivate:[AuthGuard] },
+    { path: "view-techsupport/:id", component: ViewTechsupportComponent , canActivate:[AuthGuard] },
+    
     { path: "newsalert", component: NewsAlertComponent  , canActivate:[AuthGuard]},
     { path: "add-news-alert", component: AddNewsAlertComponent , canActivate:[AuthGuard] },
-    { path: "view-news-alert", component: ViewNewsAlertComponent , canActivate:[AuthGuard] },
+    { path: "view-news-alert/:id", component: ViewNewsAlertComponent , canActivate:[AuthGuard] },
+    
     { path: "change-password", component: ChangePasswordComponent , canActivate:[AuthGuard] },
 
 

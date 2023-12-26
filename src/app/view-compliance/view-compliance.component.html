@@ -36,8 +36,8 @@
                     <div class="col-lg-4 col-8">
                         <select formControlName="taxLink" [(ngModel)]="compliance.taxLink" class="form-control select">
                             <option value="None" selected>None</option>
-                            <!-- <option *ngFor="let data of dataarray" [value]="data.branchname">{{ data.branchname }}
-                            </option> -->
+                            <option *ngFor="let tax of taxData" [value]="tax.taxTypeName">{{ tax.taxTypeName }}
+                            </option>
                         </select>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                     <!-- <div class="col-sm-offset-3 col-md-9"> -->
                         <button type="submit" class="btn btn-info  m-lg-4 m-4" ><i class="ace-icon fa fa-check bigger-110"></i>
                             Submit</button>
-                         <button type="button" class="btn canc m-lg-4 m-4">
+                         <button type="button" class="btn canc m-lg-4 m-4" (click)="reset()">
                               <i class="ace-icon fa fa-undo bigger-110"></i>
                               Reset
                           </button>

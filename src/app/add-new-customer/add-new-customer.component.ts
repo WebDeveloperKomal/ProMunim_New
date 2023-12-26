@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AddNewCustModel } from './add-new-customer.component.model';
 import { ApiService } from '../api.service';
 import { ProductsModel } from '../products/products.component.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-new-customer',
@@ -24,21 +25,21 @@ export class AddNewCustomerComponent {
 
   constructor(private formBuilder: FormBuilder, private apiService:ApiService) {
     this.addnewcustomer = this.formBuilder.group({
-      companyname: ['', Validators.required], 
-      fullname: ['', Validators.required], 
-      email: ['', Validators.required] ,
-      contactno: ['', Validators.required],
-      altcontactno: ['', Validators.required],
+      companyName: ['', Validators.required], 
+      customerFullName: ['', Validators.required], 
+      emailId: ['', Validators.required] ,
+      contactNo: ['', Validators.required],
+      altContactNo: ['', Validators.required],
       address: ['', Validators.required],
       city: ['', Validators.required],
-      pincode: ['', Validators.required],
-      constofcompany: ['', Validators.required],
+      pinCode: ['', Validators.required],
+      constitutionOfCompany: ['', Validators.required],
       segment: ['', Validators.required],
-      natureofbus: ['', Validators.required],
-      maintitr: ['', Validators.required],
-      leadtype: ['', Validators.required],
-      leadstatus: ['', Validators.required],
-      product: ['', Validators.required],
+      natureOfBussiness: ['', Validators.required],
+      maintainingITR: ['', Validators.required],
+      leadType: ['', Validators.required],
+      leadStatus: ['', Validators.required],
+      productId: ['', Validators.required],
      
     });
   }
@@ -49,6 +50,33 @@ export class AddNewCustomerComponent {
       (err:any)=>{console.error(err);}
     )
   }
+
+
+  onSubmit(){
+    this.apiService.addNewCustomer(this.newCust).subscribe(
+      (res:any)=>{
+        console.log(res.status);
+        Swal.fire({
+          title: "Record Saved!",
+          icon: "success"
+        }); 
+      },
+      (err:any)=>{
+        console.error(err);
+        Swal.fire({
+          title: "Error!",
+          icon: "error"
+        }); 
+      }
+    );
+    setInterval(()=>{window.location.reload()},1000);        
+  }
+
+
+
+
+
+
 
 applyFilter(): void {
   const searchString = this.SearchText.toLowerCase();

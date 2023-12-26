@@ -20,7 +20,7 @@
             </div>
 
             <div>
-              <button type="button" routerLink="/set/add-other-services" class="btn btn-info" style="float: right;">Add
+              <button *ngIf="insertotherservice" type="button" routerLink="/set/add-other-services" class="btn btn-info" style="float: right;">Add
                 Other Services</button>
               </div>
 
@@ -29,7 +29,7 @@
                 <div class="col-lg-9 col-md-8">
                   <div class="dataTables_length" id="branch_datatable_length">
                     <p>Show
-                      <select name="branch_datatable_length" (ngModelChange)="refreshCountries()" [(ngModel)]="pageSize"
+                      <select name="branch_datatable_length" [(ngModel)]="pageSize"
                         aria-controls="branch_datatable">
                         <!-- [(ngModel)]="resultsPerPage" -->
                         <option [ngValue]="10">10</option>
@@ -57,7 +57,7 @@
                            <th>Name</th>
                            <th>Description</th>
                            <th>Fees</th>
-                           <th>Action</th>
+                           <th *ngIf="view || updateotherservice || deleteotherservice">Action</th>
 
                 </tr>
               </thead>
@@ -68,15 +68,14 @@
                 <td>{{data.serviceName}}</td>
                 <td>{{data.description}}</td>
                 <td>{{data.fees}}</td>
-                  <td>
-                    <button class="btn btn-xs" style="font-size: 13px; background-color:#003974!important; color: white;" (click)="edit(data.serviceId)" >
+                  <td *ngIf="view || updateotherservice || deleteotherservice">
+                    <button *ngIf="updateotherservice" class="btn btn-xs" style="font-size: 13px; background-color:#003974!important; color: white;" (click)="edit(data.serviceId)" >
                         <i class="ace-icon fa fa-pencil bigger-120"></i>
                     </button>&nbsp;&nbsp;
-                    <button class="btn btn-xs" style=" font-size: 13px; background-color:#DC3545!important; color: white;" (click)="delete(data.serviceId)" >
+                    <button *ngIf="deleteotherservice" class="btn btn-xs" style=" font-size: 13px; background-color:#DC3545!important; color: white;" (click)="delete(data.serviceId)" >
                     <!-- <i class="fa fa-trash"  aria-hidden="true"></i> -->
                     <i class="fa-solid fa-trash-can"></i>
                     </button>
-
                 </td>
                  
                 </tr>
@@ -86,7 +85,7 @@
               <div class="dataTables_info mt-3" style="font-size: 14px;" id="branch_datatable_info" role="status"
                 aria-live="polite">
                 Showing {{(page - 1) * pageSize + 1}} to {{(page * pageSize < collectionSize) ? page * pageSize :
-                  collectionSize}} of {{dataarray.length}} entries </div>
+                  pageSize}} of {{servicesList.length}} entries </div>
                   <ngb-pagination [pageSize]="25" [collectionSize]="collectionSize" [(page)]="page"
                     aria-label="Default pagination"></ngb-pagination>
 

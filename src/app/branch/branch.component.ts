@@ -12,23 +12,50 @@ import Swal from 'sweetalert2';
 })
 export class BranchComponent {
   SearchText : any ;
-
   page = 1;
   pageSize = 10 ;
   dataarray: BranchModel[] = [];
   currentPage: number = 1;
   countries: BranchModel[] | undefined;
   collectionSize =100;
-
   branchList:BranchModel[] = [];
   branch: BranchModel = new BranchModel();
+  
+  permissions: any;
+  Perstring:any;
+  insertbranch!:boolean;
+  deletebranch!:boolean;
+  updatebranch!:boolean;
+  view!:boolean;
+  viewRM!:boolean;
+  viewbranch!:boolean;
+  viewall!:boolean;
+
 
   constructor(private service:ApiService, private router:Router) {}
 
   ngOnInit(){
+    this.Perstring = localStorage.getItem('permissions');
+    if (this.Perstring) {
+      this.permissions = JSON.parse(this.Perstring);
+      this.permissions.forEach((permission: number) => {
+        if (permission === 1112){this.insertbranch = true};
+        if (permission === 1113){this.deletebranch = true};
+        if (permission === 1114){this.updatebranch = true};
+        if (permission === 1115){this.view = true};
+        if (permission === 1116){this.viewRM = true};
+        if (permission === 1117){this.viewbranch = true};
+        if (permission === 1118){this.viewall = true};
+      });
+    } else {
+      console.log('No permissions data found.');
+    };
+
+
     this.service.allBranches().subscribe(
       ( data: any) => {
         this.branchList=data.data;
+        this.collectionSize = data.data.length ;
         console.log('Response successful!');
       },
       (error:any) => {
@@ -76,22 +103,30 @@ export class BranchComponent {
   }
 
 
-applyFilter(): void {
-//   const searchString = this.SearchText.toLowerCase();
-//   const filteredData = [...this.dataarray];
-//   this.dataarray = filteredData.filter((data) =>
-//   console.log("fndfngn")
-//     // data.branchname.toLowerCase().includes(searchString) ||
-//     // data.branchcode.toLowerCase().includes(searchString) ||
-//     // data.branchcity.toLowerCase().includes(searchString) ||
-//     // data.branchaddress.toLowerCase().includes(searchString)
-//   );
-}
-refreshCountries() {
-//   this.countries = this.dataarray
-//     .map((country, i) => ({id: i + 1, ...country}))
-//     .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
-}
+  applyFilter(): void {
+    if (!this.SearchText) {
+      
+      this.branchList = [...this.branchList];
+      return;
+    }
+    const searchString = this.SearchText.toLowerCase();
+    this.branchList = this.branchList.filter((data) =>
+      data.branchName.toLowerCase().includes(searchString) ||
+      data.branchCode.toLowerCase().includes(searchString) ||
+      data.branchCity.toLowerCase().includes(searchString) ||
+      data.branchAddress.toLowerCase().includes(searchString) ||
+      (data.branchId !== null && !isNaN(data.branchId) && data.branchId.toString().includes(searchString)) 
+
+    );
+  
+      
+  }
+  refreshCountries() {
+    this.countries = this.dataarray
+      .map((country, i) => ({id: i + 1, ...country}))
+      .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+  }
+  
 
 
 }

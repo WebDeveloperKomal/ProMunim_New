@@ -33,15 +33,28 @@ export class ViewProductComponent {
     this.apiService.ProductById(this.id).subscribe(
       (res:any)=>{
         this.data = res.data;
+        console.log("data",res.data );
+        
         this.product.productId = this.data.productId;
         this.product.productName = this.data.productName;
         this.product.minValue = this.data.minValue;
         this.product.maxValue = this.data.maxValue;
+        this.viewproductForm.patchValue({
+          productName: res.data[0].productName
+          ,
+          productId:  res.data[0].productId , 
+          minValue: res.data[0].minValue ,
+          maxValue:  res.data[0].maxValue , 
+
+           
+        })
       },
       (err:any)=>{console.error(err);}
     )
   }
-
+  reset(){
+    window.location.reload();
+  }
 
   onSubmit(){
     console.log(this.product);    

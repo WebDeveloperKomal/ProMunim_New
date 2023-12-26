@@ -64,12 +64,34 @@
                   </table>
 
 
-                  <div class="container1">
+                  <div>
+                    <label>Type : &nbsp;</label>    
+                    <input formControlName="tname"  type="text"  >
+                     <br>
+                     <br> 
+                  </div>
+                  
+
+                  <!-- <form [formGroup]="userForm" >
+                    <br>
+                   <br>  
+                   <div *ngFor="let phone of getTypesFormControls();">
+                     <label>Type : &nbsp;</label>    
+                     <input formControlName="tname" type="text"  >
+                      <br>
+                      <br> 
+                   </div>
+                   <br>  
+                   <button (click)="addTypeNew()">Add Type</button>
+                   <br>
+                  
+                 </form> -->
+                  <!-- <div class="container1">
                     <button class="add_form_field" ng-click="addTypeField()" >Add New Type &nbsp;
                         <span style="font-size:16px; font-weight:bold;">+ </span>
                     </button>
                     <div><input type="text" formControlName="tname" name="typeArr" [(ngModel)]="tnames"></div>
-                </div>
+                </div> -->
                 <div class="clearfix form-actions col-md-12 col-sm-12 col-xs-12 mt-5">
                     <div class="col-md-offset-3 col-md-9">
                         <button class="col-lg-2 col-5 btn btn-info m-lg-4" type="submit" (click)="addType()">
@@ -77,7 +99,7 @@
                             Update
                         </button>
                         &nbsp; &nbsp; &nbsp;
-                        <button class="col-lg-2 col-5 btn canc m-lg-4">
+                        <button class="col-lg-2 col-5 btn canc m-lg-4" (click)="reset()">
                             <i class="ace-icon fa fa-undo bigger-110"></i>
                             Cancel
                         </button>

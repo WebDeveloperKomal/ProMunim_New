@@ -39,12 +39,7 @@
               <div class="col-lg-5 col-md-7 col-8">
                 <select formControlName="mainDepId" [(ngModel)]="department.mainDepId" class="form-select">
                   <option value="">-----------------------Select------------------------ </option>
-                  <option value="1">Distribution</option>
-                  <option value="2">Support</option>
-                  <option value="3">CPU</option>
-                  <option *ngFor="let data of dataarray" [value]="data.branchname">{{
-                    data.branchname }}
-                  </option>
+                  <option *ngFor="let mainDep of allMaindeps" [value]="mainDep.id">{{mainDep.mainDepName}}</option>                  
                 </select>
               </div>
               <div class="col-sm-1">
@@ -69,14 +64,14 @@
 
                             <div class="form-group row mb-3">
 
-                              <label for="complianceDueDate"  class="col-lg-5 col-4 control-label">Main Department
+                              <label   class="col-lg-5 col-4 control-label">Main Department
                                 Name:</label>
                               <div class="col-lg-6 col-md-8 col-8 ">
-                                <input type="text"  >
+                                <input type="text"  [(ngModel)]="Mdep.mainDepName" [ngModelOptions]="{standalone: true}">
                               </div>
                             </div>
                             <div class="text-center">
-                              <button type="button" class="btn btn-info  m-lg-4 m-4"><i
+                              <button type="button" class="btn btn-info  m-lg-4 m-4" (click)="addMainDep()"><i
                                   class="ace-icon fa fa-check bigger-110"></i>
                                 Submit</button>
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -115,7 +110,7 @@
               <!-- <div class="col-sm-offset-3 col-md-9"> -->
               <button type="button" class="btn btn-info  m-lg-4 m-4" (click)="onSubmit()"><i class="ace-icon fa fa-check bigger-110"></i>
                 Submit</button>
-              <button type="button" class="btn canc m-lg-4 m-4">
+              <button type="reset" class="btn canc m-lg-4 m-4">
                 <i class="ace-icon fa fa-undo bigger-110"></i>
                 Cancel
               </button>

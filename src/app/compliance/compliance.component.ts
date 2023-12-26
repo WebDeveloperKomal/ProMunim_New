@@ -13,20 +13,48 @@ import Swal from 'sweetalert2';
 })
 export class ComplianceComponent {
   SearchText : any ;
-
   page = 1;
   pageSize = 10 ;
-
   currentPage: number = 1;
   countries: ComplianceModel[] | undefined;
   collectionSize =100;
-  
   complianceList:ComplianceModel[]=[];
+
+    
+  permissions: any;
+  Perstring:any;
+  insertcompliance!:boolean;
+  deletecompliance!:boolean;
+  updatecompliance!:boolean;
+  view!:boolean;
+  viewRM!:boolean;
+  viewbranch!:boolean;
+  viewall!:boolean;
+
+
   constructor(private apiService:ApiService, private router:Router) {}
  
   ngOnInit(){
+    this.Perstring = localStorage.getItem('permissions');
+    if (this.Perstring) {
+      this.permissions = JSON.parse(this.Perstring);
+      this.permissions.forEach((permission: number) => {
+        if (permission === 1112){this.insertcompliance = true};
+        if (permission === 1113){this.deletecompliance = true};
+        if (permission === 1114){this.updatecompliance = true};
+        if (permission === 1115){this.view = true};
+        if (permission === 1116){this.viewRM = true};
+        if (permission === 1117){this.viewbranch = true};
+        if (permission === 1118){this.viewall = true};
+      });
+    } else {
+      console.log('No permissions data found in local storage.');
+    };
+
     this.apiService.allCompliances().subscribe(
-      (res:any)=>{this.complianceList=res.data},
+      (res:any)=>{this.complianceList=res.data;
+        this.collectionSize = this.complianceList.length;
+      },
       (error:any)=>{console.error(error);
       }
     )
@@ -71,19 +99,25 @@ export class ComplianceComponent {
     
   }
 
-applyFilter(): void {
-  // const searchString = this.SearchText.toLowerCase();
-  // const filteredData = [...this.dataarray];
-  // this.dataarray = filteredData.filter((data) =>
-  //   data.branchname.toLowerCase().includes(searchString) ||
-  //   data.branchcode.toLowerCase().includes(searchString) ||
-  //   data.branchcity.toLowerCase().includes(searchString) ||
-  //   data.branchaddress.toLowerCase().includes(searchString)
-  // );
-}
-refreshCountries() {
-  // this.countries = this.dataarray
-  //   .map((country, i) => ({id: i + 1, ...country}))
-  //   .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
-}
+  applyFilter(): void {
+    if (!this.SearchText) {
+      
+      this.complianceList = [...this.complianceList];
+      return;
+    }
+    const searchString = this.SearchText.toLowerCase();
+    this.complianceList = this.complianceList.filter((data) =>
+      data.complianceName.toLowerCase().includes(searchString) ||
+      data.taxLink.toLowerCase().includes(searchString) ||
+      data.complianceDueDate.toLowerCase().includes(searchString)||
+      (data.complianceDueDate !== null && !isNaN(data.complianceDueDate) && data.complianceDueDate.toString().includes(searchString)) 
+    );
+  }
+  
+  
+  refreshCountries() {
+    this.countries = this.complianceList
+      .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+  }
+  
 }

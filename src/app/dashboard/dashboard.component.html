@@ -57,11 +57,11 @@
 
                                         <div class="row">
                                             <div class="col-6">
-                                                <h3 class="">0</h3>
+                                                <h3 class="">{{allCustCounts.todayCust}}</h3>
                                                 <p class="">Customer</p>
                                             </div>
                                             <div class="col-6">
-                                                <h3 class="">0</h3>
+                                                <h3 class="">{{allCustCounts.portfolio}}</h3>
                                                 <p class="">Portfolio</p>
                                             </div>
                                         </div>
@@ -70,11 +70,11 @@
                                     <div class="tab-pane pay10" [class.active]="activeTab === 'tab2'" id="tab2">
                                         <div class="row">
                                             <div class="col-6">
-                                                <h3 class="">2</h3>
+                                                <h3 class="">{{allCustCounts.monthCust}}</h3>
                                                 <p class="">Customer</p>
                                             </div>
                                             <div class="col-6">
-                                                <h3 class="">31</h3>
+                                                <h3 class="">{{allCustCounts.portfolio}}</h3>
                                                 <p class="">Portfolio</p>
                                             </div>
                                         </div>
@@ -83,11 +83,11 @@
                                     <div class="tab-pane pay10" [class.active]="activeTab === 'tab3'" id="tab3">
                                         <div class="row">
                                             <div class="col-6">
-                                                <h3 class="">63</h3>
+                                                <h3 class="">{{allCustCounts.yearCust}}</h3>
                                                 <p class="">Customer</p>
                                             </div>
                                             <div class="col-6">
-                                                <h3 class="">32</h3>
+                                                <h3 class="">{{allCustCounts.portfolio}}</h3>
                                                 <p class="">Portfolio</p>
                                             </div>
                                         </div>
@@ -95,16 +95,16 @@
                                     <div class="tab-pane pay10" [class.active]="activeTab === 'tab4'" id="tab4">
                                         <div class="row">
                                             <div class="col-6">
-                                                <h3 class="">3390</h3>
+                                                <h3 class="">{{allCustCounts.allCust}}</h3>
                                                 <p class="">Customer</p>
                                             </div>
                                             <div class="col-6">
-                                                <h3 class="">33</h3>
+                                                <h3 class="">{{allCustCounts.portfolio}}</h3>
                                                 <p class="">Portfolio</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <a class="tab-content-footer" style="color: #004c8f;background-color: white;">More
+                                    <a class="tab-content-footer" routerLink="/set/customerslist" style="color: #004c8f;background-color: white;">More
                                         info <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
@@ -129,35 +129,35 @@
                                 <div class="tab-content pay">
                                     <div class="tab-pane active pay10" [class.active]="activeTab1 === 'tab5'" id="tab5">
                                         <p>Payments </p>
-                                        <div style="font-size: 15px;">Total R. V. : 0</div>
-                                        <div style="font-size: 15px;">Total R. V. : 0</div>
-                                        <div style="font-size: 15px;">Total R. V. : 0</div>
+                                        <div style="font-size: 15px;">Total R. V. : {{totalIPRenew.todayRenewal}}</div>
+                                        <div style="font-size: 15px;">I. P. Collected :  {{totalIPRenew.todayTotalIp}}</div>
+                                        <div style="font-size: 15px;">Renewal Collection :  {{totalPayInfo.todayTotal}}</div>
 
                                     </div>
 
                                     <div class="tab-pane pay10" [class.active]="activeTab1 === 'tab6'" id="tab6">
                                         <p>Payments </p>
-                                        <div style="font-size: 15px;">Total R. V. : 136973</div>
-                                        <div style="font-size: 15px;">Total R. V. : 68850</div>
-                                        <div style="font-size: 15px;">Total R. V. : 68123</div>
+                                        <div style="font-size: 15px;">Total R. V. : {{totalIPRenew.monthRenewal}}</div>
+                                        <div style="font-size: 15px;">I. P. Collected : {{totalIPRenew.monthTotalIp}}</div>
+                                        <div style="font-size: 15px;">Renewal Collection : {{totalPayInfo.monthTotal}}</div>
 
                                     </div>
 
                                     <div class="tab-pane pay10" [class.active]="activeTab1 === 'tab7'" id="tab7">
                                         <p>Payments </p>
-                                        <div style="font-size: 15px;">Total R. V. : 5973241</div>
-                                        <div style="font-size: 15px;">Total R. V. : 376171</div>
-                                        <div style="font-size: 15px;">Total R. V. : 5597070</div>
+                                        <div style="font-size: 15px;">Total R. V. : {{totalIPRenew.yearRenewal}}</div>
+                                        <div style="font-size: 15px;">I. P. Collected : {{totalIPRenew.yearTotalIp}}</div>
+                                        <div style="font-size: 15px;">Renewal Collection : {{totalPayInfo.yearTotal}}</div>
 
                                     </div>
                                     <div class="tab-pane pay10" [class.active]="activeTab1 === 'tab8'" id="tab8">
                                         <p>Payments </p>
-                                        <div style="font-size: 15px;">Total R. V. : 100848664</div>
-                                        <div style="font-size: 15px;">Total R. V. : 17900120</div>
-                                        <div style="font-size: 15px;">Total R. V. : 82948336</div>
+                                        <div style="font-size: 15px;">Total R. V. : {{totalIPRenew.allRenewal}}</div>
+                                        <div style="font-size: 15px;">I. P. Collected : {{totalIPRenew.allTotalIp}}</div>
+                                        <div style="font-size: 15px;">Renewal Collection : {{totalPayInfo.allTotal}}</div>
 
                                     </div>
-                                    <a class="tab-content-footer" style="color: #004c8f;background-color: white;">More
+                                    <a class="tab-content-footer" routerLink="/set/alltransactions" style="color: #004c8f;background-color: white;">More
                                         info <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
@@ -187,24 +187,24 @@
                                 <div class="tab-content pay ">
                                     <div class="tab-pane active pb-2 pay10" [class.active]="activeTab2 === 'tab9'"
                                         id="tab9">
-                                        <h3 class="ng-binding">0</h3>
+                                        <h3 class="ng-binding">{{allTempCustcounts.todayTempCust}}</h3>
                                         <div class="newcust">New Customers</div>
                                     </div>
 
                                     <div class="tab-pane pay10" [class.active]="activeTab2 === 'tab10'" id="tab10">
-                                        <h3 class="ng-binding">2</h3>
+                                        <h3 class="ng-binding">{{allTempCustcounts.monthTempCust}}</h3>
                                         <div class="newcust">New Customers</div>
                                     </div>
 
                                     <div class="tab-pane pay10" [class.active]="activeTab2 === 'tab11'" id="tab11">
-                                        <h3 class="ng-binding">4</h3>
+                                        <h3 class="ng-binding">{{allTempCustcounts.yearTempCust}}</h3>
                                         <div class="newcust">New Customers</div>
                                     </div>
                                     <div class="tab-pane pay10" [class.active]="activeTab2 === 'tab12'" id="tab12">
-                                        <h3 class="ng-binding">5438</h3>
+                                        <h3 class="ng-binding">{{allTempCustcounts.allTempCust}}</h3>
                                         <div class="newcust">New Customers</div>
                                     </div>
-                                    <a class="tab-content-footer" style="color: #3bb161;background-color: white;">More
+                                    <a class="tab-content-footer" routerLink="/set/allnewcustomer" style="color: #004c8f;background-color: white; cursor: pointer;">More
                                         info <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
@@ -237,11 +237,11 @@
 
                                         <div class="row">
                                             <div class="col-6">
-                                                <h3 class="ng-binding">0</h3>
+                                                <h3 class="ng-binding">{{allVisitLeadCounts.todayTotalVisit}}</h3>
                                                 <p class="mb-0">Total Visits</p>
                                             </div>
                                             <div class="col-6">
-                                                <h3 class="ng-binding">0</h3>
+                                                <h3 class="ng-binding">{{allVisitLeadCounts.todayTotalLead}}</h3>
                                                 <p class="mb-0">Total Leads</p>
                                             </div>
                                         </div>
@@ -250,11 +250,11 @@
                                     <div class="tab-pane pay10" [class.active]="activeTab3 === 'tab14'" id="tab14">
                                         <div class="row">
                                             <div class="col-6">
-                                                <h3 class="ng-binding">0</h3>
+                                                <h3 class="ng-binding">{{allVisitLeadCounts.monthTotalVisit}}</h3>
                                                 <p>Total Visits</p>
                                             </div>
                                             <div class="col-6">
-                                                <h3 class="ng-binding">0</h3>
+                                                <h3 class="ng-binding">{{allVisitLeadCounts.monthTotalLead}}</h3>
                                                 <p>Total Leads</p>
                                             </div>
                                         </div>
@@ -264,11 +264,11 @@
 
                                         <div class="row">
                                             <div class="col-6">
-                                                <h3 class="ng-binding">0</h3>
+                                                <h3 class="ng-binding">{{allVisitLeadCounts.yearTotalVisit}}</h3>
                                                 <p>Total Visits</p>
                                             </div>
                                             <div class="col-6">
-                                                <h3 class="ng-binding">0</h3>
+                                                <h3 class="ng-binding">{{allVisitLeadCounts.yearTotalLead}}</h3>
                                                 <p>Total Leads</p>
                                             </div>
                                         </div>
@@ -276,17 +276,17 @@
                                     <div class="tab-pane pay10" [class.active]="activeTab3 === 'tab16'" id="tab16">
                                         <div class="row">
                                             <div class="col-6">
-                                                <h3 class="ng-binding">210</h3>
+                                                <h3 class="ng-binding">{{allVisitLeadCounts.allTotalVisit}}</h3>
                                                 <p>Total Visits</p>
                                             </div>
                                             <div class="col-6">
-                                                <h3 class="ng-binding">3480</h3>
+                                                <h3 class="ng-binding">{{allVisitLeadCounts.allTotalLead}}</h3>
                                                 <p>Total Leads</p>
 
                                             </div>
                                         </div>
                                     </div>
-                                    <a class="tab-content-footer" style="color: #004c8f;background-color: white;">More
+                                    <a class="tab-content-footer" routerLink="/set/alldailyvisits" style="color: #004c8f;background-color: white;">More
                                         info <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
@@ -360,12 +360,12 @@
                                     Latest Customer Interaction
                                 </p>
                                 <div class="widget-toolbar" style="float: right;">
-                                    <!-- ngIf: true --><a href="#" data-action="reload" ng-if="true"
-                                        ng-click="getAllLatestFollowUp1()" class="ng-scope">
+                                    <!-- ngIf: true --><a data-action="reload" ng-if="true"
+                                        (click)="allLatestInteractions()" class="ng-scope">
                                         <i class="ace-icon fa fa-refresh"></i>
                                     </a><!-- end ngIf: true -->
                                     <!-- ngIf: false -->
-                                    <a href="#" data-action="collapse">
+                                    <a  data-action="collapse">
                                         <i class="ace-icon fa fa-chevron-up"></i>
                                     </a>
                                 </div>
@@ -376,37 +376,12 @@
                                     <!-- ngIf: true -->
                                     <div ng-if="true" ng-init="getAllLatestFollowUp1()" class="ng-scope">
                                         <!-- ngRepeat: fu in followupData -->
-                                        <div class="alertbox alert alert-success ng-scope"
+                                        <div *ngFor="let interaction of followUp" class="alertbox alert alert-success ng-scope"
                                             ng-repeat="fu in followupData">
-                                            <div style="color:#184ca0;" class="ng-binding"> &nbsp;&nbsp;
-                                                &nbsp;&nbsp;</div>
+                                            <div style="color:#184ca0;" class="ng-binding">{{interaction}}</div>
                                             <div class="ng-binding"> </div>
                                         </div><!-- end ngRepeat: fu in followupData -->
-                                        <div class="alertbox alert alert-success ng-scope"
-                                            ng-repeat="fu in followupData">
-                                            <div style="color:#184ca0;" class="ng-binding"> &nbsp;&nbsp;
-                                                &nbsp;&nbsp;
-                                            </div>
-                                            <div class="ng-binding"></div>
-                                        </div><!-- end ngRepeat: fu in followupData -->
-                                        <div class="alertbox alert alert-success ng-scope"
-                                            ng-repeat="fu in followupData">
-                                            <div style="color:#184ca0;" class="ng-binding">&nbsp;&nbsp; &nbsp;&nbsp;
-                                            </div>
-                                            <div class="ng-binding"> </div>
-                                        </div><!-- end ngRepeat: fu in followupData -->
-                                        <div class="alertbox alert alert-success ng-scope"
-                                            ng-repeat="fu in followupData">
-                                            <div style="color:#184ca0;" class="ng-binding">&nbsp;&nbsp; &nbsp;&nbsp;
-                                            </div>
-                                            <div class="ng-binding"></div>
-                                        </div><!-- end ngRepeat: fu in followupData -->
-                                        <div class="alertbox alert alert-success ng-scope"
-                                            ng-repeat="fu in followupData">
-                                            <div style="color:#184ca0;" class="ng-binding"> &nbsp;&nbsp;
-                                                &nbsp;&nbsp;</div>
-                                            <div class="ng-binding"> </div>
-                                        </div><!-- end ngRepeat: fu in followupData -->
+
 
                                     </div><!-- end ngIf: true -->
 
@@ -443,13 +418,13 @@
                                     </li>
                                         
                                         <li ng-if="true" class="ng-scope">
-                                            <a href="#" data-action="reload" ng-click="getAllDailyLeadNotif()"
+                                            <a data-action="reload" (click)="leadNotifications()"
                                                 style="padding: 2px 0px 5px 8px; color: #ACD392; border-left: 1px solid #D9D9D9;">
                                                 <i class="ace-icon fa fa-refresh"></i>
                                             </a>
                                         </li><!-- end ngIf: true -->
 
-                                        <li><a href="#" data-action="collapse" style="padding: 0px 0px 0px;">
+                                        <li><a data-action="collapse" style="padding: 0px 0px 0px;">
                                                 <i class="ace-icon fa fa-chevron-up"></i>
                                             </a>
                                         </li>
@@ -462,14 +437,13 @@
                             <div class="widget-body">
                                 <div class="widget-main">
                                   
-                                    <div ng-if="true" ng-init="getAllDailyLeadNotif()" class="ng-scope">
+                                    <div ng-if="true"  class="ng-scope">
                                         <div >
                                             <div id="lead_notif_today" class="tab-pane in active">
                                                
-                                            </div>
 
                                             <div id="lead_notif_month" class="tab-pane">
-                                                
+                                               
                                             </div>
                                         </div>
                                     </div>

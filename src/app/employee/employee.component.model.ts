@@ -7,6 +7,7 @@ export class EmployeeModel {
     joiningDate : any;
     dob : any;
     userName : any;
+    email : any;
     contactNo : any;
     branchId : any;
     branchName : any;
@@ -20,4 +21,6 @@ export class EmployeeModel {
     rmCode : any;
     proUserId : any;
     empPhoto : any;
+    password : any;
+
 }

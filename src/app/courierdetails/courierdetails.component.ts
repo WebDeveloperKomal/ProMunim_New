@@ -11,22 +11,48 @@ import Swal from 'sweetalert2';
 })
 export class CourierdetailsComponent {
   SearchText : any ;
-
   page = 1;
   pageSize = 10 ;
   dataarray: courierdetailsModel [] = [];
   currentPage: number = 1;
   countries: courierdetailsModel [] | undefined;
   collectionSize =100;
-
+  userRole:any;
   couriorList:courierdetailsModel[]=[];
+
+  permissions: any;
+  Perstring:any;
+  insertcourior!:boolean;
+  deletecourior!:boolean;
+  updatecourior!:boolean;
+  view!:boolean;
+  viewRM!:boolean;
+  viewbranch!:boolean;
+  viewall!:boolean;
 
   constructor(private apiService:ApiService, private router:Router) {}
 
   ngOnInit(){
+    this.Perstring = localStorage.getItem('permissions');
+    if (this.Perstring) {
+      this.permissions = JSON.parse(this.Perstring);
+      this.permissions.forEach((permission: number) => {
+        if (permission === 1140){this.insertcourior = true};
+        if (permission === 1141){this.deletecourior = true};
+        if (permission === 1142){this.updatecourior = true};
+        if (permission === 1143){this.view = true};
+        if (permission === 1144){this.viewRM = true};
+        if (permission === 1145){this.viewbranch = true};
+        if (permission === 1146){this.viewall = true};
+      });
+    } else {
+      console.log('No permissions data found in local storage.');
+    };
+
     this.apiService.allCouriors().subscribe(
       (response:any)=>{
         this.couriorList=response.data;
+        this.collectionSize = response.data.length;
       },
       (error:any)=>{
         console.error(error);        
@@ -74,21 +100,24 @@ export class CourierdetailsComponent {
   }
 
 
-applyFilter(): void {
-  const searchString = this.SearchText.toLowerCase();
-  const filteredData = [...this.dataarray];
-  // this.dataarray = filteredData.filter((data) =>
-  //   data.branchname.toLowerCase().includes(searchString) ||
-  //   data.branchcode.toLowerCase().includes(searchString) ||
-  //   data.branchcity.toLowerCase().includes(searchString) ||
-  //   data.branchaddress.toLowerCase().includes(searchString)
-  // );
-}
-refreshCountries() {
-  this.countries = this.dataarray
-    .map((country, i) => ({id: i + 1, ...country}))
-    .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
-}
+  applyFilter(): void {
+    const searchString = this.SearchText.toLowerCase();
+    const filteredData = [...this.couriorList];
+    this.couriorList = filteredData.filter((data) =>
+      data.name.toLowerCase().includes(searchString) ||
+      data.address.toLowerCase().includes(searchString) ||
+      data.phoneNo.toLowerCase().includes(searchString) ||
+      data.fax.toLowerCase().includes(searchString) ||
+      data.emailId.toLowerCase().includes(searchString) 
+  
+      
+    );
+  }
+  refreshCountries() {
+    this.couriorList = this.couriorList
+      .map((country, i) => ({id: i + 1, ...country}))
+      .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+  }
 
 
 

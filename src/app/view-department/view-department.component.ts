@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 export class ViewDepartmentComponent {
   adddepartmentForm !: FormGroup;
   dataarray: any[] = [];
+  allMaindeps=[{mainDepName:'',id:0}]
   dept:DepartmentModel = new DepartmentModel();
   id:any;
 
@@ -25,15 +26,29 @@ export class ViewDepartmentComponent {
   }
 
 
+
 ngOnInit(){
+  this.apiService.allMainDepartments().subscribe(
+    (res:any)=>{ this.allMaindeps = res.data;},
+    (err:any)=>{ console.error(err)}
+  )
     this.id = this.route.snapshot.params['id'];
     this.apiService.DepartmentById(this.id).subscribe(
       (response:any)=>{
-        this.dept=response.data;},
+        this.dept=response.data;
+        console.log('val',response.data  );
+        console.log('val',response.data.depName  );
+      this.adddepartmentForm.patchValue({
+        departmentName: response.data[0].departmentName ,
+        mainDepName:  response.data[0].depName 
+      })
+    },
       (error:any)=>{console.error(error);}
     )
   }
-
+  reset(){
+    window.location.reload();
+  }
   onSubmit(){
     let dep = {departmentID : this.id,
                 departmentName: this.dept.departmentName,

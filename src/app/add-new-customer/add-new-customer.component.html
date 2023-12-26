@@ -39,31 +39,31 @@
 
 
                         <div class="form-group row mb-3">
-                            <label for="companyname" class="col-lg-2 col-4   col-form-label mr-5">Company Name:</label>
+                            <label for="companyName" class="col-lg-2 col-4   col-form-label mr-5">Company Name:</label>
                             <div class="col-lg-4 col-8">
-                                <input type="text" formControlName="companyname" [(ngModel)]="newCust.companyName" class="form-control" id="complianceName">
+                                <input type="text" formControlName="companyName" [(ngModel)]="newCust.companyName" class="form-control" id="complianceName">
                             </div>
-                            <label for="fullname" class="col-lg-2 col-4   col-form-label mr-5">Full Name:</label>
+                            <label for="customerFullName" class="col-lg-2 col-4   col-form-label mr-5">Full Name:</label>
                             <div class="col-lg-4 col-8">
-                                <input type="text" formControlName="fullname" [(ngModel)]="newCust.customerFullName" class="form-control" id="complianceName">
+                                <input type="text" formControlName="customerFullName" [(ngModel)]="newCust.customerFullName" class="form-control" id="complianceName">
                             </div>
                         </div>
                         <div class="form-group row mb-3">
-                            <label for="email" class="col-lg-2 col-4   col-form-label mr-5">Email Id:</label>
+                            <label for="emailId" class="col-lg-2 col-4   col-form-label mr-5">Email Id:</label>
                             <div class="col-lg-4 col-8">
-                                <input type="email" formControlName="email" [(ngModel)]="newCust.emailId" class="form-control" id="complianceName">
+                                <input type="email" formControlName="emailId" [(ngModel)]="newCust.emailId" class="form-control" id="complianceName">
                             </div>
-                            <label for="contactno" class="col-lg-2 col-4   col-form-label mr-5">Contact Number:</label>
+                            <label for="contactNo" class="col-lg-2 col-4   col-form-label mr-5">Contact Number:</label>
                             <div class="col-lg-4 col-8">
-                                <input type="text" formControlName="contactno" [(ngModel)]="newCust.contactNo" class="form-control" id="complianceName">
+                                <input type="text" formControlName="contactNo" [(ngModel)]="newCust.contactNo" class="form-control" id="complianceName">
                             </div>
                         </div>
 
                         <div class="form-group row mb-3">
-                            <label for="altcontactno" class="col-lg-2 col-4   col-form-label mr-5">Alternative Contact
+                            <label for="altContactNo" class="col-lg-2 col-4   col-form-label mr-5">Alternative Contact
                                 Number:</label>
                             <div class="col-lg-4 col-8">
-                                <input type="text" formControlName="altcontactno" [(ngModel)]="newCust.altContactNo" class="form-control" id="complianceName">
+                                <input type="text" formControlName="altContactNo" [(ngModel)]="newCust.altContactNo" class="form-control" id="complianceName">
                             </div>
                             <label for="address" class="col-lg-2 col-4   col-form-label mr-5">Address:</label>
                             <div class="col-lg-4 col-8">
@@ -80,15 +80,15 @@
                                 <input type="text" formControlName="city" [(ngModel)]="newCust.city" class="form-control" id="complianceName">
                             </div>
                             <!-- <label for="taxLink" class="col-lg-2 col-4 col-form-label ml-2" >Tax Link  :</label> -->
-                            <label for="pincode" class="col-lg-2 col-4   col-form-label mr-5">Pincode:</label>
+                            <label for="pinCode" class="col-lg-2 col-4   col-form-label mr-5">Pincode:</label>
                             <div class="col-lg-4 col-8">
-                                <input type="text" formControlName="pincode" [(ngModel)]="newCust.pinCode" class="form-control" id="complianceName">
+                                <input type="text" formControlName="pinCode" [(ngModel)]="newCust.pinCode" class="form-control" id="complianceName">
                             </div>
                         </div>
                         <div class="form-group row mb-3">
-                            <label for="constofcompany" class="col-lg-2 col-4 col-form-label ml-2" >Constitution of Company:</label>
+                            <label for="constitutionOfCompany" class="col-lg-2 col-4 col-form-label ml-2" >Constitution of Company:</label>
                             <div class="col-lg-4 col-8">
-                                <select formControlName="constofcompany" [(ngModel)]="newCust.constitutionOfCompany" class="form-select">
+                                <select formControlName="constitutionOfCompany" [(ngModel)]="newCust.constitutionOfCompany" class="form-select">
                                     <option value="">-----------------------Select------------------------ </option>
                                     <option value="PROPRITER">PROPRITER </option>
                                     <option value="PARTNERSHIP">PARTNERSHIP</option>
@@ -108,9 +108,9 @@
                             </div>
                         </div>
                         <div class="form-group row mb-3">
-                            <label for="natureofbus" class="col-lg-2 col-4 col-form-label ml-2" >Nature Of Business:</label>
+                            <label for="natureOfBussiness" class="col-lg-2 col-4 col-form-label ml-2" >Nature Of Business:</label>
                             <div class="col-lg-4 col-8">
-                                <select formControlName="natureofbus" [(ngModel)]="newCust.natureOfBussiness" class="form-select">
+                                <select formControlName="natureOfBussiness" [(ngModel)]="newCust.natureOfBussiness" class="form-select">
                                     <option value="">-----------------------Select------------------------ </option>
                                     <option value="Repair & Mainatenance">Repair & Mainatenance</option>
                                     <option value="Packaging & Printing">Packaging & Printing</option>
@@ -119,9 +119,9 @@
                                     </option> -->
                                 </select>
                             </div>
-                            <label for="maintitr" class="col-lg-2 col-4 col-form-label ml-2" >Maintaining ITR:</label>
+                            <label for="maintainingITR" class="col-lg-2 col-4 col-form-label ml-2" >Maintaining ITR:</label>
                             <div class="col-lg-4 col-8">
-                                <select formControlName="maintitr" [(ngModel)]="newCust.maintainingITR" class="form-select">
+                                <select formControlName="maintainingITR" [(ngModel)]="newCust.maintainingITR" class="form-select">
                                     <option value="">-----------------------Select------------------------ </option>
                                     <option value="YES">YES</option>
                                     <option value="NO">NO </option>
@@ -129,18 +129,18 @@
                             </div>
                         </div>
                         <div class="form-group row mb-3">
-                            <label for="leadtype" class="col-lg-2 col-4 col-form-label ml-2" >Lead Type:</label>
+                            <label for="leadType" class="col-lg-2 col-4 col-form-label ml-2" >Lead Type:</label>
                             <div class="col-lg-4 col-8">
-                                <select formControlName="leadtype" [(ngModel)]="newCust.leadType" class="form-select">
+                                <select formControlName="leadType" [(ngModel)]="newCust.leadType" class="form-select">
                                     <option value="">-----------------------Select------------------------ </option>
                                     <option value="HOT">HOT </option>
                                 <option value="WARM">WARM </option>
                                 <option value="COLD">COLD </option>
                                 </select>
                             </div>
-                            <label for="leadstatus" class="col-lg-2 col-4 col-form-label ml-2" >Lead Status:</label>
+                            <label for="leadStatus" class="col-lg-2 col-4 col-form-label ml-2" >Lead Status:</label>
                             <div class="col-lg-4 col-8">
-                                <select formControlName="leadstatus" [(ngModel)]="newCust.leadStatus" class="form-select">
+                                <select formControlName="leadStatus" [(ngModel)]="newCust.leadStatus" class="form-select">
                                     <option value="">-----------------------Select------------------------ </option>
                                     <option value="INTERESTED">INTERESTED </option>
                                     <option value="NOT INTERESTED">NOT INTERESTED </option>
@@ -148,9 +148,9 @@
                             </div>
                         </div> 
                         <div class="form-group row mb-3">
-                            <label for="product" class="col-lg-2 col-4 col-form-label ml-2" >Product:</label>
+                            <label for="productId" class="col-lg-2 col-4 col-form-label ml-2" >Product:</label>
                             <div class="col-lg-4 col-8">
-                                <select formControlName="product" [(ngModel)]="newCust.productId" class="form-select">
+                                <select formControlName="productId" [(ngModel)]="newCust.productId" class="form-select">
                                     <option value="">-----------------------Select------------------------ </option>
                                     <option *ngFor="let product of products" value={{product.productId}}>{{product.productId}} - {{product.productName}} ({{product.minValue}} - {{product.maxValue}})</option>
                                     <!-- <option *ngFor="let data of dataarray" [value]="data.branchname">{{ data.branchname }}
@@ -162,7 +162,7 @@
                         
                             <div class=" col-md-12 col-sm-12 col-xs-12 mt-5">
                                 <div class="col-md-offset-3 col-md-9" >
-                                    <button class="col-lg-2 col-4 btn btn-info m-4 " type="submit">
+                                    <button class="col-lg-2 col-4 btn btn-info m-4" (click)="onSubmit()" routerLink="/set/" type="submit">
                                         <i class="ace-icon fa fa-check bigger-110"></i>
                                         Next
                                     </button>
