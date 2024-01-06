@@ -76,6 +76,10 @@ import { SetComponent } from './set/set.component';
 import { LoginComponent } from './login/login.component';
 import { ViewBranchComponent } from './view-branch/view-branch.component'
 import { AuthInterceptorProviders } from './auth.interceptor';
+import { DemoforaofComponent } from './demoforaof/demoforaof.component';
+import { ViewCustomerDetailsNewComponent } from './view-customer-details-new/view-customer-details-new.component';
+import { ViewCustomerDetailsDemoComponent } from './view-customer-details-demo/view-customer-details-demo.component';
+import { GetfileComponent } from './getfile/getfile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -145,7 +149,11 @@ import { AuthInterceptorProviders } from './auth.interceptor';
     AccountopeningFormComponent,
     SetComponent,
     LoginComponent,
-    ViewBranchComponent
+    ViewBranchComponent,
+    DemoforaofComponent,
+    ViewCustomerDetailsNewComponent,
+    ViewCustomerDetailsDemoComponent,
+    GetfileComponent
   ],
   imports: [
     BrowserModule,

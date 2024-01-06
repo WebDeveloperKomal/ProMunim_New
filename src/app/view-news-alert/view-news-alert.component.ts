@@ -13,6 +13,7 @@ export class ViewNewsAlertComponent {
   dataarray: any[] = [];
 
   id!: number;
+  
   addtid = {
     date: "",
     newsAlertId: 0,

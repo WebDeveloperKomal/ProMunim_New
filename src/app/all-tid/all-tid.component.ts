@@ -51,9 +51,9 @@ export class AllTIDComponent {
     )
   }
 
-  edit(id : any){
-    this.router.navigate(['/set/tidgeneration/'+id]);
-  }
+    edit(id : any){
+      this.router.navigate(['/set/tidgeneration/'+id]);
+    }
 
 
 applyFilter(): void {

@@ -1,5 +1,8 @@
 export class AofTwomodel{
         name : any;
+        shortName : any;
+        aadharNumber : any;
+
         date : any;
         gender : any;
         nationality : any;
@@ -14,4 +17,6 @@ export class AofTwomodel{
         serInvestPlan : any;
         serTaxPlan : any;
         tid : any;
+        // auth_sign1 : any;
+        // auth_photo1 : any
 }

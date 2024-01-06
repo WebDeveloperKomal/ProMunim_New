@@ -21,6 +21,7 @@ export class ViewAddDailyleadsComponent {
   collectionSize = 100;
   id!: number;
   activeTab: string = 'tab1';
+
   dlStatusList: ViewAddDailyLeadsModel[] = [];
 
   lead={
@@ -29,7 +30,7 @@ export class ViewAddDailyleadsComponent {
     tmpCustId:0,
     isnxt:false,
     description:''
-  }
+      }
 
 
   constructor(private formBuilder: FormBuilder, private apiservice: ApiService, private route: ActivatedRoute) {

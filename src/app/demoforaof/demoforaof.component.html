@@ -359,6 +359,20 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
+                                                    <div class="actionBar ">
+                                                        <div class="text-center mt-3">
+                                                            <!-- <div class="col-sm-offset-3 col-md-9"> -->
+                                                            <button type="button" class="btn btn-info  m-lg-4 m-4 "
+                                                                (click)="onSubmit()"><i
+                                                                    class="ace-icon fa fa-check bigger-110"></i>
+                                                                Finish</button>
+                                                            <button type="button" class="btn btn-info  m-lg-4 m-4"
+                                                                (click)="changeTab('tab2')"><i
+                                                                    class="bi bi-arrow-90deg-right"></i>
+                                                                Next</button>
+                                                        </div>
+                                                    </div>
                                                 </form>
                                             </div>
 
@@ -366,7 +380,21 @@
                                                 <!-- <div id="step-2 " class="wizard_content" style="display: none;"> -->
                                                 <h5 class="h2_form text-center mt-4" style="color: white;">Authorised
                                                     Signatory Details</h5>
-                                                <form class="form-horizontal form-label-left ng-pristine ng-valid">
+                                                <form class="form-horizontal form-label-left ng-pristine ng-valid"
+                                                    [formGroup]="step2">
+
+
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-1 col-4 col-form-label">TID:</label>
+                                                        <div class="col-lg-4 col-4">
+                                                            <input type="text" (keyup.enter)="tidSearch()"
+                                                                [(ngModel)]="tidToSearch" formControlName="tid"
+                                                                class="form-control " id="complianceName">
+                                                            <p>TID : {{tidToSearch}} </p>
+                                                        </div>
+
+                                                    </div>
+
 
                                                     <div class="form-group row text-center mt-2">
                                                         <label
@@ -390,10 +418,10 @@
                                                             class="control-label col-md-3 col-sm-3 col-xs-12">PAN
                                                         </label>
                                                         <div class="col-md-3 col-sm-3 col-xs-12">
-                                                            <input type="text"
+                                                            <input type="text" [(ngModel)]="AOF2.shortName"
+                                                                formControlName="shortName"
                                                                 class="form-control col-md-4 col-xs-12 ng-pristine ng-untouched ng-valid"
-                                                                id="as1shortname" 
-                                                                >
+                                                                id="as1shortname">
                                                         </div>
 
 
@@ -412,14 +440,15 @@
                                                     <div class="form-group row text-center mt-2">
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12"
                                                             for="gender">Gender </label>
-                                                        <div class="col-md-1 col-sm-1 col-xs-12"
-                                                            formControlName="gender" [(ngModel)]="AOF2.gender">
+                                                        <div class="col-md-1 col-sm-1 col-xs-12">
                                                             <input type="radio" name="gender" value="MALE"
+                                                                formControlName="gender" [(ngModel)]="AOF2.gender"
                                                                 class="col-md-5 col-xs-12 ng-pristine ng-untouched ng-valid"
                                                                 id="as1gender">Male
                                                         </div>
                                                         <div class="col-md-1 col-sm-1 col-xs-12">
-                                                            <input type="radio" name="gender" value="FEMALE"
+                                                            <input type="radio" name="gender" formControlName="gender"
+                                                                value="FEMALE" [(ngModel)]="AOF2.gender"
                                                                 class="col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
                                                                 id="as1gender">Female
                                                         </div>
@@ -435,6 +464,8 @@
                                                         </div>
                                                         <div class="col-md-1 col-sm-1 col-xs-12">
                                                             <input type="radio" name="nationality" value="OTHER"
+                                                                formControlName="nationality"
+                                                                [(ngModel)]="AOF2.nationality"
                                                                 class="col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
                                                                 id="as1nationality">Other
                                                         </div>
@@ -443,37 +474,49 @@
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12"
                                                             for="">Religion</label>
                                                         <div class="col-md-1 col-sm-1 col-xs-12">
-                                                            <input type="radio" name="religion" value="HINDU"
+                                                            <input type="radio" name="religion"
+                                                                formControlName="religion" value="HINDU"
+                                                                [(ngModel)]="AOF2.religion"
                                                                 class="col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
                                                                 id="as1religion"
                                                                 ng-model="authSignOne.tempCustAS1Religion">Hindu
                                                         </div>
                                                         <div class="col-md-1 col-sm-1 col-xs-12">
-                                                            <input type="radio" name="religion" value="MUSLIM"
+                                                            <input type="radio" name="religion"
+                                                                formControlName="religion" value="MUSLIM"
+                                                                [(ngModel)]="AOF2.religion"
                                                                 class="col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
                                                                 id="as1religion"
                                                                 ng-model="authSignOne.tempCustAS1Religion">Muslim
                                                         </div>
                                                         <div class="col-md-1 col-sm-1 col-xs-12">
-                                                            <input type="radio" name="religion" value="CRISTIAN"
+                                                            <input type="radio" name="religion"
+                                                                formControlName="religion" value="CRISTIAN"
+                                                                [(ngModel)]="AOF2.religion"
                                                                 class="col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
                                                                 id="as1religion"
                                                                 ng-model="authSignOne.tempCustAS1Religion">Cristian
                                                         </div>
                                                         <div class="col-md-1 col-sm-1 col-xs-12">
-                                                            <input type="radio" name="religion" value="SIKH"
+                                                            <input type="radio" name="religion"
+                                                                formControlName="religion" value="SIKH"
+                                                                [(ngModel)]="AOF2.religion"
                                                                 class="col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
                                                                 id="as1religion"
                                                                 ng-model="authSignOne.tempCustAS1Religion">Sikh
                                                         </div>
                                                         <div class="col-md-2 col-sm-2 col-xs-12">
-                                                            <input type="radio" name="religion" value="BUDDHISM"
+                                                            <input type="radio" name="religion"
+                                                                formControlName="religion" value="BUDDHISM"
+                                                                [(ngModel)]="AOF2.religion"
                                                                 class="col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
                                                                 id="as1religion"
-                                                                ng-model="authSignOne.tempCustAS1Religion">Buddhism
+                                                                ng-model="authSignOne.tempCustAS1Religion">Bouddhist
                                                         </div>
                                                         <div class="col-md-1 col-sm-1 col-xs-12">
-                                                            <input type="radio" name="religion" value="OTHER"
+                                                            <input type="radio" name="religion"
+                                                                formControlName="religion" value="OTHER"
+                                                                [(ngModel)]="AOF2.religion"
                                                                 class="col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
                                                                 id="as1religion"
                                                                 ng-model="authSignOne.tempCustAS1Religion">Other
@@ -539,21 +582,24 @@
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12"
                                                             for="">Services</label>
                                                         <div class="col-md-2 col-sm-2 col-xs-12">
-                                                            <input type="checkbox"
+                                                            <input type="checkbox" [(ngModel)]="AOF2.serFinanPlan"
+                                                                formControlName="serFinanPlan"
                                                                 class="col-md-2 col-xs-12 ng-pristine ng-untouched ng-valid"
                                                                 value="Financial Planning"
                                                                 name="tempCustAS1SerFinPlan">Financial
                                                             Planning
                                                         </div>
                                                         <div class="col-md-2 col-sm-2 col-xs-12">
-                                                            <input type="checkbox"
+                                                            <input type="checkbox" [(ngModel)]="AOF2.serAccWrite"
+                                                                formControlName="serAccWrite"
                                                                 class="col-md-2 col-xs-12 ng-pristine ng-untouched ng-valid"
                                                                 value="Account Writing" name="tempCustAS1SerAccWrite"
                                                                 ng-model="authSignOne.tempCustAS1SerAccWrite">Account
                                                             Writing
                                                         </div>
                                                         <div class="col-md-2 col-sm-2 col-xs-12">
-                                                            <input type="checkbox"
+                                                            <input type="checkbox" [(ngModel)]="AOF2.serInvestPlan"
+                                                                formControlName="serInvestPlan"
                                                                 class="col-md-2 col-xs-12 ng-pristine ng-untouched ng-valid"
                                                                 value="Investment Planning"
                                                                 name="tempCustAS1SerInvestPlan"
@@ -561,19 +607,19 @@
                                                             Planning
                                                         </div>
                                                         <div class="col-md-2 col-sm-2 col-xs-12">
-                                                            <input type="checkbox"
+                                                            <input type="checkbox" [(ngModel)]="AOF2.serTaxPlan"
+                                                                formControlName="serTaxPlan"
                                                                 class="col-md-2 col-xs-12 ng-pristine ng-untouched ng-valid"
                                                                 value="Tax Planning" name="tempCustAS1SerTaxPlan"
                                                                 ng-model="authSignOne.tempCustAS1SerTaxPlan">Tax
                                                             Planning
                                                         </div>
                                                     </div>
-                                                </form>
+                                                    <h5 class="h2_form text-center mt-4" style="color: white;">
+                                                        Declaration
+                                                    </h5>
 
-                                                <h5 class="h2_form text-center mt-4" style="color: white;">Declaration
-                                                </h5>
-
-                                                <form class="form-horizontal form-label-left ng-pristine ng-valid">
+                                                    <!-- <form class="form-horizontal form-label-left ng-pristine ng-valid"> -->
                                                     <div class="form-group row text-center mt-3">
 
                                                         <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3">
@@ -596,7 +642,7 @@
 
                                                         <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-1">
                                                             <input type="file" class="filestyle"
-                                                            (change)="onPhotoSelected($event)"
+                                                                (change)="onPhotoSelected($event)"
                                                                 data-buttontext="Upload photo" data-buttonbefore="true"
                                                                 required="required" file-model="sigOnePhoto"
                                                                 id="filestyle-1" tabindex="-1"
@@ -617,56 +663,87 @@
                                                         ng-click="OrgSignatureOneDtl()">Add
                                                         Signatory</a>
 
+                                                    <div class="box-body">
+                                                        <table id="branch_datatable"
+                                                            class="table table-bordered table-striped" cellspacing="0"
+                                                            width="100%">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Name of Authorised Signatory</th>
+                                                                    <th>PAN</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <!-- ngRepeat: br in authSignData -->
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <!-- </form> -->
+                                                    <div class="actionBar ">
+                                                        <div class="text-center mt-3">
+                                                            <!-- <div class="col-sm-offset-3 col-md-9"> -->
+                                                            <button type="button" class="btn btn-info  m-lg-4 m-4"
+                                                                (click)="onsubmit2()"><i
+                                                                    class="ace-icon fa fa-check bigger-110"></i>
+                                                                Finish</button>
+                                                            <button type="button" class="btn btn-info  m-lg-4 m-4"
+                                                                (click)="changeTab('tab3')"><i
+                                                                    class="bi bi-arrow-90deg-right"></i>
+                                                                Next</button>
+                                                        </div>
+                                                    </div>
                                                 </form>
 
-                                                <div class="box-body">
-                                                    <table id="branch_datatable"
-                                                        class="table table-bordered table-striped" cellspacing="0"
-                                                        width="100%">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Name of Authorised Signatory</th>
-                                                                <th>PAN</th>
-                                                                <th>Action</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <!-- ngRepeat: br in authSignData -->
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+
+
+
                                             </div>
-                                        
+
 
                                             <div class="tab-pane" [class.active]="activeTab === 'tab3'" id="tab3">
                                                 <!-- <div id="step-3" class="wizard_content" style="display: none;"> -->
                                                 <h5 class="h2_form text-center mt-4" style="color: white;">Nature Of
                                                     Business</h5>
-                                                <form class="form-horizontal form-label-left ng-pristine ng-valid">
+                                                <form class="form-horizontal form-label-left ng-pristine ng-valid "
+                                                    [formGroup]="step3">
+
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-1 col-4 col-form-label">TID:</label>
+                                                        <div class="col-lg-4 col-4">
+                                                            <input type="text" (keyup.enter)="tidSearch()"
+                                                                [(ngModel)]="AOF3.tid" formControlName="tid"
+                                                                class="form-control " id="complianceName">
+                                                            <!-- <p>TID : {{tidToSearch}} </p> -->
+                                                        </div>
+                                                    </div>
+
                                                     <div class="form-group row text-center mt-3">
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12"
-                                                            for="">Business
+                                                            for="businessNature">Business
                                                             Nature</label>
                                                         <div class="col-md-5 col-sm-5 col-xs-12">
                                                             <input type="text"
                                                                 class="form-control col-md-8 col-xs-12 ng-pristine ng-untouched ng-valid"
-                                                                id="bussiness" ng-model="occupIncome.businessNature">
+                                                                id="bussiness" formControlName="businessNature"
+                                                                [(ngModel)]="AOF3.businessNature">
                                                         </div>
                                                     </div>
-                                                </form>
-                                                <h5 class="h2_form text-center mt-4" style="color: white;">Please tell
-                                                    us about your occupation
-                                                    and income details</h5>
 
-                                                <div id="income_type" style="margin-bottom:50px;">
-                                                    <form
-                                                        class="form-horizontal form-label-left ng-pristine ng-valid row m-2">
+                                                    <h5 class="h2_form text-center mt-4" style="color: white;">Please
+                                                        tell
+                                                        us about your occupation
+                                                        and income details</h5>
 
+                                                    <div id="income_type" style="margin-bottom:50px;">
+                                                        <!-- <form
+                                                            class="form-horizontal form-label-left ng-pristine ng-valid row m-2">
+     -->
                                                         <div class="col-md-4 col-sm-4 col-xs-12 ">
                                                             <label>
                                                                 <input type="radio" name="type" id="type"
-                                                                    value="INDIVIDUAL" ng-model="occupIncome.type"
-                                                                    checked="checked"
+                                                                    formControlName="type" [(ngModel)]="AOF3.type"
+                                                                    value="INDIVIDUAL" checked="checked"
                                                                     class="ng-pristine ng-untouched ng-valid"
                                                                     (click)="show1()">
                                                                 If A Individual, you work for </label>
@@ -674,222 +751,234 @@
                                                         <div class="col-md-4 col-sm-4 col-xs-12">
                                                             <label>
                                                                 <input type="radio" name="type" id="type"
-                                                                    value="NON INDIVIDUAL" ng-model="occupIncome.type"
-                                                                    (click)="show2()"
+                                                                    formControlName="type" [(ngModel)]="AOF3.type"
+                                                                    value="NON INDIVIDUAL" (click)="show2()"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 If Non Individual, you are </label>
                                                         </div>
                                                         <div class="col-md-4 col-sm-4 col-xs-12">
                                                             <label>
                                                                 <input type="radio" name="type" id="type"
+                                                                    formControlName="type" [(ngModel)]="AOF3.type"
                                                                     value="SELF EMPLOYEED" ng-model="occupIncome.type"
                                                                     (click)="show3()"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 If Self Employed, your nature of </label>
                                                         </div>
-                                                    </form>
-                                                </div>
-                                                <hr>
+                                                        <!-- </form> -->
+                                                    </div>
+                                                    <hr>
 
-                                                <div id="individual" *ngIf="individual">
-                                                    <form class="form-horizontal form-label-left ng-pristine ng-valid ">
+                                                    <div id="individual" *ngIf="individual">
+                                                        <!-- <form class="form-horizontal form-label-left ng-pristine ng-valid "> -->
                                                         <div class="form-group row m-2">
                                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                                 <input type="radio" name="name" value="PUBLIC SECTOR"
-                                                                    id="name" ng-model="occupIncome.name"
+                                                                    id="name" formControlName="name"
+                                                                    [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid"> Public
                                                                 Sector
                                                             </div>
                                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                                 <input type="radio" name="name" value="STATE GOVERNMENT"
-                                                                    id="name" ng-model="occupIncome.name"
+                                                                    id="name" formControlName="name"
+                                                                    [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid">State
                                                                 Government
                                                             </div>
                                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                                 <input type="radio" name="name"
                                                                     value="CENTRALl GOVERNMENT" id="name"
-                                                                    ng-model="occupIncome.name"
+                                                                    formControlName="name" [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid">Central
                                                                 Government
                                                             </div>
                                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                                 <input type="radio" name="name"
                                                                     value="MULTI-NATIONAL COMPANY" id="name"
-                                                                    ng-model="occupIncome.name"
+                                                                    formControlName="name" [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 Multi-National Company
                                                             </div>
                                                             <div class="col-md-3 col-sm-3 col-xs-12 ">
                                                                 <input type="radio" name="name"
                                                                     value="PUBLIC LIMITED COMPANY" id="name"
-                                                                    ng-model="occupIncome.name"
+                                                                    formControlName="name" [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 Public Limited Company
                                                             </div>
                                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                                 <input type="radio" name="name"
                                                                     value="PRIVATE LIMITED COMPANY" id="name"
-                                                                    ng-model="occupIncome.name"
+                                                                    formControlName="name" [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 Private Limited Company
                                                             </div>
                                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                                 <input type="radio" name="name" value="PARTNERSHIP"
-                                                                    id="name" ng-model="occupIncome.name"
+                                                                    id="name" formControlName="name"
+                                                                    [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 Partnership
                                                             </div>
                                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                                 <input type="radio" name="name" value="PROORIETORSHIP"
-                                                                    id="name" ng-model="occupIncome.name"
+                                                                    id="name" formControlName="name"
+                                                                    [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 Proprietorship
                                                             </div>
                                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                                 <input type="radio" name="name" value="OTHER" id="name"
-                                                                    ng-model="occupIncome.name"
+                                                                    formControlName="name" [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid"> Other,
                                                                 Please
                                                                 Specify <input type="text" required="required"
                                                                     class=" ">
                                                             </div>
                                                         </div>
-                                                    </form>
-                                                </div>
+                                                        <!-- </form> -->
+                                                    </div>
 
-                                                <div id="non_individual" *ngIf="nonindividual">
-                                                    <form class="form-horizontal form-label-left ng-pristine ng-valid">
+
+                                                    <div id="non_individual" *ngIf="nonindividual">
+                                                        <!-- <form class="form-horizontal form-label-left ng-pristine ng-valid"> -->
                                                         <div class="form-group row">
                                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                                 <input type="radio" name="name"
                                                                     value="D-INDIVIDUAL-DIRECTOR" id="name"
-                                                                    ng-model="occupIncome.name"
+                                                                    formControlName="name" [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 D-Individual-Director
                                                             </div>
                                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                                 <input type="radio" name="name"
                                                                     value="E-INDIVIDUAL SELF-EMPOYED" id="name"
-                                                                    ng-model="occupIncome.name"
+                                                                    formControlName="name" [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 E-Individual Self-Employed
                                                             </div>
                                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                                 <input type="radio" name="name"
                                                                     value="T-INDIVIDUAL-TRUSTEE" id="name"
-                                                                    ng-model="occupIncome.name"
+                                                                    formControlName="name" [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 T-Individual-Trustee
                                                             </div>
                                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                                 <input type="radio" name="name"
                                                                     value="R-INDIVIDUAL-PARTNER" id="name"
-                                                                    ng-model="occupIncome.name"
+                                                                    formControlName="name" [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 R-Individual-Partner
                                                             </div>
                                                             <div class="col-md-3 col-sm-3 col-xs-12 ">
                                                                 <input type="radio" name="name"
                                                                     value="U-SOLE PROPRIETORSHIP" id="name"
-                                                                    ng-model="occupIncome.name"
+                                                                    formControlName="name" [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 U-Sole Proprietorship
                                                             </div>
                                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                                 <input type="radio" name="name"
                                                                     value="F-PARTNERSHIP FIRM" id="name"
-                                                                    ng-model="occupIncome.name"
+                                                                    formControlName="name" [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 F-Partnership Firm
                                                             </div>
                                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                                 <input type="radio" name="name"
                                                                     value="TRUST/SOCIETY/CLUB" id="name"
-                                                                    ng-model="occupIncome.name"
+                                                                    formControlName="name" [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 Trust/Society/Club
                                                             </div>
                                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                                 <input type="radio" name="name"
                                                                     value="C-PRIVATE LTD COMPANY" id="name"
-                                                                    ng-model="occupIncome.name"
+                                                                    formControlName="name" [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 C-Private Ltd Company
                                                             </div>
                                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                                 <input type="radio" name="name" value="OTHER" id="name"
-                                                                    ng-model="occupIncome.name"
+                                                                    formControlName="name" [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid"> Other,
                                                                 Please
                                                                 Specify <input type="text" class=" ">
                                                             </div>
-
                                                         </div>
-                                                    </form>
-                                                </div>
+                                                        <!-- </form> -->
+                                                    </div>
 
-                                                <div id="self_emp" *ngIf="selfemployee">
-                                                    <form
-                                                        class="form-horizontal form-label-left ng-pristine ng-invalid ng-invalid-required">
+                                                    <div id="self_emp" *ngIf="selfemployee">
+                                                        <!-- <form
+                                                        class="form-horizontal form-label-left ng-pristine ng-invalid ng-invalid-required"> -->
                                                         <div class="form-group row">
                                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                                 <input type="radio" name="name" value="TRADING"
-                                                                    id="name" ng-model="occupIncome.name"
+                                                                    id="name" formControlName="name"
+                                                                    [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid">Trading
                                                             </div>
                                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                                 <input type="radio" name="name" value="MANUFACTURING"
-                                                                    id="name" ng-model="occupIncome.name"
+                                                                    id="name" formControlName="name"
+                                                                    [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 Manufacturing
                                                             </div>
                                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                                 <input type="radio" name="name" value=" CONSULTANCY"
-                                                                    id="name" ng-model="occupIncome.name"
+                                                                    id="name" formControlName="name"
+                                                                    [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 Consultancy
                                                             </div>
                                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                                 <input type="radio" name="name" value="REAL ESTATE"
-                                                                    id="name" ng-model="occupIncome.name"
+                                                                    id="name" formControlName="name"
+                                                                    [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid"> Real
                                                                 Estate
                                                             </div>
                                                             <div class="col-md-3 col-sm-3 col-xs-12 ">
                                                                 <input type="radio" name="name" value="TRANSPORTER"
-                                                                    id="name" ng-model="occupIncome.name"
+                                                                    id="name" formControlName="name"
+                                                                    [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid">Transporter
                                                             </div>
                                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                                 <input type="radio" name="name" value="SERVICE PROVIDER"
-                                                                    id="name" ng-model="occupIncome.name"
+                                                                    id="name" formControlName="name"
+                                                                    [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid"> Service
                                                                 Provider
                                                             </div>
                                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                                 <input type="radio" name="name" value="CONTRACTOR"
-                                                                    id="name" ng-model="occupIncome.name"
+                                                                    id="name" formControlName="name"
+                                                                    [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 Contractor
                                                             </div>
                                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                                 <input type="radio" name="name"
                                                                     value="PROFESSIONAL PRACTICE" id="name"
-                                                                    ng-model="occupIncome.name"
+                                                                    formControlName="name" [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 Professional Practice
                                                             </div>
                                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                                 <input type="radio" name="name"
                                                                     value="DEALER/DISTRIBUTOR" id="name"
-                                                                    ng-model="occupIncome.name"
+                                                                    formControlName="name" [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 Dealer/Distributor
                                                             </div>
                                                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                                                 <input type="radio" name="name" value="OTHER" id="name"
-                                                                    ng-model="occupIncome.name"
+                                                                    formControlName="name" [(ngModel)]="AOF3.name"
                                                                     class="ng-pristine ng-untouched ng-valid"> Other,
                                                                 Please
                                                                 Specify <input type="text" required="required"
@@ -897,168 +986,198 @@
                                                                     ng-model="otherIndustry">
                                                             </div>
                                                         </div>
-                                                    </form>
-                                                </div>
+                                                        <!-- </form> -->
+                                                    </div>
 
-                                                <br>
-                                                <h5 class="h2_form text-center mt-4" style="color: white;">Constitution
-                                                    of Business/Entity</h5>
-                                                <form class="form-horizontal form-label-left ng-pristine ng-valid">
+
+
+
+                                                    <br>
+                                                    <h5 class="h2_form text-center mt-4" style="color: white;">
+                                                        Constitution
+                                                        of Business/Entity</h5>
+                                                    <!-- <form class="form-horizontal form-label-left ng-pristine ng-valid"> -->
                                                     <div class="form-group row m-2">
                                                         <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3">
                                                             <input type="radio" name="industrysector" value="INDIVIDUAL"
-                                                                id="industrysector"
-                                                                ng-model="occupIncome.industrysector"
+                                                                id="industrysector" formControlName="industrysector"
+                                                                [(ngModel)]="AOF3.industrysector"
                                                                 class="ng-pristine ng-untouched ng-valid">Individual
                                                         </div>
                                                         <div class="col-md-3 col-sm-3 col-xs-12">
                                                             <input type="radio" name="industrysector"
                                                                 value="PROFESSIONAL" id="industrysector"
-                                                                ng-model="occupIncome.industrysector"
+                                                                formControlName="industrysector"
+                                                                [(ngModel)]="AOF3.industrysector"
                                                                 class="ng-pristine ng-untouched ng-valid">Professional
                                                         </div>
                                                         <div class="col-md-3 col-sm-3 col-xs-12">
                                                             <input type="radio" name="industrysector"
                                                                 value="HINDU UNDIVIDED FAMILY" id="industrysector"
-                                                                ng-model="occupIncome.industrysector"
+                                                                formControlName="industrysector"
+                                                                [(ngModel)]="AOF3.industrysector"
                                                                 class="ng-pristine ng-untouched ng-valid"> Hindu
                                                             Undivided Family
                                                         </div>
                                                         <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3">
                                                             <input type="radio" name="industrysector"
                                                                 value="SOLE PROPRIETORSHIP" id="industrysector"
-                                                                ng-model="occupIncome.industrysector"
+                                                                formControlName="industrysector"
+                                                                [(ngModel)]="AOF3.industrysector"
                                                                 class="ng-pristine ng-untouched ng-valid"> Sole
                                                             Proprietorship
                                                         </div>
                                                         <div class="col-md-3 col-sm-3 col-xs-12">
                                                             <input type="radio" name="industrysector"
                                                                 value="PARTNERSHIP" id="industrysector"
-                                                                ng-model="occupIncome.industrysector"
+                                                                formControlName="industrysector"
+                                                                [(ngModel)]="AOF3.industrysector"
                                                                 class="ng-pristine ng-untouched ng-valid">
                                                             Partnership
                                                         </div>
                                                         <div class="col-md-3 col-sm-3 col-xs-12">
                                                             <input type="radio" name="industrysector"
                                                                 value="PRIVATE LIMITED COMPANY" id="industrysector"
-                                                                ng-model="occupIncome.industrysector"
+                                                                formControlName="industrysector"
+                                                                [(ngModel)]="AOF3.industrysector"
                                                                 class="ng-pristine ng-untouched ng-valid">
                                                             Private Limited Company
                                                         </div>
                                                         <div class="col-md-3 col-sm-3 col-xs-12">
                                                             <input type="radio" name="industrysector"
                                                                 value="PUBLIC LIMITED COMPANY" id="industrysector"
-                                                                ng-model="occupIncome.industrysector"
+                                                                formControlName="industrysector"
+                                                                [(ngModel)]="AOF3.industrysector"
                                                                 class="ng-pristine ng-untouched ng-valid">
                                                             Public Limited Company
                                                         </div>
                                                         <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3">
                                                             <input type="radio" name="industrysector"
                                                                 value="Trust/Society/Association/Club"
-                                                                id="industrysector"
-                                                                ng-model="occupIncome.industrysector"
+                                                                id="industrysector" formControlName="industrysector"
+                                                                [(ngModel)]="AOF3.industrysector"
                                                                 class="ng-pristine ng-untouched ng-valid">
                                                             Trust/Society/Association/Club
                                                         </div>
                                                         <div class="col-md-3 col-sm-3 col-xs-12">
                                                             <input type="radio" name="industrysector" value="OTHERS"
-                                                                id="industrysector"
-                                                                ng-model="occupIncome.industrysector"
+                                                                id="industrysector" formControlName="industrysector"
+                                                                [(ngModel)]="AOF3.industrysector"
                                                                 class="ng-pristine ng-untouched ng-valid">Others
                                                         </div>
                                                     </div>
 
-                                                </form>
+                                                    <!-- </form> -->
 
-                                                <h5 class="h2_form text-center mt-4" style="color: white;">Applicable
-                                                    Compliances</h5>
+                                                    <h5 class="h2_form text-center mt-4" style="color: white;">
+                                                        Applicable
+                                                        Compliances</h5>
 
-                                                <form class="form-horizontal form-label-left ng-pristine ng-valid">
+                                                    <!-- <form class="form-horizontal form-label-left ng-pristine ng-valid"> -->
 
                                                     <div class="form-group row m-2">
-                                                        <!-- ngRepeat: compliance in compliances -->
-                                                        <div class="col-md-4 col-sm-4 col-xs-12 ng-scope"
-                                                            ng-repeat="compliance in compliances">
-                                                            <label class="ng-binding">
-                                                                <input type="checkbox" name="compliances" id="3"
-                                                                    ng-model="compliance.checked"
-                                                                    class="ng-pristine ng-untouched ng-valid">
-                                                                Income Tax - Non Audit </label>
-                                                        </div><!-- end ngRepeat: compliance in compliances -->
-                                                        <div class="col-md-4 col-sm-4 col-xs-12 ng-scope"
-                                                            ng-repeat="compliance in compliances">
-                                                            <label class="ng-binding">
-                                                                <input type="checkbox" name="compliances" id="4"
-                                                                    ng-model="compliance.checked"
-                                                                    class="ng-pristine ng-untouched ng-valid">
-                                                                GST - Composition </label>
-                                                        </div><!-- end ngRepeat: compliance in compliances -->
-                                                        <div class="col-md-4 col-sm-4 col-xs-12 ng-scope"
-                                                            ng-repeat="compliance in compliances">
-                                                            <label class="ng-binding">
-                                                                <input type="checkbox" name="compliances" id="5"
-                                                                    ng-model="compliance.checked"
-                                                                    class="ng-pristine ng-untouched ng-valid">
-                                                                Professional Tax (PT) </label>
-                                                        </div><!-- end ngRepeat: compliance in compliances -->
-                                                        <div class="col-md-4 col-sm-4 col-xs-12 ng-scope"
-                                                            ng-repeat="compliance in compliances">
+
+                                                        <div class="col-md-4 col-sm-4 col-xs-12 ng-scope">
                                                             <label class="ng-binding">
                                                                 <input type="checkbox" name="compliances" id="6"
-                                                                    ng-model="compliance.checked"
+                                                                    (change)="updateCompliances('Income Tax - Non Audit',$event)"
+                                                                    class="ng-pristine ng-untouched ng-valid">
+                                                                Income Tax - Non Audit </label>
+                                                        </div>
+                                                        <div class="col-md-4 col-sm-4 col-xs-12 ng-scope">
+                                                            <label class="ng-binding">
+                                                                <input type="checkbox" name="compliances" id="6"
+                                                                    (change)="updateCompliances('GST - Composition',$event)"
+                                                                    class="ng-pristine ng-untouched ng-valid">
+                                                                GST - Composition </label>
+                                                        </div>
+                                                        <div class="col-md-4 col-sm-4 col-xs-12 ng-scope">
+                                                            <label class="ng-binding">
+                                                                <input type="checkbox" name="compliances" id="6"
+                                                                    (change)="updateCompliances('Professional Tax (PT)',$event)"
+                                                                    class="ng-pristine ng-untouched ng-valid">
+                                                                Professional Tax (PT) </label>
+                                                        </div>
+                                                        <!-- end ngRepeat: compliance in compliances -->
+                                                        <div class="col-md-4 col-sm-4 col-xs-12 ng-scope">
+                                                            <label class="ng-binding">
+                                                                <input type="checkbox" name="compliances" id="6"
+                                                                    (change)="updateCompliances('Tax Deducted at Source',$event)"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 Tax Deducted at Source (TDS) </label>
-                                                        </div><!-- end ngRepeat: compliance in compliances -->
-                                                        <div class="col-md-4 col-sm-4 col-xs-12 ng-scope"
-                                                            ng-repeat="compliance in compliances">
+                                                        </div>
+                                                        <!-- end ngRepeat: compliance in compliances -->
+                                                        <div class="col-md-4 col-sm-4 col-xs-12 ng-scope">
                                                             <label class="ng-binding">
                                                                 <input type="checkbox" name="compliances" id="7"
-                                                                    ng-model="compliance.checked"
+                                                                    (change)="updateCompliances('Excise Duty',$event)"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 Excise Duty </label>
-                                                        </div><!-- end ngRepeat: compliance in compliances -->
-                                                        <div class="col-md-4 col-sm-4 col-xs-12 ng-scope"
-                                                            ng-repeat="compliance in compliances">
+                                                        </div>
+                                                        <!-- end ngRepeat: compliance in compliances -->
+                                                        <div class="col-md-4 col-sm-4 col-xs-12 ng-scope">
                                                             <label class="ng-binding">
                                                                 <input type="checkbox" name="compliances" id="8"
-                                                                    ng-model="compliance.checked"
+                                                                    (change)="updateCompliances('Value Added Tax',$event)"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 Value Added Tax (VAT) </label>
-                                                        </div><!-- end ngRepeat: compliance in compliances -->
-                                                        <div class="col-md-4 col-sm-4 col-xs-12 ng-scope"
-                                                            ng-repeat="compliance in compliances">
+                                                        </div>
+                                                        <!-- end ngRepeat: compliance in compliances -->
+                                                        <div class="col-md-4 col-sm-4 col-xs-12 ng-scope">
                                                             <label class="ng-binding">
                                                                 <input type="checkbox" name="compliances" id="9"
-                                                                    ng-model="compliance.checked"
+                                                                    (change)="updateCompliances('Service Tax',$event)"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 Service Tax </label>
-                                                        </div><!-- end ngRepeat: compliance in compliances -->
-                                                        <div class="col-md-4 col-sm-4 col-xs-12 ng-scope"
-                                                            ng-repeat="compliance in compliances">
+                                                        </div>
+                                                        <!-- end ngRepeat: compliance in compliances -->
+                                                        <div class="col-md-4 col-sm-4 col-xs-12 ng-scope">
                                                             <label class="ng-binding">
                                                                 <input type="checkbox" name="compliances" id="10"
-                                                                    ng-model="compliance.checked"
+                                                                    (change)="updateCompliances('Tax Deducted at Source',$event)"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 Tax Deducted at Source (TDS) </label>
-                                                        </div><!-- end ngRepeat: compliance in compliances -->
-                                                        <div class="col-md-4 col-sm-4 col-xs-12 ng-scope"
-                                                            ng-repeat="compliance in compliances">
+                                                        </div>
+                                                        <!-- end ngRepeat: compliance in compliances -->
+                                                        <div class="col-md-4 col-sm-4 col-xs-12 ng-scope">
                                                             <label class="ng-binding">
                                                                 <input type="checkbox" name="compliances" id="11"
-                                                                    ng-model="compliance.checked"
+                                                                    (change)="updateCompliances('Property Tax',$event)"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 Property Tax </label>
-                                                        </div><!-- end ngRepeat: compliance in compliances -->
-                                                        <div class="col-md-4 col-sm-4 col-xs-12 ng-scope"
-                                                            ng-repeat="compliance in compliances">
+                                                        </div>
+                                                        <!-- end ngRepeat: compliance in compliances -->
+                                                        <div class="col-md-4 col-sm-4 col-xs-12 ng-scope">
                                                             <label class="ng-binding">
                                                                 <input type="checkbox" name="compliances" id="12"
-                                                                    ng-model="compliance.checked"
+                                                                    (change)="updateCompliances('ROC- Mandatory Compliances',$event)"
                                                                     class="ng-pristine ng-untouched ng-valid">
                                                                 ROC- Mandatory Compliances </label>
-                                                        </div><!-- end ngRepeat: compliance in compliances -->
+                                                        </div>
+                                                        <!-- end ngRepeat: compliance in compliances -->
+                                                    </div>
+                                                    <!-- </form> -->
+
+                                                    <div class="actionBar ">
+                                                        <div class="text-center mt-3">
+                                                            <!-- <div class="col-sm-offset-3 col-md-9"> -->
+                                                            <button type="button" class="btn btn-info  m-lg-4 m-4"
+                                                                (click)="onsubmit3()"><i
+                                                                    class="ace-icon fa fa-check bigger-110"></i>
+                                                                Finish</button>
+                                                            <button type="button" class="btn btn-info  m-lg-4 m-4"
+                                                                (click)="changeTab('tab4')"><i
+                                                                    class="bi bi-arrow-90deg-right"></i>
+                                                                Next</button>
+                                                        </div>
                                                     </div>
                                                 </form>
+
+
+
+
+
+
 
                                             </div>
 
@@ -1069,63 +1188,44 @@
 
                                                 <div id="addDoc">
                                                     <form class="form-horizontal  ng-pristine ng-valid" role="form"
-                                                        action="" method="post" modelattribute="doc1" name="form1">
+                                                        action="" method="post" modelattribute="doc1" name="form1"
+                                                        [formGroup]="step4">
 
                                                         <div class="col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="form-group row">
+                                                                <label
+                                                                    class="col-lg-1 col-4 col-form-label">TID:</label>
+                                                                <div class="col-lg-4 col-4">
+                                                                    <input type="text" (keyup.enter)="tidSearch()"
+                                                                        [(ngModel)]="tidToSearch" formControlName="tid"
+                                                                        class="form-control " id="complianceName">
+                                                                    <p>TID : {{tidToSearch}} </p>
+                                                                </div>
+
+                                                            </div>
                                                             <div class="form-group row text-center m-2">
                                                                 <label class="col-sm-4 control-label">Select
                                                                     Category*:</label>
+                                                                    
                                                                 <div class="col-sm-4">
-                                                                    <select
+                                                                    <select (click)="onchange($event)"
+                                                                        formControlName="customerDocumentCategoryId"
                                                                         class="form-control ng-pristine ng-untouched ng-valid"
-                                                                        id="catId" ng-model="doc1.docCategoryId"
-                                                                        ng-change="getDocType()">
+                                                                        id="catId">
                                                                         <option value="0">
                                                                             -----------------------Select------------------------
                                                                         </option>
                                                                         <!-- ngRepeat: d in documentCategory -->
                                                                         <option ng-repeat="d in documentCategory"
-                                                                            value="1" class="ng-binding ng-scope">ID
-                                                                            Proof</option>
-                                                                        <!-- end ngRepeat: d in documentCategory -->
-                                                                        <option ng-repeat="d in documentCategory"
-                                                                            value="2" class="ng-binding ng-scope">
-                                                                            Private Limited Company
+                                                                            *ngFor="let doc of docCategoryList"
+                                                                            value={{doc.cid}}
+                                                                            class="ng-binding ng-scope">{{doc.name}}
                                                                         </option>
-                                                                        <!-- end ngRepeat: d in documentCategory -->
-                                                                        <option ng-repeat="d in documentCategory"
-                                                                            value="3" class="ng-binding ng-scope">
-                                                                            Task/Association/Society/Club</option>
-                                                                        <!-- end ngRepeat: d in documentCategory -->
-                                                                        <option ng-repeat="d in documentCategory"
-                                                                            value="4" class="ng-binding ng-scope">HUF
-                                                                        </option>
-                                                                        <!-- end ngRepeat: d in documentCategory -->
-                                                                        <option ng-repeat="d in documentCategory"
-                                                                            value="5" class="ng-binding ng-scope">
-                                                                            Partnership Firm</option>
-                                                                        <!-- end ngRepeat: d in documentCategory -->
-                                                                        <option ng-repeat="d in documentCategory"
-                                                                            value="6" class="ng-binding ng-scope">Sole
-                                                                            Proprietorship Firm
-                                                                        </option>
-                                                                        <!-- end ngRepeat: d in documentCategory -->
-                                                                        <option ng-repeat="d in documentCategory"
-                                                                            value="7" class="ng-binding ng-scope">Self
-                                                                            Employed Individual
-                                                                        </option>
-                                                                        <!-- end ngRepeat: d in documentCategory -->
-                                                                        <option ng-repeat="d in documentCategory"
-                                                                            value="8" class="ng-binding ng-scope">LLP
-                                                                        </option>
-                                                                        <!-- end ngRepeat: d in documentCategory -->
-                                                                        <option ng-repeat="d in documentCategory"
-                                                                            value="99" class="ng-binding ng-scope">
-                                                                            Account Closure Form
-                                                                        </option>
-                                                                        <!-- end ngRepeat: d in documentCategory -->
+                                                                        <!-- (click)="docTypesById(doc.cid)" -->
+
                                                                     </select>
                                                                 </div>
+
                                                             </div>
                                                         </div>
 
@@ -1134,23 +1234,31 @@
                                                                 <label class="col-sm-4 control-label">Select
                                                                     Type*:</label>
                                                                 <div class="col-sm-4">
-                                                                    <select
+                                                                    <select formControlName="customerDocumentType"
                                                                         class="form-control ng-pristine ng-untouched ng-valid"
                                                                         id="doctype" ng-model="doc1.docType">
                                                                         <option value="0">
                                                                             -----------------------Select------------------------
                                                                         </option>
                                                                         <!-- ngRepeat: d in documentType -->
+                                                                        <option ng-repeat="d in documentCategory"
+                                                                            *ngFor="let doc of docType"
+                                                                            class="ng-binding ng-scope">{{doc.name}}
+                                                                        </option>
+                                                                        <!-- value={{doc.cid}} (click)="docTypesById(doc.cid)" -->
                                                                     </select>
                                                                 </div>
                                                             </div>
                                                         </div>
+
                                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                                             <div class="col-md-2 col-sm-2 col-xs-2">
                                                             </div>
                                                             <div class="col-md-6 col-sm-12 col-xs-12">
                                                                 <div class="form-group row justify-content-center m-2 ">
-                                                                    <input type="file" class="filestyle "
+                                                                    <input type="file" class="filestyle"
+                                                                        formControlName="docImage"
+                                                                        (change)="onDocImageSelected($event)"
                                                                         data-buttontext=" Select Document"
                                                                         data-buttonbefore="true" required="required"
                                                                         file-model="documentImage" id="filestyle-2"
@@ -1170,13 +1278,12 @@
                                                         </div>
                                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                                             <div class="form-group row text-center m-2 ">
-                                                                <label for="des"
+                                                                <label for="description"
                                                                     class="col-sm-4 control-label">Description(Optional):</label>
                                                                 <div class="col-sm-4">
-                                                                    <textarea
+                                                                    <textarea formControlName="description"
                                                                         class="form-control ng-pristine ng-untouched ng-valid"
-                                                                        id="descr"
-                                                                        ng-model="doc1.description"></textarea>
+                                                                        id="descr"></textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1184,7 +1291,6 @@
                                                         <div class="col-md-8 col-sm-8 col-xs-8">
                                                             <div class="form-group">
                                                                 <button type="button" class="btn btn-info mb-3 "
-                                                                    ng-click="saveDoc1()"
                                                                     style="float:right; margin-right: 15px;">Submit</button>
                                                             </div>
                                                         </div>
@@ -1203,19 +1309,52 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <!-- ngRepeat: d in documentData -->
+                                                            <!-- <tr *ngFor="let doc of GetList | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
+                                                                <td>{{index+1}}</td>
+                                                                <td>{{doc.name}}</td>
+                                                                <td>{{doc.type}}</td>
+                                                                <td>{{}}</td>
+                                                                <td>{{}}</td>
+                                                            </tr> -->
                                                         </tbody>
                                                     </table>
                                                 </div> <!-- //showDoc -->
+
+                                                <div class="actionBar ">
+                                                    <div class="text-center mt-3">
+                                                        <!-- <div class="col-sm-offset-3 col-md-9"> -->
+                                                        <button type="button" class="btn btn-info  m-lg-4 m-4"
+                                                            (click)="onsubmit4()"><i
+                                                                class="ace-icon fa fa-check bigger-110"></i>
+                                                            Finish</button>
+                                                        <button type="button" class="btn btn-info  m-lg-4 m-4"
+                                                            (click)="changeTab('tab5')"><i
+                                                                class="bi bi-arrow-90deg-right"></i>
+                                                            Next</button>
+                                                    </div>
+                                                </div>
                                             </div>
 
+                                            <!-- 6666666666666666666666666666666 -->
                                             <div class="tab-pane" [class.active]="activeTab === 'tab5'" id="tab5"
                                                 style="margin-bottom: 35px;">
                                                 <!-- <div id="step-5" class="wizard_content" style="display: none;"> -->
 
                                                 <h5 class="h2_form text-center mt-4" style="color: white;">Customer
                                                     Account Operations</h5>
-                                                <form class="form-horizontal form-label-left ng-pristine ng-valid">
+                                                <form class="form-horizontal form-label-left ng-pristine ng-valid"
+                                                    [formGroup]="step5">
+
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-1 col-4 col-form-label">TID:</label>
+                                                        <div class="col-lg-4 col-4">
+                                                            <input type="text" (keyup.enter)="tidSearch()"
+                                                                [(ngModel)]="tidToSearch" formControlName="tid"
+                                                                class="form-control " id="complianceName">
+                                                            <p>TID : {{tidToSearch}} </p>
+                                                        </div>
+
+                                                    </div>
 
                                                     <div class="form-group row text-center m-2">
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12"
@@ -1224,30 +1363,29 @@
                                                         <div class="col-md-2 col-sm-2 col-xs-12">
                                                             <input type="checkbox"
                                                                 class="col-md-2 col-xs-12 ng-pristine ng-untouched ng-valid"
-                                                                value="Financial Planning" name="tempCustAS1SerFinPlan"
-                                                                ng-model="CompanyUse.financialPlanning">Financial
+                                                                value="Financial Planning"
+                                                                formControlName="financialPlanning">Financial
                                                             Planning
                                                         </div>
                                                         <div class="col-md-2 col-sm-2 col-xs-12">
                                                             <input type="checkbox"
                                                                 class="col-md-2 col-xs-12 ng-pristine ng-untouched ng-valid"
-                                                                value="Account Writing" name="tempCustAS1SerAccWrite"
-                                                                ng-model="CompanyUse.accountWriting">Account
+                                                                value="Account Writing"
+                                                                formControlName="accountWriting">Account
                                                             Writing
                                                         </div>
                                                         <div class="col-md-2 col-sm-2 col-xs-12">
                                                             <input type="checkbox"
                                                                 class="col-md-2 col-xs-12 ng-pristine ng-untouched ng-valid"
                                                                 value="Investment Planning"
-                                                                name="tempCustAS1SerInvestPlan"
-                                                                ng-model="CompanyUse.investmentPlanning">Investment
+                                                                formControlName="investmentPlanning">Investment
                                                             Planning
                                                         </div>
                                                         <div class="col-md-2 col-sm-2 col-xs-12">
                                                             <input type="checkbox"
                                                                 class="col-md-2 col-xs-12 ng-pristine ng-untouched ng-valid"
-                                                                value="Tax Planning" name="tempCustAS1SerTaxPlan"
-                                                                ng-model="CompanyUse.taxPlanning">Tax Planning
+                                                                value="Tax Planning" formControlName="taxPlanning">Tax
+                                                            Planning
                                                         </div>
                                                     </div>
 
@@ -1258,23 +1396,23 @@
                                                             for="">Mode of
                                                             opration </label>
                                                         <div class="col-md-2 col-sm-2 col-xs-12">
-                                                            <input type="radio" name="operationmode" value="SINGLY"
+                                                            <input type="radio" value="SINGLY"
                                                                 class="col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
                                                                 id="operationmode1" checked=""
-                                                                ng-model="CompanyUse.accOpenOperationMode">Singly
+                                                                formControlName="accOpenOperationMode">Singly
                                                         </div>
                                                         <div class="col-md-2 col-sm-2 col-xs-12">
                                                             <input type="radio" name="operationmode" value="JOINTLY"
                                                                 class="col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
                                                                 id="operationmode2"
-                                                                ng-model="CompanyUse.accOpenOperationMode">Jointly
+                                                                formControlName="accOpenOperationMode">Jointly
                                                         </div>
                                                         <div class="col-md-2 col-sm-2 col-xs-12">
                                                             <input type="radio" name="operationmode"
                                                                 value="SPECIAL INSTRUCTION"
                                                                 class="col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
                                                                 id="operationmode3"
-                                                                ng-model="CompanyUse.accOpenOperationMode">
+                                                                formControlName="accOpenOperationMode">
                                                             Special
                                                             Instruction
                                                         </div>
@@ -1282,7 +1420,7 @@
                                                             <input type="radio" name="operationmode" value="OTHERS"
                                                                 class="col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
                                                                 id="operationmode4"
-                                                                ng-model="CompanyUse.accOpenOperationMode">Others
+                                                                formControlName="accOpenOperationMode">Others
                                                         </div>
                                                     </div>
 
@@ -1294,20 +1432,20 @@
                                                             <input type="radio" name="Frequently" value="MONTHLY"
                                                                 class="col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
                                                                 id="Frequently1"
-                                                                ng-model="CompanyUse.accOpenStatementFrequently"
+                                                                formControlName="accOpenStatementFrequently"
                                                                 checked="">Monthly
                                                         </div>
                                                         <div class="col-md-2 col-sm-2 col-xs-12">
                                                             <input type="radio" name="Frequently" value="QUARTERLY"
                                                                 class="col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
                                                                 id="Frequently2"
-                                                                ng-model="CompanyUse.accOpenStatementFrequently">Quarterly
+                                                                formControlName="accOpenStatementFrequently">Quarterly
                                                         </div>
                                                         <div class="col-md-2 col-sm-2 col-xs-12">
                                                             <input type="radio" name="Frequently" value="HALF YEARLY"
                                                                 class="col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
                                                                 id="Frequently3"
-                                                                ng-model="CompanyUse.accOpenStatementFrequently">
+                                                                formControlName="accOpenStatementFrequently">
                                                             Half
                                                             Yearly
                                                         </div>
@@ -1315,7 +1453,7 @@
                                                             <input type="radio" name="Frequently" value="YEARLY"
                                                                 class="col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
                                                                 id="Frequently4"
-                                                                ng-model="CompanyUse.accOpenStatementFrequently">Yearly
+                                                                formControlName="accOpenStatementFrequently">Yearly
                                                         </div>
                                                     </div>
 
@@ -1327,7 +1465,7 @@
                                                 <h5 class="h2_form text-center mt-4" style="color: white;">For Company
                                                     use only</h5>
 
-                                                <form
+                                                <form [formGroup]="step5"
                                                     class="form-horizontal form-label-left ng-pristine ng-invalid ng-invalid-required">
                                                     <div class="form-group row text-center m-2">
                                                         <label for=""
@@ -1336,8 +1474,10 @@
                                                         <div class="col-md-3 col-sm-3 col-xs-12">
                                                             <div class="input-group date form_date"
                                                                 data-link-format="yyyy-mm-dd">
-                                                                <input type="date" formControlName="complianceDueDate"
-                                                                    class="form-control" id="complianceDueDate">
+                                                                <input type="date"
+                                                                    formControlName="account_Sourcing_Date"
+                                                                    value="complianceDueDate" class="form-control"
+                                                                    id="complianceDueDate">
 
                                                             </div>
                                                             <!-- 											<input type="text" class="form-control col-md-3 col-xs-12" id="accsdate" ng-model="CompanyUse.tempCustAccSDate" /> -->
@@ -1348,10 +1488,9 @@
                                                             Code
                                                             : </label>
                                                         <div class="col-md-3 col-sm-3 col-xs-12">
-                                                            <input type="text"
+                                                            <input type="text" formControlName="sourceCode"
                                                                 class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
-                                                                id="sourcecode"
-                                                                ng-model="CompanyUse.tempCustSourceCode">
+                                                                id="sourcecode">
                                                         </div>
                                                     </div>
 
@@ -1363,7 +1502,7 @@
                                                             <input type="text"
                                                                 class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
                                                                 id="leadgeneratorcode"
-                                                                ng-model="CompanyUse.tempCustLeadGeneratorCode">
+                                                                formControlName="leadGeneratorCode">
                                                         </div>
 
                                                         <label for=""
@@ -1373,7 +1512,7 @@
                                                             <input type="text"
                                                                 class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
                                                                 id="leadconvertorcode"
-                                                                ng-model="CompanyUse.tempCustLeadConvertorCode">
+                                                                formControlName="leadConvertorCode">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row text-center m-2">
@@ -1383,7 +1522,7 @@
                                                         <div class="col-md-3 col-sm-3 col-xs-12">
                                                             <select
                                                                 class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required"
-                                                                required="" id="" ng-model="CompanyUse.tempCustRMCode">
+                                                                required="" id="" formControlName="rMCode">
                                                                 <option value="">--Select-- </option>
                                                                 <option value="R1">R1 </option>
                                                                 <option value="R2">R2 </option>
@@ -1399,19 +1538,31 @@
                                                         <div class="col-md-3 col-sm-3 col-xs-12">
                                                             <input type="text"
                                                                 class="form-control col-md-8 col-xs-12 ng-pristine ng-untouched ng-valid"
-                                                                id="approvedby"
-                                                                ng-model="CompanyUse.tempCustApprovedBy">
+                                                                formControlName="approvedBy" id="approvedby">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row text-center m-2">
-                                                        <label for=""
+                                                        <label for="employeeCode"
                                                             class="control-label col-md-3 col-sm-3 col-xs-12">Employee
                                                             Code </label>
                                                         <div class="col-md-3 col-sm-3 col-xs-12">
                                                             <input type="text"
                                                                 class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
-                                                                id="employeecode"
-                                                                ng-model="CompanyUse.tempCustEmployeeCode">
+                                                                id="employeecode" formControlName="employeeCode">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="actionBar ">
+                                                        <div class="text-center mt-3">
+                                                            <!-- <div class="col-sm-offset-3 col-md-9"> -->
+                                                            <button type="button" class="btn btn-info  m-lg-4 m-4"
+                                                                (click)="onsubmit5()"><i
+                                                                    class="ace-icon fa fa-check bigger-110"></i>
+                                                                Finish</button>
+                                                            <button type="button" class="btn btn-info  m-lg-4 m-4"
+                                                                (click)="changeTab('tab5')"><i
+                                                                    class="bi bi-arrow-90deg-right"></i>
+                                                                Next</button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -1421,10 +1572,22 @@
 
                                                 <!-- <div id="step-6" class="wizard_content" style="display: none;"> -->
                                                 <form
-                                                    class="form-horizontal form-label-left ng-pristine ng-invalid ng-invalid-required">
-                                                    <div>
+                                                    class="form-horizontal form-label-left ng-pristine ng-invalid ng-invalid-required"
+                                                    [formGroup]="step6">
+                                                    <div [formGroup]="step6">
+
                                                         <h5 class="h2_form text-center mt-4" style="color: white;">
                                                             Product Details</h5>
+                                                        <div class="form-group row">
+                                                            <label class="col-lg-1 col-4 col-form-label">TID:</label>
+                                                            <div class="col-lg-4 col-4">
+                                                                <input type="text" (keyup.enter)="tidSearch()"
+                                                                    [(ngModel)]="tidToSearch" formControlName="tid"
+                                                                    class="form-control " id="complianceName">
+                                                                <p>TID : {{tidToSearch}} </p>
+                                                            </div>
+                                                        </div>
+
                                                         <table class="table table-bordered table-hover">
                                                             <thead>
                                                                 <tr>
@@ -1436,173 +1599,36 @@
                                                             </thead>
                                                             <tbody>
                                                                 <tr>
-                                                                    <td> <select
+                                                                    <td>
+                                                                        <select formControlName="productSelect"
                                                                             class="form-control select ng-pristine ng-untouched ng-invalid ng-invalid-required"
                                                                             id="productSelect" name="productSelect"
-                                                                            required="" ng-model="prod.proSelect"
-                                                                            ng-init="somethingHere = somethingHere || options[0].value">
-                                                                            <option value="" selected="selected">
+                                                                            required="">
+                                                                            <option value="" selected="">
                                                                                 ----------------------------Select
                                                                                 Product-------------------------
                                                                             </option>
-                                                                            <!-- ngRepeat: item in productData -->
+
                                                                             <option ng-repeat="item in productData"
-                                                                                value="120" class="ng-binding ng-scope">
-                                                                                FP Regular Account
-                                                                                (0-500000)</option>
+                                                                                *ngFor="let data of productList"
+                                                                                [value]="data.productId"
+                                                                                class="ng-binding ng-scope">
+                                                                                {{data.productName}}</option>
+
                                                                             <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
+                                                                            <!-- <option ng-repeat="item in productData"
                                                                                 value="130" class="ng-binding ng-scope">
-                                                                                FP Regular Plus Account
-                                                                                (500001-1000000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="140" class="ng-binding ng-scope">
                                                                                 FP Standard Account
-                                                                                (1000001-2000000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="150" class="ng-binding ng-scope">
-                                                                                FP Standard Plus Account
-                                                                                (2000001-3000000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="160" class="ng-binding ng-scope">
-                                                                                FP Supreme Account
-                                                                                (3000001-4500000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="170" class="ng-binding ng-scope">
-                                                                                FP Supreme Plus Account
-                                                                                (4500001-5500000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="180" class="ng-binding ng-scope">
-                                                                                FP Charter Account
-                                                                                (5500001-7000000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="190" class="ng-binding ng-scope">
-                                                                                FP Charter Plus Account
-                                                                                (7000001-9900000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="200" class="ng-binding ng-scope">
-                                                                                FP Elite Account
-                                                                                (10000001-20000000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="220" class="ng-binding ng-scope">
-                                                                                FP Elite Plus Account
-                                                                                (20000001-50000000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="240" class="ng-binding ng-scope">
-                                                                                FP Royal Account
-                                                                                (50000001-100000000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="260" class="ng-binding ng-scope">
-                                                                                FP Royal Plus Account
-                                                                                (100000001-200000000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="146" class="ng-binding ng-scope">
-                                                                                FP Trade Flexi
-                                                                                (1200000-1800000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="156" class="ng-binding ng-scope">
-                                                                                FP Trade Plus Flexi
-                                                                                (2200000-2800000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="166" class="ng-binding ng-scope">
-                                                                                FP Premium Flexi
-                                                                                (3400000-4000000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="176" class="ng-binding ng-scope">
-                                                                                FP Premium Plus Flexi
-                                                                                (4800000-5100000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="186" class="ng-binding ng-scope">
-                                                                                FP Max Flexi
-                                                                                (6000000-6500000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="125" class="ng-binding ng-scope">
-                                                                                FP Regular Agri
-                                                                                (0-500000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="135" class="ng-binding ng-scope">
-                                                                                FP Regular Plus Agri
-                                                                                (500000-1000000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="145" class="ng-binding ng-scope">
-                                                                                FP Standard Agri
-                                                                                (1000001-2000000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="155" class="ng-binding ng-scope">
-                                                                                FP Standard Plus Agri
-                                                                                (2000001-3000000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="165" class="ng-binding ng-scope">
-                                                                                FP Supreme Agri
-                                                                                (3000001-4500000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="175" class="ng-binding ng-scope">
-                                                                                FP Supreme Plus Agri
-                                                                                (4500001-5500000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="185" class="ng-binding ng-scope">
-                                                                                FP Charter Agri
-                                                                                (5500001-7000000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="195" class="ng-binding ng-scope">
-                                                                                FP Charter Plus Agri
-                                                                                (7000001-9999999)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="205" class="ng-binding ng-scope">
-                                                                                FP Elite Agri
-                                                                                (10000000-20000000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="225" class="ng-binding ng-scope">
-                                                                                FP Elite Plus Agri
-                                                                                (20000001-50000000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="245" class="ng-binding ng-scope">
-                                                                                FP Royal Agri
-                                                                                (50000001-100000000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="265" class="ng-binding ng-scope">
-                                                                                FP Royal Plus Agri
-                                                                                (100000001-200000000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
-                                                                            <option ng-repeat="item in productData"
-                                                                                value="110" class="ng-binding ng-scope">
-                                                                                FP Basic Account
-                                                                                (0-1500000)</option>
-                                                                            <!-- end ngRepeat: item in productData -->
+                                                                                (1000001-2000000)
+                                                                                </option> -->
+
                                                                         </select>
                                                                     </td>
                                                                     <td>
                                                                         <div class="input-group date form_date"
                                                                             data-link-format="yyyy-mm-dd">
                                                                             <input type="date"
-                                                                                formControlName="complianceDueDate"
+                                                                                formControlName="assignDate"
                                                                                 class="form-control"
                                                                                 id="complianceDueDate">
                                                                         </div>
@@ -1611,15 +1637,16 @@
                                                                         <div class="input-group date form_date"
                                                                             id="expDate" data-link-format="yyyy-mm-dd">
                                                                             <input type="date"
-                                                                                formControlName="complianceDueDate"
+                                                                                formControlName="expiryDate"
                                                                                 class="form-control"
                                                                                 id="complianceDueDate">
                                                                         </div>
                                                                     </td>
-                                                                    <td> <select
+                                                                    <td>
+                                                                        <select
                                                                             class="form-control select ng-pristine ng-untouched ng-invalid ng-invalid-required"
                                                                             id="billingCycle" name="billingCycle"
-                                                                            required="" ng-model="prod.billingCycle">
+                                                                            formControlName="billingCycle" required="">
                                                                             <option value="" selected="selected">
                                                                                 ---Select Billing
                                                                                 Cycle---</option>
@@ -1633,13 +1660,17 @@
                                                                 </tr>
                                                             </tbody>
                                                         </table>
-                                                        <div><a href="#" class="btn btn-info" id="btnAddProduct"
-                                                                ng-click="AddProduct()" style="float:right;">Submit</a>
+                                                        <div>
+                                                            <a class="btn btn-info" id="btnAddProduct"
+                                                                ng-click="AddProduct()" (click)="onsubmit6()"
+                                                                style="float:right;">Submit</a>
                                                         </div>
                                                     </div>
+
                                                     <h5 class="h2_form text-center"
-                                                        style="margin-top: 75px; color: white;"> Billing Details</h5>
-                                                    <table class="table table-bordered table-hover">
+                                                        style="margin-top: 75px; color: white;">Billing Details</h5>
+                                                    <table class="table table-bordered table-hover"
+                                                        [formGroup]="step61">
                                                         <thead>
                                                             <tr>
                                                                 <th>Assesment Year</th>
@@ -1659,6 +1690,7 @@
                                                                         id="invoiceId" ng-model="payment.invoiceId"
                                                                         style="display:none;">
                                                                     <select id="assessmentYear" required=""
+                                                                        formControlName="assesmentYear"
                                                                         class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required"
                                                                         ng-model="payment.assYear">
                                                                         <option value="" selected="selected">--Select--
@@ -1692,157 +1724,13 @@
                                                                         <option value="" selected="selected">
                                                                             ---------------Select
                                                                             Product--------------</option>
-                                                                        <!-- ngRepeat: item in productData -->
+
                                                                         <option ng-repeat="item in productData"
-                                                                            value="120" class="ng-binding ng-scope">FP
-                                                                            Regular Account
-                                                                            (0-500000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="130" class="ng-binding ng-scope">FP
-                                                                            Regular Plus Account
-                                                                            (500001-1000000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="140" class="ng-binding ng-scope">FP
-                                                                            Standard Account
-                                                                            (1000001-2000000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="150" class="ng-binding ng-scope">FP
-                                                                            Standard Plus Account
-                                                                            (2000001-3000000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="160" class="ng-binding ng-scope">FP
-                                                                            Supreme Account
-                                                                            (3000001-4500000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="170" class="ng-binding ng-scope">FP
-                                                                            Supreme Plus Account
-                                                                            (4500001-5500000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="180" class="ng-binding ng-scope">FP
-                                                                            Charter Account
-                                                                            (5500001-7000000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="190" class="ng-binding ng-scope">FP
-                                                                            Charter Plus Account
-                                                                            (7000001-9900000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="200" class="ng-binding ng-scope">FP
-                                                                            Elite Account
-                                                                            (10000001-20000000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="220" class="ng-binding ng-scope">FP
-                                                                            Elite Plus Account
-                                                                            (20000001-50000000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="240" class="ng-binding ng-scope">FP
-                                                                            Royal Account
-                                                                            (50000001-100000000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="260" class="ng-binding ng-scope">FP
-                                                                            Royal Plus Account
-                                                                            (100000001-200000000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="146" class="ng-binding ng-scope">FP
-                                                                            Trade Flexi
-                                                                            (1200000-1800000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="156" class="ng-binding ng-scope">FP
-                                                                            Trade Plus Flexi
-                                                                            (2200000-2800000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="166" class="ng-binding ng-scope">FP
-                                                                            Premium Flexi
-                                                                            (3400000-4000000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="176" class="ng-binding ng-scope">FP
-                                                                            Premium Plus Flexi
-                                                                            (4800000-5100000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="186" class="ng-binding ng-scope">FP
-                                                                            Max Flexi
-                                                                            (6000000-6500000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="125" class="ng-binding ng-scope">FP
-                                                                            Regular Agri (0-500000)
-                                                                        </option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="135" class="ng-binding ng-scope">FP
-                                                                            Regular Plus Agri
-                                                                            (500000-1000000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="145" class="ng-binding ng-scope">FP
-                                                                            Standard Agri
-                                                                            (1000001-2000000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="155" class="ng-binding ng-scope">FP
-                                                                            Standard Plus Agri
-                                                                            (2000001-3000000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="165" class="ng-binding ng-scope">FP
-                                                                            Supreme Agri
-                                                                            (3000001-4500000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="175" class="ng-binding ng-scope">FP
-                                                                            Supreme Plus Agri
-                                                                            (4500001-5500000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="185" class="ng-binding ng-scope">FP
-                                                                            Charter Agri
-                                                                            (5500001-7000000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="195" class="ng-binding ng-scope">FP
-                                                                            Charter Plus Agri
-                                                                            (7000001-9999999)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="205" class="ng-binding ng-scope">FP
-                                                                            Elite Agri
-                                                                            (10000000-20000000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="225" class="ng-binding ng-scope">FP
-                                                                            Elite Plus Agri
-                                                                            (20000001-50000000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="245" class="ng-binding ng-scope">FP
-                                                                            Royal Agri
-                                                                            (50000001-100000000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="265" class="ng-binding ng-scope">FP
-                                                                            Royal Plus Agri
-                                                                            (100000001-200000000)</option>
-                                                                        <!-- end ngRepeat: item in productData -->
-                                                                        <option ng-repeat="item in productData"
-                                                                            value="110" class="ng-binding ng-scope">FP
-                                                                            Basic Account (0-1500000)
-                                                                        </option>
-                                                                        <!-- end ngRepeat: item in productData -->
+                                                                            *ngFor="let data of productList"
+                                                                            [value]="data.productId"
+                                                                            class="ng-binding ng-scope">
+                                                                            {{data.productName}}</option>
+
                                                                     </select>
                                                                     <input type="text"
                                                                         class="form-control ng-pristine ng-untouched ng-valid"
@@ -1878,8 +1766,12 @@
                                                             </tr>
                                                         </tbody>
                                                     </table>
+
+
+
                                                     <div style="margin-top: -10px;"><a href="#" class="btn btn-info"
                                                             ng-click="AddPayment()" style="float:right;">Add</a></div>
+
 
 
                                                     <table class="table table-bordered table-hover">
@@ -1972,9 +1864,9 @@
                                         </div>
 
                                     </div>
-                                    <div class="actionBar ">
+                                    <!-- <div class="actionBar ">
                                         <div class="text-center mt-3">
-                                            <!-- <div class="col-sm-offset-3 col-md-9"> -->
+                                           
                                             <button type="button" class="btn btn-info  m-lg-4 m-4"><i
                                                     class="ace-icon fa fa-check bigger-110"></i>
                                                 Finish</button>
@@ -1982,7 +1874,7 @@
                                                 (click)="onSubmit()"><i class="bi bi-arrow-90deg-right"></i>
                                                 Next</button>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div class="row col-lg-12"></div>

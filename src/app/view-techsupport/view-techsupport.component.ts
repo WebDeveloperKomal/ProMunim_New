@@ -14,6 +14,7 @@ export class ViewTechsupportComponent {
   techSupport !: FormGroup;
 
   viewtechSupport:TechSupportModel[] = [];
+  
   replay : ViewTechSupportModel = new ViewTechSupportModel();
   data1={
     date: "",
@@ -54,7 +55,6 @@ ngOnInit(){
       console.log('Response successful!');
       console.log(this.data1);
       console.log(this.data2);
-
     },
     (error:any) => {
       console.error('API Error:', error);

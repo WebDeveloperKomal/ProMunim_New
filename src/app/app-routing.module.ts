@@ -67,6 +67,10 @@ import { SetComponent } from './set/set.component';
 import { ViewBranchComponent } from './view-branch/view-branch.component';
 import { AuthGuard } from './auth.guard';
 import { ViewComplianceComponent } from './view-compliance/view-compliance.component';
+import { DemoforaofComponent } from './demoforaof/demoforaof.component';
+import { ViewCustomerDetailsNewComponent } from './view-customer-details-new/view-customer-details-new.component';
+import { ViewCustomerDetailsDemoComponent } from './view-customer-details-demo/view-customer-details-demo.component';
+import { GetfileComponent } from './getfile/getfile.component';
 
 const routes: Routes = [
 
@@ -199,10 +203,17 @@ const routes: Routes = [
 
 
     { path: "account-opening-form", component: AccountopeningFormComponent },
+    { path: "account-opening-form-demo", component: DemoforaofComponent },
+
 
     { path: "customerslist", component: AllCustomerListComponent },
     
     { path: "view-customer-details", component: ViewCustomerDetailsComponent },
+    { path: "view-customer-details-new/:id", component: ViewCustomerDetailsNewComponent },
+    { path: "view-customer-details-new", component: ViewCustomerDetailsNewComponent },
+    { path: "view-customer-details-demo", component: ViewCustomerDetailsDemoComponent },
+    { path: "getfile", component: GetfileComponent },
+
 
 
     { path: "allcomplaintsmain", component: AllComplaintsMainComponent },
