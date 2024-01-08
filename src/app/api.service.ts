@@ -383,8 +383,6 @@ export class ApiService {
     return this.http.post(`${this.baseUrl}/update-Doc1`,formdata, { reportProgress: true });
   } 
 
-
-
   getBankStatement(accountNo: any): any { //running
     return this.http.get(`${this.baseUrl}/acc-writing/` + accountNo);
   }
@@ -450,6 +448,19 @@ export class ApiService {
   deleteAccWriting(Id: any): any {
     return this.http.delete(`${this.baseUrl}/acc-writing/${Id}`)
   }
+
+  getAccWritingById(id: any): any { //running
+    return this.http.get(`${this.baseUrl}/acc-writing-by-id/` + id);
+  }
+
+//update-acc-writing
+updateAccWritting(writing: any , accDocumentImage:File): any {  //running
+  const formdata: FormData = new FormData();
+ formdata.append('data', JSON.stringify(writing));
+ formdata.append('accDocumentImage', accDocumentImage);   
+  return this.http.post(`${this.baseUrl}/update-acc-writing`,formdata, { reportProgress: true });
+} 
+
 
   getIncomeTax(incometaxdetails:any):any
   {

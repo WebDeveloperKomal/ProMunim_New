@@ -4222,7 +4222,7 @@
                                                         <td>
                                                             <button class="btn btn-xs"
                                                                 style="font-size: 13px; background-color:#003974!important; color: white;"
-                                                                data-bs-toggle="modal" data-bs-target="#updateaccwriting">
+                                                                data-bs-toggle="modal" data-bs-target="#updateaccwriting"(click)="getAccWritingById(acc.id)" >
                                                                 <i class="ace-icon fa fa-pencil bigger-120"></i>
                                                             </button>&nbsp;
                                                             <!-- <button type="button" class="btn btn-info" data-bs-toggle="modal"
@@ -4280,7 +4280,7 @@
                                                                                         *</label>
                                                                                     <div class="col-lg-8 col-md-8 col-8 ">
                                                                                         <input type="file"
-                                                                                            
+                                                                                        (change)="onAccWriting($event)"
                                                                                             >
                                                                                     </div>
                                                                                 </div>
@@ -4302,17 +4302,17 @@
                                                                                         <!-- <input type="date" formControlName="duedate" class="form-control"> -->
                                                                                     </div>
                                                                                 </div>
-    
-    
                                                                             </div>
                                                                         </form>
                                                                     </div>
+
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary"
                                                                             data-bs-dismiss="modal">Close</button>
                                                                         <button type="button" class="btn btn-primary"
-                                                                           >Update</button>
+                                                                     (click)="updateaccwritting()"    >Update</button>
                                                                     </div>
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -4323,6 +4323,7 @@
                                                                 <i class="fa-solid fa-trash-can"></i>
                                                             </button>
                                                             <!-- (click)="deleteAccWriting(acc.customerDocumentId)" -->
+                                                            
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -6081,12 +6082,9 @@
                                                                 </button>
                                                             </div>
                                                         </div>
-
                                                     </form>
-
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
 

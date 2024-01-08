@@ -37,6 +37,7 @@ import { AccountWritingModel } from './AccountWritingModel';
 import { occupationIncomeListModel } from './occupationIncomeListModel';
 import { getKycByIdModel } from './getKycByIdModel';
 import { authsignIdModel } from './authsignIdModel';
+import { acWritingByIdModel } from './acWritingByIdModel';
 
 
 @Component({
@@ -105,7 +106,7 @@ export class ViewCustomerDetailsNewComponent {
   showdata: boolean = true;
   showdata1: boolean = false;
   showdata2: boolean = false;
-  
+
   filepath = localStorage.getItem('photo') ; 
 
   AddAuthSign: AuthSignModel = new AuthSignModel();
@@ -126,7 +127,7 @@ export class ViewCustomerDetailsNewComponent {
   salesInvoiceList: SalesInvoicesModel = new SalesInvoicesModel();
   acWritingList: acWriting[] = [];
   authsignIdList : authsignIdModel = new authsignIdModel;
-
+  acWritingByIdList : acWritingByIdModel  = new acWritingByIdModel;
 
   kycList: kycModel[] = [];
   bankStatementList: bankStatementListModel[] = [];
@@ -325,6 +326,7 @@ export class ViewCustomerDetailsNewComponent {
 
   }]
   customerDocumentId : any;
+  idforaccwritingupdate : any;
 
   constructor(private formBuilder: FormBuilder, private apiservice: ApiService, private sharedService: TidService, private route: ActivatedRoute, private router: Router) {
     this.step1 = this.formBuilder.group({
@@ -354,7 +356,6 @@ export class ViewCustomerDetailsNewComponent {
       mobileno1: ['', Validators.required],
       telephoneno1: ['', Validators.required],
     });
-
 
     this.addform = this.formBuilder.group({
       tids: localStorage.getItem('tidprofile'),
@@ -553,11 +554,15 @@ export class ViewCustomerDetailsNewComponent {
     })
 
     this.updateaccountwriting=  this.formBuilder.group({
+      id:  localStorage.getItem('idforaccwritingupdate1'),
+      document : 'Document',
+      accountNo :localStorage.getItem('accountNo'),
       fromDate: ['', Validators.required],
       toDate: ['', Validators.required],
-      accountNo: ['', Validators.required],
+      // accountNo: ['', Validators.required],income
       description: ['', Validators.required]
     })
+    
     //kycupdate
     this.kycupdate = this.formBuilder.group({
       customerDocumentType: ['', Validators.required],
@@ -960,10 +965,13 @@ export class ViewCustomerDetailsNewComponent {
         this.apiservice.acWriting(this.accountList.accountNo).subscribe(
           (response: any) => {
             this.acWritingList = response.data;
-            // console.log("accWriting", response.data);
+            localStorage.setItem("accWritingId",response.data[0].id)
+            console.log("accWriting,,,,,,", response.data);
           },
           (error: any) => { console.error(error); }
         )
+
+      
 
         // authsignId
         this.authsignIdList.authIdOne = localStorage.getItem("authsignId");
@@ -989,52 +997,6 @@ export class ViewCustomerDetailsNewComponent {
               serInvestPlan:  response.data.serInvestPlan,
               serTaxPlan:  response.data.serTaxPlan,
               authIdOne:  response.data.authIdOne
-
-            //  id : localStorage.getItem('authsignId'),
-            //  tid: [0, Validators.required],
-            //  name: ['', Validators.required],
-            //  shortName: ['', Validators.required],
-            //  date: ['', Validators.required],
-            //  gender: ['', Validators.required],
-            //  nationality: ['', Validators.required],
-            //  religion: ['', Validators.required],
-            //  motherName: ['', Validators.required],
-            //  designation: ['', Validators.required],
-            //  mobile: ['', Validators.required],
-            //  telephone: ['', Validators.required],
-            //  email: ['', Validators.required],
-            //  serFinanPlan: ['', Validators.required],
-            //  serAccWrite: ['', Validators.required],
-            //  serInvestPlan: ['', Validators.required],
-            //  serTaxPlan: ['', Validators.required],
-            //  authIdOne: [0, Validators.required]
-
-
-
-
-            //  date: any;
-            //  serTaxPlan:any;
-            //  gender: any;
-            //  motherName: any;
-            //  mobile: any;
-            //  sign: any;
-            //  photo: any;
-            //  masterEmployeeId: any;
-            //  telephone:any;
-            //  serAccWrite: any;
-            //  tid:any;
-            //  religion: any;
-            //  aadharNumber: any;
-            //  nationality: any;
-            //  serFinanPlan: any;
-            //  authIdOne: any;
-            //  serInvestPlan: any;
-            //  name: any;
-            //  designation: any;
-            //  shortName: any;
-            //  email: any;
-
-
             })
           },
           (error: any) => { console.error(error); }
@@ -1372,6 +1334,7 @@ picfile() {
 
     editKyc(customerDocumentId : any){
       this.customerDocumentId =customerDocumentId ;
+     
       console.log(" customer Document Category Id $$$$$$$$$$$$$$$$$$$$$$$$$$ ", this.customerDocumentId);
       this.apiservice.getByIdKYCDoc(this.customerDocumentId).subscribe(
         (response: any) => {
@@ -1401,6 +1364,48 @@ picfile() {
       (error : any)=>{
         console.error("Not Working" , error);
       }
+    )
+  }
+
+  // getid(id: any){
+  //         this.idforaccwritingupdate  = this.id ;
+  //         console.log('dataid', this.id);
+  //         localStorage.setItem('idforaccwritingupdate', this.idforaccwritingupdate)
+  //         // this.idforaccwritingupdate = localStorage.setItem('idforaccwritingupdate', );
+  // }
+  getAccWritingById(id: any){
+  this.idforaccwritingupdate  = id ;
+  localStorage.setItem('idforaccwritingupdate1', this.idforaccwritingupdate );
+  this.acWritingByIdList.id= localStorage.getItem("accWritingId");
+  // console.log("#######################",this.acWritingByIdList.id);
+  console.log("#######################this.idforaccwritingupdate",this.idforaccwritingupdate);
+  this.apiservice.getAccWritingById(this.idforaccwritingupdate).subscribe(
+    (response: any) => {
+      this.acWritingByIdList = response.data;
+      // console.log("accWriting", response.data);
+    },
+    (error: any) => { console.error(error); }
+  )
+  }
+  
+  updateaccwritting(){
+    this.occupationIncomeList = this.updateaccountwriting.value;
+    console.log("Update AccWriting ******************** ::::::: ", this.occupationIncomeList , this.accDocumentImage);
+    this.apiservice.updateAccWritting(this.updateaccountwriting.value,this.accDocumentImage).subscribe(
+      (response: any) => {
+        console.log('SAVE',response.status);
+        Swal.fire({
+          title: "Record Updated!",
+          icon: "success"
+        });
+        // console.log('update authorisation,,,,,,', response.data);
+      },  (error: any) => {
+        console.error(error);
+        Swal.fire({
+          title: "Error!",
+          icon: "error"
+        });
+      } 
     )
   }
   
