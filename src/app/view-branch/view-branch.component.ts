@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ViewAddDailyvisitModel } from '../view-add-dailyvisit/view-add-dailyvisit.component.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BranchModel } from '../branch/branch.component.model';
 import Swal from 'sweetalert2';
 
@@ -26,7 +26,7 @@ export class ViewBranchComponent {
   branch: BranchModel = new BranchModel();
   id!:number;
  
-  constructor(private formBuilder: FormBuilder, private apiService:ApiService,private route:ActivatedRoute) {
+  constructor(private formBuilder: FormBuilder, private apiService:ApiService,private route:ActivatedRoute, private router :  Router) {
     this.viewbranchForm = this.formBuilder.group({
       branchName: ['', Validators.required], // Add validation if needed
       branchClassification: ['', Validators.required], // Add validation if needed
@@ -77,7 +77,7 @@ export class ViewBranchComponent {
           title: "Record Updated!",
           icon: "success"
         });
-        setInterval(()=>{window.location.reload()},1000);
+        // setInterval(()=>{window.location.reload()},1000);
       },
       (error:any)=>{
         console.error(error);
@@ -85,14 +85,16 @@ export class ViewBranchComponent {
           title: "Error!",
           icon: "error"
         });
-        setInterval(()=>{window.location.reload()},1000);
+        // setInterval(()=>{window.location.reload()},1000);
       }
     );
   }
 
 
   reset(){
-    window.location.reload();
+    // window.location.reload();
+    this.router.navigate([this.router.url]);
+
   }
 
 

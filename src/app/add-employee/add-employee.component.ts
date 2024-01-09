@@ -95,7 +95,7 @@ export class AddEmployeeComponent {
           title: "Record Saved!",
           icon: "success"
         });
-        setInterval(()=>{window.location.reload()},1000);
+        // setInterval(()=>{window.location.reload()},1000);
       },
       (err:any)=>{
         console.error(err);
@@ -107,7 +107,7 @@ export class AddEmployeeComponent {
     );
    }
    reset(){
-    window.location.reload();
+    // window.location.reload();
    }
 
   applyFilter(): void {

@@ -94,7 +94,7 @@ export class OtherservicesComponent {
             });
           }
         );
-        setInterval(()=>{window.location.reload()},1000);        
+        // setInterval(()=>{window.location.reload()},1000);        
       }
     });
     

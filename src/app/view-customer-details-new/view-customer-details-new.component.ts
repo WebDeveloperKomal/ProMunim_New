@@ -797,7 +797,7 @@ this.UpdatecustInteractionForm.patchValue({
          title: "Record Updated!",
          icon: "success"
        });
-       setInterval(()=>{window.location.reload()},1000);
+      //  setInterval(()=>{window.location.reload()},1000);
      },
      (error:any)=>{
        console.error(error);
@@ -837,7 +837,7 @@ this.UpdatecustInteractionForm.patchValue({
          });
        }
        );
-       setInterval(()=>{window.location.reload()},1000);
+      //  setInterval(()=>{window.location.reload()},1000);
      }
    });
    
@@ -968,7 +968,7 @@ updateTaxPlanning(){
        title: "Record Updated!",
        icon: "success"
      });
-     setInterval(()=>{window.location.reload()},1000);
+    //  setInterval(()=>{window.location.reload()},1000);
    },
    (error:any)=>{
      console.error(error);
@@ -1028,4 +1028,24 @@ updateProfile() {
 //     }
 //   )
 // }
+
+// billing
+getbilling(InvoiceId:any){
+
+  // this.accountNo = this.route.snapshot.params['accountNo']; 
+this.apiService.getbillingmain(1000).subscribe(
+(res:any)=>{
+  this.taxplanningdetails =res.data;
+  // localStorage.setItem("followupId", res.data.followupId);
+  // localStorage.setItem("followupId", this.customerinteractiondetailsobj.followupId);
+console.log("GetBillingdetails********", res.data);
+// this.getproddetails = res.data ;
+
+},
+(error:any)=>{console.error(error);
+}
+)
+
+
+}
 }

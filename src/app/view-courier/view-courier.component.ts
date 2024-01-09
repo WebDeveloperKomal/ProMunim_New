@@ -39,7 +39,7 @@ export class ViewCourierComponent {
   }
 
   reset(){
-    window.location.reload();
+    // window.location.reload();
   }
   onSubmit(){
     this.apiService.updateCourior(this.courior).subscribe(
@@ -58,7 +58,7 @@ export class ViewCourierComponent {
         });
       }
     );
-    setInterval(()=>{window.location.reload()},1000);
+    // setInterval(()=>{window.location.reload()},1000);
   }
 
 

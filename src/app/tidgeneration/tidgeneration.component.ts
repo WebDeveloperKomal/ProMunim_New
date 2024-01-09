@@ -54,7 +54,7 @@ export class TidgenerationComponent {
         });     
       }
     );
-    setInterval(()=>{window.location.reload()},1000);
+    // setInterval(()=>{window.location.reload()},1000);
 
 }
 
@@ -78,7 +78,7 @@ onSubmit1(){
       });     
     }
   );
-  setInterval(()=>{window.location.reload()},1000);
+  // setInterval(()=>{window.location.reload()},1000);
 
 }
 

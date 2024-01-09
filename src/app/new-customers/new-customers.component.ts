@@ -114,7 +114,7 @@ export class NewCustomersComponent {
         });
       }
     );
-    setInterval(()=>{window.location.reload()},1000);
+    // setInterval(()=>{window.location.reload()},1000);
    }
 
 
@@ -146,7 +146,7 @@ export class NewCustomersComponent {
             });
           }
         );
-        setInterval(()=>{window.location.reload()},1000);        
+        // setInterval(()=>{window.location.reload()},1000);        
       }
     });
     

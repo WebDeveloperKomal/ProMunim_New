@@ -157,9 +157,9 @@ leadNotifications(){
    );
  }
 
-refresh(){
-  window.location.reload();
-}
+// refresh(){
+//   window.location.reload();
+// }
 
 
 

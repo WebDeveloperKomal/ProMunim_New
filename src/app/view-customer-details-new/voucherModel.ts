@@ -14,6 +14,7 @@ export class VoucherModel{
     voucherId: any
     amount :any;
     paidDate :any;
+    paymentDate :any;
     paymentMode :any;
     accountNo :any;
     paidReceipt:any;

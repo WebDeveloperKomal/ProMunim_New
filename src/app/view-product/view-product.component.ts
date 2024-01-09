@@ -53,7 +53,7 @@ export class ViewProductComponent {
     )
   }
   reset(){
-    window.location.reload();
+    // window.location.reload();
   }
 
   onSubmit(){
@@ -74,7 +74,7 @@ export class ViewProductComponent {
         });
       }
     );
-    setInterval(()=>{window.location.reload()},1000);
+    // setInterval(()=>{window.location.reload()},1000);
   }
 
 

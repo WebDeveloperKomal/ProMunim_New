@@ -57,7 +57,7 @@ export class UserProfileComponent {
             title: "Profile Updated!",
             icon: "success"
           });
-          setInterval(()=>{window.location.reload()},1000);
+          // setInterval(()=>{window.location.reload()},1000);
         },
         (error:any)=>{
           alert("error!");
@@ -67,7 +67,7 @@ export class UserProfileComponent {
             text : "Profile not updated.",
             icon: "error"
           });
-          setInterval(()=>{window.location.reload()},1000);
+          // setInterval(()=>{window.location.reload()},1000);
         });        
       } 
       

@@ -13,6 +13,7 @@ export class SecurityService {
   constructor(private http : HttpClient) {}
 
   baseUrl="https://clientportal.promunim.com/";
+  // baseUrl="http://localhost:8181";
 
   Login(credentials:{email:string,password:string})
   {

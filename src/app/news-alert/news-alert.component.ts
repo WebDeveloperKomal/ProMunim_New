@@ -82,7 +82,7 @@ export class NewsAlertComponent {
         this.api.deleteNewsAlert(newsAlertId).subscribe(
               (response: any) => {
                 console.log(response.data);
-                window.location.reload();
+                // window.location.reload();
               },
           (error:any)=>{
             console.error(error);
@@ -92,7 +92,7 @@ export class NewsAlertComponent {
             });
           }
         );
-        setInterval(()=>{window.location.reload()},1000);        
+        // setInterval(()=>{window.location.reload()},1000);        
       }
     });
     

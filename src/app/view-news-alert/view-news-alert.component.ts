@@ -46,7 +46,7 @@ export class ViewNewsAlertComponent {
           title: "Record Updated!",
           icon: "success"
         });
-        window.location.reload();
+        // window.location.reload();
       },
       (error: any) => {
         console.error(error);
@@ -60,6 +60,6 @@ export class ViewNewsAlertComponent {
   }
 
   reset(){
-    window.location.reload();
+    // window.location.reload();
   }
 }

@@ -98,7 +98,7 @@ export class AllTIDComponent {
         this.service.deleteTID(id).subscribe(
               (response:any)=>{
                 console.log(response.data);
-                window.location.reload();
+                // window.location.reload();
               },
           (error:any)=>{
             console.error(error);
@@ -108,7 +108,7 @@ export class AllTIDComponent {
             });
           }
         );
-        setInterval(()=>{window.location.reload()},1000);        
+        // setInterval(()=>{window.location.reload()},1000);        
       }
     });
     

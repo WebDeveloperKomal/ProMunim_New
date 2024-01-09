@@ -168,7 +168,7 @@ export class UserRolePermissionComponent {
         });   
       }
     );
-  setInterval(()=>{window.location.reload()},1000);        
+  // setInterval(()=>{window.location.reload()},1000);        
   }
 
   getPermissionsByRoleId(id:any):any{
@@ -223,7 +223,7 @@ export class UserRolePermissionComponent {
         }); 
       }
     );
-    setInterval(()=>{window.location.reload()},1000);        
+    // setInterval(()=>{window.location.reload()},1000);        
   }
   
   delete(id:number){
@@ -254,7 +254,7 @@ export class UserRolePermissionComponent {
             });
           }
         );
-        setInterval(()=>{window.location.reload()},1000);        
+        // setInterval(()=>{window.location.reload()},1000);        
       }
     });
     
@@ -326,7 +326,7 @@ export class UserRolePermissionComponent {
         });   
       }
     );
-    setInterval(()=>{window.location.reload()},1000);        
+    // setInterval(()=>{window.location.reload()},1000);        
   }
 
 

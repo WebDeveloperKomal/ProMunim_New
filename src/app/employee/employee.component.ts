@@ -150,7 +150,7 @@ export class EmployeeComponent {
         });
       }
     );
-    setInterval(()=>{window.location.reload()},1000);
+    // setInterval(()=>{window.location.reload()},1000);
    }
 
    deletePhoto(){}
@@ -183,7 +183,7 @@ export class EmployeeComponent {
             });
           }
         );
-        setInterval(()=>{window.location.reload()},1000);        
+        // setInterval(()=>{window.location.reload()},1000);        
       }
     });
     

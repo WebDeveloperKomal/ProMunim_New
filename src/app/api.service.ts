@@ -5,7 +5,9 @@ import{HttpClient} from '@angular/common/http'
 })
 export class ApiService {
   
-  baseUrl="https://localhost:8181/auth";
+  baseUrl="https://clientportal.promunim.com/auth";
+  // baseUrl="http://localhost:8181/auth";
+  
   constructor(private http : HttpClient) { }
 
 
@@ -539,9 +541,9 @@ export class ApiService {
       return this.http.get(`${this.baseUrl}/all-customers`);
     }
 
-  /**************** View Customer detail *************/
+   /**************** View Customer detail *************/
   
-  getAccount(tId:any): any { //running
+   getAccount(tId:any): any { //running
     return this.http.get(`${this.baseUrl}/get-acc-details/` + tId);
   }
 
@@ -616,7 +618,58 @@ updateProductSer(productdata: any): any { //running
   //   return this.http.post(`${this.baseUrl}/save-voucher`,custinteraction);
   // }
  
+  // billing
+  getbillingmain(invoiceId: any): any { //running
+    return this.http.get(`${this.baseUrl}/get-invoice-details/`+ invoiceId);
+  }
+
+  savebillinginvoice(invoicebilldata:any):any
+  {
+    return this.http.post(`${this.baseUrl}/save-invoice`,invoicebilldata);
+  }
+
+  saveinvoiceitem(invoiceitembilldata:any):any
+  {
+    return this.http.post(`${this.baseUrl}/save-invoice-item`,invoiceitembilldata);
+  }
+  getinvoiceitem(invoiceId: any): any { //running
+    return this.http.get(`${this.baseUrl}/get-invoice-items/`+ invoiceId);
+  }
+
+  updateinvoiceitem(updateinvoiceitembilldata: any){
+    return this.http.put(`${this.baseUrl}/update-invoice-item` , updateinvoiceitembilldata)
+  }
+  getinvoiceitemdetailsbyid(id : any): any { //running
+    return this.http.get(`${this.baseUrl}/get-invoice-Item/`+ id);
+  }
+
+  gettransctiondetails(acccountNo : any): any { //running
+    return this.http.get(`${this.baseUrl}/getAllTransaction/`+ acccountNo);
+  }
+
+  savepayment(paymentdata:any):any
+  {
+    return this.http.post(`${this.baseUrl}/save-transaction1`,paymentdata);
+  }
+  updatepayment(updatepayment: any){
+    return this.http.put(`${this.baseUrl}/update-transaction1` , updatepayment)
+  }
+  gettransctiondetailsbyid(id : any): any { //running
+    return this.http.get(`${this.baseUrl}/get-transaction/`+ id);
+  }
+
+  deletepayment(iddata: { transId: any, invoiceId: any }): any {
+    const url = `${this.baseUrl}/delete-transaction`;
+    const options = { body: iddata };
   
+    return this.http.delete(url, options);
+  }
+  deleteInvoiceItem(iddata: { itemId: any, invoiceId: any }): any {
+    const options = { body: iddata };
+    return this.http.delete(`${this.baseUrl}/delete-invoice-item`, options);
+  }
+
+  // get-invoice-details/303
     
           // occupation-income-details
 
@@ -664,6 +717,10 @@ updateProductSer(productdata: any): any { //running
   // getBilling(tId: any): any { //running
   //   return this.http.get(`${this.baseUrl}/get-billing/` + tId);
   // }
+//**  Integration program */
+  getBill(tId: any){
+    return this.http.get('${this.baseUrl}/get-billing/ ' +tId);
+  }
 
 
   //Profile 
@@ -675,10 +732,120 @@ updateProductSer(productdata: any): any { //running
     return this.http.put(`${this.baseUrl}/update-org-individual`, profile);
   }
 
+
   //Documents
-  getKYCDocuments(tidData: any): any {  //Not running
+  getKYCDocuments(tidData: any): any {  // running
     return this.http.post(`${this.baseUrl}/get-document1`, tidData);
   }
+
+  getByIdKYCDoc(documentId: any): any {  //running documentId
+    return this.http.get(`${this.baseUrl}/get-document-by-id/`+ documentId);
+  }
+
+  
+  getAccDetails(accountNo: any): any {  //running
+    return this.http.get(`${this.baseUrl}/get-bank-acc-details/`+ accountNo);
+  }
+  
+
+  // aof4Form(aof4: any, docImage: File): any {  //Running
+  //   const formdata: FormData = new FormData();
+  //   formdata.append('data', JSON.stringify(aof4));
+  //   formdata.append('docImage', docImage);
+  //   return this.http.post(`${this.baseUrl}/save-doc1`, formdata, { reportProgress: true })
+  // }
+
+  saveBankStatement(statement: any ,bankstatement:File): any {  // running
+    const formdata: FormData = new FormData();
+   formdata.append('data', JSON.stringify(statement));
+   formdata.append('bankStatement', bankstatement);   
+    return this.http.post(`${this.baseUrl}/save-bank-statement`,formdata, { reportProgress: true });
+  }  
+
+  saveBankDetails(details: any ,bankdetails:File): any {  //running
+    const formdata: FormData = new FormData();
+   formdata.append('data', JSON.stringify(details));
+   formdata.append('bankdetails', bankdetails);   
+    return this.http.post(`${this.baseUrl}/save-bank-details`,formdata, { reportProgress: true });
+  } 
+
+  saveSalesInvoice(invoice: any , salesinvoice:File): any {  //running
+    const formdata: FormData = new FormData();
+   formdata.append('data', JSON.stringify(invoice));
+   formdata.append('salesinvoice', salesinvoice);   
+    return this.http.post(`${this.baseUrl}/save-sales-invoice`,formdata, { reportProgress: true });
+  } 
+
+  savePurchaseInvoice(purchase: any , purchaseinvoice:File): any {  //running
+    const formdata: FormData = new FormData();
+   formdata.append('data', JSON.stringify(purchase));
+   formdata.append('purchaseinvoice', purchaseinvoice);   
+    return this.http.post(`${this.baseUrl}/save-purchase-invoice`,formdata, { reportProgress: true });
+  } 
+
+  saveExpensesDetails(expenses: any , expense:File): any {  //running
+    const formdata: FormData = new FormData();
+   formdata.append('data', JSON.stringify(expenses));
+   formdata.append('expense', expense);   
+    return this.http.post(`${this.baseUrl}/save-expenses-details`,formdata, { reportProgress: true });
+  } 
+
+  saveLoan(loan: any , loandetails:File): any {  //running
+    const formdata: FormData = new FormData();
+   formdata.append('data', JSON.stringify(loan));
+   formdata.append('vehicledetails', loandetails);   
+    return this.http.post(`${this.baseUrl}/save-loan`,formdata, { reportProgress: true });
+  } 
+
+    
+  saveCheckBook(checkbook: any , chequbookdetails:File): any {  //running
+    const formdata: FormData = new FormData();
+   formdata.append('data', JSON.stringify(checkbook));
+   formdata.append('chequbookdetails', chequbookdetails);   
+    return this.http.post(`${this.baseUrl}/save-cheque-books-record`,formdata, { reportProgress: true });
+  }
+
+  savePaySlip(payslip: any , payslipdetails:File): any {  //running
+    const formdata: FormData = new FormData();
+   formdata.append('data', JSON.stringify(payslip));
+   formdata.append('payslipdetails', payslipdetails);   
+    return this.http.post(`${this.baseUrl}/save-pay-in-slips`,formdata, { reportProgress: true });
+  } 
+
+  saveInvestment(investment: any , investmentdetails:File): any {  //running
+    const formdata: FormData = new FormData();
+   formdata.append('data', JSON.stringify(investment));
+   formdata.append('investmentdetails', investmentdetails);   
+    return this.http.post(`${this.baseUrl}/save-investment-details`,formdata, { reportProgress: true });
+  } 
+
+  getTaxType(): any { //running
+    return this.http.get(`${this.baseUrl}/get-tax-type`);
+  }
+
+  saveTaxes(taxes: any , taxdetails:File): any {  //running
+    const formdata: FormData = new FormData();
+   formdata.append('data', JSON.stringify(taxes));
+   formdata.append('taxdetails', taxdetails);   
+    return this.http.post(`${this.baseUrl}/save-taxes`,formdata, { reportProgress: true });
+  } 
+
+  saveVehicle(vehicle: any , vehicledetails:File): any {  //running
+    const formdata: FormData = new FormData();
+   formdata.append('data', JSON.stringify(vehicle));
+   formdata.append('vehicledetails', vehicledetails);   
+    return this.http.post(`${this.baseUrl}/save-vehicle`,formdata, { reportProgress: true });
+  } 
+
+
+  saveCustKyc(kyc: any , docImage:File): any {  //running
+    const formdata: FormData = new FormData();
+   formdata.append('data', JSON.stringify(kyc));
+   formdata.append('docImage', docImage);   
+    return this.http.post(`${this.baseUrl}/update-Doc1`,formdata, { reportProgress: true });
+  } 
+
+
 
   getBankStatement(accountNo: any): any { //running
     return this.http.get(`${this.baseUrl}/acc-writing/` + accountNo);
@@ -733,16 +900,100 @@ updateProductSer(productdata: any): any { //running
     return this.http.delete(`${this.baseUrl}/delete-vehicle-document/${Id}`)
   }
 
+   
+  getFile(filepath: any): any { //running
+    return this.http.get(`${this.baseUrl}/getFile/`+ filepath);
+  }
+  //Documents
+  // getKYCDocuments(tidData: any): any {  //Not running
+  //   return this.http.post(`${this.baseUrl}/get-document1`, tidData);
+  // }
+
+  // getBankStatement(accountNo: any): any { //running
+  //   return this.http.get(`${this.baseUrl}/acc-writing/` + accountNo);
+  // }
+
+  // deleteKYCDocument(Id: any): any {
+  //   return this.http.delete(`${this.baseUrl}/delete-KYC-document/${Id}`)
+  // }
+
+  // deleteDoc2(Id: any): any {
+  //   return this.http.delete(`${this.baseUrl}/delete-bankStatement-document/${Id}`)
+  // }
+
+  // getDoc2(docData: any): any {  //running
+  //   return this.http.post(`${this.baseUrl}/get-doc2`, docData);
+  // }
+
+  // deleteSalesDocument(Id: any): any {
+  //   return this.http.delete(`${this.baseUrl}/delete-sales-document/${Id}`)
+  // }
+
+  // deletePurchaseDocument(Id: any): any {
+  //   return this.http.delete(`${this.baseUrl}/delete-purchase-document/${Id}`)
+  // }
+
+  // deleteExpenseDocument(Id: any): any {
+  //   return this.http.delete(`${this.baseUrl}/delete-expense-document/${Id}`)
+  // }
+
+  // deleteLoanDocument(Id: any): any {
+  //   return this.http.delete(`${this.baseUrl}/delete-loan-document/${Id}`)
+  // }
+
+  // deleteCheckBooksDocument(Id: any): any {
+  //   return this.http.delete(`${this.baseUrl}/delete-checkBooks-document/${Id}`)
+  // }
+
+
+  // deletePayInSlipDocument(Id: any): any {
+  //   return this.http.delete(`${this.baseUrl}/delete-payInSlip-document/${Id}`)
+  // }
+
+  // deleteInvestmentDocument(Id: any): any {
+  //   return this.http.delete(`${this.baseUrl}/delete-investment-document/${Id}`)
+  // }
+
+  // deleteTaxesDocument(Id: any): any {
+  //   return this.http.delete(`${this.baseUrl}/delete-taxes-document/${Id}`)
+  // }
+
+  // deleteVehicleDocument(Id: any): any {
+  //   return this.http.delete(`${this.baseUrl}/delete-vehicle-document/${Id}`)
+  // }
+
   //Occupation 
   acWriting(ac: any): any { //running
     return this.http.get(`${this.baseUrl}/acc-writing/` + ac);
   }
 
+  updateOccupationIncome(income : any): any { //running
+    return this.http.put(`${this.baseUrl}/update-occupation-income`, income);
+  }
   deleteAccWriting(Id: any): any {
     return this.http.delete(`${this.baseUrl}/acc-writing/${Id}`)
   }
 
+  getAccWritingById(id: any): any { //running
+    return this.http.get(`${this.baseUrl}/acc-writing-by-id/` + id);
+  }
 
+//update-acc-writing
+updateAccWritting(writing: any , accDocumentImage:File): any {  //running
+  const formdata: FormData = new FormData();
+ formdata.append('data', JSON.stringify(writing));
+ formdata.append('accDocumentImage', accDocumentImage);   
+  return this.http.post(`${this.baseUrl}/update-acc-writing`,formdata, { reportProgress: true });
+} 
+
+
+  //save-acc-writing
+  saveAccWriting(accwriting: any , accDocumentImage:File): any {  //running
+    const formdata: FormData = new FormData();
+   formdata.append('data', JSON.stringify(accwriting));
+   formdata.append('accDocumentImage', accDocumentImage);   
+    return this.http.post(`${this.baseUrl}/save-acc-writing`,formdata, { reportProgress: true });
+  } 
   //Authorised Signatory
   getAuthorisedSignatory(tid: any): any { //running
     return this.http.get(`${this.baseUrl}/get-signatory/` + tid);
@@ -756,19 +1007,29 @@ updateProductSer(productdata: any): any { //running
   getTransaction(accountNo: any): any { //running
     return this.http.get(`${this.baseUrl}/getAllTransaction/` + accountNo);
   }
+  // getTransaction(accountNo: any): any { //running
+  //   return this.http.get(`${this.baseUrl}/allTransactions/`);
+  // }
 
   //Voucher
   getVoucher(accountno: any): any { //running
     return this.http.get(`${this.baseUrl}/get-vouchers/` + accountno);
   }
-
+  getVoucherById(id: any): any { //running
+    return this.http.get(`${this.baseUrl}/get-voucher-data-by-id/` + id);
+  }
   addVoucher(voucher: any, receiptImage :File): any {
     const formdata: FormData = new FormData();
       formdata.append('data', JSON.stringify(voucher));
       formdata.append('receiptImage', receiptImage);
     return this.http.post(`${this.baseUrl}/save-voucher`, formdata,{reportProgress : true});
   }
-
+  updateVoucher(voucher: any, receiptImage :File): any {
+    const formdata: FormData = new FormData();
+      formdata.append('data', JSON.stringify(voucher));
+      formdata.append('receiptImage', receiptImage);
+    return this.http.post(`${this.baseUrl}/update-voucher`, formdata,{reportProgress : true});
+  }
   deleteVoucher(voucherId: any): any {
     return this.http.delete(`${this.baseUrl}/delete-voucher/${voucherId}`)
   }

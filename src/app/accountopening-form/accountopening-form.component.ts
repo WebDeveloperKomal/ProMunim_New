@@ -315,9 +315,9 @@ export class AccountopeningFormComponent {
 
 }
 
-reload(){
-  window.location.reload();
-}
+// reload(){
+//   window.location.reload();
+// }
 onchange(event: any){
   // this.document = this.step4.get('customerDocumentCategoryId');
   // console.log(id);

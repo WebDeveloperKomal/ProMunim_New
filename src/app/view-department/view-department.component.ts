@@ -47,7 +47,7 @@ ngOnInit(){
     )
   }
   reset(){
-    window.location.reload();
+    // window.location.reload();
   }
   onSubmit(){
     let dep = {departmentID : this.id,
@@ -69,7 +69,7 @@ ngOnInit(){
         });
       }
     );
-    setInterval(()=>{window.location.reload()},1000);
+    // setInterval(()=>{window.location.reload()},1000);
   }
 
 

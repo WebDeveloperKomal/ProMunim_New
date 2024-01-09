@@ -66,7 +66,7 @@ export class EditDocumentCategoryComponent {
     )
   }
   reset(){
-    window.location.reload();
+    // window.location.reload();
   }
 
   addType() {
@@ -89,7 +89,7 @@ export class EditDocumentCategoryComponent {
         });
       }
     );
-    setInterval(()=>{window.location.reload()},1000);
+    // setInterval(()=>{window.location.reload()},1000);
   }
 
 

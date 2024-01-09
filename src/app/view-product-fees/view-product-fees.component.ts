@@ -59,7 +59,7 @@ export class ViewProductFeesComponent {
         });
       }
     );
-    setInterval(()=>{window.location.reload()},1000);
+    // setInterval(()=>{window.location.reload()},1000);
   }
 
 

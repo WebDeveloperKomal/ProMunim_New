@@ -55,7 +55,7 @@ export class ViewComplianceComponent {
   }
 
   reset(){
-    window.location.reload();
+    // window.location.reload();
   }
 
   onSubmit()
@@ -82,7 +82,7 @@ export class ViewComplianceComponent {
         });
       }
     );
-    setInterval(()=>{window.location.reload()},1000);
+    // setInterval(()=>{window.location.reload()},1000);
   }
 
 
